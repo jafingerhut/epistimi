@@ -1,0 +1,159 @@
+% Example bibliography items of various types,
+% nice to keep around as examples to copy, paste, and modify.
+
+@online{TUGInstmem,
+  key =          {TUG},
+  year  =        2017,
+  title =        "Institutional members of the {\TeX} Users Group",
+  url =          "http://wwtug.org/instmem.html",
+  lastaccessed = "May 27, 2017",
+}
+
+@MANUAL{Fear05,
+  title =        {Publication quality tables in {\LaTeX}},
+  author =       {Simon Fear},
+  month =        {April},
+  year =         2005,
+  note =         {\url{http://www.ctan.org/pkg/booktabs}}
+}
+
+@ArtifactSoftware{R,
+    title = {R: A Language and Environment for Statistical Computing},
+    author = {{R Core Team}},
+    organization = {R Foundation for Statistical Computing},
+    address = {Vienna, Austria},
+    year = {2019},
+    url = {https://www.R-project.org/},
+}
+
+@ArtifactDataset{UMassCitations,
+ author    =  {Sam Anzaroot and Andrew McCallum},
+ title     =  {{UMass} Citation Field Extraction Dataset},
+ year      = 2013,
+ url       = {http://www.iesl.cs.umass.edu/data/data-umasscitationfield},
+ lastaccessed = {May 27, 2019}
+}
+
+@Eprint{Bornmann2019,
+       author = {Bornmann, Lutz and Wray, K. Brad and Haunschild,
+                  Robin},
+        title = {Citation concept analysis {(CCA)}---A new form of
+                  citation analysis revealing the usefulness of
+                  concepts for other researchers illustrated by two
+                  exemplary case studies including classic books by
+                  {Thomas S.~Kuhn} and {Karl R.~Popper}},
+     keywords = {Computer Science - Digital Libraries},
+         year = 2019,
+        month = "May",
+          eid = {arXiv:1905.12410},
+archivePrefix = {arXiv},
+       eprint = {1905.12410},
+ primaryClass = {cs.DL},
+}
+
+@article{SW1980,
+  author =       "Six, H.-W. and Wood, D.",
+  year =         "1980",
+  title =        "The rectangle intersection problem revisited",
+  journal =      "BIT Numerical Mathematics",
+  eid =          "4",
+  volume =       "20",
+  number =       "4",
+  pages = {426-433},
+  doi =          "10.1145/1057270.1057278",
+  url =          "http://doi.acm.org/10.1145/1057270.1057278",
+  url = {https://doi.org/10.1007/BF01933636},
+  doi = {10.1007/BF01933636},
+  abstract = {We take another look at the problem of intersecting rectangles with parallel sides. For this we derive a one-pass, time optimal algorithm which is easy to program, generalizes tod dimensions well, and illustrates a basic duality in its data structures and approach.},
+}
+
+@Book{PS1985,
+  author =       "Franco P. Preparata and Michael Ian Shamos",
+  title =        "Computational Geometry",
+  publisher =    "Springer",
+  year =         "1985",
+  address =      "New York, NY",
+  editor =       "",
+  volume =       "",
+  number =       "",
+  series =       "Monographs in Computer Science",
+  month =        "",
+  note =         "",
+  url = {https://link.springer.com/book/10.1007/978-1-4612-1098-6},
+}
+
+@inproceedings{SVSW1998,
+author = {Srinivasan, Venkatachary and Varghese, George and Suri, Subhash and Waldvogel, Marcel},
+title = {Fast and Scalable Layer Four Switching},
+year = {1998},
+isbn = {1581130031},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/285237.285282},
+doi = {10.1145/285237.285282},
+abstract = {In Layer Four switching, the route and resources allocated to a packet are determined by the destination address as well as other header fields of the packet such as source address, TCP and UDP port numbers. Layer Four switching unifies firewall processing, RSVP style resource reservation filters, QoS Routing, and normal unicast and multicast forwarding into a single framework. In this framework, the forwarding database of a router consists of a potentially large number of filters on key header fields. A given packet header can match multiple filters, so each filter is given a cost, and the packet is forwarded using the least cost matching filter.In this paper, we describe two new algorithms for solving the least cost matching filter problem at high speeds. Our first algorithm is based on a grid-of-tries construction and works optimally for processing filters consisting of two prefix fields (such as destination-source filters) using linear space. Our second algorithm, cross-producting, provides fast lookup times for arbitrary filters but potentially requires large storage. We describe a combination scheme that combines the advantages of both schemes. The combination scheme can be optimized to handle pure destination prefix filters in 4 memory accesses, destination-source filters in 8 memory accesses worst case, and all other filters in 11 memory accesses in the typical case.},
+booktitle = {Proceedings of the ACM SIGCOMM '98 Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication},
+pages = {191–202},
+numpages = {12},
+location = {Vancouver, British Columbia, Canada},
+series = {SIGCOMM '98}
+}
+
+@Techreport{LLS2003,
+  author =       "Ji Li and Haiyang Liu and Karen Sollins",
+  year =         "2003",
+  title =        "Scalable Packet Classification Using Bit Vector Aggregating and Folding",
+  institution =  "Massachusetts Institute of Technology",
+  type =         "MIT Research Lab Technical Report",
+  number =       "MIT-LCS-TM-637",
+  address =      "Cambridge, MA",
+  month =        "April",
+  note =         "",
+  url={http://publications.csail.mit.edu/lcs/pubs/pdf/MIT-LCS-TM-637.pdf}
+}
+
+@Phdthesis{Song2006,
+  author =       "Haoyu Song",
+  year =         "2006",
+  title =        "Design and Evaluation of Packet Classification Systems",
+  school =       "Washington University in St. Louis",
+  address =      "St. Louis, MO",
+  note =         "WUSEAS-2006-53",
+  type =         "",
+  month =        "September",
+  url = {https://www.arl.wustl.edu/~jon.turner/studentTheses/hSong-2006.pdf}
+}
+
+@misc{SXWL+2019,
+  title={RVH: Range-Vector Hash for Fast Online Packet Classification},
+  author={Tong Shen and Gaogang Xie and Xin Wang and Zhenyu Li and Xinyi Zhang and Penghao Zhang and Dafang Zhang},
+  year={2019},
+  eprint={1909.07159},
+  archivePrefix={arXiv},
+  primaryClass={cs.NI},
+  url={https://arxiv.org/abs/1909.07159}
+}
+
+@online{CoulombsLaw,
+  key =          {Wikipedia},
+  year  =        2025,
+  title =        "Coulomb's Law",
+  url =          "https://en.wikipedia.org/wiki/Coulomb%27s_law",
+  lastaccessed = "May 29, 2025",
+}
+
+@online{EMFieldFromPointCharge,
+  key =          {Wikipedia},
+  year  =        2025,
+  title =        "Biot-Savart Law",
+  url =          "https://en.wikipedia.org/wiki/Biot%E2%80%93Savart_law",
+  lastaccessed = "May 29, 2025",
+}
+
+@online{PhysicsSEIsLorentzForceFrameIndependent,
+  key =          {Physics Stack Exchange},
+  year  =        2022,
+  title =        "How is Lorentz force frame-independent?",
+  url =          "https://physics.stackexchange.com/questions/661883/how-is-lorentz-force-frame-independent",
+  lastaccessed = "May 30, 2025",
+}

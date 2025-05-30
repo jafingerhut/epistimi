@@ -1,0 +1,422 @@
+%%
+%% This is file `sample-manuscript.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% samples.dtx  (with options: `manuscript')
+%%
+%% IMPORTANT NOTICE:
+%%
+%% For the copyright see the source file.
+%%
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from sample-manuscript.tex.
+%%
+%% For distribution of the original source see the terms
+%% for copying and modification in the file samples.dtx.
+%%
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%%
+%% Commands for TeXCount
+%TC:macro \cite [option:text,text]
+%TC:macro \citep [option:text,text]
+%TC:macro \citet [option:text,text]
+%TC:envir table 0 1
+%TC:envir table* 0 1
+%TC:envir tabular [ignore] word
+%TC:envir displaymath 0 word
+%TC:envir math 0 word
+%TC:envir comment 0 0
+%%
+%%
+%% The first command in your LaTeX source must be the \documentclass command. This is the generic manuscript mode required for submission and peer review.
+%\documentclass[manuscript,screen,review]{acmart}
+\documentclass[acmsmall]{acmart}
+%% To ensure 100% compatibility, please check the white list of
+%% approved LaTeX packages to be used with the Master Article Template at
+%% https://www.acm.org/publications/taps/whitelist-of-latex-packages
+%% before creating your document. The white list page provides
+%% information on how to submit additional LaTeX packages for
+%% review and adoption.
+%% Fonts used in the template cannot be substituted; margin
+%% adjustments are not allowed.
+
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+%% Rights management information.  This information is sent to you
+%% when you complete the rights form.  These commands have SAMPLE
+%% values in them; it is your responsibility as an author to replace
+%% the commands and values with those provided to you when you
+%% complete the rights form.
+%\setcopyright{acmlicensed}
+\copyrightyear{2025}
+%\acmYear{2018}
+%\acmDOI{XXXXXXX.XXXXXXX}
+
+\usepackage{makecell}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+%\newcommand{\ihat}{\hat{\textbf{\i}}}
+%\newcommand{\jhat}{\hat{\textbf{\j}}}
+%%\newcommand{\ihat}{\hat{\textbf{i}}}
+%%\newcommand{\jhat}{\hat{\textbf{j}}}
+%\newcommand{\khat}{\hat{\textbf{k}}}
+
+\newcommand{\ihat}{\textbf{i}}
+\newcommand{\jhat}{\textbf{j}}
+\newcommand{\khat}{\textbf{k}}
+\newcommand{\rhat}{\hat{\textbf{r}}}
+
+%\newcommand{\vect}[1]{\ensuremath{\textbf{#1}}}
+\newcommand{\vect}[1]{\textbf{#1}}
+
+%% \todo{} command.
+%
+% Outputs red TODOs in the document. Requires \usepackage{color}.
+%
+% Usage: \todo{Document the TODO command.}
+%
+% Comment out second line to disable.
+\newcommand{\todo}[1]{}
+\renewcommand{\todo}[1]{{\color{red} TODO: {#1}}}
+
+% Bitwise operations for formulas
+\newcommand*\BitAnd{\mathbin{\&}}
+\newcommand*\BitOr{\mathbin{|}}
+%\newcommand*\BitXor{\mathbin{^}}
+%\newcommand*\BitXor{\mathbin{\wedge}}
+\newcommand*\BitXor{\mathbin{\hat{}}}
+% \ll and \gg look a little "tight" to me visually
+%\newcommand*\ShiftLeft{\ll}
+%\newcommand*\ShiftRight{\gg}
+\newcommand*\ShiftLeft{<<}
+\newcommand*\ShiftRight{>>}
+\newcommand*\BitNeg{\ensuremath{\mathord{\sim}}}
+
+% Macros that will let me reconfigure notation later for the priority and action id
+% of a rule.
+\newcommand{\prio}[1]{}
+\renewcommand{\prio}[1]{\ensuremath{\mathtt{prio}({#1})}}
+\newcommand{\actionid}[1]{}
+\renewcommand{\actionid}[1]{\ensuremath{\mathtt{actionid}({#1})}}
+\newcommand{\fullmask}[1]{}
+\renewcommand{\fullmask}[1]{\ensuremath{\mathtt{mask}({#1})}}
+\newcommand{\prefixmask}[2]{}
+\renewcommand{\prefixmask}[2]{\ensuremath{\mathtt{pmask}({#1},{#2})}}
+
+%% These commands are for a PROCEEDINGS abstract or paper.
+% \acmConference[Conference acronym 'XX]{Make sure to enter the correct
+%   conference title from your rights confirmation emai}{June 03--05,
+%   2018}{Woodstock, NY}
+%
+%  Uncomment \acmBooktitle if th title of the proceedings is different
+%  from ``Proceedings of ...''!
+%
+%\acmBooktitle{Woodstock '18: ACM Symposium on Neural Gaze Detection,
+%  June 03--05, 2018, Woodstock, NY}
+
+%% These commands are for a JOURNAL article.
+%\acmJournal{JACM}
+%\acmVolume{37}
+%\acmNumber{4}
+%\acmArticle{111}
+%\acmMonth{8}
+
+%\acmISBN{978-1-4503-XXXX-X/18/06}
+
+
+%%
+%% Submission ID.
+%% Use this when submitting an article to a sponsored event. You'll
+%% receive a unique submission ID from the organizers
+%% of the event, and this ID should be used as the parameter to this command.
+%%\acmSubmissionID{123-A56-BU3}
+
+%%
+%% For managing citations, it is recommended to use bibliography
+%% files in BibTeX format.
+%%
+%% You can then either use BibTeX with the ACM-Reference-Format style,
+%% or BibLaTeX with the acmnumeric or acmauthoryear sytles, that include
+%% support for advanced citation of software artefact from the
+%% biblatex-software package, also separately available on CTAN.
+%%
+%% Look at the sample-*-biblatex.tex files for templates showcasing
+%% the biblatex styles.
+%%
+
+%%
+%% The majority of ACM publications use numbered citations and
+%% references.  The command \citestyle{authoryear} switches to the
+%% "author year" style.
+%%
+%% If you are preparing content for an event
+%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
+%% citations and references.
+%% Uncommenting
+%% the next command will enable that style.
+%%\citestyle{acmauthoryear}
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% The "title" command has an optional parameter,
+%% allowing the author to define a "short title" to be used in page headers.
+\title{Andy's science scratch pad}
+
+%%
+%% The "author" command and its associated commands are used to define
+%% the authors and their affiliations.
+%% Of note is the shared affiliation of the first two authors, and the
+%% "authornote" and "authornotemark" commands
+%% used to denote shared contribution to the research.
+\author{Andy Fingerhut}
+%\authornote{Both authors contributed equally to this research.}
+\email{andy.fingerhut@gmail.com}
+\orcid{1234-5678-9012}
+
+
+%%
+%% By default, the full list of authors will be used in the page
+%% headers. Often, this list is too long, and will overlap
+%% other information printed in the page headers. This command allows
+%% the author to define a more concise list
+%% of authors' names for this purpose.
+\renewcommand{\shortauthors}{Fingerhut}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+%\begin{abstract}
+%\todo{todo Abstract here.}
+%\end{abstract}
+
+%%
+%% The code below is generated by the tool at http://dl.acm.org/ccs.cfm.
+%% Please copy and paste the code instead of the example below.
+%%
+%\begin{CCSXML}
+%<ccs2012>
+% <concept>
+%  <concept_id>00000000.0000000.0000000</concept_id>
+%  <concept_desc>Do Not Use This Code, Generate the Correct Terms for Your Paper</concept_desc>
+%  <concept_significance>500</concept_significance>
+% </concept>
+% <concept>
+%  <concept_id>00000000.00000000.00000000</concept_id>
+%  <concept_desc>Do Not Use This Code, Generate the Correct Terms for Your Paper</concept_desc>
+%  <concept_significance>300</concept_significance>
+% </concept>
+% <concept>
+%  <concept_id>00000000.00000000.00000000</concept_id>
+%  <concept_desc>Do Not Use This Code, Generate the Correct Terms for Your Paper</concept_desc>
+%  <concept_significance>100</concept_significance>
+% </concept>
+% <concept>
+%  <concept_id>00000000.00000000.00000000</concept_id>
+%  <concept_desc>Do Not Use This Code, Generate the Correct Terms for Your Paper</concept_desc>
+%  <concept_significance>100</concept_significance>
+% </concept>
+%</ccs2012>
+%\end{CCSXML}
+
+%\ccsdesc[500]{Do Not Use This Code~Generate the Correct Terms for Your Paper}
+%\ccsdesc[300]{Do Not Use This Code~Generate the Correct Terms for Your Paper}
+%\ccsdesc{Do Not Use This Code~Generate the Correct Terms for Your Paper}
+%\ccsdesc[100]{Do Not Use This Code~Generate the Correct Terms for Your Paper}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+%\keywords{Do, Not, Us, This, Code, Put, the, Correct, Terms, for,
+%  Your, Paper}
+
+%\received{20 February 2007}
+%\received[revised]{12 March 2009}
+%\received[accepted]{5 June 2009}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+
+\section{Introduction}
+
+This document is a place to write up little bits on science.
+
+Some notation:
+
+$\ihat$ is the unit vector from left to right.
+$\jhat$ is the unit vector upwards.
+$\khat$ is the unit vector pointed out of the page toward the reader.
+
+$\gamma = 1/\sqrt{1-v^2/c^2}$ is the Lorentz factor.
+
+\section{Electromagnetic force between two point charges at rest relative to each other}
+
+Scenario 1: There are two point charges $a$ and $b$ both with charge
+$q$ at rest relative to each other at a distance $r$ apart (in the
+horizontal, i.e. left-right direction, on this page).  They are at
+rest relative to us.  In this case they both experience a force
+directly away from the other due to electric repulsion.  There is no
+magnetic force, as both charges are at rest so there are no magnetic
+fields.
+
+
+Scenario 2: The same as scenario 1, but both charges are moving with
+constant velocity $v$ in the upwards direction.  Thus they are at rest
+relative to each other, as they are in scenario 1.
+
+Each charge creates an electric field, but since they are moving they
+also create magnetic fields.
+
+Questions:
+\begin{itemize}
+  \item What is the net force on charge $b$ in each scenario?
+  \item Is it the same in both scenarios, or different?
+  \item Why?
+\end{itemize}
+
+
+\subsection{Scenario 1: Both charges at rest}
+
+As mentioned before, there is no current or motion of any charges in
+this scenario, so no magnetic fields.  The electric repulsion force on
+charge $b$ is easily calculated from Coulomb's Law~\cite{CoulombsLaw}.
+Charge $b$ is to the right of charge $a$, so the direction of the force is
+$\ihat$, away from charge $a$.
+
+\begin{equation}
+\vect{E}_1 = \frac{1}{4 \pi \epsilon_0} \frac{q}{r^2} \ihat \label{eq:E1}
+\end{equation}
+
+\begin{equation}
+\vect{B}_1 = 0
+\end{equation}
+
+\begin{equation}
+\vect{F}_1 = q(\vect{E}_1 + \vect{v} \times \vect{B}_1)
+           = q \vect{E}_1   \label{eq:F1}
+\end{equation}
+
+
+\subsection{Scenario 2: Both charges with equal and constant velocity upwards}
+
+The Wikipedia page on the Biot-Savart
+Law~\cite{EMFieldFromPointCharge} has a subsection titled ``Point
+charge at constant velocity'' that says:
+
+\begin{quote}
+the Biot–Savart law applies only to steady currents and a point charge
+moving in space does not constitute a steady current
+\end{quote}
+
+I will thus use the equations in that section to calculate the
+electric and magnetic fields here.  The relevant parts of the
+Wikipedia page are copied below.
+
+\begin{quote}
+In the case of a point charged particle $q$ moving at a constant
+veclocity $v$, Maxwell's equations give the following expression for
+the electric field and magnetic field:
+\end{quote}
+\begin{align}
+\vect{E} & = \frac{q}{4 \pi \epsilon_0} \frac{1-\beta^2}{(1-\beta^2 \sin^2 \theta)^{3/2}} \frac{{\rhat}'}{|r'|^2} \label{eq:EforPtChg} \\
+\vect{B} & = \frac{1}{c^2} \vect{v} \times \vect{E} \label{eq:BforPtChg}
+\end{align}
+where:
+\begin{itemize}
+    \item ${\rhat}'$ is the unit vector pointing from the current
+      (non-retarded) position of the particle to the point at which
+      the field is being measured,
+    \item $\beta = v/c$ is the speed in units of $c$, and
+    \item $\theta$ is the angle between $\vect{v}$ and ${\rhat}'$.
+      Alternatively, these can be derived by considering the Lorentz
+      tranfromation of the Coulomb's force (in four-force form) in the
+      source charge's inertial frame.
+\end{itemize}
+
+Calculation: To get the force on charge $b$, we first calculate the
+$\vect{E}$ and $\vect{B}$ fields at the position of charge $b$.
+
+Charge $b$ is directly to the right of charge $a$, so ${\rhat}' = \ihat$
+and $\theta = 90^{\circ}$.
+
+\begin{align}
+\vect{E}_2
+  & = \frac{q}{4 \pi \epsilon_0} \frac{1-\beta^2}{(1-\beta^2 \sin^2 \theta)^{3/2}} \frac{{\rhat}'}{|r'|^2} & & \text{${\rhat}' = \ihat$, $|r'| = r$, $\theta=90^{\circ}$, simplify fraction} \nonumber \\
+  & = \frac{q}{4 \pi \epsilon_0} \frac{1}{(1-\beta^2)^{1/2}} \frac{\ihat}{r^2} & & \text{part of this is $\gamma$, by~\eqref{eq:E1} the rest is $\vect{E}_1$} \nonumber \\
+  & = \gamma \vect{E}_1 \label{eq:E2value}
+\end{align}
+
+\begin{align*}
+\vect{F}_2
+  & = q (\vect{E}_2 + \vect{v} \times \vect{B}_2)   & & \text{replace $\vect{B}_2$ with \eqref{eq:BforPtChg}} \\
+  & = q (\vect{E}_2 + \vect{v} \times (\frac{1}{c^2} \vect{v} \times \vect{E}_2))  & & \vect{v} \times \vect{E}_2 = - v E_2 \khat \\
+  & = q (\vect{E}_2 - \frac{v E_2}{c^2} \vect{v} \times \khat)  & & \vect{v} \times \khat = v \ihat \\
+  & = q (\vect{E}_2 - \frac{v^2 E_2}{c^2} \ihat) \\
+  & = q (1 - \frac{v^2}{c^2}) \vect{E}_2 \\
+  & = \frac{q \vect{E}_2}{\gamma^2} & & \text{by~\eqref{eq:E2value} \ } \vect{E}_2 = \gamma \vect{E}_1 \\
+  & = \frac{q \vect{E}_1}{\gamma} & & \text{by~\eqref{eq:F1} \ } \vect{F}_1 = q \vect{E}_1 \\
+  & = \frac{\vect{F}_1}{\gamma}
+\end{align*}
+
+Thus $\vect{F}_2$ differs from $\vect{F}_1$ by a factor of $\gamma$.
+
+TODO: Why?
+
+I do not know how to check the answer below, but it appears that three
+of the answers to an on-line question similar to
+mine~\cite{PhysicsSEIsLorentzForceFrameIndependent} say that the
+Lorentz force formula $\vect{F} = q(\vect{E} + \vect{v} \times
+\vect{B})$ is {\em not} invariant in all inertial frames, but perhaps
+a variant of it is.  I quote one such answer below:
+
+\begin{quote}
+Just for completeness if permitted: Following Section 3.1 from the
+book ``Gravitation'' of Misner, Thorne, and Wheeler the truly (at all
+speeds) frame independent force is $\frac{dP}{d \tau} = \gamma (E + v
+\times B)$ (in fact this is only the spacial component of the four
+force).  $\tau$ is proper time and $\gamma$ the well-known Lorentz
+Factor. -- Kurt G. Aug 28, 2021
+\end{quote}
+
+
+%%
+%% The acknowledgments section is defined using the "acks" environment
+%% (and NOT an unnumbered section). This ensures the proper
+%% identification of the section in the article metadata, and the
+%% consistent spelling of the heading.
+%\begin{acks}
+%todo acknowledgements
+%\end{acks}
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{scratchpad}
+
+%%
+%% If your work has an appendix, this is the place to put it.
+%\appendix
+
+%\section{todo appendix}
+
+\end{document}
+\endinput
+%%
+%% End of file `sample-manuscript.tex'.
