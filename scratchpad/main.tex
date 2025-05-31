@@ -62,10 +62,10 @@
 
 % Author info
 \title{Andy's science scratch pad}
-\author{J. Andrew Fingerhut$^1$}
+\author{J. Andrew Fingerhut (\texttt{andy.fingerhut@gmail.com})}
 
 \date{
-	$^1$\texttt{andy.fingerhut@gmail.com}
+        May 31, 2025
 %	\today
 }
 
@@ -160,7 +160,7 @@ $\ihat$, away from charge $a$.
 
 \subsection{Scenario 2: Both charges with equal and constant velocity upwards}
 
-\subsubsection{Scenario 2 calculated by electromagnetic field equation set 1}
+\subsubsection{Scenario 2 calculated by electromagnetic field equations from Griffiths}
 
 The Wikipedia page on the Biot-Savart
 Law~\cite{EMFieldFromPointCharge} has a subsection titled ``Point
@@ -177,8 +177,8 @@ Wikipedia page are copied below.
 
 \begin{quote}
 In the case of a point charged particle $q$ moving at a constant
-veclocity $v$, Maxwell's equations give the following expression for
-the electric field and magnetic field:
+veclocity $\vect{v}$, Maxwell's equations give the following
+expression for the electric field and magnetic field:
 \end{quote}
 \begin{align}
 \vect{E} & = \frac{q}{4 \pi \epsilon_0} \frac{1-\beta^2}{(1-\beta^2 \sin^2 \theta)^{3/2}} \frac{{\rhat}'}{|r'|^2} \label{eq:EforPtChg} \\
@@ -191,10 +191,22 @@ where:
       the field is being measured,
     \item $\beta = v/c$ is the speed in units of $c$, and
     \item $\theta$ is the angle between $\vect{v}$ and ${\rhat}'$.
-      Alternatively, these can be derived by considering the Lorentz
-      tranfromation of the Coulomb's force (in four-force form) in the
-      source charge's inertial frame.
 \end{itemize}
+
+The equations above appear to be identical to equations (10.75) and
+(10.76) in Griffiths~\cite{Griffiths1998}.  Griffiths comments on the formula for the electric field:
+
+\begin{quote}
+Notice that $\vect{E}$ points along the line from the {\em present}
+position of the particle.  This is an extraordinary coincidence, since
+the ``message'' came from the retarded position.  Because of the
+$\sin^2 \theta$ in the denominator, the field of a fast-moving charge
+is flattened out like a pancake in the direction perpendicular to the
+motion (Fig. 10.10).  In the forward and backward directions
+$\vect{E}$ is reduced by a factor $(1 - v^2/c^2)$ relative to the
+field of a charge at rest; in the perpendicular direction it is
+{\em enhanced} by a factor $1 / \sqrt{ 1 - v^2/c^2}$.
+\end{quote}
 
 Calculation: To get the force on charge $b$, we first calculate the
 $\vect{E}$ and $\vect{B}$ fields at the position of charge $b$.
@@ -208,6 +220,11 @@ and $\theta = 90^{\circ}$.
   & = \frac{q}{4 \pi \epsilon_0} \frac{1}{(1-\beta^2)^{1/2}} \frac{\ihat}{r^2} & & \text{part of this is $\gamma$, by~\eqref{eq:E1} the rest is $\vect{E}_1$} \nonumber \\
   & = \gamma \vect{E}_1 \label{eq:E2value}
 \end{align}
+
+Note that $\vect{E}_2$ being $\gamma$ times larger than $\vect{E}_1$
+is consistent with the comment from Griffiths above: ``in the
+perpendicular direction it ($\vect{E}$) is {\em enhanced} by a factor
+$1 / \sqrt{ 1 - v^2/c^2}$''.
 
 \begin{align*}
 \vect{F}_2
@@ -230,7 +247,8 @@ of the answers to an on-line question similar to
 mine~\cite{PhysicsSEIsLorentzForceFrameIndependent} say that the
 Lorentz force formula $\vect{F} = q(\vect{E} + \vect{v} \times
 \vect{B})$ is {\em not} invariant in all inertial frames, but perhaps
-a variant of it is.  I quote one such answer below:
+a slightly modified version of that formula is invariant between
+different inertial frames.  I quote one such answer below:
 
 \begin{quote}
 Just for completeness if permitted: Following Section 3.1 from the
