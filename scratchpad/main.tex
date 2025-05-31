@@ -160,6 +160,8 @@ $\ihat$, away from charge $a$.
 
 \subsection{Scenario 2: Both charges with equal and constant velocity upwards}
 
+\subsubsection{Scenario 2 calculated by electromagnetic field equation set 1}
+
 The Wikipedia page on the Biot-Savart
 Law~\cite{EMFieldFromPointCharge} has a subsection titled ``Point
 charge at constant velocity'' that says:
@@ -239,6 +241,106 @@ force).  $\tau$ is proper time and $\gamma$ the well-known Lorentz
 Factor. -- Kurt G. Aug 28, 2021
 \end{quote}
 
+
+\subsubsection{Scenario 2 calculated by Heaviside-Feynman formula}
+
+The Wikipedia page on Jefimenko's Equations~\cite{JefimenkosEquations}
+has a subsection titled ``Heaviside-Feynman formula'' that gives
+equations for the electric and magnetic field at a point due to a
+single moving point charge.
+
+\begin{align}
+\vect{E} & = \frac{-q}{4 \pi \epsilon_0}
+             \left[
+               \frac{\vect{e}_{r'}}{r'^2}
+               + \frac{r'}{c} \frac{d}{dt} \left( \frac{\vect{e}_{r'}}{r'^2} \right)
+               + \frac{1}{c^2} \frac{d^2}{dt^2} \vect{e}_{r'}
+             \right]
+             \label{eq:HF-EforPtChg} \\
+\vect{B} & = - \vect{e}_{r'} \times \frac{\vect{E}}{c}
+             \label{eq:HF-BforPtChg}
+\end{align}
+
+Here $\vect{e}_{r'}$ is a unit vector pointing from the observer to
+the charge and $r'$ is the distance between observer and charge.
+Since the electromagnetic field propagates at the speed of light, both
+of these quantities are evaluated at the retarted time $t - r'/c$.
+
+I believe ``observer'' above means ``the position for which we are
+calculating $E$ and $B$ fields''.
+
+Assume here that the point charges are kept at distance $r$ apart from
+each other, always horizontally, e.g. because they are connected by a
+stiff insulating rod.  This simplifies our job of calculating $E$,
+because then $\vect{e}_{r'}$ and $r'$ are unchanging over time, and
+their derivates are thus 0.
+
+We want to calculate $r'$ as the vector from the position of charge
+$b$ to the position where charge $a$ was when it emitted an electric
+field propagated at speed $c$ to $b$.  See
+Figure~\ref{fig:retarded-position}.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{retarded-position-cropped.pdf}
+	\caption{The retarded position of charge $a$ from charge $b$}
+	\label{fig:retarded-position}
+\end{figure}
+
+Solve for $t$ using Pythagorean theorem since $r$ and $v$ are known
+constants:
+\begin{align*}
+r^2 + (vt)^2 & = (ct)^2 \\
+t^2 (c^2 - v^2) & = r^2 \\
+t^2 & = \frac{r^2}{c^2 - v^2} \\
+t & = \frac{r}{\sqrt{c^2-v^2}} \\
+  & = \frac{r}{c \sqrt{1 - v^2/c^2}} \\
+  & = \gamma r / c
+\end{align*}
+
+This gives us $r' = ct = \gamma r$, and $\vect{e}_{r'}$ is:
+
+\begin{align*}
+\vect{e}_{r'} & = \frac{-r \ihat - (\gamma r v / c) \jhat}{\gamma r} \\
+  & = - \frac{1}{\gamma} \ihat - \frac{v}{c} \jhat
+\end{align*}
+
+Plugging in this value for $\vect{e}_{r'}$ into
+Equation~\eqref{eq:HF-EforPtChg} gives:
+
+\begin{align*}
+\vect{E}_3 & = \frac{q}{4 \pi \epsilon_0}
+             \left[
+               \frac{\frac{1}{\gamma} \ihat + \frac{v}{c} \jhat}{\gamma^2 r^2}
+             \right]
+\end{align*}
+
+Note that $\vect{E}_3$ is parallel to $\vect{e}_{r'}$, thus
+$\vect{B}_3$ from Equation~\eqref{eq:HF-BforPtChg} is 0.
+
+This gives the force on charge $b$ as:
+\begin{align*}
+\vect{F}_3
+  & = q (\vect{E}_3 + \vect{v} \times \vect{B}_3) \\
+  & = q \vect{E}_3
+\end{align*}
+The direction of $\vect{F}_3$ is different than $\vect{F}_1$ and $\vect{F}_2$.
+Below is the relative magnitude of $\vect{E}_3$ to $\vect{E}_1$:
+\begin{align*}
+E_3 & = \frac{1}{\gamma^2} E_1 \\
+F_3 & = \frac{1}{\gamma^2} F_1
+\end{align*}
+
+TODO: It seems {\em very} odd to me that $\vect{B}_3 = 0$.
+
+After Feynman explains what the retarded direction and distance
+$\vect{r'}$ is, he says~\cite{FeynmanLecturesVolICh28}:
+\begin{quote}
+That would be easy enough to understand, too, but it is also
+wrong.  The whole thing is much more complicated.
+\end{quote}
+Unfortunately there are no footnotes or citation to explain what he
+meant by this.
 
 %\newpage
 \bibliography{refs}
