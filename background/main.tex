@@ -1,0 +1,156 @@
+\documentclass[a4paper]{article}
+
+\usepackage[pages=all, color=black, position={current page.south}, placement=bottom, scale=1, opacity=1, vshift=5mm]{background}
+%\SetBgContents{
+%	\tt This work is shared under a \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC BY-SA 4.0 license} unless otherwise noted
+%}      % copyright
+
+\usepackage{physics}
+\usepackage[margin=1in]{geometry} % full-width
+
+% AMS Packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Unicode
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\hypersetup{
+	unicode,
+%	colorlinks,
+%	breaklinks,
+%	urlcolor=cyan, 
+%	linkcolor=blue, 
+	pdfauthor={Author One, Author Two, Author Three},
+	pdftitle={A simple article template},
+	pdfsubject={A simple article template},
+	pdfkeywords={article, template, simple},
+	pdfproducer={LaTeX},
+	pdfcreator={pdflatex}
+}
+
+% Natbib
+\usepackage[sort&compress,numbers,square]{natbib}
+\bibliographystyle{mplainnat}
+
+% Theorem, Lemma, etc
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}{Claim}[theorem]
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{criterion}[theorem]{Criterion}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{principle}[theorem]{Principle}
+
+\usepackage{graphicx, color}
+\graphicspath{{fig/}}
+
+%\usepackage[linesnumbered,ruled,vlined,commentsnumbered]{algorithm2e} % use algorithm2e for typesetting algorithms
+\usepackage{algorithm, algpseudocode} % use algorithm and algorithmicx for typesetting algorithms
+\usepackage{mathrsfs} % for \mathscr command
+
+% Author info
+\title{Andy's math/science background information}
+\author{J. Andrew Fingerhut (\texttt{andy.fingerhut@gmail.com})}
+
+\date{
+        June 1, 2025
+%	\today
+}
+
+\newcommand{\ihat}{\textbf{i}}
+\newcommand{\jhat}{\textbf{j}}
+\newcommand{\khat}{\textbf{k}}
+\newcommand{\rhat}{\hat{\textbf{r}}}
+\newcommand{\vect}[1]{\textbf{#1}}
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\del}{\nabla}
+%\newcommand{\grad}{grad}
+
+\begin{document}
+\maketitle
+
+%\begin{abstract}
+%  todo: abstract here
+%\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+\label{sec:intro}
+
+This document is a place to write up notes on background in math that
+help in learning science.
+
+
+\section{Notation}
+\label{sec:notation}
+
+$\reals^3$ - The set of all points in 3-dimensional space,
+i.e. where each point is specified by a sequence of 3 real-valued
+coordinates.
+
+$\del$ - Called ``nabla'', and often called ``del''.  Some history of
+it can be found on the Nabla Symbol page~\cite{NablaSymbol}.
+
+$\grad f$ - Gradient of a scalar function $f: \reals^3 \rightarrow
+\reals$.
+
+$\text{grad} f$ - another way to write the gradient of $f$, $\grad f$
+
+
+\subsection{Maxwell's Equations}
+\label{sec:maxwellseqns}
+
+In partial differentiatal form:
+
+\begin{align*}
+  \grad \cdot \vect{E} & = \frac{\rho}{\epsilon_0} & & \text{Gauss's Law} \\
+  \grad \cdot \vect{B} & = 0 & & \text{Gauss's Law for magnetism} \\
+  \grad \times \vect{E} & = - \frac{\partial \vect{B}}{\partial t} & & \text{Maxwell-Faraday Equation (Faraday's law of induction)} \\
+  \grad \times \vect{B} & = \mu_0 ( \vect{J} + \epsilon_0 \frac{\partial \vect{E}}{\partial t} ) & & \text{Amp\`{e}re-Maxwell law}
+\end{align*}
+where:
+\begin{itemize}
+  \item $\vect{E}$ is the electric field
+  \item $\vect{B}$ is the magnetic field
+  \item $\rho$ is the electric charge density
+  \item $\vect{J}$ is the current density
+  \item $\epsilon_0$ is the vacuum permittivity
+  \item $\mu_0$ is the vacuum permeability
+\end{itemize}
+
+\section{Divergence}
+\label{sec:divergence}
+
+Divergence has been generalized to many coordinate systems other than
+the 3-dimensional Cartesian coordinate system $\mathbb{R}^3$, but I
+will focus on $\mathbb{R}^3$.
+
+The Wikipedia page on Gradient~\cite{Gradient} is not too bad for me,
+as long as I skim over the parts that generalize it to other
+coordinate systems.
+
+%\newpage
+\bibliography{refs}
+
+%\appendix
+
+%\section{Omitted Proof in Section~\ref{sec:examples}}
+%\label{app:1}
+
+	
+\end{document}
