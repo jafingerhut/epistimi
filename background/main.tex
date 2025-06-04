@@ -73,8 +73,8 @@
 \newcommand{\ihat}{\textbf{i}}
 \newcommand{\jhat}{\textbf{j}}
 \newcommand{\khat}{\textbf{k}}
-\newcommand{\rhat}{\hat{\textbf{r}}}
 \newcommand{\vect}[1]{\textbf{#1}}
+\newcommand{\hatvec}[1]{\hat{\textbf{#1}}}
 
 \newcommand{\reals}{\mathbb{R}}
 \newcommand{\del}{\nabla}
@@ -111,6 +111,10 @@ $\grad f$ - Gradient of a scalar function $f: \reals^3 \rightarrow
 
 $\text{grad} f$ - another way to write the gradient of $f$, $\grad f$
 
+TODO: Any 3Blue1Brown-quality YouTube videos showing examples and
+definition of gradient, divergence, and curl?  If so, give links to
+them below in appropriate sections.
+
 
 \subsection{Maxwell's Equations}
 \label{sec:maxwellseqns}
@@ -133,16 +137,50 @@ where:
   \item $\mu_0$ is the vacuum permeability
 \end{itemize}
 
-\section{Divergence}
-\label{sec:divergence}
 
-Divergence has been generalized to many coordinate systems other than
+\section{Gradient}
+\label{sec:gradient}
+
+Gradient has been generalized to many coordinate systems other than
 the 3-dimensional Cartesian coordinate system $\mathbb{R}^3$, but I
-will focus on $\mathbb{R}^3$.
+will focus on $\mathbb{R}^3$.  The Wikipedia page on
+Gradient~\cite{Gradient} is not too bad for me, as long as I skim over
+the parts that generalize it to other coordinate systems.
 
-The Wikipedia page on Gradient~\cite{Gradient} is not too bad for me,
-as long as I skim over the parts that generalize it to other
-coordinate systems.
+Griffiths~\cite{Griffiths1998} Section 1.2.2 ``Gradient'' is good at
+giving the definition and some useful examples and properties of the
+gradient.  He defines $\grad T$ this way, where $\hatvec{x}$,
+$\hatvec{y}$, and $\hatvec{z}$ are the unit vectors in the direction
+of the three coordinate axes:
+\begin{align*}
+  \grad T & \equiv \frac{\partial T}{\partial x} \hatvec{x}
+                 + \frac{\partial T}{\partial y} \hatvec{y}
+                 + \frac{\partial T}{\partial z} \hatvec{z}
+\end{align*}
+where:
+\begin{itemize}
+  \item $T : \reals^3 \rightarrow \reals$ is a scalar function that is
+    continuous and differentiable
+\end{itemize}
+Some properties of the gradient:
+\begin{itemize}
+  \item $\grad T(x, y, z)$ is the gradient evaluated at a position
+    given by $(x, y, z)$.  The vector points in a direction that
+    function $T$ increases most quickly.
+  \item The function $T$ can be approximated at points $\vect{r}$ near
+    $\vect{r}_0 = (x, y, z)$ by the linear function $T(\vect{r}_0) +
+    (\vect{r} - \vect{r}_0) \cdot \grad T(\vect{r}_0)$
+  \item The instantaneous rate of change of $T$ in direction
+    $\vect{u}$ (a unit vector) from $\vect{r}_0$ is $\vect{u} \cdot
+    \grad T(\vect{r}_0)$.  Note that it is always 0 in a direction
+    perpendicular to $\grad T(\vect{r}_0)$, and the negative of the
+    magnitude of $\grad T(\vect{r}_0)$ in the opposite direction.
+  \item Consider a ``level set'', i.e. a surface defined by all of the
+    points $\vect{r}$ where $T(\vect{r})=c$ for some constant $c$.
+    Then $\grad T$ evaluated at any point on that surface, is normal
+    to the surface.
+\end{itemize}
+
 
 %\newpage
 \bibliography{refs}
