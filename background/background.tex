@@ -12,6 +12,7 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
+\usepackage{bm}
 
 % Unicode
 \usepackage[utf8]{inputenc}
@@ -77,7 +78,7 @@
 \newcommand{\hatvec}[1]{\hat{\textbf{#1}}}
 
 \newcommand{\reals}{\mathbb{R}}
-\newcommand{\del}{\nabla}
+\newcommand{\del}{\bm{\nabla}}
 %\newcommand{\grad}{grad}
 
 \begin{document}
@@ -287,6 +288,123 @@ Some properties of the gradient:
 
 If $T$ is a function of other parameters, e.g. of time, then $\grad T$
 is also a function of those parameters.
+
+
+\section{Fundamental Theorems of Calculus}
+
+See Section 1.3.2 ``Fundamental Theorem of Calculus'' through Section
+1.3.5 ``The Fundamental Theorem for Curls'' of
+Griffiths~\cite{Griffiths1998} for some more discussion.
+
+\subsection{The Fundamental Theorem of Calculus}
+
+\begin{equation}
+\int_{a}^{b} F(x) \,dx = f(b) - f(a)
+\end{equation}
+where $F(x) = df/dx$, and $a,b$ are any real numbers.
+
+\subsection{The Fundamental Theorem for Gradients}
+
+For any scalar function $T(x,y,z)$ and any two points $\vect{a}$ and
+$\vect{b}$:
+\begin{equation}
+\int_{\vect{a}}^{\vect{b}} (\del T) \cdot d\vect{l} = T(\vect{b}) - T(\vect{a})
+\end{equation}
+
+Corollary 1: $\int_{\vect{a}}^{\vect{b}} (\del T) \cdot d\vect{l}$ is
+independent of the path taken from $\vect{a}$ to $\vect{b}$.
+
+Corollary 2: $\oint (\del T) \cdot d\vect{l} = 0$, since the beginning
+and end points are identical, and hence $T(\vect(b) - T(\vect{a}) =
+0$.
+
+\subsection{The Fundamental Theorem for Divergences}
+
+Also known as Gauss's theorem, Green's theorem, and the divergence
+theorem.
+
+For any vector field $\vect{F}$, and any volume $\mathcal{V}$ with
+boundary surface $\mathcal{S}$:
+\begin{equation}
+\int_{\mathcal{V}} (\del \cdot \vect{F}) d\tau = \oint_{\mathcal{S}} \vect{v} \cdot d\vect{a}
+\end{equation}
+
+\subsection{The Fundamental Theorem for Curls}
+
+Also known as Stokes' theorem.
+
+For any vector field $\vect{F}$, and surface $\mathcal{S}$ with
+boundary / perimeter path $\mathcal{P}$:
+\begin{equation}
+\int_{\mathcal{S}} (\del \times \vect{F}) \cdot d\vect{a} = \oint_{\mathcal{P}} \vect{F} \cdot d\vect{l}
+\end{equation}
+
+The right-hand side is sometimes called the {\em circulation} of
+$\vect{F}$.
+
+Corollary 1: $\int (\del \times \vect{F}) \cdot d\vect{a}$ depends
+only on the boundary line, not on the particular surface used.
+
+Corollary 2: $\oint (\del \times \vect{F}) \cdot d\vect{a} = 0$ for
+any closed surface, since the boundary line, like the mouth of
+balloon, shrinks down to a point, and hence the right hand side of the
+equation above vanishes.
+
+
+\section{Potentials}
+
+See Section 1.6.2 ``Potentials'' of Griffiths~\cite{Griffiths1998} for
+some more discussion.
+
+Theorem 1 for curl-less or irrotational fields.
+
+The following conditions are equivalent, i.e. vector field $\vect{F}$
+satisfies one if and only if it satsfies all the others:
+
+(a) $\del \times F = 0$
+
+(b) $\int_{\vect{a}}^{\vect{b}} \vect{F} \cdot d\vect{l}$ is
+independent of path, for any given endpoints $\vect{a}$ and
+$\vect{b}$.
+
+(c) $\oint \vect{F} \cdot d\vect{l} = 0$ for any closed loop.
+
+(d) $\vect{F}$ is the gradient of some scalar function: $\vect{F} =
+-\del V$.
+
+Note that $V$ is not unique.  Any constant can be added to $V$ without
+affecting the value of its gradient.
+
+Theorem 2 for divergence-less or solenoidal fields.
+
+The following conditions are equivalent:
+
+(a) $\del \cdot F = 0$
+
+(b) $\int \vect{F} \cdot d\vect{a}$ is independent of surface, for any
+given boundary line.
+
+(c) $\oint \vect{F} \cdot d\vect{a} = 0$ for any closed surface.
+
+(d) $\vect{F}$ is the curl of some scalar function: $\vect{F} = \del
+\times A$.
+
+$A$ is not unique.  The gradient of any scalar function can be added
+to $A$ without affecting the curl, since the curl of a gradient is 0.
+
+All vector fields $\vect{F}$ can be written as the gradient of a
+scalar plus the curl of a vector:
+\begin{equation}
+\vect{F} = - \del V + \del \times A
+\end{equation}
+TODO: What is the proof of this?  It might be on this
+page~\cite{WikipediaHelmholtzDecomposition}, or some page linked from
+it.
+
+TODO: Add ``The Helmholtz Theorem'' here (the one that given a scalar
+field that is the divergence of $F$, and a vector field $C$ that is
+the curl of $F$, and suitable boundary conditions, we can uniquely
+determine $F$.
 
 
 \section{Galilean relativity}
