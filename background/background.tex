@@ -352,9 +352,11 @@ equation above vanishes.
 
 
 \section{Potentials}
+\label{sec:potentials}
 
 See Section 1.6.2 ``Potentials'' of Griffiths~\cite{Griffiths1998} for
-some more discussion.
+some more discussion, and Section~\cite{sec:potentialsthm1} for
+a proof of Theorem 1.
 
 Theorem 1 for curl-less or irrotational fields.
 
@@ -364,7 +366,7 @@ fields in classical mechanics.  Constant vector field.
 The following conditions are equivalent, i.e. vector field $\vect{F}$
 satisfies one if and only if it satsfies all the others:
 
-(a) $\del \times F = 0$
+(a) $\del \times \vect{F} = 0$
 
 (b) $\int_{\vect{a}}^{\vect{b}} \vect{F} \cdot d\vect{l}$ is
 independent of path, for any given endpoints $\vect{a}$ and
@@ -380,10 +382,19 @@ affecting the value of its gradient.
 
 Theorem 2 for divergence-less or solenoidal fields.
 
+Sometimes also called a divergence-free field, or an incompressible
+field.  The name incompressible comes from fluid mechanics, when
+studying fluids that have a constant density.
+
 Etymology of solenoid: Greek root words meaning ``resembling a pipe''.
-A wire coiled many times into the shape of a cylinder is shaped like a
-section of pipe.  The magnetic field created when current flows
-through a solenoid is divergence-less.
+A wire coiled many times into the shape of the curved part of a
+cylinder's surface is shaped like a section of pipe.  The magnetic
+field created when current flows through a wire in this shape is
+divergence-less.  (It turns out that all magnetic fields in all known
+scenarios are divergence-less, so this property of magnetic fields is
+not restricted to those created by solenoid-shaped current carrying
+wires, but apparently the name became associated with such vector
+fields).
 
 Examples: Magnetic field.  The velocity field of an incompressible
 fluid.  Current density, in a scenario where the charge density is not
@@ -800,10 +811,82 @@ Vol. I, p. 31:
 %\newpage
 \bibliography{refs}
 
-%\appendix
+\appendix
 
-%\section{Omitted Proof in Section~\ref{sec:examples}}
-%\label{app:1}
+\section{Proof that curl of a gradient is 0}
+\label{sec:curlofgradis0}
 
-	
+\subsection{Proof from Griffith's definition of curl and gradient}
+
+
+\subsection{TODO: Some other style of proof that maybe gives better insight}
+
+TODO: Think more about alternate proofs of this fact.
+
+
+\section{Proof that divergence of a curl is 0}
+\label{sec:divofcurlis0}
+
+\subsection{Proof from Griffith's definition of divergence and curl}
+
+
+\subsection{TODO: Some other style of proof that maybe gives better insight}
+
+TODO: Think more about alternate proofs of this fact.
+
+
+\section{Proof of theorem about irrotational fields}
+\label{sec:potentialsthm1}
+
+That is, Theorem 1 from Section~\ref{sec:potentials}.  This proof is
+essentially the same as one given in Section 2.3.1 ``Introduction to
+Potential'' of~\cite{Griffiths1998}.
+
+Let $\vect{F}$ be a vector field such that $\del \times \vect{F} = 0$.
+Stokes' theorem says, for all vector fields $\vect{F}$:
+\begin{equation}
+\int_{\mathcal{S}} (\del \times \vect{F}) \cdot d\vect{a} = \oint_{\mathcal{P}} \vect{F} \cdot d\vect{l} \nonumber
+\end{equation}
+Because $\del \times \vect{F} = 0$, the left-hand side is 0 for all
+surfaces $\mathcal{S}$.  Thus for all paths $\mathcal{P}$ that are
+boundaries of appropriate surfaces $\mathcal{S}$, the right-hand side
+is also 0.
+\begin{equation}
+\oint_{\mathcal{P}} \vect{F} \cdot d\vect{l} = 0 \label{eq:thm1allpathintegrals0}
+\end{equation}
+
+I will call such paths ``Stokes paths'' here, for brevity (TODO: It
+might be nice to give the full set of restrictions that a Stokes path
+must satisfy).
+This proves that (a) implies (c) for Theorem 1, at least for closed
+loops that are Stokes paths.
+
+Consider an arbitrary distinct pair of points $\vect{a}$ and
+$\vect{b}$, and any closed loop Stokes path $\mathcal{P}$ that
+includes both of those points.  Let $\mathcal{P}_1$ be the part of
+$\mathcal{P}$ from $\vect{a}$ to $\vect{b}$, and $\mathcal{P}_2$ be
+the remaining part of the path from $\vect{b}$ back to $\vect{a}$.
+Let $\bar{\mathcal{P}_2}$ be the same as $\mathcal{P}_2$, but in the
+reverse direction.  Then:
+\begin{align}
+  0
+      & = \oint_{\mathcal{P}} \vect{F} \cdot d\vect{l} & & \text{by~\eqref{eq:thm1allpathintegrals0}} \nonumber \\
+      & = \int_{\mathcal{P}_1} \vect{F} \cdot d\vect{l} + \int_{\mathcal{P}_2} \vect{F} \cdot d\vect{l} & & \text{break $\mathcal{P}$ into two subpaths} \nonumber \\
+      & = \int_{\mathcal{P}_1} \vect{F} \cdot d\vect{l} - \int_{\bar{\mathcal{P}_2}} \vect{F} \cdot d\vect{l} & & \text{line integral of reverse path is negative of forward path} \nonumber
+\end{align}
+Therefore:
+\begin{equation}
+\int_{\mathcal{P}_1} \vect{F} \cdot d\vect{l} = \int_{\bar{\mathcal{P}_2}} \vect{F} \cdot d\vect{l}
+\end{equation}
+Thus for any pair of Stokes paths $\mathcal{P}_1$ and
+$\bar{\mathcal{P}_2}$ from $\vect{a}$ to $\vect{b}$, their path
+integrals are equal.
+This proves that (c) implies (b) for Theorem 1, for Stokes paths
+(note: we have not used (a) in this part of the proof).
+
+TODO: Write the part of the proof showing that (b) implies (d).
+
+TODO: Write the part of the proof showing that (d) implies (a).
+
+
 \end{document}
