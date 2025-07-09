@@ -320,6 +320,7 @@ and end points are identical, and hence $T(\vect(b) - T(\vect{a}) =
 0$.
 
 \subsection{The Fundamental Theorem for Divergences}
+\label{sec:gaussthm}
 
 Also known as Gauss's theorem, Green's theorem, and the divergence
 theorem.
@@ -327,7 +328,7 @@ theorem.
 For any vector field $\vect{F}$, and any volume $\mathcal{V}$ with
 boundary surface $\mathcal{S}$:
 \begin{equation}
-\int_{\mathcal{V}} (\del \cdot \vect{F}) d\tau = \oint_{\mathcal{S}} \vect{v} \cdot d\vect{a}
+\int_{\mathcal{V}} (\del \cdot \vect{F}) d\tau = \oint_{\mathcal{S}} \vect{F} \cdot d\vect{a}
 \end{equation}
 
 \subsection{The Fundamental Theorem for Curls}
@@ -357,7 +358,7 @@ equation above vanishes.
 \label{sec:potentials}
 
 See Section 1.6.2 ``Potentials'' of Griffiths~\cite{Griffiths1998} for
-some more discussion, and Section~\cite{sec:potentialsthm1} for
+some more discussion, and Appendix~\ref{sec:potentialsthm1} for
 a proof of Theorem 1.
 
 Theorem 1 for curl-less or irrotational fields.
@@ -819,6 +820,7 @@ Vol. I, p. 31:
 \label{sec:curlofgradis0}
 
 \subsection{Proof from Griffith's definition of curl and gradient}
+\label{sec:curofgradis0proof1}
 
 Definition of a gradient for any scalar field $T$:
 \begin{align*}
@@ -869,11 +871,11 @@ This alternate is intended to perhaps give a little more insight into
 {\em why} the curl of the gradient is always 0.
 
 Let $T$ be any scalar field, and $\vect{F} = \del T$ be its gradient.
-By the fundamental theorem for gradients (Section~\cite{sec:ftocgrad})
+By the fundamental theorem for gradients (Section~\ref{sec:ftocgrad})
 Corollary 2, $\oint \vect{F} \cdot d\vect{l} = 0$ for all closed
 paths.
 
-By Stokes' theorem~\cite{sec:stokesthm}:
+By Stokes' theorem (Section~\ref{sec:stokesthm}):
 \begin{align*}
 \int_{\mathcal{S}} (\del \times \vect{F}) \cdot d\vect{a} & = \oint_{\mathcal{P}} \vect{F} \cdot d\vect{l} \\
    & = 0
@@ -889,10 +891,38 @@ surfaces $\mathcal{S}$ is if $\del \times \vect{F}$ is 0 everywhere
 
 \subsection{Proof from Griffith's definition of divergence and curl}
 
+There is a straightforward proof of $\del \cdot (\del \times \vect{F})
+= 0$ for all vector fields that follows from the definitions, with
+only a little bit of algebra and a use of Clairaut's/Schwartz's
+theorem, very similar to the proof given in
+Appendix~\ref{sec:curofgradis0proof1}.  I won't write it out
+explicitly here unless it becomes very useful to have as a reference,
+because it is very straightforward, and does not provide much insight
+into why it is true.
 
-\subsection{TODO: Some other style of proof that maybe gives better insight}
 
-TODO: Think more about alternate proofs of this fact.
+\subsection{A proof based on Stokes' and Gauss's Theorems}
+
+Let $\vect{F}$ be any vector field, and $\vect{G} = \del \times
+\vect{F}$ its curl.
+By Stokes' theorem (Section~\ref{sec:stokesthm}) Corollary 2:
+\begin{equation}
+\oint_{\mathcal{S}} \vect{G} \cdot d\vect{a} = 0
+\end{equation}
+for any closed surface $\mathcal{S}$.
+By Gauss's theorem (Section~\ref{sec:gaussthm}):
+\begin{align*}
+\int_{\mathcal{V}} (\del \cdot \vect{G}) d\tau
+    & = \oint_{\mathcal{S}} \vect{G} \cdot d\vect{a} \\
+    & = 0
+\end{align*}
+It is a fundamental result in calculus that if the integral of a
+continuous function over every volume is zero, then the function
+itself must be identically zero.  This is often referred to as a
+consequence of the Fundamental Lemma of the Calculus of
+Variations~\cite{FundamentalLemmaCalculusOfVariations}.
+Thus $\del \cdot \vect{G} = \del \cdot (\del \times F)$ is identically
+0.
 
 
 \section{Proof of theorem about irrotational fields}
