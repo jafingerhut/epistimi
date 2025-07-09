@@ -881,9 +881,47 @@ By Stokes' theorem (Section~\ref{sec:stokesthm}):
    & = 0
 \end{align*}
 
+By Lemma~\ref{lem:techlemma1} (see Section~\ref{sec:techlemma1}),
 The only way that the flux of $\del \times \vect{F}$ can be 0 for all
-surfaces $\mathcal{S}$ is if $\del \times \vect{F}$ is 0 everywhere
-(TODO: This is probably a proved theorem somewhere?)
+surfaces $\mathcal{S}$ is if $\del \times \vect{F} = 0$ everywhere.
+
+
+\subsection{Technical lemma}
+\label{sec:techlemma1}
+
+\begin{lemma}
+\label{lem:techlemma1}
+Let $\vect{F}$ be a continuous vector field where
+\begin{equation}
+\int_{\mathcal{S}} \vect{F} \cdot d\vect{a} = 0
+\end{equation}
+for all surfaces $\mathcal{S}$.  Then $\vect{F} = 0$.
+\end{lemma}
+
+\begin{proof}
+Performing a proof by contradiction, we suppose that there is a point
+$\vect{p}$ where $\vect{F}(p) \neq 0$, and deduce that there must be a
+surface where $\int_{\mathcal{S}} \vect{F} \cdot d\vect{a} \neq 0$.
+
+Let $\vect{u}$ be the unit vector
+$\vect{F}(\vect{p}) / |\vect{F}(\vect{p})|$,
+and define the scalar field
+$G(\vect{x}) = \vect{F}(\vect{x}) \cdot \vect{u}$.
+$G$ is continuous, and $G(\vect{p}) = |\vect{F}(\vect{p})| = c > 0$.
+
+By continuity of $G$, there is an open neighborhood $V$ of $\vect{p}$
+such that $G(\vect{x}) \geq c/2$ for all points $\vect{x}$ in that neighborhood.
+Let surface $\mathcal{S}$ be a circular disc contained entirely
+inside of $V$, centered at $\vect{p}$, with normal $\vect{u}$.
+Then:
+\begin{align*}
+\int_{\mathcal{S}} \vect{F} \cdot d\vect{a}
+     = & \int_{\mathcal{S}} G(\vect{x}) ds \\
+  \geq & \int_{\mathcal{S}} (c/2) ds \\
+     = & (c/2) Area(\mathcal{S}) \\
+     > & 0
+\end{align*}
+\end{proof}
 
 
 \section{Proof that divergence of a curl is 0}
