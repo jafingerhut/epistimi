@@ -818,6 +818,48 @@ Vol. I, p. 31:
 
 \subsection{Proof from Griffith's definition of curl and gradient}
 
+Definition of a gradient for any scalar field $T$:
+\begin{align*}
+  \grad T & \equiv \frac{\partial T}{\partial x} \hatvec{x}
+                 + \frac{\partial T}{\partial y} \hatvec{y}
+                 + \frac{\partial T}{\partial z} \hatvec{z}
+\end{align*}
+Definition of a curl for any vector field $\vect{v}$:
+\begin{align*}
+  \del \times \vect{v} &
+      \equiv \begin{vmatrix}
+                 \hatvec{x} & \hatvec{y} & \hatvec{z} \\
+                 \partial / \partial x & \partial / \partial y & \partial / \partial z \\
+                 v_x & v_y & v_z
+             \end{vmatrix} \\
+      & =   \hatvec{x} ( \frac{\partial v_z}{\partial y} - \frac{\partial v_y}{\partial z} )
+          + \hatvec{y} ( \frac{\partial v_x}{\partial z} - \frac{\partial v_z}{\partial x} )
+          + \hatvec{z} ( \frac{\partial v_y}{\partial x} - \frac{\partial v_x}{\partial y} )
+\end{align*}
+First, simply apply the definitions to $\del \times (\del T)$.  Then
+do a little bit of algebra:
+\begin{align}
+\del \times (\del T) &
+  = \hatvec{x} ( \frac{\partial}{\partial y} ( \frac{\partial T}{\partial z} ) - \frac{\partial}{\partial z} ( \frac{\partial T}{\partial y} ) )
+  + \hatvec{y} ( \frac{\partial}{\partial z} ( \frac{\partial T}{\partial x} ) - \frac{\partial}{\partial x} ( \frac{\partial T}{\partial z} ) )
+  + \hatvec{z} ( \frac{\partial}{\partial x} ( \frac{\partial T}{\partial y} ) - \frac{\partial}{\partial y} ( \frac{\partial T}{\partial x} ) )
+  \label{eqn:curlofgrad1}
+\end{align}
+
+As long as $T$ satisfies appropriate conditions, then Clairaut's
+theorem (aka Schwartz's theorem) says that regardless of which order
+you take partial derivatives, the final result is equal.  I believe a
+stronger condition than necessary is that $T$ has continuous second
+partial derivatives everywhere.
+See~\cite{SymmetryOfSecondDerivatives} for more precise conditions.
+
+As long as taking second partial derivatives of $T$ by variables in
+different orders gives the same result, we can see that the right hand
+side of~\eqref{eqn:curlofgrad1} must be 0.
+\begin{equation}
+\del \times (\del T) = 0
+\end{equation}
+
 
 \subsection{TODO: Some other style of proof that maybe gives better insight}
 
