@@ -304,6 +304,7 @@ Griffiths~\cite{Griffiths1998} for some more discussion.
 where $F(x) = df/dx$, and $a,b$ are any real numbers.
 
 \subsection{The Fundamental Theorem for Gradients}
+\label{sec:ftocgrad}
 
 For any scalar function $T(x,y,z)$ and any two points $\vect{a}$ and
 $\vect{b}$:
@@ -330,6 +331,7 @@ boundary surface $\mathcal{S}$:
 \end{equation}
 
 \subsection{The Fundamental Theorem for Curls}
+\label{sec:stokesthm}
 
 Also known as Stokes' theorem.
 
@@ -861,9 +863,25 @@ side of~\eqref{eqn:curlofgrad1} must be 0.
 \end{equation}
 
 
-\subsection{TODO: Some other style of proof that maybe gives better insight}
+\subsection{A proof based on Stokes' Theorem}
 
-TODO: Think more about alternate proofs of this fact.
+This alternate is intended to perhaps give a little more insight into
+{\em why} the curl of the gradient is always 0.
+
+Let $T$ be any scalar field, and $\vect{F} = \del T$ be its gradient.
+By the fundamental theorem for gradients (Section~\cite{sec:ftocgrad})
+Corollary 2, $\oint \vect{F} \cdot d\vect{l} = 0$ for all closed
+paths.
+
+By Stokes' theorem~\cite{sec:stokesthm}:
+\begin{align*}
+\int_{\mathcal{S}} (\del \times \vect{F}) \cdot d\vect{a} & = \oint_{\mathcal{P}} \vect{F} \cdot d\vect{l} \\
+   & = 0
+\end{align*}
+
+The only way that the flux of $\del \times \vect{F}$ can be 0 for all
+surfaces $\mathcal{S}$ is if $\del \times \vect{F}$ is 0 everywhere
+(TODO: This is probably a proved theorem somewhere?)
 
 
 \section{Proof that divergence of a curl is 0}
