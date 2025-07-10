@@ -107,10 +107,10 @@ coordinates.
 $\del$ - Called ``nabla'', and often called ``del''.  Some history of
 it can be found on the Nabla Symbol page~\cite{NablaSymbol}.
 
-$\grad f$ - Gradient of a scalar function $f: \reals^3 \rightarrow
+$\del f$ - Gradient of a scalar function $f: \reals^3 \rightarrow
 \reals$.
 
-$\text{grad} f$ - another way to write the gradient of $f$, $\grad f$
+$\text{grad} f$ - another way to write the gradient of $f$, $\del f$
 
 TODO: Any 3Blue1Brown-quality YouTube videos showing examples and
 definition of gradient, divergence, and curl?  If so, give links to
@@ -123,10 +123,10 @@ them below in appropriate sections.
 In partial differentiatal form:
 
 \begin{align}
-  \grad \cdot \vect{E} & = \frac{\rho}{\epsilon_0} & & \text{Gauss's Law} \label{eq:gaussE} \\
-  \grad \cdot \vect{B} & = 0 & & \text{Gauss's Law for magnetism} \label{eq:gaussB} \\
-  \grad \times \vect{E} & = - \frac{\partial \vect{B}}{\partial t} & & \text{Maxwell-Faraday Equation (Faraday's law of induction)} \label{eq:maxfar} \\
-  \grad \times \vect{B} & = \mu_0 ( \vect{J} + \epsilon_0 \frac{\partial \vect{E}}{\partial t} ) & & \text{Amp\`{e}re-Maxwell law} \label{eq:ampmax}
+  \del \cdot \vect{E} & = \frac{\rho}{\epsilon_0} & & \text{Gauss's Law} \label{eq:gaussE} \\
+  \del \cdot \vect{B} & = 0 & & \text{Gauss's Law for magnetism} \label{eq:gaussB} \\
+  \del \times \vect{E} & = - \frac{\partial \vect{B}}{\partial t} & & \text{Maxwell-Faraday Equation (Faraday's law of induction)} \label{eq:maxfar} \\
+  \del \times \vect{B} & = \mu_0 ( \vect{J} + \epsilon_0 \frac{\partial \vect{E}}{\partial t} ) & & \text{Amp\`{e}re-Maxwell law} \label{eq:ampmax}
 \end{align}
 where:
 \begin{itemize}
@@ -254,13 +254,13 @@ generalize it to other coordinate systems.
 
 Griffiths~\cite{Griffiths1998} Section 1.2.2 ``Gradient'' is good at
 giving the definition and some useful examples and properties of the
-gradient.  He defines $\grad T$ this way, where $\hatvec{x}$,
+gradient.  He defines $\del T$ this way, where $\hatvec{x}$,
 $\hatvec{y}$, and $\hatvec{z}$ are the unit vectors in the direction
 of the three coordinate axes:
 \begin{align*}
-  \grad T & \equiv \frac{\partial T}{\partial x} \hatvec{x}
-                 + \frac{\partial T}{\partial y} \hatvec{y}
-                 + \frac{\partial T}{\partial z} \hatvec{z}
+  \del T & \equiv \frac{\partial T}{\partial x} \hatvec{x}
+                + \frac{\partial T}{\partial y} \hatvec{y}
+                + \frac{\partial T}{\partial z} \hatvec{z}
 \end{align*}
 where:
 \begin{itemize}
@@ -269,24 +269,24 @@ where:
 \end{itemize}
 Some properties of the gradient:
 \begin{itemize}
-  \item $\grad T(x, y, z)$ is the gradient evaluated at a position
+  \item $\del T(x, y, z)$ is the gradient evaluated at a position
     given by $(x, y, z)$.  The vector points in a direction that
     function $T$ increases most quickly.
   \item The function $T$ can be approximated at points $\vect{r}$ near
     $\vect{r}_0 = (x, y, z)$ by the linear function $T(\vect{r}_0) +
-    (\vect{r} - \vect{r}_0) \cdot \grad T(\vect{r}_0)$
+    (\vect{r} - \vect{r}_0) \cdot \del T(\vect{r}_0)$
   \item The instantaneous rate of change of $T$ in direction
     $\vect{u}$ (a unit vector) from $\vect{r}_0$ is $\vect{u} \cdot
-    \grad T(\vect{r}_0)$.  Note that it is always 0 in a direction
-    perpendicular to $\grad T(\vect{r}_0)$, and the negative of the
-    magnitude of $\grad T(\vect{r}_0)$ in the opposite direction.
+    \del T(\vect{r}_0)$.  Note that it is always 0 in a direction
+    perpendicular to $\del T(\vect{r}_0)$, and the negative of the
+    magnitude of $\del T(\vect{r}_0)$ in the opposite direction.
   \item Consider a ``level set'', i.e. a surface defined by all of the
     points $\vect{r}$ where $T(\vect{r})=c$ for some constant $c$.
-    Then $\grad T$ evaluated at any point on that surface, is normal
+    Then $\del T$ evaluated at any point on that surface, is normal
     to the surface.
 \end{itemize}
 
-If $T$ is a function of other parameters, e.g. of time, then $\grad T$
+If $T$ is a function of other parameters, e.g. of time, then $\del T$
 is also a function of those parameters.
 
 
@@ -358,14 +358,21 @@ equation above vanishes.
 \label{sec:potentials}
 
 See Section 1.6.2 ``Potentials'' of Griffiths~\cite{Griffiths1998} for
-some more discussion, and Appendix~\ref{sec:potentialsthm1} for
-a proof of Theorem 1.
+some more discussion.
 
-Theorem 1 for curl-less or irrotational fields.
+A {\em curl-less} or {\em irrotational} vector field $\vect{F}$ is one
+where $\del \times \vect{F} = 0$.
+Examples include:
+\begin{itemize}
+\item The electric field in electrostatic scenarios
+  (Equation~\eqref{eq:maxfar} when $\vect{B}$ is unchanging over
+  time).
+\item Gravitational fields in classical mechanics.
+\item Constant vector field.
+\end{itemize}
 
-Examples: Electric field in electrostatic scenarios.  Gravitational
-fields in classical mechanics.  Constant vector field.
-
+\begin{theorem}
+\label{thm:irrotationalfieldproperties}
 The following conditions are equivalent, i.e. vector field $\vect{F}$
 satisfies one if and only if it satsfies all the others:
 
@@ -377,32 +384,42 @@ $\vect{b}$.
 
 (c) $\oint \vect{F} \cdot d\vect{l} = 0$ for any closed loop.
 
-(d) $\vect{F}$ is the gradient of some scalar function: $\vect{F} =
--\del V$.
+(d) $\vect{F}$ is the gradient of some scalar function:
+$\vect{F} = -\del V$.
+\end{theorem}
 
 Note that $V$ is not unique.  Any constant can be added to $V$ without
 affecting the value of its gradient.
+See Appendix~\ref{sec:potentialsthm1} for a proof of
+Theorem~\ref{thm:irrotationalfieldproperties}.
 
-Theorem 2 for divergence-less or solenoidal fields.
+A {\em divergence-less} vector field $\vect{F}$ is one where
+$\del \cdot \vect{F} = 0$.
+Such a field is also called a {\em solenoidal} field,
+or an {\em incompressible} field.
 
-Sometimes also called a divergence-free field, or an incompressible
-field.  The name incompressible comes from fluid mechanics, when
-studying fluids that have a constant density.
-
-Etymology of solenoid: Greek root words meaning ``resembling a pipe''.
-A wire coiled many times into the shape of the curved part of a
-cylinder's surface is shaped like a section of pipe.  The magnetic
-field created when current flows through a wire in this shape is
-divergence-less.  (It turns out that all magnetic fields in all known
-scenarios are divergence-less, so this property of magnetic fields is
-not restricted to those created by solenoid-shaped current carrying
-wires, but apparently the name became associated with such vector
+The name incompressible comes from fluid mechanics, when studying
+fluids that have a constant density.
+The origin of the word ``solenoid'' is from Greek root words meaning
+``resembling a pipe''.  A wire coiled many times into the shape of the
+curved part of a cylinder's surface is shaped like a section of pipe.
+The magnetic field created when current flows through a wire in this
+shape is divergence-less.  (It turns out that all magnetic fields in
+all known scenarios are solenoidal, so this property of magnetic
+fields is not restricted to those created by solenoid-shaped current
+carrying wires.  Somehow this name became associated with such vector
 fields).
 
-Examples: Magnetic field.  The velocity field of an incompressible
-fluid.  Current density, in a scenario where the charge density is not
-changing.
+Examples of solenoidal fields include:
+\begin{itemize}
+\item A magnetic field (Equation~\eqref{eq:gaussB}).
+\item The velocity field of an incompressible fluid.
+\item Current density, in a scenario where the charge density is not
+  changing.
+\end{itemize}
 
+\begin{theorem}
+\label{thm:solenoidalfieldproperties}
 The following conditions are equivalent:
 
 (a) $\del \cdot F = 0$
@@ -412,17 +429,23 @@ given boundary line.
 
 (c) $\oint \vect{F} \cdot d\vect{a} = 0$ for any closed surface.
 
-(d) $\vect{F}$ is the curl of some scalar function: $\vect{F} = \del
-\times A$.
+(d) $\vect{F}$ is the curl of some scalar function:
+$\vect{F} = \del \times A$.
+\end{theorem}
 
 $A$ is not unique.  The gradient of any scalar function can be added
 to $A$ without affecting the curl, since the curl of a gradient is 0.
+See Appendix~\ref{sec:potentialsthm2} for
+a proof of Theorem~\ref{thm:solenoidalfieldproperties}.
 
+\begin{theorem}[Helmholtz decomposition]
+\label{thm:helmholtzdecomposition}
 All vector fields $\vect{F}$ can be written as the gradient of a
 scalar plus the curl of a vector:
 \begin{equation}
 \vect{F} = - \del V + \del \times A
 \end{equation}
+\end{theorem}
 TODO: What is the proof of this?  It might be on this
 page~\cite{WikipediaHelmholtzDecomposition}, or some page linked from
 it.
@@ -824,9 +847,9 @@ Vol. I, p. 31:
 
 Definition of a gradient for any scalar field $T$:
 \begin{align*}
-  \grad T & \equiv \frac{\partial T}{\partial x} \hatvec{x}
-                 + \frac{\partial T}{\partial y} \hatvec{y}
-                 + \frac{\partial T}{\partial z} \hatvec{z}
+  \del T & \equiv \frac{\partial T}{\partial x} \hatvec{x}
+                + \frac{\partial T}{\partial y} \hatvec{y}
+                + \frac{\partial T}{\partial z} \hatvec{z}
 \end{align*}
 Definition of a curl for any vector field $\vect{v}$:
 \begin{align*}
@@ -966,9 +989,10 @@ Thus $\del \cdot \vect{G} = \del \cdot (\del \times F)$ is identically
 \section{Proof of theorem about irrotational fields}
 \label{sec:potentialsthm1}
 
-That is, Theorem 1 from Section~\ref{sec:potentials}.  This proof is
-essentially the same as one given in Section 2.3.1 ``Introduction to
-Potential'' of~\cite{Griffiths1998}.
+That is, a proof of Theorem~\ref{thm:irrotationalfieldproperties} from
+Section~\ref{sec:potentials}.
+This proof is essentially the same as one given in Section 2.3.1
+``Introduction to Potential'' of~\cite{Griffiths1998}.
 
 Let $\vect{F}$ be a vector field such that $\del \times \vect{F} = 0$.
 Stokes' theorem says, for all vector fields $\vect{F}$:
@@ -986,7 +1010,8 @@ is also 0.
 I will call such paths ``Stokes paths'' here, for brevity (TODO: It
 might be nice to give the full set of restrictions that a Stokes path
 must satisfy).
-This proves that (a) implies (c) for Theorem 1, at least for closed
+This proves that (a) implies (c) for
+Theorem~\ref{thm:irrotationalfieldproperties}, at least for closed
 loops that are Stokes paths.
 
 Consider an arbitrary distinct pair of points $\vect{a}$ and
@@ -1009,12 +1034,44 @@ Therefore:
 Thus for any pair of Stokes paths $\mathcal{P}_1$ and
 $\bar{\mathcal{P}_2}$ from $\vect{a}$ to $\vect{b}$, their path
 integrals are equal.
-This proves that (c) implies (b) for Theorem 1, for Stokes paths
-(note: we have not used (a) in this part of the proof).
+This proves that (c) implies (b) for
+Theorem~\ref{thm:irrotationalfieldproperties}, for Stokes paths.
 
 TODO: Write the part of the proof showing that (b) implies (d).
 
-TODO: Write the part of the proof showing that (d) implies (a).
+Section~\ref{sec:curlofgradis0} contains the proof that (d) implies
+(a).
+
+
+\section{Proof of theorem about solenoidal fields}
+\label{sec:potentialsthm2}
+
+That is, a proof of Theorem~\ref{thm:solenoidalfieldproperties} from
+Section~\ref{sec:potentials}.
+This proof is strongly hinted at by Problem 5.31 in Section 5.4.1
+``The Vector Potential'' of~\cite{Griffiths1998}.
+
+TODO: Proof that (a) implies (c) is straightforward from Gauss's
+theorem.
+
+TODO: Proof that (c) implies (b).  Basic idea: Given a boundary line,
+pick an arbitrary closed surface that completely contains that
+boundary line.  By (b) we know that the total flux through the entire
+closed surface is 0.  Assuming the boundary line divides that closed
+surface into 2 non-closed surfaces (TODO: I assume that some
+conditions must hold for the boundary line in order for that to be
+true, at least that the boundary line is simple?) $S_1$ and $S_2$, the
+flux through $S_1$ must be the negative of the flux through $S_2$.  We
+can replace $S_2$ with any other surface $S_3$ such that $S_1 \cup
+S_3$ is a closed surface, and the flux through that new closed surface
+is also 0, so the flux through $S_3$ must be the same as that through
+$S_2$, and $S_3$ has the same boundary line as $S_2$.
+
+TODO: Proof that (b) implies (d) is (I hope) what Griffiths Problem
+5.31 helps me to flesh out in more detail.
+
+Section~\ref{sec:divofcurlis0} contains the proof that (d) implies
+(a).
 
 
 \end{document}
