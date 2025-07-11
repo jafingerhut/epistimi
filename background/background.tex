@@ -85,7 +85,7 @@
 \maketitle
 
 %\begin{abstract}
-%  todo: abstract here
+%  abstract here
 %\end{abstract}
 
 \tableofcontents
@@ -1037,7 +1037,37 @@ integrals are equal.
 This proves that (c) implies (b) for
 Theorem~\ref{thm:irrotationalfieldproperties}, for Stokes paths.
 
-TODO: Write the part of the proof showing that (b) implies (d).
+Now consider (b) as our starting point.  Pick some arbitrary point
+$\vect{d}$.  Define the scalar function $V(\vect{r})$ as:
+\begin{equation}
+V(\vect{r}) = - \int_{\vect{d}}^{\vect{r}} \vect{F} \cdot d\vect{l}
+\end{equation}
+Because of (b), the particular path over which these line integrals
+are performed does not affect the result.
+\begin{align*}
+V(\vect{b}) - V(\vect{a})
+  = & - \int_{\vect{d}}^{\vect{b}} \vect{F} \cdot d\vect{l}
+      + \int_{\vect{d}}^{\vect{a}} \vect{F} \cdot d\vect{l} \\
+  = & - \int_{\vect{a}}^{\vect{d}} \vect{F} \cdot d\vect{l}
+      - \int_{\vect{d}}^{\vect{b}} \vect{F} \cdot d\vect{l} \\
+  = & - \int_{\vect{a}}^{\vect{b}} \vect{F} \cdot d\vect{l}
+\end{align*}
+By the fundamental theorem for gradients (Section~\ref{sec:ftocgrad}):
+\begin{equation}
+\int_{\vect{a}}^{\vect{b}} (\del V) \cdot d\vect{l} = V(\vect{b}) - V(\vect{a})
+\end{equation}
+Thus:
+\begin{equation}
+       \int_{\vect{a}}^{\vect{b}} (\del V) \cdot d\vect{l}
+   = - \int_{\vect{a}}^{\vect{b}} \vect{F} \cdot d\vect{l}
+\end{equation}
+Since this is true for all pairs of points $\vect{a}$ and $\vect{b}$,
+the functions being integrated must be equal:
+\begin{equation}
+\vect{F} = - \del V
+\end{equation}
+This proves that (b) implies (d) for
+Theorem~\ref{thm:irrotationalfieldproperties}, for Stokes paths.
 
 Section~\ref{sec:curlofgradis0} contains the proof that (d) implies
 (a).
