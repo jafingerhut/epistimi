@@ -1081,8 +1081,21 @@ Section~\ref{sec:potentials}.
 This proof is strongly hinted at by Problem 5.31 in Section 5.4.1
 ``The Vector Potential'' of~\cite{Griffiths1998}.
 
-TODO: Proof that (a) implies (c) is straightforward from Gauss's
-theorem.
+We are given a vector field $\vect{F}$ such that
+$\del \cdot \vect{F} = 0$.
+By Gauss's theorem (Section~\ref{sec:gaussthm}),
+for any volume $\mathcal{V}$ with boundary surface $\mathcal{S}$:
+\begin{equation}
+\int_{\mathcal{V}} (\del \cdot \vect{F}) d\tau = \oint_{\mathcal{S}} \vect{F} \cdot d\vect{a}
+\end{equation}
+Since $\del \cdot \vect{F} = 0$, the left hand side is always 0.
+So:
+\begin{equation}
+\oint_{\mathcal{S}} \vect{F} \cdot d\vect{a} = 0
+\end{equation}
+This proves that (a) implies (c) for
+Theorem~\ref{thm:solenoidalfieldproperties}.
+
 
 TODO: Proof that (c) implies (b).  Basic idea: Given a boundary line,
 pick an arbitrary closed surface that completely contains that
