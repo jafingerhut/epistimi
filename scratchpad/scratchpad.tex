@@ -371,9 +371,12 @@ Definitions of some terms:
   D_B & = \sqrt{ \frac{1 + \beta_B}{1 - \beta_b} } \label{defn:DB}
 \end{align}
 
+
 \subsection{Special Relativity Scenario 1: Two entities moving away from each other at constant velocity}
+\label{sec:scen1}
 
 $A$ is at rest.  $B$ is moving at constant velocity $v_B$ away from $A$.
+
 
 \subsubsection{$B$ sends periodic pulses to $A$}
 \label{sec:scen1BtoA}
@@ -491,6 +494,135 @@ By Lorentz Ether Theory, if $A$ is at rest relative to the ether, then:
   $1/\gamma_B$.  $A$'s clock runs at the full rate of all clocks at
   that are at rest relative to the ether.
 \end{itemize}
+
+
+\subsection{Special Relativity Scenario 2: Three entities, two of them moving away from the first at constant velocity}
+\label{sec:scen2}
+
+$A$ is at rest.
+$B$ is moving at constant velocity $v_B$ away from $A$.
+$C$ is moving at constant velocity $v_C > v_B$ away from $A$, in same
+direction that $B$ is moving.
+
+For $B$ sending periodic pulses to $A$ or vice versa, everything in
+Sections~\ref{sec:scen1BtoA} and~\ref{sec:scen1AtoB} applies without
+change.
+For $C$ sending periodic pulses to $A$ or vice versa, everything in
+Section~\ref{sec:scen1BtoA} and~\ref{sec:scen1AtoB} applies,
+except replace $B$ subscripts
+with $C$ subscripts, i.e. use $v_C$, $\gamma_C$, $\beta_C$, and $D_C$,
+defined in the same way as for the versions with subscript $B$ in
+Section~\ref{sec:sr}.
+
+So it is only pulses between $B$ and $C$ that might present something
+new here.
+
+
+\subsubsection{$B$ sends periodic pulses to $C$}
+\label{sec:scen2BtoCLETfriendly}
+
+$B$ uses his local clock to time the sending of radio pulses to $C$,
+sending pulses once every time interval $T$, according to $B$'s clock.
+At what period does $C$ receive the pulses?
+
+For simplicity of calculations, we will assume that both $B$ and $C$
+pass $A$'s position at time 0, and $A$, $B$, and $C$ all synchronize
+their clocks at that time.  As before, note that the calculation of
+the period for someone receiving pulses is unaffected by whether such
+synchronization is done.
+
+In order to make the calculations as applicable to Lorentz Ether
+Theory as possible, all calculations will be done in $A$'s inertial
+frame.
+
+Define $t_A(n)$ and $t_B(n)$ the same way as they were in
+Section~\ref{sec:scen1BtoA}.  As explained there, when $A$ makes the
+assumptions according to special relativity theory:
+\begin{align}
+t_B(n) & = nT & & \text{by the setup of the experiment} \nonumber \\
+t_A(n) & = \gamma_B nT & & \text{$B$'s clock runs $\gamma_B$ times slower than $A$'s} \label{eqn:scen2timeA} \\
+x_B(t_A) & = v_B t_A & & \text{relationship of $B$'s position and time, in $A$'s frame} \label{eqn:scen2posB} \\
+x_C(t_A) & = v_C t_A & & \text{relationship of $C$'s position and time, in $A$'s frame}
+\end{align}
+Also by special relativity assumptions, $A$ considers the pulse to
+travel from $B$ to $C$ at constant speed $c$.
+The $n$-th pulse is emitted at time $t_A(n)$ in $A$'s frame,
+so its position as a function of $A$'s time $t_A$ is:
+\begin{align*}
+  l_A(n, t_A) & = \text{position of $B$ when emitted} \\
+            &   + \text{distance traveled after emission} \\
+  l_A(n, t_A) & = x_B(t_A(n)) + (t_A - t_A(n)) c & & \text{for any time $t_A \geq t_A(n)$} \\
+  l_A(n, t_A) & = v_B t_A(n) + (t_A - t_A(n)) c & & \text{substitute Eqn.~\eqref{eqn:scen2posB}} \\
+  l_A(n, t_A) & = -(c - v_B) t_A(n) + t_A c & & \text{algebra} \\
+  l_A(n, t_A) & = -(c - v_B) \gamma_B nT + t_A c & & \text{substitute Eqn.~\eqref{eqn:scen2timeA}}
+\end{align*}
+To find $A$'s time when $C$ receives the pulse,
+solve for $t_A$ that makes the pulse position the same as $C$'s position:
+\begin{align*}
+x_C(t_A) & = l_A(n, t_A) \\
+v_C t_A  & = -(c - v_B) \gamma_B nT + t_A c \\
+(c - v_B) \gamma_B nT & = (c - v_C) t_A & & \text{algebra} \\
+t_A & = \frac{c - v_B}{c - v_C} \gamma_B nT & & \text{algebra} \\
+t_A & = \frac{1 - \beta_B}{1 - \beta_C} \gamma_B nT & & \text{defn. of $\beta_B, \beta_C$}
+\end{align*}
+According to $A$ and its special relativity assumptions,
+$C$'s clock runs slower, at a rate $1/\gamma_C$ times that of $A$'s clock.
+So $C$'s time $r_C(n)$ to receive the $n$-th pulse sent by $B$ is:
+\begin{align}
+r_C(n) & = \frac{1}{\gamma_C} t_A \\
+       & = \frac{\gamma_B}{\gamma_C} \left( \frac{1-\beta_B}{1-\beta_C} \right) nT \\
+       & = \sqrt{ \frac{1-\beta_C^2}{1-\beta_B^2} } \left( \frac{1-\beta_B}{1-\beta_C} \right) nT \\
+       & = \sqrt{ \frac{1+\beta_C}{1-\beta_C} } \sqrt { \frac{1-\beta_B}{1+\beta_B} } nT & & \text{algebra} \\
+       & = ( D_C / D_B ) nT & & \text{defn. of $D_B, D_C$}
+\end{align}
+So when $B$ sends pulses with period $T$ according to $B$'s clock,
+$C$ receives from $B$ pulses with period $(D_C / D_B) T$ on $C$'s clock.
+
+
+\subsubsection{$B$ sends periodic pulses to $C$, double-check by ChatGPT}
+\label{sec:scen2BtoCdoublecheck}
+
+Since at the time of performing calculations in the previous section I
+was still fairly new to such things, I wanted a way to double-check
+the results.  I asked ChatGPT what the period would be that $C$ would
+receive pulses from $B$ and it gave an answer close to the following.
+
+Calculate the velocity of $B$ in $C$'s frame using relativistic
+velocity subtraction:
+\begin{align}
+u' & = \frac{v_B - v_C}{1 - \frac{v_B v_C}{c^2}} \\
+\beta' & = \frac{\beta_B - \beta_C}{1 - \beta_B \beta_C}
+\end{align}
+
+Since $v_B < v_C$, the numerator is negative.  The denominator is
+positive.  Thus $u' < 0$ and $\beta' < 0$.  Thus in $C$'s frame, $B$
+is moving in the negative $x$ direction, and $C$ is at rest.
+
+For receding motion:
+\begin{equation}
+T_{\text{observed}} = T_{\text{emitted}} \sqrt{ \frac{1+\beta}{1-\beta} }
+\end{equation}
+where:
+\begin{equation}
+\beta = \frac{|u'|}{c} = |\beta'|
+\end{equation}
+Since $\beta' < 0$:
+\begin{equation}
+|\beta'| = -\beta' = \frac{\beta_C - \beta_B}{1 - \beta_B \beta_C}
+\end{equation}
+From here on this is mostly just algebra:
+\begin{align*}
+\frac{T_{\text{observed}}}{T_{\text{emitted}}}
+  & = \sqrt{ \frac{1+\beta}{1-\beta} } \\
+  & = \sqrt{ \frac{1 + \frac{\beta_C - \beta_B}{1 - \beta_B \beta_C}}{1 - \frac{\beta_C - \beta_B}{1 - \beta_B \beta_C}} } \\
+  & = \sqrt{ \frac{1 - \beta_C \beta_B + (\beta_C - \beta_B)}{1 - \beta_C \beta_B - (\beta_C - \beta_B)} } \\
+  & = \sqrt{ \frac{(1 + \beta_C) (1 - \beta_B)}{(1 - \beta_C) (1 + \beta_B)} } \\
+  & = D_C / D_B & & \text{defn. of $D_B, D_C$}
+\end{align*}
+This is the same result, calculated in a fairly different way, using
+the assumptions of special relativity, which ChatGPT is much better at
+answering questions about than it is any alternatives that are not
+special relativity.
 
 
 %\newpage
