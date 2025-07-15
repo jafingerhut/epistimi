@@ -360,6 +360,139 @@ wrong.  The whole thing is much more complicated.
 Unfortunately there are no footnotes or citation to explain what he
 meant by this.
 
+
+\section{Simple scenarios in special relativity and Lorentz Ether Theory}
+\label{sec:sr}
+
+Definitions of some terms:
+\begin{align}
+  \beta_B & = v_B / c \label{defn:betaB} \\
+  \gamma_B & = \frac{1}{\sqrt{1 - \beta_B^2}} \label{defn:gammaB} \\
+  D_B & = \sqrt{ \frac{1 + \beta_B}{1 - \beta_b} } \label{defn:DB}
+\end{align}
+
+\subsection{Special Relativity Scenario 1: Two entities moving away from each other at constant velocity}
+
+$A$ is at rest.  $B$ is moving at constant velocity $v_B$ away from $A$.
+
+\subsubsection{$B$ sends periodic pulses to $A$}
+\label{sec:scen1BtoA}
+
+$B$ uses his local clock to time the sending of radio pulses to $A$,
+sending pulses once every time interval $T$.
+At what period does $A$ receive the pulses?
+
+For simplicity of calculations, we will assume that $B$ passed $A$'s
+position at time 0, and $A$ and $B$ synchronized their clocks at that
+time.  However, note that $A$ will receive the pulses at the same
+period in this scenario, regardless of whether they ever synchronized
+their clocks.
+
+Define $t_A(n)$ to be the time on A's clock when the $n$-th pulse is
+transmitted by $B$, and $t_B(n)$ to be the time on B's clock when it
+transmits the $n$-th pulse.
+
+$t_B(n) = nT$ by the setup of the experiment.
+
+By the assumptions of special relativity, $A$ deduces that $B$'s clock
+is running $\gamma_B$ times slower than $A$'s clock.  Note: $A$ cannot
+directly observe $B$'s clock, as it is too far away.  From this $A$
+also assumes:
+\begin{equation}
+  t_A(n) = \gamma_B nT  \label{eqn:scen1timeA}
+\end{equation}
+$B$ is a distance $v_B t_A(n)$ away from $A$ at that time.
+
+Also by the assumptions of special relativity, $A$ deduces that $B$'s
+pulse signal will propagate at the one-way speed $c$.  The pulse will
+thus take time $v_B t_A(n)/c$ to propagate to $A$.
+
+$A$'s clock thus shows time $t_A(n) + v_B t_A(n)/c$ when the $n$-th
+pulse arrives at $A$.  With a little algebra:
+\begin{align*}
+t_A(n) + v_B t_A(n)/c
+  & = (1 + v_B/c) t_A(n) & & \text{rearrangement by algebra} \\
+  & = nT (1 + \beta_{B}) \gamma_{B} & & \text{Defn.~\eqref{defn:betaB} and Eqn.~\eqref{eqn:scen1timeA}} \\
+  & = nT \frac{1 + \beta_B}{\sqrt{ 1 - \beta_{B}^2 }} & & \text{Defn.~\eqref{defn:gammaB}} \\
+  & = nT \sqrt{ \frac{1 + \beta_B}{1 - \beta_B} } & & \text{algebra} \\
+  & = nT D_B & & \text{algebra} & & \text{Defn.~\eqref{defn:DB}}
+\end{align*}
+The pulses arrive at $A$ with a period of $D_B T$.
+
+
+\subsubsection{$A$ sends periodic pulses to $B$}
+\label{sec:scen1AtoB}
+
+Now $A$ uses his local clock to time the sending of radio pulses to $B$,
+sending pulses once every time interval $T$.
+At what period does $B$ receive the pulses?
+
+While we could switch perspectives to $B$'s inertial frame, we will
+not.  Instead, we are going to do all of the calculations in $A$'s
+inertial frame.
+
+The definitions of Section~\ref{sec:sr} remain the same here, but note
+that the values of $t_A(n)$ and $t_B(n)$ here are {\em different} than
+those in Section~\ref{sec:scen1BtoA}.
+
+Define $t_A(n) = nT$ to be the time on A's clock when it transmits its
+$n$-th pulse.
+
+At all times $t_A$, $B$ is a distance $v_B t_A$ away from $A$.  $A$
+assumes by special relativity that its pulse propagates with one-way
+speed $c$ to $B$.  The pulse's position at time $t_A \geq nT$ is
+$c(t_A - nT)$.
+
+On $A$'s clock, $A$ by assumption and inference calculates that
+its $n$-th pulse catches up to $B$ at a time $r_A(n)$ that satisfies the equation:
+\begin{align}
+v_B r_A(n) & = c(r_A(n) - nT) & & \text{$B$'s position equals light pulse's position} \nonumber \\
+(v_B / c) r_A(n) & = r_A(n) - nT & & \text{divide by $c$} \nonumber \\
+nT & = (1 - v_B/c) r_A(n) & & \text{a little more algebra} \nonumber \\
+r_A(n) & = \frac{nT}{1 - v_B/c} \nonumber \\
+r_A(n) & = \frac{nT}{1 - \beta_B} & & \text{Defn.\eqref{defn:betaB}} \label{eqn:scen1Arecvtime}
+\end{align}
+By the assumptions of special relativity, $A$ deduces that $B$'s clock
+is running $\gamma_B$ times slower than $A$'s clock.
+Thus $B$'s time when receiving the $n$-th pulse is:
+\begin{align*}
+r_B(n) & = r_A(n) / \gamma_B & & \text{$B$'s clock slower by factor $\gamma_B$} \\
+r_B(n) & = \frac{nT}{\gamma_B(1 - \beta_B)} & & \text{Eqn.~\eqref{eqn:scen1Arecvtime}} \\
+r_B(n) & = nT \frac{\sqrt{1 - \beta_B^2}}{1 - \beta_B} & & \text{Defn.~\eqref{defn:gammaB}} \\
+r_B(n) & = nT \sqrt{ \frac{1 + \beta_B}{1 - \beta_B} } & & \text{a little algebra} \\
+r_B(n) & = nT D_B & & \text{Defn.~\eqref{defn:DB}}
+\end{align*}
+$B$ will observe pulses arriving with period $D_B T$ according to
+$B$'s clock.
+
+Note from the previous section that $A$ sees this same period, on
+$A$'s clock, for the period of pulses that $A$ receives from $B$.
+
+
+\subsubsection{Relationship to Lorentz Ether Theory}
+\label{sec:scen1LET}
+
+Note in Sections~\ref{sec:scen1BtoA} and~\ref{sec:scen1AtoB}, that
+except for algebra and the definitions of symbols from
+Section~\ref{sec:sr}, the only assumptions we used from special relativity were:
+\begin{itemize}
+\item The one-way speed of light is $c$ in all directions, as measured
+  by $A$.
+\item $B$'s clock runs at a slower rate, by a factor of $1/\gamma_B$,
+  relative to $A$'s clock.
+\end{itemize}
+By Lorentz Ether Theory, if $A$ is at rest relative to the ether, then:
+\begin{itemize}
+\item The one-way speed of light is $c$ in all directions relative to
+  the ether, and thus $A$, at rest relative to the ether, will measure
+  that speed for light in all directions.
+\item $B$ is moving at velocity $v_B$ relative to the ether, and thus
+  $B$'s clock physically runs at a slower rate, by a factor of
+  $1/\gamma_B$.  $A$'s clock runs at the full rate of all clocks at
+  that are at rest relative to the ether.
+\end{itemize}
+
+
 %\newpage
 \bibliography{refs}
 
