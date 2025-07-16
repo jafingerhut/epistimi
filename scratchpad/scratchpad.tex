@@ -366,10 +366,23 @@ meant by this.
 
 Definitions of some terms:
 \begin{align}
-  \beta_B & = v_B / c \label{defn:betaB} \\
-  \gamma_B & = \frac{1}{\sqrt{1 - \beta_B^2}} \label{defn:gammaB} \\
-  D_B & = \sqrt{ \frac{1 + \beta_B}{1 - \beta_b} } \label{defn:DB}
+  \beta & = v / c \label{defn:betaB} & & \text{the {\em relativistic velocity}, or {\em velocity ratio}} \\
+  \gamma & = \frac{1}{\sqrt{1 - \beta^2}} & & \text{the {\em Lorentz factor}} \label{defn:LorentzFactor} \\
+  D & = \sqrt{ \frac{1 + \beta}{1 - \beta} } & & \text{the {\em Doppler factor}} \label{defn:DopplerFactor}
 \end{align}
+Later in this article we typically write a subscript after $v$,
+$\beta$, $\gamma$, and $D$ to indicate the entity that has the
+relevant velocity $v$.  The context should make it clear in what
+inertial frame that velocity $v$ applies.
+
+We only use these definitions in scenarios where $0 \leq v < c$.
+Thus:
+\begin{align*}
+0 & \leq \beta < 1 \\
+\gamma & \geq 1 & & \text{$\gamma$ increases as $\beta$ does} \\
+\lim_{\beta \rightarrow 1} \gamma & = +\infty \\
+D & = \gamma (1+\beta) \geq \gamma & & \text{$D$ increases as $\beta$ does, faster than $\gamma$}
+\end{align*}
 
 
 \subsection{Special Relativity Scenario 1: Two entities moving away from each other at constant velocity}
@@ -416,9 +429,9 @@ pulse arrives at $A$.  With a little algebra:
 t_A(n) + v_B t_A(n)/c
   & = (1 + v_B/c) t_A(n) & & \text{rearrangement by algebra} \\
   & = nT (1 + \beta_{B}) \gamma_{B} & & \text{Defn.~\eqref{defn:betaB} and Eqn.~\eqref{eqn:scen1timeA}} \\
-  & = nT \frac{1 + \beta_B}{\sqrt{ 1 - \beta_{B}^2 }} & & \text{Defn.~\eqref{defn:gammaB}} \\
+  & = nT \frac{1 + \beta_B}{\sqrt{ 1 - \beta_{B}^2 }} & & \text{Defn.~\eqref{defn:LorentzFactor}} \\
   & = nT \sqrt{ \frac{1 + \beta_B}{1 - \beta_B} } & & \text{algebra} \\
-  & = nT D_B & & \text{algebra} & & \text{Defn.~\eqref{defn:DB}}
+  & = nT D_B & & \text{algebra} & & \text{Defn.~\eqref{defn:DopplerFactor}}
 \end{align*}
 The pulses arrive at $A$ with a period of $D_B T$.
 
@@ -461,9 +474,9 @@ Thus $B$'s time when receiving the $n$-th pulse is:
 \begin{align*}
 r_B(n) & = r_A(n) / \gamma_B & & \text{$B$'s clock slower by factor $\gamma_B$} \\
 r_B(n) & = \frac{nT}{\gamma_B(1 - \beta_B)} & & \text{Eqn.~\eqref{eqn:scen1Arecvtime}} \\
-r_B(n) & = nT \frac{\sqrt{1 - \beta_B^2}}{1 - \beta_B} & & \text{Defn.~\eqref{defn:gammaB}} \\
+r_B(n) & = nT \frac{\sqrt{1 - \beta_B^2}}{1 - \beta_B} & & \text{Defn.~\eqref{defn:LorentzFactor}} \\
 r_B(n) & = nT \sqrt{ \frac{1 + \beta_B}{1 - \beta_B} } & & \text{a little algebra} \\
-r_B(n) & = nT D_B & & \text{Defn.~\eqref{defn:DB}}
+r_B(n) & = nT D_B & & \text{Defn.~\eqref{defn:DopplerFactor}}
 \end{align*}
 $B$ will observe pulses arriving with period $D_B T$ according to
 $B$'s clock.
@@ -597,9 +610,7 @@ change.
 For $C$ sending periodic pulses to $A$ or vice versa, everything in
 Section~\ref{sec:scen1BtoA} and~\ref{sec:scen1AtoB} applies,
 except replace $B$ subscripts
-with $C$ subscripts, i.e. use $v_C$, $\gamma_C$, $\beta_C$, and $D_C$,
-defined in the same way as for the versions with subscript $B$ in
-Section~\ref{sec:sr}.
+with $C$ subscripts, i.e. use $v_C$, $\gamma_C$, $\beta_C$, and $D_C$.
 
 So it is only pulses between $B$ and $C$ that might present something
 new here.
@@ -666,6 +677,18 @@ r_C(n) & = \frac{1}{\gamma_C} t_A \\
 So when $B$ sends pulses with period $T$ according to $B$'s clock,
 $C$ receives from $B$ pulses with period $(D_C / D_B) T$ on $C$'s clock.
 
+Since $D$ increases with $\beta$, and thus also with $v$, and since
+$v_C > v_B$, $D_C > D_B$, and $(D_C / D_B) > 1$.  Thus $C$'s measured
+period of receiving pulses is larger than $B$'s measured period of
+sending pulses.
+
+Note: If you perform the calculations in a similar scenario where
+$v_C < v_B$, they end up nearly identical to what is shown above.
+The final answer is still $(D_C / D_B) T$ for the period at which $C$
+receives pulses, but in this case $(D_C / D_B) < 1$ because $v_C < v_B$.
+Thus $C$'s measured period of receiving pulses is shorter than $B$'s
+measured period of sending pulses.
+
 
 \subsubsection{$B$ sends periodic pulses to $C$, double-check by ChatGPT}
 \label{sec:scen2BtoCdoublecheck}
@@ -718,6 +741,8 @@ special relativity.
 
 The derivation is nearly identical to that in
 Section~\ref{sec:scen2BtoCLETfriendly}.
+Here we only mention a few equations along the way that have
+noticeable differences.
 
 The formula $l_A(n,t_A)$ for the position of the $n$-th pulse emitted
 by $C$ at $A$'s time $t_A$ is:
@@ -735,6 +760,11 @@ r_B(n) & = \frac{1}{\gamma_B} t_A \\
 \end{align*}
 That is exactly the same local time period that $C$ measures for
 pulses sent from $B$.
+
+Note: As noted at the end of Section~\ref{sec:scen2BtoCLETfriendly},
+if you perform the calculations for the same scenario, except $v_C < v_B$,
+the final answer is the same period $(D_C / D_B) T$.  As noted there,
+this is less than $T$ when $v_C < v_B$.
 
 
 \subsubsection{A note on Doppler factors and relativistic velocity addition and subtraction}
