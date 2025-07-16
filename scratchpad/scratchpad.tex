@@ -508,8 +508,8 @@ something very much like this.)
 In $A$'s frame observing $B$'s clock run slower, that seems perfectly
 consistent with Lorentz Ether Theory's statement that if $A$ is at
 rest relative to the ether, and $B$ moves at constant velocity $v_B$
-relative to the ether, that $B$ experienced duration dilation,
-i.e. its clock physically ran slower than $A$'s by a factor of
+relative to the ether, that $B$ experiences duration dilation,
+i.e. its clock physically runs slower than $A$'s by a factor of
 $\gamma_B$.  In this situation $A$'s clock runs at full speed,
 i.e. $\gamma_B$ times {\em faster} than $B$'s.
 
@@ -539,17 +539,17 @@ speed relative to the ether.
 
 Then, in the scanario described, we would know that $A$'s clock is
 running at full speed, and light propagates isotropically at constant
-speed $c$ relative to $A$.
+speed $c$ relative to the ether, and thus also relative to $A$.
 
 Everyone with this knowledge would be able to deduce that $B$'s clock
-is running $\gamma$ times slower than full speed.  Also, that that
+is running $\gamma$ times slower than full speed.  Also, that
 $A$'s clock is running $\gamma$ times {\em faster} than $B$'s clock
 (and that all of $A$'s local physical processes are proceeding
 $\gamma$ times faster than similar local physical processes of $B$).
 
-Further, relative to $B$, light would propagate isotropically relative
-to the ether at constant speed $c$, and thus does {\em not} propagate
-at the same speed in all directions relative to $B$.
+Further, light does {\em not} propagate at the same speed in all
+directions relative to $B$.  It does so only with respect to the
+ether.
 
 We could also prove that if one chose to make calculations using
 special relativity's assumptions in $B$'s frame, one would get the
@@ -610,12 +610,13 @@ travel from $B$ to $C$ at constant speed $c$.
 The $n$-th pulse is emitted at time $t_A(n)$ in $A$'s frame,
 so its position as a function of $A$'s time $t_A$ is:
 \begin{align*}
-  l_A(n, t_A) & = \text{position of $B$ when emitted} \\
-            &   + \text{distance traveled after emission} \\
-  l_A(n, t_A) & = x_B(t_A(n)) + (t_A - t_A(n)) c & & \text{for any time $t_A \geq t_A(n)$} \\
-  l_A(n, t_A) & = v_B t_A(n) + (t_A - t_A(n)) c & & \text{substitute Eqn.~\eqref{eqn:scen2posB}} \\
-  l_A(n, t_A) & = -(c - v_B) t_A(n) + t_A c & & \text{algebra} \\
-  l_A(n, t_A) & = -(c - v_B) \gamma_B nT + t_A c & & \text{substitute Eqn.~\eqref{eqn:scen2timeA}}
+l_A(n, t_A)
+  & = \text{position of $B$ when emitted} \\
+  &   + \text{distance traveled after emission} \\
+  & = x_B(t_A(n)) + (t_A - t_A(n)) c & & \text{for any time $t_A \geq t_A(n)$} \\
+  & = v_B t_A(n) + (t_A - t_A(n)) c & & \text{substitute Eqn.~\eqref{eqn:scen2posB}} \\
+  & = -(c - v_B) t_A(n) + t_A c & & \text{algebra} \\
+  & = -(c - v_B) \gamma_B nT + t_A c & & \text{substitute Eqn.~\eqref{eqn:scen2timeA}}
 \end{align*}
 To find $A$'s time when $C$ receives the pulse,
 solve for $t_A$ that makes the pulse position the same as $C$'s position:
@@ -684,6 +685,30 @@ This is the same result, calculated in a fairly different way, using
 the assumptions of special relativity, which ChatGPT is much better at
 answering questions about than it is any alternatives that are not
 special relativity.
+
+
+\subsubsection{$C$ sends periodic pulses to $B$}
+\label{sec:scen2CtoBLETfriendly}
+
+The derivation is nearly identical to that in
+Section~\ref{sec:scen2BtoCLETfriendly}.
+
+The formula $l_A(n,t_A)$ for the position of the $n$-th pulse emitted
+by $C$ at $A$'s time $t_A$ is:
+\begin{equation}
+l_A(n, t_A) = (c + v_C) \gamma_C nT - t_A c
+\end{equation}
+$A$'s time when $B$ receives the $n$-th pulse $t_A$ is:
+\begin{equation}
+t_A = \frac{1 + \beta_C}{1 + \beta_B} \gamma_C nT
+\end{equation}
+and $B$'s time when it receives the $n$-th pulse from $C$ is:
+\begin{align*}
+r_B(n) & = \frac{1}{\gamma_B} t_A \\
+       & = ( D_C / D_B ) nT
+\end{align*}
+That is exactly the same local time period that $C$ measures for
+pulses sent from $B$.
 
 
 %\newpage
