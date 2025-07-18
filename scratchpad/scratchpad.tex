@@ -689,16 +689,12 @@ So when $B$ sends pulses with period $T$ according to $B$'s clock,
 $C$ receives from $B$ pulses with period $(D_C / D_B) T$ on $C$'s clock.
 
 Since $D$ increases with $\beta$, and thus also with $v$, and since
-$v_C > v_B$, $D_C > D_B$, and $(D_C / D_B) > 1$.  Thus $C$'s measured
-period of receiving pulses is larger than $B$'s measured period of
-sending pulses.
+$v_C > v_B$, $D_C > D_B$, and $(D_C / D_B) > 1$.
 
 Note: If you perform the calculations in a similar scenario where
 $v_C < v_B$, they end up nearly identical to what is shown above.
 The final answer is still $(D_C / D_B) T$ for the period at which $C$
 receives pulses, but in this case $(D_C / D_B) < 1$ because $v_C < v_B$.
-Thus $C$'s measured period of receiving pulses is shorter than $B$'s
-measured period of sending pulses.
 
 
 \subsubsection{$B$ sends periodic pulses to $C$, double-check by ChatGPT}
@@ -829,7 +825,9 @@ Lorentz Ether Theory:
 
 \appendix
 
-\section{Miscellaneous math facts about relativistic velocity addition and subtraction in one dimension}
+\section{Miscellaneous math facts}
+
+\subsection{Math facts about relativistic velocity addition and subtraction in one dimension}
 \label{app:1drelvelocityadd}
 
 All of the facts here are quite simple to see.  I write them out
@@ -980,5 +978,77 @@ And the last inequality is true.  Proving the part that
   & \Leftrightarrow -1 < b & & \text{divide both sides by $1+a$, which is positive}
 \end{align*}
 And the last inequality is true.
+
+
+\subsection{Math facts about the Doppler factor}
+\label{app:DopplerFactor}
+
+This appendix is restricted to proofs of mathematical relationships.
+It makes no claims about the physical meaning of the equations
+involved.
+
+Define $D$ as given by Definition~\eqref{defn:DopplerFactor}, repeated
+here:
+\begin{equation}
+D = \sqrt{ \frac{1 + \beta}{1 - \beta} } \nonumber
+\end{equation}
+Define it over the entire domain $-1 < \beta < 1$.
+\begin{itemize}
+\item $D$ approaches 0 as $\beta$ approaches -1.
+\item $D$ approaches $+\infty$ as $\beta$ approaches 1.
+\item $D$ is an increasing function of $\beta$.
+\end{itemize}
+
+\begin{corollary}
+\label{cor:DdeterminesBeta}
+For any value of $D > 0$ that satisfies
+Definition~\eqref{defn:DopplerFactor}, there is exactly one value of
+$\beta$, $-1 < \beta < 1$,
+that corresponds to that value of $D$.
+That value is $\beta = \frac{D^2-1}{D^2+1}$.
+\end{corollary}
+Plugging the value $\frac{D^2-1}{D^2+1}$ into
+Definition~\eqref{defn:DopplerFactor} for $\beta$ takes only a little
+algebra to simplify and show it is equal to $D$.
+
+\begin{theorem}
+\label{thm:velAddLeadsToDopplerFProduct}
+Let $\beta_u, \beta_v$ be any two values in the range $(-1, +1)$.
+Let $\beta_w = \beta_u \oplus \beta_v$, using the one-dimensional
+relativistic velocity addition formula for $\beta$ values
+(Defn.~\eqref{defn:reladd2}).
+Let $D_u, D_v, D_w$ be calculated from $\beta_u, \beta_v, \beta_w$,
+respectively.
+Then $D_w = D_u D_v$.
+\end{theorem}
+
+\begin{proof}
+\begin{align*}
+D_w & = \sqrt{ \frac{1+\beta_w}{1-\beta_w} } & & \text{defn. of $D_w$} \\
+    & = \sqrt{ \frac{1+(\beta_v \oplus \beta_w)}{1-(\beta_v \oplus \beta_w)} } & & \text{Defn. of $\beta_w$} \\
+    & = \sqrt{ \frac{1+\frac{\beta_v + \beta_w}{1 + \beta_v \beta_w}}{1-\frac{\beta_v + \beta_w}{1 + \beta_v \beta_w}} } & & \text{Defn.~\eqref{defn:reladd2} of Appendix~\ref{app:1drelvelocityadd}} \\
+    & = \sqrt{ \frac{(1+\beta_v \beta_w)+(\beta_v + \beta_w)}{(1+\beta_v \beta_w)-(\beta_v + \beta_w)} } & & \text{multiply numerator and denominator by $(1+\beta_v \beta_w)$} \\
+    & = \sqrt{ \frac{(1+\beta_v)(1+\beta_w)}{(1-\beta_v)(1-\beta_w)} } & & \text{algebra (factoring)} \\
+    & = \sqrt{\frac{1+\beta_v}{1-\beta_v}} \sqrt{\frac{1+\beta_w}{1-\beta_w}} & & \text{algebra} \\
+    & = D_v D_w & & \text{defn. of $D_v, D_w$}
+\end{align*}
+\end{proof}
+
+\begin{corollary}
+\label{thm:velSubLeadsToDopplerFQuotient}
+Under the same conditions as Theorem~\ref{thm:velAddLeadsToDopplerFProduct},
+except $\beta_w = \beta_u \ominus \beta_v$, using the one-dimensional
+relativistic velocity subtraction formula for $\beta$ values
+(Defn.~\eqref{defn:relsub2}),
+$D_w = D_u / D_v$.
+\end{corollary}
+
+\begin{proof}
+$\beta_w = \beta_u \ominus \beta_v = \beta_u \oplus (-\beta_v)$.
+Thus by the previous theorem, $D_w = D_u D_{-v}$,
+where $D_{-v}$ is calculated from the definition for $D$ with $-\beta_v$.
+It is straightforward to see from the definition of $D$ that
+$D_{-v} = 1/D_v$, so $D_w = D_u / D_v$.
+\end{proof}
 
 \end{document}
