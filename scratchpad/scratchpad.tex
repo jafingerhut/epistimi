@@ -375,20 +375,24 @@ $\beta$, $\gamma$, and $D$ to indicate the entity that has the
 relevant velocity $v$.  The context should make it clear in what
 inertial frame that velocity $v$ applies.
 
-We only use these definitions in scenarios where $0 \leq v < c$.
+We will use these definitions in scenarios where $-c < v < c$.
 Thus:
-\begin{align*}
-0 & \leq \beta < 1 \\
-\gamma & \geq 1 & & \text{$\gamma$ increases as $\beta$ does} \\
-\lim_{\beta \rightarrow 1} \gamma & = +\infty \\
-D & = \gamma (1+\beta) \geq \gamma & & \text{$D$ increases as $\beta$ does, faster than $\gamma$}
-\end{align*}
+\begin{align}
+-1 & \leq \beta < 1 \nonumber \\
+\gamma & \geq 1 & & \text{$\gamma$ increases as $|\beta|$ does} \nonumber \\
+\lim_{\beta \rightarrow 1} \gamma & = +\infty \nonumber \\
+\lim_{\beta \rightarrow -1} \gamma & = +\infty \nonumber \\
+D & = \gamma (1+\beta) > 0 & & \text{$D$ increases as $\beta$ does} \label{eqn:DaltFormula}
+\end{align}
 
 
-\subsection{Special Relativity Scenario 1: Two entities moving away from each other at constant velocity}
+\subsection{Special Relativity Scenario 1: Two entities moving relative to each other at constant velocity}
 \label{sec:scen1}
 
-$A$ is at rest.  $B$ is moving at constant velocity $v_B$ away from $A$.
+$A$ is at rest.  $B$ is moving at constant velocity $v_B$ relative to $A$,
+either directly away from $A$, or directly towards $A$.
+$v_B > 0$ means $B$ moves away from $A$.
+$v_B < 0$ means $B$ moves towards $A$.
 
 
 \subsubsection{$B$ sends periodic pulses to $A$}
@@ -398,46 +402,65 @@ $B$ uses his local clock to time the sending of radio pulses to $A$,
 sending pulses once every time interval $T$.
 At what period does $A$ receive the pulses?
 
-For simplicity of calculations, we will assume that $B$ passed $A$'s
-position at time 0, and $A$ and $B$ synchronized their clocks at that
-time.  However, note that $A$ will receive the pulses at the same
-period in this scenario, regardless of whether they ever synchronized
-their clocks.
-
-Define $t_A(n)$ to be the time on A's clock when the $n$-th pulse is
-transmitted by $B$, and $t_B(n)$ to be the time on B's clock when it
+Define $q_A(n)$ to be the time on A's clock when the $n$-th pulse is
+transmitted by $B$, and $q_B(n)$ to be the time on B's clock when it
 transmits the $n$-th pulse.
 
-$t_B(n) = nT$ by the setup of the experiment.
+$q_B(n) = nT$ by the setup of the experiment.
 
 By the assumptions of special relativity, $A$ deduces that $B$'s clock
 is running $\gamma_B$ times slower than $A$'s clock.  Note: $A$ cannot
 directly observe $B$'s clock, as it is too far away.  From this $A$
-also assumes:
+also deduces:
 \begin{equation}
-  t_A(n) = \gamma_B nT  \label{eqn:scen1timeA}
+q_A(n) = \gamma_B nT + \Delta  \label{eqn:scen1timeA}
 \end{equation}
-$B$ is a distance $v_B t_A(n)$ away from $A$ at that time.
+$\Delta$ is the time that $A$ reads on his clock
+when $B$ reads 0 on his clock.  The value of $\Delta$
+is irrelevant to the final result we seek.
+
+$B$'s distance from $A$ at $A$'s time $t_A$ is
+$x_B(t_A) = I_B + v_B t_A$.
+$I_B > 0$ is $B$'s initial distance from $A$ at $t_A=0$.
+The value of $I_B$ is also irrelevant to the final result we seek,
+as long as it is large enough that $x_B(t_A) > 0$ remains
+true while $B$ emits all of the pulses we consider (two pulses is enough).
 
 Also by the assumptions of special relativity, $A$ deduces that $B$'s
 pulse signal will propagate at the one-way speed $c$.  The pulse will
-thus take time $v_B t_A(n)/c$ to propagate to $A$.
+thus take time $x_B(q_A(n))/c$ to propagate to $A$.
 
-$A$'s clock thus shows time $t_A(n) + v_B t_A(n)/c$ when the $n$-th
+$A$'s clock thus shows time $r_A(n) = q_A(n) + x_B(q_A(n))/c$ when the $n$-th
 pulse arrives at $A$.  With a little algebra:
 \begin{align*}
-t_A(n) + v_B t_A(n)/c
-  & = (1 + v_B/c) t_A(n) & & \text{rearrangement by algebra} \\
-  & = nT (1 + \beta_{B}) \gamma_{B} & & \text{Defn.~\eqref{defn:betaB} and Eqn.~\eqref{eqn:scen1timeA}} \\
-  & = nT \frac{1 + \beta_B}{\sqrt{ 1 - \beta_{B}^2 }} & & \text{Defn.~\eqref{defn:LorentzFactor}} \\
-  & = nT \sqrt{ \frac{1 + \beta_B}{1 - \beta_B} } & & \text{algebra} \\
-  & = nT D_B & & \text{algebra} & & \text{Defn.~\eqref{defn:DopplerFactor}}
+r_A(n)
+  & = q_A(n) + x_B(q_A(n))/c & & \text{definition of $r_A(n)$} \\
+  & = q_A(n) + (I_B + v_B q_A(n))/c & & \text{substitute equation for $x_B$} \\
+  & = (1 + v_B/c) q_A(n) + I_B/c & & \text{rearrangement by algebra} \\
+  & = (1 + \beta_B) (\gamma_B nT + \Delta) + I_B/c & & \text{Defn.~\eqref{defn:betaB} and Eqn.~\eqref{eqn:scen1timeA}} \\
+  & = (1 + \beta_B) \gamma_B Tn + ((1 + \beta_B) \Delta + I_B/c) & & \text{algebra to collect all terms independent of $n$ at the end}
 \end{align*}
-The pulses arrive at $A$ with a period of $D_B T$.
+The time that $A$ measures on his clock between two consecutive received
+pulses is:
+\begin{align*}
+r_A(n+1) - r_A(n)
+  & = (1 + \beta_B) \gamma_B T & & \text{by calculation of $r_A(n)$ above} \\
+  & = D_B T & & \text{Eqn.~\eqref{eqn:DaltFormula}}
+\end{align*}
+The pulses arrive at $A$ with a period of $D_B T$ measured on $A$'s clock.
 
-Note: There is {\em nothing} in this derivation that relies upon prior
+Suppose that $A$ knows somehow the period $T$ that $B$ uses as its
+period for transmitting pulses, e.g. because they agreed and arranged
+this beforehand.  Then $A$ can measure the period between received
+pulses on his clock and divide it by $T$ to calculate $D_B$.
+By Corollary~\ref{cor:DdeterminesBeta} in
+Appendix~\ref{app:DopplerFactor}, $A$ can calculate from $D_B$ the one
+value of $\beta_B$ in the range $(-1, 1)$ that corresponds to it, and
+$v_B$ in the range $(-c, +c)$.
+
+Note 1: There is {\em nothing} in this derivation that relies upon prior
 knowledge of the Doppler factor, or under what conditions it is
-applicable.  The expression $\sqrt{(1+\beta_B)/(1-\beta_B)}$ arose in
+applicable.  That expression arose in
 the process of calculating the answer, using only the assumptions that
 light moves isotropically at speed $c$ in $A$'s frame, and that $A$
 can deduce that $B$'s clock is running $\gamma_B$ times slower than
@@ -456,41 +479,61 @@ not.  Instead, we are going to do all of the calculations in $A$'s
 inertial frame.
 
 The definitions of Section~\ref{sec:sr} remain the same here, but note
-that the values of $t_A(n)$ and $t_B(n)$ here are {\em different} than
+that the values of $q_A(n)$ and $q_B(n)$ here are {\em different} than
 those in Section~\ref{sec:scen1BtoA}.
 
-Define $t_A(n) = nT$ to be the time on A's clock when it transmits its
+Define $q_A(n) = nT$ to be the time on A's clock when it transmits its
 $n$-th pulse.
 
-At all times $t_A$, $B$ is a distance $v_B t_A$ away from $A$.  $A$
-assumes by special relativity that its pulse propagates with one-way
-speed $c$ to $B$.  The pulse's position at time $t_A \geq nT$ is
-$c(t_A - nT)$.
+At all times $t_A$, $B$ is a distance $x_B(t_A) = I_B + v_B t_A$ away from $A$.
+As in the previous section, $I_B > 0$ is any value large enough
+that $x_B(t_A)$ remains positive while $A$ emits all of the pulses we consider.
 
-On $A$'s clock, $A$ by assumption and inference calculates that
+$A$ assumes by special relativity that its pulse propagates with one-way
+speed $c$ to $B$.  The pulse's position at time $t_A \geq q_A(n)$ is
+$c(t_A - q_A(n))$.
+
+On $A$'s clock, $A$ deduces that
 its $n$-th pulse catches up to $B$ at a time $r_A(n)$ that satisfies the equation:
 \begin{align}
-v_B r_A(n) & = c(r_A(n) - nT) & & \text{$B$'s position equals light pulse's position} \nonumber \\
-(v_B / c) r_A(n) & = r_A(n) - nT & & \text{divide by $c$} \nonumber \\
-nT & = (1 - v_B/c) r_A(n) & & \text{a little more algebra} \nonumber \\
-r_A(n) & = \frac{nT}{1 - v_B/c} \nonumber \\
-r_A(n) & = \frac{nT}{1 - \beta_B} & & \text{Defn.\eqref{defn:betaB}} \label{eqn:scen1Arecvtime}
+x_B(r_A(n)) & = c(r_A(n) - q_A(n)) & & \text{$B$'s position equals light pulse's position} \nonumber \\
+I_B + v_B r_A(n) & = c(r_A(n) - nT) & & \text{substitute for defns. of $x_B$ and $q_A(n)$} \\
+I_B/c + (v_B/c) r_A(n) & = r_A(n) - nT & & \text{divide by $c$} \nonumber \\
+nT + I_B/c & = (1 - v_B/c) r_A(n) & & \text{a little more algebra} \nonumber \\
+r_A(n) & = \frac{nT}{1 - v_B/c} + \frac{I_B}{c-v_B} & & \text{divide by $(1-v_B/c)$} \nonumber \\
+r_A(n) & = \frac{nT}{1 - \beta_B} + \frac{I_B}{c-v_B} & & \text{Defn.\eqref{defn:betaB}} \label{eqn:scen1Arecvtime}
 \end{align}
 By the assumptions of special relativity, $A$ deduces that $B$'s clock
 is running $\gamma_B$ times slower than $A$'s clock.
-Thus $B$'s time when receiving the $n$-th pulse is:
+Thus $B$'s time when receiving the $n$-th pulse is
+the following, where $\Delta$ is the time that $B$ reads on his clock
+when $A$ reads 0 on his clock (as in the previous section,
+the value of $\Delta$ is irrelevant in our final answer):
 \begin{align*}
-r_B(n) & = r_A(n) / \gamma_B & & \text{$B$'s clock slower by factor $\gamma_B$} \\
-r_B(n) & = \frac{nT}{\gamma_B(1 - \beta_B)} & & \text{Eqn.~\eqref{eqn:scen1Arecvtime}} \\
-r_B(n) & = nT \frac{\sqrt{1 - \beta_B^2}}{1 - \beta_B} & & \text{Defn.~\eqref{defn:LorentzFactor}} \\
-r_B(n) & = nT \sqrt{ \frac{1 + \beta_B}{1 - \beta_B} } & & \text{a little algebra} \\
-r_B(n) & = nT D_B & & \text{Defn.~\eqref{defn:DopplerFactor}}
+r_B(n) & = r_A(n) / \gamma_B + \Delta & & \text{$B$'s clock slower by factor $\gamma_B$} \\
+       & = \frac{nT}{\gamma_B(1 - \beta_B)} + (\frac{I_B}{\gamma_B(c-v_B)} + \Delta) & & \text{Eqn.~\eqref{eqn:scen1Arecvtime}, move things independent of $n$ to end}
+\end{align*}
+The time that $B$ measures on his clock between two consecutive received
+pulses is:
+\begin{align*}
+r_B(n+1) - r_B(n)
+  & = \frac{T}{\gamma_B(1 - \beta_B)} & & \text{by calculation of $r_B(n)$ above} \\
+  & = \frac{\sqrt{1 - \beta_B^2}}{1 - \beta_B} T & & \text{Defn.~\eqref{defn:LorentzFactor}} \\
+  & = \sqrt{ \frac{1 + \beta_B}{1 - \beta_B} } T & & \text{a little algebra} \\
+  & = D_B T & & \text{Defn.~\eqref{defn:DopplerFactor}}
 \end{align*}
 $B$ will observe pulses arriving with period $D_B T$ according to
 $B$'s clock.
 
-Note from the previous section that $A$ sees this same period, on
-$A$'s clock, for the period of pulses that $A$ receives from $B$.
+While this formula for the period between received pulses
+is very similar to the one in the previous section, note that
+both the sending and receiving period are being measured on different
+clocks than there.
+
+As in the previous section, if $B$ somehow knows $T$,
+he can measure the interal between receive pulses,
+divide it by $T$ to calculate $D_B$,
+then use that to calculate $\beta_B$ and $v_B$.
 
 
 \subsubsection{Relationship to Lorentz Ether Theory}
@@ -500,20 +543,20 @@ Note in Sections~\ref{sec:scen1BtoA} and~\ref{sec:scen1AtoB}, that
 except for algebra and the definitions of symbols from
 Section~\ref{sec:sr}, the only assumptions we used from special relativity were:
 \begin{itemize}
-\item The one-way speed of light is $c$ in all directions, as measured
-  by $A$.
-\item $B$'s clock runs at a slower rate, by a factor of $1/\gamma_B$,
-  relative to $A$'s clock.
+\item The one-way speed of light is $c$ in all directions in $A$'s
+  inertial frame.
+\item In $A$'s frame, $B$'s clock runs at a slower rate, by a factor
+  of $1/\gamma_B$, relative to $A$'s clock.
 \end{itemize}
-By Lorentz Ether Theory, if $A$ is at rest relative to the ether, then:
+By Lorentz Ether Theory, suppose that somehow we know that $A$ is at
+rest relative to the ether, then:
 \begin{itemize}
 \item The one-way speed of light is $c$ in all directions relative to
-  the ether, and thus $A$, at rest relative to the ether, will measure
-  that speed for light in all directions.
+  the ether, and thus also relative to $A$.
 \item $B$ is moving at velocity $v_B$ relative to the ether, and thus
-  $B$'s clock physically runs at a slower rate, by a factor of
-  $1/\gamma_B$.  $A$'s clock runs at the full rate of all clocks at
-  that are at rest relative to the ether.
+  $B$'s clock physically runs at a slower rate, $1/\gamma_B$ times as
+  fast as the true time.  $A$'s clock runs at the full rate of true
+  time, the same as any other clocks at rest relative to the ether.
 \end{itemize}
 
 TODO: Find a way to explain the following better.
@@ -998,6 +1041,9 @@ Define it over the entire domain $-1 < \beta < 1$.
 \item $D$ approaches $+\infty$ as $\beta$ approaches 1.
 \item $D$ is an increasing function of $\beta$.
 \end{itemize}
+The last fact is straightforward to confirm by taking the derivative
+of $D$ with respect to $\beta$, and confirming that it is positive
+everwhere for $\beta$ in the range $(-1, +1)$.
 
 \begin{corollary}
 \label{cor:DdeterminesBeta}
