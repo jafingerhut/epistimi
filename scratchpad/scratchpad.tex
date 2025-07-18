@@ -60,6 +60,29 @@
 \usepackage{algorithm, algpseudocode} % use algorithm and algorithmicx for typesetting algorithms
 \usepackage{mathrsfs} % for \mathscr command
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Experiment to create a table with arrows between selected pairs of
+% cells, copied from:
+% https://tex.stackexchange.com/questions/163174/table-with-arrows-between-cells
+\usepackage{tabularx}
+\usepackage{tikz}
+%\tikzset{every picture/.style={remember picture}}
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+\newcolumntype{M}{>{\centering\arraybackslash}m{1cm}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\newcommand\tikzmark[2]{%
+\tikz[remember picture,baseline] \node[inner sep=2pt,outer sep=0] (#1){#2};%
+}
+
+\newcommand\link[2]{%
+\begin{tikzpicture}[remember picture, overlay, >=stealth, shift={(0,0)}]
+  \draw[->] (#1) to (#2);
+\end{tikzpicture}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Author info
 \title{Andy's science scratch pad}
 \author{J. Andrew Fingerhut (\texttt{andy.fingerhut@gmail.com})}
@@ -863,6 +886,63 @@ Here is a summary of what we have shown so far.
   \end{itemize}
 \end{itemize}
 
+The table below is another way to summarize the results of Scenario 1.
+All formulas for periods have been simplified by using $T=1$, i.e. you
+can multiply them all by $T$ to get the original answer derived
+earlier.  It also shows how much the previous period is multiplied by
+to get the next period in the sequence of steps from the sender to the
+receiver.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tabularx}{1.0\textwidth}{|Y|Y|Y|Y|Y|Y|}
+\cline{1-6} \\
+         & Period measured locally on $A$'s clock & multiply by factor & Period deduced by $A$, on $A$'s clock, at $B$'s location & multiply by factor & Period measured locally on $B$'s clock \\ \cline{1-6}
+$A \rightarrow B$ & $1$\tikzmark{ab1r}{} & \tikzmark{ab2l}{}$\frac{1}{1-\beta_B}$\tikzmark{ab2r}{} & \tikzmark{ab3l}{}$\frac{1}{1-\beta_B}$\tikzmark{ab3r}{} & \tikzmark{ab4l}{}$\frac{1}{\gamma_B}$\tikzmark{ab4r}{} & \tikzmark{ab5l}{}$D_B$ \\ \cline{1-6}
+$A \leftarrow B$ & $D_B$\tikzmark{ba1r}{} & \tikzmark{ba2l}{}$(1+\beta_B)$\tikzmark{ba2r}{} & \tikzmark{ba3l}{}$\gamma_B$\tikzmark{ba3r}{} & \tikzmark{ba4l}{}$\gamma_B$\tikzmark{ba4r}{} & \tikzmark{ba5l}{}$1$ \\ \cline{1-6}
+\end{tabularx}
+
+\link{ab1r}{ab2l}
+\link{ab2r}{ab3l}
+\link{ab3r}{ab4l}
+\link{ab4r}{ab5l}
+
+\link{ba5l}{ba4r}
+\link{ba4l}{ba3r}
+\link{ba3l}{ba2r}
+\link{ba2l}{ba1r}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+And the table below is another way to summarize the results of
+Scenario 2:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% I created the table below, with arrows between selected cells, by
+% starting with advice on this Q&A page:
+% https://tex.stackexchange.com/questions/163174/table-with-arrows-between-cells
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{tabularx}{1.0\textwidth}{|Y|Y|Y|Y|Y|Y|Y|Y|}
+\cline{1-8} \\
+         & Period measured locally on $B$'s clock & multiply by factor & Period deduced by $A$, on $A$'s clock, at $B$'s location & multiply by factor & Period deduced by $A$, on $A$'s clock, at $C$'s location & multiply by factor & Period measured locally on $C$'s clock \\ \cline{1-8}
+$B \rightarrow C$ & \tikzmark{bc1l}{} 1 \tikzmark{bc1r}{} & \tikzmark{bc2l}{}$\gamma_B$\tikzmark{bc2r}{} & \tikzmark{bc3l}{}$\gamma_B$\tikzmark{bc3r}{} & \tikzmark{bc4l}{}$\frac{1-\beta_B}{1-\beta_C}$\tikzmark{bc4r}{} & \tikzmark{bc5l}{}$\frac{1-\beta_B}{1-\beta_C}\gamma_B$\tikzmark{bc5r}{} & \tikzmark{bc6l}{}$\frac{1}{\gamma_C}$\tikzmark{bc6r}{} & \tikzmark{bc7l}{}$(D_C/D_B)$ \\ \cline{1-8}
+$B \leftarrow C$ & $(D_C/D_B)$\tikzmark{cb1r}{} & \tikzmark{cb2l}{}$\frac{1}{\gamma_B}$\tikzmark{cb2r}{} & \tikzmark{cb3l}{}$\frac{1+\beta_C}{1+\beta_B} \gamma_C$\tikzmark{cb3r}{} & \tikzmark{cb4l}{}$\frac{1+\beta_C}{1+\beta_B}$\tikzmark{cb4r}{} & \tikzmark{cb5l}{}$\gamma_C$\tikzmark{cb5r}{} & \tikzmark{cb6l}{}$\gamma_C$\tikzmark{cb6r}{} & \tikzmark{cb7l}{}$1$ \\ \cline{1-8}
+\end{tabularx}
+
+\link{bc1r}{bc2l}
+\link{bc2r}{bc3l}
+\link{bc3r}{bc4l}
+\link{bc4r}{bc5l}
+\link{bc5r}{bc6l}
+\link{bc6r}{bc7l}
+
+\link{cb7l}{cb6r}
+\link{cb6l}{cb5r}
+\link{cb5l}{cb4r}
+\link{cb4l}{cb3r}
+\link{cb3l}{cb2r}
+\link{cb2l}{cb1r}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 In every scenarios, all calculations of movement of $B$, $C$, and
 pulse signals were done in $A$'s frame.  Only in the first or last
 steps did we do any time conversions between clocks running at
@@ -881,7 +961,6 @@ If we adopt Lorentz Ether Theory, but remain ignorant of how to
 measure our velocity relative to the ether, Scenario 2's results
 strongly suggest a proper understanding of relative velocity.
 
-
 %\newpage
 \bibliography{refs}
 
@@ -892,7 +971,7 @@ strongly suggest a proper understanding of relative velocity.
 \subsection{Math facts about relativistic velocity addition and subtraction in one dimension}
 \label{app:1drelvelocityadd}
 
-All of the facts here are quite simple to see.  I write them out
+All of the facts here are quite simple to validate.  I write them out
 primarily as an aid to thinking about and remembering them, and they
 might also be useful to refer to from elsewhere in this document.
 
@@ -1051,9 +1130,9 @@ involved.
 
 Define $D$ as given by Definition~\eqref{defn:DopplerFactor}, repeated
 here:
-\begin{equation}
-D = \sqrt{ \frac{1 + \beta}{1 - \beta} } \nonumber
-\end{equation}
+\begin{align*}
+D & = \sqrt{ \frac{1 + \beta}{1 - \beta} } & & \text{Repeat of Defn.~\eqref{defn:DopplerFactor}}
+\end{align*}
 Define it over the entire domain $-1 < \beta < 1$.
 \begin{itemize}
 \item $D$ approaches 0 as $\beta$ approaches -1.
@@ -1062,7 +1141,7 @@ Define it over the entire domain $-1 < \beta < 1$.
 \end{itemize}
 The last fact is straightforward to confirm by taking the derivative
 of $D$ with respect to $\beta$, and confirming that it is positive
-everwhere for $\beta$ in the range $(-1, +1)$.
+for all $\beta$ in the range $(-1, +1)$.
 
 \begin{corollary}
 \label{cor:DdeterminesBeta}
@@ -1075,6 +1154,28 @@ That value is $\beta = \frac{D^2-1}{D^2+1}$.
 Plugging the value $\frac{D^2-1}{D^2+1}$ into
 Definition~\eqref{defn:DopplerFactor} for $\beta$ takes only a little
 algebra to simplify and show it is equal to $D$.
+
+These two equations pop up only occasionly:
+\begin{align}
+D & = \gamma (1+\beta) \label{eqn:Dgammabeta1} \\
+D & = \frac{1}{\gamma (1-\beta)} \label{eqn:Dgammabeta2}
+\end{align}
+Simple algebra to confirm two of the identities above:
+\begin{align*}
+\gamma (1+\beta)
+  & = \frac{1+\beta}{\sqrt{1-\beta^2}} & & \text{Defn. of $\gamma$} \\
+  & = \frac{\sqrt{(1+\beta)(1+\beta)}}{\sqrt{(1+\beta)(1-\beta)}} & & \text{algebra} \\
+  & = \sqrt{ \frac{1+\beta}{1-\beta} } & & \text{algebra, cancelling factor of $\sqrt{1+\beta}$} \\
+  & = D & & \text{Defn. of $D$}
+\end{align*}
+And the second:
+\begin{align*}
+\frac{1}{\gamma (1-\beta)}
+  & = \frac{\sqrt{1-\beta^2}}{1-\beta} & & \text{Defn. of $\gamma$} \\
+  & = \frac{\sqrt{(1+\beta)(1-\beta)}}{\sqrt{(1-\beta)(1-\beta)}} & & \text{algebra} \\
+  & = \sqrt{ \frac{1+\beta}{1-\beta} } & & \text{algebra, cancelling factor of $\sqrt{1-\beta}$} \\
+  & = D & & \text{Defn. of $D$}
+\end{align*}
 
 \begin{theorem}
 \label{thm:velAddLeadsToDopplerFProduct}
