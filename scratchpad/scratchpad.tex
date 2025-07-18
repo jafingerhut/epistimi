@@ -65,7 +65,7 @@
 \author{J. Andrew Fingerhut (\texttt{andy.fingerhut@gmail.com})}
 
 \date{
-        May 31, 2025
+        July 18, 2025
 %	\today
 }
 
@@ -670,6 +670,16 @@ with $C$ subscripts, i.e. use $v_C$, $\gamma_C$, $\beta_C$, and $D_C$.
 So it is only pulses between $B$ and $C$ that might present something
 new here.
 
+Our calculations in the following sections for ping signals between
+$B$ and $C$ assume that throughout the entire duration of sending and
+receiving the pulses of interest, $B$'s position according to its $x$
+coordinate is always less than $C$'s $x$ coordinate.  If that
+condition is ever violated because $B$ crosses paths with $C$, the
+results presented here are no longer applicable after that occurs.  We
+use $I_B$ and $I_C$ to represent their initial distances from $A$, and
+require that these positions, combined with their velocities, will
+ensure this.
+
 
 \subsubsection{$B$ sends periodic pulses to $C$}
 \label{sec:scen2BtoCLETfriendly}
@@ -677,12 +687,6 @@ new here.
 $B$ uses his local clock to time the sending of radio pulses to $C$,
 sending pulses once every time interval $T$, according to $B$'s clock.
 At what period does $C$ receive the pulses?
-
-Our calculations assume that $B$ and $C$ never meet or pass each other
-during the sending of the pulses we are interested in.  We use $I_B$
-and $I_C$ to represent their initial distances from $A$, and require
-that these positions, combined with their velocities, will ensure
-this.
 
 To make the calculations as easily applicable to Lorentz Ether Theory
 as possible, all calculations will be done in $A$'s inertial frame.
@@ -754,6 +758,46 @@ Appendix~\ref{app:DopplerFactor}), and thus also with $v$:
 Aside: If you are curious, the answer provided by ChatGPT for solving
 this problem can be found in Appendix~\ref{sec:scen2BtoCdoublecheck}.
 
+Near the end of Sections~\ref{sec:scen1BtoA} and~\ref{sec:scen1AtoB},
+we noted that if the receiver knew somehow the period $T$ that the
+sender is sending pulses, the receiver could calculate a $D$ value
+that enabled the receiver to determine what the velocity of $B$ is.
+
+In the current scenario, the receiver $C$, if it knows $T$, can
+measure the time interval between pulses it receives, divide by $T$,
+and calculate $(D_C / D_B)$.
+
+Thus, with the measurement of the interval between received pulses,
+given any two of $T$, $v_A$, and $v_B$, $C$ can calculate the other
+one of those (and given values for two of those quantities, there is
+only one value possible for the remaining one).
+But from the measurement of the interval between received pulses and
+$T$, that is not enough information for $C$ to calculate either one of
+$v_B$ or $v_C$.
+
+However, it {\em can} do the following.  Define $D_r = (D_C / D_B)$.
+From Corollary~\ref{thm:velSubLeadsToDopplerFQuotient} in
+Appendix~\ref{app:DopplerFactor}, we know that if
+$\beta_r = \beta_C \ominus \beta_B$ for some $\beta_C, \beta_B$ values
+in the range $(-1, +1)$, then $D_r = D_C / D_B$.
+
+TODO: I am fairly certain it is straightforward to prove the converse:
+If in this scenario $C$ calculates the value value of $D_r$, then
+calculates $\beta_r = (D_r^2-1)/(D_r^2+1)$, then the only possible
+pairs of values $\beta_C, \beta_B$ that could have given this
+measurement are those satisfying $\beta_r = \beta_C \ominus \beta_B$.
+There are an unlimited number of such pairs of values.
+
+This strongly suggests that the receiver can calculate the
+{\em relative} velocity between $B$ and $C$, at least in some sense.
+I am not sure yet how to explain that further.
+
+Also note that if we follow Lorentz Ether Theory, but we have no
+knowledge of how to determine our motion relative to the ether, these
+results show that the receiver can, with knowledge of the sender's
+period $T$, still calculate this kind of relative velocity described,
+which is interesting.
+
 
 \subsubsection{$C$ sends periodic pulses to $B$}
 \label{sec:scen2CtoBLETfriendly}
@@ -781,26 +825,10 @@ and finally:
 r_B(n+1) - r_B(n)
        & = ( D_C / D_B ) T
 \end{align*}
-
-
-\subsubsection{A note on Doppler factors and relativistic velocity addition and subtraction}
-\label{sec:dopplerfactorsandvelocity}
-
-Note that a consequence of the derivation in
-Section~\ref{sec:scen2BtoCdoublecheck} is the following.
-
-If you do relativistic velocity subtraction of $u$ minus $v$,
-resulting in $w$, then the Doppler factor of $w$ is $D_w = D_u / D_v$.
-
-Although not shown in that section, it is pretty much the same algebra
-to show that when you do relativistic velocity addition of $u$ plus
-$v$ resulting in $w$, the Doppler factor of $w$ is $D_w = D_u D_v$.
-
-This is apparently a well-known result among those working with
-relativistic Doppler factors.
-
-TODO: Consider adding a short section showing this more directly with
-a bit of algebra, perhaps?
+Thus $B$, after measuring the interval between received pulses, if it
+knows $T$ somehow and can calculate $(D_C / D_B)$, can also calculate
+the same kind of relative velocity between $B$ and $C$ as described at
+the end of the previous section.
 
 
 \subsection{Summary of results in this section}
@@ -809,8 +837,8 @@ a bit of algebra, perhaps?
 What have we actually proved here?
 
 For a scenario where two or more entities are moving relative to each
-other in a straight line, then according to special relativity, or
-Lorentz Ether Theory:
+other in a straight line, then according to special relativity, and
+also according to Lorentz Ether Theory:
 
 \begin{itemize}
 
@@ -818,8 +846,13 @@ Lorentz Ether Theory:
   experiment where one entity sends pings with period $T$ (according
   to the sender's local clock), and the receiver measures the period
   of the received pings, using its local clock, as period $DT$ where
-  $D$ always looks like a Doppler factor for some speed $v$ related to
-  the relative speed of the sender and receiver.
+  $D$ always looks like a Doppler factor for some velocity $v$ that
+  is, if not precisely the relative velocity of the sender and
+  receiver, seems very strongly related to such a quantity.
+
+\item If we adopt Lorentz Ether Theory, but remain ignorant of how to
+  measure our velocity relative to the ether, Scenario 2's results
+  strongly suggest a proper understanding of relative velocity.
 
 \end{itemize}
 
@@ -1062,6 +1095,9 @@ where $D_{-v}$ is calculated from the definition for $D$ with $-\beta_v$.
 It is straightforward to see from the definition of $D$ that
 $D_{-v} = 1/D_v$, so $D_w = D_u / D_v$.
 \end{proof}
+
+Apparently these facts are well-known among those working with
+relativistic Doppler factors.
 
 
 \section{Double-check results from ChatGPT}
