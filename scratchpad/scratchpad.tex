@@ -650,13 +650,14 @@ precise terminology, a shorter precise statement would perhaps be:
 \end{itemize}
 
 
-\subsection{Special Relativity Scenario 2: Three entities, two of them moving away from the first at constant velocity}
+\subsection{Special Relativity Scenario 2: Three entities, two of them moving at constant velocity}
 \label{sec:scen2}
 
 $A$ is at rest.
-$B$ is moving at constant velocity $v_B$ away from $A$.
-$C$ is moving at constant velocity $v_C > v_B$ away from $A$, in same
-direction that $B$ is moving.
+$B$ is moving at constant velocity $v_B$ relative to $A$,
+which is away from $A$ if $v_B > 0$, or towards $A$ if $v_B < 0$.
+$C$ is moving at constant velocity $v_C$ relative to $A$,
+with same sign conventions as $B$'s velocity.
 
 For $B$ sending periodic pulses to $A$ or vice versa, everything in
 Sections~\ref{sec:scen1BtoA} and~\ref{sec:scen1AtoB} applies without
@@ -677,67 +678,78 @@ $B$ uses his local clock to time the sending of radio pulses to $C$,
 sending pulses once every time interval $T$, according to $B$'s clock.
 At what period does $C$ receive the pulses?
 
-For simplicity of calculations, we will assume that both $B$ and $C$
-pass $A$'s position at time 0, and $A$, $B$, and $C$ all synchronize
-their clocks at that time.  As before, note that the calculation of
-the period for someone receiving pulses is unaffected by whether such
-synchronization is done.
+Our calculations assume that $B$ and $C$ never meet or pass each other
+during the sending of the pulses we are interested in.  We use $I_B$
+and $I_C$ to represent their initial distances from $A$, and require
+that these positions, combined with their velocities, will ensure
+this.
 
-In order to make the calculations as applicable to Lorentz Ether
-Theory as possible, all calculations will be done in $A$'s inertial
-frame.
+To make the calculations as easily applicable to Lorentz Ether Theory
+as possible, all calculations will be done in $A$'s inertial frame.
 
-Define $t_A(n)$ and $t_B(n)$ the same way as they were in
+Define $q_A(n)$ and $q_B(n)$ the same way as they were in
 Section~\ref{sec:scen1BtoA}.  As explained there, when $A$ makes the
 assumptions according to special relativity theory:
 \begin{align}
-t_B(n) & = nT & & \text{by the setup of the experiment} \nonumber \\
-t_A(n) & = \gamma_B nT & & \text{$B$'s clock runs $\gamma_B$ times slower than $A$'s} \label{eqn:scen2timeA} \\
-x_B(t_A) & = v_B t_A & & \text{relationship of $B$'s position and time, in $A$'s frame} \label{eqn:scen2posB} \\
-x_C(t_A) & = v_C t_A & & \text{relationship of $C$'s position and time, in $A$'s frame}
+q_B(n) & = nT & & \text{by the setup of the experiment} \nonumber \\
+t_A & = \gamma_B t_B + \Delta_B & & \text{$B$'s clock runs $\gamma_B$ times slower than $A$'s} \nonumber \\
+q_A(n) & = \gamma_B nT + \Delta_B \label{eqn:scen2timeArelB} \\
+t_A & = \gamma_C t_C + \Delta_C & & \text{$C$'s clock runs $\gamma_C$ times slower than $A$'s} \nonumber \\
+t_C & = t_A/\gamma_C - \Delta_C/\gamma_C & & \text{equivalent to previous equation, but solved for $t_C$} \label{eqn:scen2timeArelC} \\
+x_B(t_A) & = I_B + v_B t_A & & \text{relationship of $B$'s position and time, in $A$'s frame} \label{eqn:scen2posB} \\
+x_C(t_A) & = I_C + v_C t_A & & \text{relationship of $C$'s position and time, in $A$'s frame} \label{eqn:scen2posC}
 \end{align}
 Also by special relativity assumptions, $A$ considers the pulse to
 travel from $B$ to $C$ at constant speed $c$.
-The $n$-th pulse is emitted at time $t_A(n)$ in $A$'s frame,
+The $n$-th pulse is emitted at time $q_A(n)$ in $A$'s frame,
 so its position as a function of $A$'s time $t_A$ is:
 \begin{align*}
 l_A(n, t_A)
   & = \text{position of $B$ when emitted} \\
   &   + \text{distance traveled after emission} \\
-  & = x_B(t_A(n)) + (t_A - t_A(n)) c & & \text{for any time $t_A \geq t_A(n)$} \\
-  & = v_B t_A(n) + (t_A - t_A(n)) c & & \text{substitute Eqn.~\eqref{eqn:scen2posB}} \\
-  & = -(c - v_B) t_A(n) + t_A c & & \text{algebra} \\
-  & = -(c - v_B) \gamma_B nT + t_A c & & \text{substitute Eqn.~\eqref{eqn:scen2timeA}}
+  & = x_B(q_A(n)) + (t_A - q_A(n)) c & & \text{for any time $t_A \geq q_A(n)$} \\
+  & = I_B + v_B q_A(n) + (t_A - q_A(n)) c & & \text{substitute Eqn.~\eqref{eqn:scen2posB}} \\
+  & = (v_B - c) q_A(n) + t_A c + I_B & & \text{algebra} \\
+  & = (v_B - c) \gamma_B nT + t_A c + ((v_B-c)\Delta_B + I_B) & & \text{substitute Eqn.~\eqref{eqn:scen2timeArelB}} \\
+  & = (v_B - c) \gamma_B nT + t_A c + Z & & \text{$Z$ is constants, independent of $n$ and $t_A$}
 \end{align*}
-To find $A$'s time when $C$ receives the pulse,
-solve for $t_A$ that makes the pulse position the same as $C$'s position:
+To find $A$'s time $r_A(n)$ when $C$ receives the pulse,
+solve for the time that makes the pulse position the same as $C$'s position:
 \begin{align*}
-x_C(t_A) & = l_A(n, t_A) \\
-v_C t_A  & = -(c - v_B) \gamma_B nT + t_A c \\
-(c - v_B) \gamma_B nT & = (c - v_C) t_A & & \text{algebra} \\
-t_A & = \frac{c - v_B}{c - v_C} \gamma_B nT & & \text{algebra} \\
-t_A & = \frac{1 - \beta_B}{1 - \beta_C} \gamma_B nT & & \text{defn. of $\beta_B, \beta_C$}
+x_C(r_A(n)) & = l_A(n, r_A(n)) \\
+I_C + v_C r_A(n) & = (v_B - c) \gamma_B nT + r_A(n) c + Z & & \text{substitute Eqn.~\eqref{eqn:scen2posC}} \\
+(v_C - c) r_A(n) & = (v_B - c) \gamma_B nT + (Z - I_C) & & \text{algebra} \\
+r_A(n) & = \frac{v_B - c}{v_C - c} \gamma_B nT + \frac{Z - I_C}{v_C - c} & & \text{divide by $v_C-c$} \\
+r_A(n) & = \frac{1 - \beta_B}{1 - \beta_C} \gamma_B nT + \frac{Z - I_C}{v_C - c} & & \text{defn. of $\beta_B, \beta_C$} \\
+r_A(n) & = \frac{1 - \beta_B}{1 - \beta_C} \gamma_B nT + Y & & \text{$Y$ is a constant, independent of $n$}
 \end{align*}
 According to $A$ and its special relativity assumptions,
 $C$'s clock runs slower, at a rate $1/\gamma_C$ times that of $A$'s clock.
 So $C$'s time $r_C(n)$ to receive the $n$-th pulse sent by $B$ is:
-\begin{align}
-r_C(n) & = \frac{1}{\gamma_C} t_A \\
-       & = \frac{\gamma_B}{\gamma_C} \left( \frac{1-\beta_B}{1-\beta_C} \right) nT \\
-       & = \sqrt{ \frac{1-\beta_C^2}{1-\beta_B^2} } \left( \frac{1-\beta_B}{1-\beta_C} \right) nT \\
-       & = \sqrt{ \frac{1+\beta_C}{1-\beta_C} } \sqrt { \frac{1-\beta_B}{1+\beta_B} } nT & & \text{algebra} \\
-       & = ( D_C / D_B ) nT & & \text{defn. of $D_B, D_C$}
-\end{align}
-So when $B$ sends pulses with period $T$ according to $B$'s clock,
-$C$ receives from $B$ pulses with period $(D_C / D_B) T$ on $C$'s clock.
+\begin{align*}
+r_C(n) & = \frac{1}{\gamma_C} r_A(n) - \Delta_C/\gamma_C & & \text{Eqn.~\eqref{eqn:scen2timeArelC}} \\
+       & = \frac{\gamma_B}{\gamma_C} \left( \frac{1-\beta_B}{1-\beta_C} \right) nT + \frac{Y-\Delta_C}{\gamma_C}
+\end{align*}
+The time that $B$ measures on his clock between two consecutive received
+pulses is:
+\begin{align*}
+r_C(n+1) - r_C(n)
+  & = \frac{\gamma_B}{\gamma_C} \left( \frac{1-\beta_B}{1-\beta_C} \right) T \\
+  & = \sqrt{ \frac{1-\beta_C^2}{1-\beta_B^2} } \left( \frac{1-\beta_B}{1-\beta_C} \right) T & & \text{Defn.~\eqref{defn:LorentzFactor}} \\
+  & = \sqrt{ \frac{1+\beta_C}{1-\beta_C} } \sqrt { \frac{1-\beta_B}{1+\beta_B} } T & & \text{algebra} \\
+  & = ( D_C / D_B ) T & & \text{defn. of $D_B, D_C$}
+\end{align*}
+So when $B$ sends pulses with period $T$ according to $B$'s clock, $C$
+receives from $B$ pulses with period $(D_C / D_B) T$ on $C$'s clock.
 
-Since $D$ increases with $\beta$, and thus also with $v$, and since
-$v_C > v_B$, $D_C > D_B$, and $(D_C / D_B) > 1$.
-
-Note: If you perform the calculations in a similar scenario where
-$v_C < v_B$, they end up nearly identical to what is shown above.
-The final answer is still $(D_C / D_B) T$ for the period at which $C$
-receives pulses, but in this case $(D_C / D_B) < 1$ because $v_C < v_B$.
+Since $D > 0$ and it increases with $\beta$ (see
+Appendix~\ref{app:DopplerFactor}), and thus also with $v$:
+\begin{itemize}
+\item If $v_c > v_B$, then $C$ and $B$ are moving away relative to
+  each other, and $D_C > D_B$, thus $(D_C / D_B) > 1$.
+\item If $v_c < v_B$, then $C$ and $B$ are getting closer over time,
+  and $D_C < D_B$, thus $(D_C / D_B) < 1$.
+\end{itemize}
 
 Aside: If you are curious, the answer provided by ChatGPT for solving
 this problem can be found in Appendix~\ref{sec:scen2BtoCdoublecheck}.
@@ -754,24 +766,21 @@ noticeable differences.
 The formula $l_A(n,t_A)$ for the position of the $n$-th pulse emitted
 by $C$ at $A$'s time $t_A$ is:
 \begin{equation}
-l_A(n, t_A) = (c + v_C) \gamma_C nT - t_A c
+l_A(n, t_A) = (v_C + c) \gamma_C nT - t_A c + Z'
 \end{equation}
-$A$'s time when $B$ receives the $n$-th pulse $t_A$ is:
+$A$'s time when $B$ receives the $n$-th pulse $r_A(n)$ is:
 \begin{equation}
-t_A = \frac{1 + \beta_C}{1 + \beta_B} \gamma_C nT
+r_A(n) = \frac{1 + \beta_C}{1 + \beta_B} \gamma_C nT + Y'
 \end{equation}
 and $B$'s time when it receives the $n$-th pulse from $C$ is:
 \begin{align*}
-r_B(n) & = \frac{1}{\gamma_B} t_A \\
-       & = ( D_C / D_B ) nT
+r_B(n) & = \frac{1}{\gamma_B} r_A(n) + (\text{constants independent of $n$})
 \end{align*}
-That is exactly the same local time period that $C$ measures for
-pulses sent from $B$.
-
-Note: As noted at the end of Section~\ref{sec:scen2BtoCLETfriendly},
-if you perform the calculations for the same scenario, except $v_C < v_B$,
-the final answer is the same period $(D_C / D_B) T$.  As noted there,
-this is less than $T$ when $v_C < v_B$.
+and finally:
+\begin{align*}
+r_B(n+1) - r_B(n)
+       & = ( D_C / D_B ) T
+\end{align*}
 
 
 \subsubsection{A note on Doppler factors and relativistic velocity addition and subtraction}
@@ -1062,7 +1071,7 @@ $D_{-v} = 1/D_v$, so $D_w = D_u / D_v$.
 \label{sec:scen2BtoCdoublecheck}
 
 Since at the time of first performing the calculations in
-Section~\label{sec:scen2BtoCLETfriendly} I was still fairly new to
+Section~\ref{sec:scen2BtoCLETfriendly} I was still fairly new to
 such things, I wanted a way to double-check the results.  I asked
 ChatGPT what the period would be that $C$ would receive pulses from
 $B$ and it gave an answer close to the following.
