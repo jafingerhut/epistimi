@@ -739,51 +739,8 @@ $v_C < v_B$, they end up nearly identical to what is shown above.
 The final answer is still $(D_C / D_B) T$ for the period at which $C$
 receives pulses, but in this case $(D_C / D_B) < 1$ because $v_C < v_B$.
 
-
-\subsubsection{$B$ sends periodic pulses to $C$, double-check by ChatGPT}
-\label{sec:scen2BtoCdoublecheck}
-
-Since at the time of performing calculations in the previous section I
-was still fairly new to such things, I wanted a way to double-check
-the results.  I asked ChatGPT what the period would be that $C$ would
-receive pulses from $B$ and it gave an answer close to the following.
-
-Calculate the velocity of $B$ in $C$'s frame using relativistic
-velocity subtraction:
-\begin{align}
-u' & = \frac{v_B - v_C}{1 - \frac{v_B v_C}{c^2}} \\
-\beta' & = \frac{\beta_B - \beta_C}{1 - \beta_B \beta_C}
-\end{align}
-
-Since $v_B < v_C$, the numerator is negative.  The denominator is
-positive.  Thus $u' < 0$ and $\beta' < 0$.  Thus in $C$'s frame, $B$
-is moving in the negative $x$ direction, and $C$ is at rest.
-
-For receding motion:
-\begin{equation}
-T_{\text{observed}} = T_{\text{emitted}} \sqrt{ \frac{1+\beta}{1-\beta} }
-\end{equation}
-where:
-\begin{equation}
-\beta = \frac{|u'|}{c} = |\beta'|
-\end{equation}
-Since $\beta' < 0$:
-\begin{equation}
-|\beta'| = -\beta' = \frac{\beta_C - \beta_B}{1 - \beta_B \beta_C}
-\end{equation}
-From here on this is mostly just algebra:
-\begin{align*}
-\frac{T_{\text{observed}}}{T_{\text{emitted}}}
-  & = \sqrt{ \frac{1+\beta}{1-\beta} } \\
-  & = \sqrt{ \frac{1 + \frac{\beta_C - \beta_B}{1 - \beta_B \beta_C}}{1 - \frac{\beta_C - \beta_B}{1 - \beta_B \beta_C}} } \\
-  & = \sqrt{ \frac{1 - \beta_C \beta_B + (\beta_C - \beta_B)}{1 - \beta_C \beta_B - (\beta_C - \beta_B)} } \\
-  & = \sqrt{ \frac{(1 + \beta_C) (1 - \beta_B)}{(1 - \beta_C) (1 + \beta_B)} } \\
-  & = D_C / D_B & & \text{defn. of $D_B, D_C$}
-\end{align*}
-This is the same result, calculated in a fairly different way, using
-the assumptions of special relativity, which ChatGPT is much better at
-answering questions about than it is any alternatives that are not
-special relativity.
+Aside: If you are curious, the answer provided by ChatGPT for solving
+this problem can be found in Appendix~\ref{sec:scen2BtoCdoublecheck}.
 
 
 \subsubsection{$C$ sends periodic pulses to $B$}
@@ -1096,5 +1053,58 @@ where $D_{-v}$ is calculated from the definition for $D$ with $-\beta_v$.
 It is straightforward to see from the definition of $D$ that
 $D_{-v} = 1/D_v$, so $D_w = D_u / D_v$.
 \end{proof}
+
+
+\section{Double-check results from ChatGPT}
+
+
+\subsection{Scenario 2, $B$ sends periodic pulses to $C$, double-check by ChatGPT}
+\label{sec:scen2BtoCdoublecheck}
+
+Since at the time of first performing the calculations in
+Section~\label{sec:scen2BtoCLETfriendly} I was still fairly new to
+such things, I wanted a way to double-check the results.  I asked
+ChatGPT what the period would be that $C$ would receive pulses from
+$B$ and it gave an answer close to the following.
+
+Note: I only asked it about the case where $v_C > v_B > 0$.
+
+Calculate the velocity of $B$ in $C$'s frame using relativistic
+velocity subtraction:
+\begin{align}
+u' & = \frac{v_B - v_C}{1 - \frac{v_B v_C}{c^2}} \\
+\beta' & = \frac{\beta_B - \beta_C}{1 - \beta_B \beta_C}
+\end{align}
+
+Since $v_B < v_C$, the numerator is negative.  The denominator is
+positive.  Thus $u' < 0$ and $\beta' < 0$.  Thus in $C$'s frame, $B$
+is moving in the negative $x$ direction, and $C$ is at rest.
+
+For receding motion:
+\begin{equation}
+T_{\text{observed}} = T_{\text{emitted}} \sqrt{ \frac{1+\beta}{1-\beta} }
+\end{equation}
+where:
+\begin{equation}
+\beta = \frac{|u'|}{c} = |\beta'|
+\end{equation}
+Since $\beta' < 0$:
+\begin{equation}
+|\beta'| = -\beta' = \frac{\beta_C - \beta_B}{1 - \beta_B \beta_C}
+\end{equation}
+From here on this is mostly just algebra:
+\begin{align*}
+\frac{T_{\text{observed}}}{T_{\text{emitted}}}
+  & = \sqrt{ \frac{1+\beta}{1-\beta} } \\
+  & = \sqrt{ \frac{1 + \frac{\beta_C - \beta_B}{1 - \beta_B \beta_C}}{1 - \frac{\beta_C - \beta_B}{1 - \beta_B \beta_C}} } \\
+  & = \sqrt{ \frac{1 - \beta_C \beta_B + (\beta_C - \beta_B)}{1 - \beta_C \beta_B - (\beta_C - \beta_B)} } \\
+  & = \sqrt{ \frac{(1 + \beta_C) (1 - \beta_B)}{(1 - \beta_C) (1 + \beta_B)} } \\
+  & = D_C / D_B & & \text{defn. of $D_B, D_C$}
+\end{align*}
+This is the same result, calculated in a fairly different way, using
+the assumptions of special relativity, which ChatGPT is much better at
+answering questions about than it is any alternatives that are not
+special relativity.
+
 
 \end{document}
