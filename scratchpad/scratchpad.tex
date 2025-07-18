@@ -19,8 +19,8 @@
 	unicode,
 %	colorlinks,
 %	breaklinks,
-%	urlcolor=cyan, 
-%	linkcolor=blue, 
+%	urlcolor=cyan,
+%	linkcolor=blue,
 	pdfauthor={Author One, Author Two, Author Three},
 	pdftitle={A simple article template},
 	pdfsubject={A simple article template},
@@ -827,10 +827,158 @@ Lorentz Ether Theory:
 %\newpage
 \bibliography{refs}
 
-%\appendix
+\appendix
 
-%\section{Omitted Proof in Section~\ref{sec:examples}}
-%\label{app:1}
+\section{Miscellaneous math facts about relativistic velocity addition and subtraction in one dimension}
+\label{app:1drelvelocityadd}
 
-	
+All of the facts here are quite simple to see.  I write them out
+primarily as an aid to thinking about and remembering them, and they
+might also be useful to refer to from elsewhere in this document.
+
+Note that this appendix is restricted to proofs of simple mathematical
+relationships about the definitions of one-dimensional relativistic
+velocity addition and subtraction formulas.  This appendix makes no
+claims about the physical meaning of these operations.
+
+I have read that relativistic velocity addition in 3 dimensions is not
+associative.  TODO: If I add any discussion of 3-dimensional
+relativity examples to this document, it would be nice to give an
+example, perhaps in a separate appendix.
+
+In one dimension, though, all velocities of subliminal entities can be
+represented by $v$ such that $-c < v < c$, where negative velocities
+are in the opposite direction along the line than positive velocities.
+
+The can also be represented as relativistic velocity $\beta = v/c$,
+i.e. a fraction of $c$.  These are in the range $-1 < \beta < 1$.
+
+I will use the notation $v \oplus w$ for relativistic velocity
+addition.  While I will use the same symbol $\beta_v \oplus \beta_w$
+for relativistic velocity addition of relativistic velocity values,
+one should be careful to note that the definition of the operator
+$\oplus$ is slightly different for these two cases.
+
+\begin{align}
+v \oplus w & = \frac{v+w}{1+\frac{vw}{c^2}} \label{defn:reladd1} \\
+v \ominus w & = \frac{v-w}{1-\frac{vw}{c^2}} \label{defn:relsub1} \\
+\beta_v \oplus \beta_w & = \frac{\beta_v+\beta_w}{1+\beta_v \beta_w} \label{defn:reladd2} \\
+\beta_v \ominus \beta_w & = \frac{\beta_v-\beta_w}{1- \beta_v \beta_w} \label{defn:relsub2}
+\end{align}
+
+The proofs are only given for the relativistic velocity
+formulas~\eqref{defn:reladd2} and~\eqref{defn:relsub2}.  The proofs
+for equations~\eqref{defn:reladd1}
+and~\eqref{defn:relsub1} are nearly identical.
+
+We will use the symbols $a, b, c$ to represent arbitrary real values
+between -1 and 1, to avoid writing $\beta$ with subscripts all over
+the place.
+
+\begin{align}
+a \oplus b & = b \oplus a & & \text{addition is commutative} \label{defn:reladdcommutative} \\
+(a \oplus b) \oplus c & = a \oplus (b \oplus c) & & \text{addition is associative (1-d only, not 3-d!)} \label{defn:1dreladdassociative} \\
+a \oplus 0 & = 0 \oplus a = a \\
+a \oplus (-b) & = a \ominus b \\
+a \ominus (-b) & = a \oplus b \\
+0 \ominus b & = -b \\
+a \ominus b & = - (b \ominus a)
+\end{align}
+The following inequalities only hold if $0 < a < 1$ and $0 < b < 1$:
+\begin{align}
+a \oplus b & > a \label{inequal:reladdposlarger1} \\
+a \oplus b & > b \label{inequal:reladdposlarger2} \\
+a \oplus b & < a+b \label{inequal:reladdpossmallerthansum}
+\end{align}
+The following inequality holds for all $-1 < a < 1$ and $-1 < b < 1$:
+\begin{align}
+-1 < a \oplus b & < 1 \label{inequal:reladdpossmallerthanc}
+\end{align}
+The last one is only slightly different if we use velocity addition on
+normal velocities, i.e. velocities that are not relativistic velocities,
+where $-c < v < c$ and $-c < w < c$:
+\begin{align}
+-c < v \oplus w & < c \label{inequal:reladdpossmallerthanc2}
+\end{align}
+The inequalities all have examples where the two sides can be very
+nearly equal, such as these:
+\begin{align*}
+0.1 \oplus 0.001 & \approx 0.100989901 > 0.1 \\
+0.1 \oplus 0.1 & \approx 0.198019802 < 0.1+0.1 \\
+0.99 \oplus 0.99 & \approx 0.999949498 < 1
+\end{align*}
+
+Proving most of these is as simple as substituting the definition of
+$a \oplus b$ and $a \ominus b$, and a tiny amount of algebra.
+
+Proving associativity~\eqref{defn:1dreladdassociative} is only a
+little bit more algebra, but we will do the steps here:
+\begin{align*}
+(a \oplus b) \oplus c
+  & = \frac{\frac{a+b}{1+ab}+c}{1+\left(\frac{a+b}{1+ab}\right)c} & & \text{use Defn.~\eqref{defn:reladd2} twice} \\
+  & = \frac{(a+b)+c(1+ab)}{(1+ab)+(a+b)c} & & \text{multiply numerator and denominator by $(1+ab)$} \\
+  & = \frac{a+b+c+abc}{1+ab+ac+bc} & & \text{multiply out the terms}
+\end{align*}
+Similarly:
+\begin{align*}
+a \oplus (b \oplus c)
+  & = \frac{a+\frac{b+c}{1+bc}}{1+a\left(\frac{b+c}{1+bc}\right)} & & \text{use Defn.~\eqref{defn:reladd2} twice} \\
+  & = \frac{a(1+bc)+(b+c)}{(1+bc)+a(b+c)} & & \text{multiply numerator and denominator by $(1+bc)$} \\
+  & = \frac{a+abc+b+c}{1+bc+ab+ac} & & \text{multiply out the terms}
+\end{align*}
+The above two final results are easily seen to be equal.
+
+The inequalities are also not difficult to prove, but we will write
+out their short proofs.  Recall that these inequalities are true only
+for $0 < a < 1$ and $0 < b < 1$.  Similar inequality hold if both $a$
+and $b$ are negative.
+
+For the proof of inequality~\eqref{inequal:reladdposlarger1}, recall
+that we can multiply or divide both sides of an inequality by the same
+positive number, and the resulting inequality is true if and only if
+the original one was.  The symbol $\Leftrightarrow$ below means ``if
+and only if'', i.e. the expression before is true if and only if the
+expression after is true.
+\begin{align*}
+a < \frac{a+b}{1+ab}
+  & \Leftrightarrow a + a^2 b < a+b & & \text{multiply both sides by $1+ab$, which is positive} \\
+  & \Leftrightarrow a^2 b < b & & \text{subtract $a$ from both sides} \\
+  & \Leftrightarrow a^2 < 1 & & \text{divide both sides by $b$, which is positive}
+\end{align*}
+The last inequality is true because $a < 1$.
+The proof of inequality~\eqref{inequal:reladdposlarger2} is the same
+as above.
+
+To prove $a \oplus b < a+b$
+(inequality~\eqref{inequal:reladdpossmallerthansum}):
+\begin{align*}
+\frac{a+b}{1+ab} < a+b
+  & \Leftrightarrow a+b < (a+b)(1+ab) & & \text{multiply both sides by $1+ab$, which is positive} \\
+  & \Leftrightarrow 1 < (1+ab) & & \text{divide both sides by $a+b$, which is positive} \\
+  & \Leftrightarrow 0 < ab & & \text{subtract 1 from both sides}
+\end{align*}
+The final inequality is true because both $a$ and $b$ are positive.
+
+Now to prove $a \oplus b < 1$ (part of
+inequality~\eqref{inequal:reladdpossmallerthanc}), but recall now we
+are doing so for the more general case of all values $-1 < a < 1$ and
+$-1 < b < 1$:
+\begin{align*}
+\frac{a+b}{1+ab} < 1
+  & \Leftrightarrow a+b < 1+ab & & \text{multiply both sides by $1+ab$, which is positive} \\
+  & \Leftrightarrow b-ab < 1-a & & \text{subtract $a+ab$ from both sides} \\
+  & \Leftrightarrow b(1-a) < 1-a & & \text{algebra} \\
+  & \Leftrightarrow b < 1 & & \text{divide both sides by $1-a$, which is positive}
+\end{align*}
+And the last inequality is true.  Proving the part that
+
+\begin{align*}
+-1 < \frac{a+b}{1+ab}
+  & \Leftrightarrow -(1+ab) < a+b & & \text{multiply both sides by $1+ab$, which is positive} \\
+  & \Leftrightarrow -(1+a) < b+ab & & \text{add $ab-a$ to both sides} \\
+  & \Leftrightarrow -(1+a) < b(1+a) & & \text{algebra} \\
+  & \Leftrightarrow -1 < b & & \text{divide both sides by $1+a$, which is positive}
+\end{align*}
+And the last inequality is true.
+
 \end{document}
