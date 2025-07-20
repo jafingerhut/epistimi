@@ -1273,4 +1273,99 @@ answering questions about than it is any alternatives that are not
 special relativity.
 
 
+\subsection{Rules for the use of the Doppler factor formula in special relatitivity}
+\label{sec:DopplerFactorSignRules}
+
+In a fairly long interaction with ChatGPT that I had regarding
+questions related to Special Relativity, I asked:
+\begin{quote}
+What are the rules for the beta value to use in the Doppler factor
+formula?
+\end{quote}
+This section contains the answer I received.
+
+My goal is to compare these rules against the way I have used the
+formula for $D$ elsewhere in this document, and do one of the following:
+\begin{itemize}
+\item update the document to make my use of $D$ consistent with widely
+  accepted rules for its use, or
+\item use a different symbol and name for the formula, perhaps calling
+  mine a ``modified Doppler factor'', and describe as clearly as
+  possible the difference between them.
+\end{itemize}
+
+Here begins the ChatGPT answer to the question above.
+
+Here is a clear, precise technical guide for choosing the correct
+$\beta$ sign in the relativistic Doppler factor:
+
+\paragraph{Doppler factor formula}
+
+For longitudinal (collinear) motion, the relativistic Doppler factor is:
+\begin{equation}
+D = \sqrt{ \frac{1+\beta}{1-\beta} }
+\end{equation}
+where:
+\begin{equation}
+\beta = \frac{v}{c}
+\end{equation}
+The observed period:
+\begin{equation}
+T_{obs} = \frac{T_{emit}}{D}
+\end{equation}
+and the observed frequency:
+\begin{equation}
+f_{obs} = D f_{emit}
+\end{equation}
+
+\paragraph{Rule for $\beta$}
+
+\begin{equation}
+\beta = \frac{v_{source,relative to observer}}{c}
+\end{equation}
+where:
+\begin{itemize}
+\item $v_{source,relative to observer}$ is the velocity of the source measured in the observer's frame,
+\item Positive if source is moving toward the observer,
+\item Negative if source is moving away from the observer.
+\end{itemize}
+
+\paragraph{Rule for interpreting the sign:}
+
+If the source and observer are approacahing each other, use:
+\begin{equation}
+\beta > 0
+\end{equation}
+leading to:
+\begin{equation}
+D > 1 \Rightarrow f_{obs} > f_{emit}
+\end{equation}
+(blueshift, period decreases).
+
+If the source and observer are receding from each other, use:
+\begin{equation}
+\beta < 0
+\end{equation}
+leading to:
+\begin{equation}
+D < 1 \Rightarrow f_{obs} < f_{emit}
+\end{equation}
+(redshift, period increases).
+
+\paragraph{How to determine $\beta$ systematically:}
+
+\begin{enumerate}
+\item Choose observer's frame as the reference.
+\item Compute source's velocity in that frame.
+\item If source moving toward observer: $\beta > 0$.  If source moving away from observer: $\beta < 0$.
+\item Plug into:
+\begin{equation}
+D = \sqrt{ \frac{1+\beta}{1-\beta} }
+\end{equation}
+\end{enumerate}
+
+It will automatically give you the correct Doppler shift direction
+(blushift or redshift).
+
+
 \end{document}
