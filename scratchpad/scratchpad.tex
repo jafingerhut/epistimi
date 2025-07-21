@@ -695,12 +695,17 @@ new here.
 
 Our calculations in the following sections for pulse signals between
 $B$ and $C$ assume that throughout the entire duration of sending and
-receiving the pulses of interest, $B$'s position according to its $x$
-coordinate is always less than $C$'s $x$ coordinate.  If that
-condition is ever violated because $B$ crosses paths with $C$, the
-results presented here are no longer applicable after that occurs.  We
-use $I_B$ and $I_C$ to represent their initial distances from $A$, and
-require that these positions, combined with their velocities, will
+receiving the pulses of interest, either:
+\begin{itemize}
+\item $B$'s position according to its $x$ coordinate is always less
+  than $C$'s $x$ coordinate, or
+\item $B$'s position according to its $x$ coordinate is always greater
+  than $C$'s $x$ coordinate, or
+\end{itemize}
+If that condition is ever violated because $B$ crosses paths with $C$,
+the results presented here are no longer applicable after that occurs.
+We use $I_B$ and $I_C$ to represent their initial distances from $A$,
+and require that these positions, combined with their velocities, will
 ensure this.
 
 
@@ -729,54 +734,86 @@ x_C(t_A) & = I_C + v_C t_A & & \text{relationship of $C$'s position and time, in
 Also by special relativity assumptions, $A$ considers the pulse to
 travel from $B$ to $C$ at constant speed $c$.
 The $n$-th pulse is emitted at time $q_A(n)$ in $A$'s frame,
-so its position as a function of $A$'s time $t_A$ is:
+so its position as a function of $A$'s time $t_A$ is given by
+$l_A(n, t_A)$ below.
+Note that $d$ is 1 if $C$'s $x$ coordinate is greater than $B$'s, and
+thus the pulse of interest is moving in the increasing $x$
+direction.  Otherwise $d$ is -1.
 \begin{align*}
 l_A(n, t_A)
   & = \text{position of $B$ when emitted} \\
   &   + \text{distance traveled after emission} \\
-  & = x_B(q_A(n)) + (t_A - q_A(n)) c & & \text{for any time $t_A \geq q_A(n)$} \\
-  & = I_B + v_B q_A(n) + (t_A - q_A(n)) c & & \text{substitute Eqn.~\eqref{eqn:scen2posB}} \\
-  & = (v_B - c) q_A(n) + t_A c + I_B & & \text{algebra} \\
-  & = (v_B - c) \gamma_B nT + t_A c + ((v_B-c)\Delta_B + I_B) & & \text{substitute Eqn.~\eqref{eqn:scen2timeArelB}} \\
-  & = (v_B - c) \gamma_B nT + t_A c + Z & & \text{$Z$ is constants, independent of $n$ and $t_A$}
+  & = x_B(q_A(n)) + d (t_A - q_A(n)) c & & \text{for any time $t_A \geq q_A(n)$} \\
+  & = I_B + v_B q_A(n) + d (t_A - q_A(n)) c & & \text{substitute Eqn.~\eqref{eqn:scen2posB}} \\
+  & = (v_B - dc) q_A(n) + dc t_A + I_B & & \text{algebra} \\
+  & = (v_B - dc) \gamma_B nT + dc t_A + ((v_B-c)\Delta_B + I_B) & & \text{substitute Eqn.~\eqref{eqn:scen2timeArelB}} \\
+  & = (v_B - dc) \gamma_B nT + dc t_A + Z & & \text{$Z$ is constants, independent of $n$ and $t_A$}
 \end{align*}
 To find $A$'s time $r_A(n)$ when $C$ receives the pulse,
 solve for the time that makes the pulse position the same as $C$'s position:
 \begin{align*}
 x_C(r_A(n)) & = l_A(n, r_A(n)) \\
-I_C + v_C r_A(n) & = (v_B - c) \gamma_B nT + r_A(n) c + Z & & \text{substitute Eqn.~\eqref{eqn:scen2posC}} \\
-(v_C - c) r_A(n) & = (v_B - c) \gamma_B nT + (Z - I_C) & & \text{algebra} \\
-r_A(n) & = \frac{v_B - c}{v_C - c} \gamma_B nT + \frac{Z - I_C}{v_C - c} & & \text{divide by $v_C-c$} \\
-r_A(n) & = \frac{1 - \beta_B}{1 - \beta_C} \gamma_B nT + \frac{Z - I_C}{v_C - c} & & \text{defn. of $\beta_B, \beta_C$} \\
-r_A(n) & = \frac{1 - \beta_B}{1 - \beta_C} \gamma_B nT + Y & & \text{$Y$ is a constant, independent of $n$}
+I_C + v_C r_A(n) & = (v_B - dc) \gamma_B nT + dc r_A(n) + Z & & \text{substitute Eqn.~\eqref{eqn:scen2posC}} \\
+(v_C - dc) r_A(n) & = (v_B - dc) \gamma_B nT + (Z - I_C) & & \text{algebra} \\
+r_A(n) & = \frac{v_B - dc}{v_C - dc} \gamma_B nT + \frac{Z - I_C}{v_C - c} & & \text{divide by $v_C-dc$} \\
+r_A(n) & = \frac{d - \beta_B}{d -  \beta_C} \gamma_B nT + \frac{Z - I_C}{v_C - c} & & \text{defn. of $\beta_B, \beta_C$} \\
+r_A(n) & = \frac{d - \beta_B}{d - \beta_C} \gamma_B nT + Y & & \text{$Y$ is a constant, independent of $n$}
 \end{align*}
 According to $A$ and its special relativity assumptions,
 $C$'s clock runs slower, at a rate $1/\gamma_C$ times that of $A$'s clock.
 So $C$'s time $r_C(n)$ to receive the $n$-th pulse sent by $B$ is:
 \begin{align*}
 r_C(n) & = \frac{1}{\gamma_C} r_A(n) - \Delta_C/\gamma_C & & \text{Eqn.~\eqref{eqn:scen2timeArelC}} \\
-       & = \frac{\gamma_B}{\gamma_C} \left( \frac{1-\beta_B}{1-\beta_C} \right) nT + \frac{Y-\Delta_C}{\gamma_C}
+       & = \frac{\gamma_B}{\gamma_C} \left( \frac{d-\beta_B}{d-\beta_C} \right) nT + \frac{Y-\Delta_C}{\gamma_C}
 \end{align*}
 The time that $B$ measures on his clock between two consecutive received
 pulses is:
 \begin{align*}
 r_C(n+1) - r_C(n)
-  & = \frac{\gamma_B}{\gamma_C} \left( \frac{1-\beta_B}{1-\beta_C} \right) T \\
-  & = \sqrt{ \frac{1-\beta_C^2}{1-\beta_B^2} } \left( \frac{1-\beta_B}{1-\beta_C} \right) T & & \text{Defn.~\eqref{defn:LorentzFactor}} \\
+  & = \frac{\gamma_B}{\gamma_C} \left( \frac{d-\beta_B}{d-\beta_C} \right) T \\
+  & = \sqrt{ \frac{1-\beta_C^2}{1-\beta_B^2} } \left( \frac{d-\beta_B}{d-\beta_C} \right) T & & \text{Defn.~\eqref{defn:LorentzFactor}}
+\end{align*}
+From here there are two slightly different cases, depending on the
+value of $d$.  First let us finish the problem for the case of $d=1$,
+when $C$ is at a greater $x$ coordinate than $B$:
+\begin{align*}
+r_C(n+1) - r_C(n)
   & = \sqrt{ \frac{1+\beta_C}{1-\beta_C} } \sqrt { \frac{1-\beta_B}{1+\beta_B} } T & & \text{algebra} \\
   & = ( D_C / D_B ) T & & \text{defn. of $D_B, D_C$}
 \end{align*}
-So when $B$ sends pulses with period $T$ according to $B$'s clock, $C$
-receives from $B$ pulses with period $(D_C / D_B) T$ on $C$'s clock.
+Now for the case $d=-1$, when $C$ is at a lesser $x$ coordinate than
+$B$:
+\begin{align*}
+r_C(n+1) - r_C(n)
+  & = \sqrt{ \frac{1-\beta_C^2}{1-\beta_B^2} } \left( \frac{-1-\beta_B}{-1-\beta_C} \right) T \\
+  & = \sqrt{ \frac{1-\beta_C^2}{1-\beta_B^2} } \left( \frac{1+\beta_B}{1+\beta_C} \right) T & & \text{algebra} \\
+  & = \sqrt{ \frac{1-\beta_C}{1+\beta_C} } \sqrt { \frac{1+\beta_B}{1-\beta_B} } T & & \text{algebra} \\
+  & = ( D_B / D_C ) T & & \text{defn. of $D_B, D_C$}
+\end{align*}
+
+So when $B$ sends pulses with period $T$ according to $B$'s clock, and
+$C$ is at a greater $x$ coordinate than $B$, $C$ receives from $B$
+pulses with period $(D_C / D_B) T$ on $C$'s clock.  If $C$ is at a
+lesser $x$ coordinate than $B$, $C$ receives pulses with period
+$(D_B / D_C) T$ on $C$'s clock.
 
 Since $D > 0$ and it increases with $\beta$ (see
-Appendix~\ref{app:DopplerFactor}), and thus also with $v$:
-\begin{itemize}
-\item If $v_c > v_B$, then $C$ and $B$ are moving away relative to
-  each other, and $D_C > D_B$, thus $(D_C / D_B) > 1$.
-\item If $v_c < v_B$, then $C$ and $B$ are getting closer over time,
-  and $D_C < D_B$, thus $(D_C / D_B) < 1$.
-\end{itemize}
+Appendix~\ref{app:DopplerFactor}), and thus also with $v$,
+$(D_C / D_B)$ is greater than 1 if $v_C > v_B$, otherwise less than 1,
+and $(D_B / D_C)$ is greater than 1 if $v_C < v_B$.
+
+\begin{tabularx}{1.0\textwidth}{|p{4cm}|p{4cm}|p{4cm}|}
+\cline{1-3} \\
+       & $v_c < v_B$ & $v_c > v_B$ \\ \cline{1-3}
+$C$ is at greater $x$ coordinate than $B$ & $C$ and $B$ getting closer.  $(D_C / D_B) < 1$ & $C$ and $B$ getting further.  $(D_C / D_B) > 1$ \\ \cline{1-3}
+$C$ is at lesser $x$ coordinate than $B$ & $C$ and $B$ getting further.  $(D_B / D_C) > 1$ & $C$ and $B$ getting closer.  $(D_B / D_C) < 1$ \\ \cline{1-3}
+\end{tabularx}
+
+All of these cases are a bit annoying.  It is good to note that as
+long as you use the one of $D_C / D_B$ and $D_B / D_C$ that is greater
+than 1 if $B$ and $C$ are moving away relative to each other, and the
+one that is less than 1 if $B$ and $C$ are getting closer over time,
+you will get the right answer.
 
 Aside: If you are curious, the answer provided by ChatGPT for solving
 this problem can be found in Appendix~\ref{sec:scen2BtoCdoublecheck}.
@@ -831,13 +868,15 @@ Here we only mention a few equations along the way that have
 noticeable differences.
 
 The formula $l_A(n,t_A)$ for the position of the $n$-th pulse emitted
-by $C$ at $A$'s time $t_A$ is:
+by $C$ at $A$'s time $t_A$ is given below.
+Here we use the same choice of $d=1$ if $C$'s $x$ coordinate is
+greater than $B$, otherwise $d=-1$.
 \begin{equation}
-l_A(n, t_A) = (v_C + c) \gamma_C nT - t_A c + Z'
+l_A(n, t_A) = (v_C + dc) \gamma_C nT - dc t_A + Z'
 \end{equation}
 $A$'s time when $B$ receives the $n$-th pulse $r_A(n)$ is:
 \begin{equation}
-r_A(n) = \frac{1 + \beta_C}{1 + \beta_B} \gamma_C nT + Y'
+r_A(n) = \frac{d + \beta_C}{d + \beta_B} \gamma_C nT + Y'
 \end{equation}
 and $B$'s time when it receives the $n$-th pulse from $C$ is:
 \begin{align*}
@@ -846,18 +885,15 @@ r_B(n) & = \frac{1}{\gamma_B} r_A(n) + (\text{constants independent of $n$})
 and finally:
 \begin{align*}
 r_B(n+1) - r_B(n)
-       & = ( D_C / D_B ) T
+       & = ( D_C / D_B ) T & & \text{for case of $d=1$} \\
+r_B(n+1) - r_B(n)
+       & = ( D_B / D_C ) T & & \text{for case of $d=-1$}
 \end{align*}
 Thus $B$, after measuring the interval between received pulses, if it
-knows $T$ somehow and can calculate $(D_C / D_B)$, can also calculate
-the same kind of relative velocity between $B$ and $C$ as described at
-the end of the previous section.
-
-
-\subsection{Notes on the Doppler factor}
-\label{sec:dopplerfactorconventions}
-
-Appendix~\ref{sec:DopplerFactorSignRules} describes rules I have
+knows $T$ somehow and can calculate the correct one of $(D_C / D_B)$
+and $(D_B / D_C)$, can also calculate the same kind of relative
+velocity between $B$ and $C$ as described at the end of the previous
+section.
 
 
 \subsection{Summary of results in this section}
