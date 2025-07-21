@@ -854,6 +854,12 @@ the same kind of relative velocity between $B$ and $C$ as described at
 the end of the previous section.
 
 
+\subsection{Notes on the Doppler factor}
+\label{sec:dopplerfactorconventions}
+
+Appendix~\ref{sec:DopplerFactorSignRules} describes rules I have
+
+
 \subsection{Summary of results in this section}
 \label{sec:summary}
 
@@ -1273,8 +1279,114 @@ answering questions about than it is any alternatives that are not
 special relativity.
 
 
-\subsection{Rules for the use of the Doppler factor formula in special relatitivity}
-\label{sec:DopplerFactorSignRules}
+\subsection{Using the Doppler factor in special relatitivity in longitudinal scenarios}
+\label{sec:DopplerFactorSignConvention}
+
+When authors write about relative motion between the source and
+receiver of a light signal, where the source and receiver are moving
+in a straight line at constant velocity directly towards or away from
+each other, some adopt the sign convention that $v > 0$ means they are
+moving towards each other, whereas others adopt the opposite
+convention where $v > 0$ means they are moving away from each other.
+
+Regardless of the convention used, physically what happens is that
+when the sender and receiver are moving away from each other, for
+periodic pulse signals the period between them is larger at the
+receiver than the sender, due to a combination of time dilation at the
+sender as observed by the receiver (according to special relativity's
+conventions), and because each pulse or wave cycle takes longer to
+reach the receiver than the previous one.  For sinusoidal signals, the
+frequency is smaller at the receiver and the wavelength is longer.
+
+The opposite of all of these statements is true if the sender is
+moving towards the receiver.  This is the best way to confirm what the
+correct velocity sign convention is for any formula using the Doppler
+factor.
+
+Examples of authors using different velocity sign conventions include:
+\begin{itemize}
+\item Feynman Lectures, Volume I, Section 34-6 ``The Doppler
+  effect''~\cite{FeynmanLecturesVolICh34Sec6}: $v > 0$ for source
+  moving towards the receiver.
+\item Wikipedia page ``The Relativistic Doppler
+  effect''~\cite{WikipediaRelativisticDopplerEffect}: $v > 0$ for
+  source moving away from the receiver.
+\item A conversation I had with ChatGPT in July 2025 (see
+  Appendix~\ref{sec:DopplerFactorSignRulesChatGPT}): $v > 0$ for
+  source moving towards the receiver.
+\end{itemize}
+
+Since there seems to be no consensus on the sign convention used, in
+the rest of this document I will use the convention of $v > 0$ means
+the sender and receiver are moving away from each other.
+
+
+\subsubsection{Using the Doppler factor, according to the Feynman Lectures}
+\label{sec:DopplerFactorSignRulesFeynmanLectures}
+
+In Section 34-6 ``The Doppler effect'' of the Feynman Lectures, Volume
+I~\cite{FeynmanLecturesVolICh34Sec6}, Feynman consistently uses the
+convention that $v > 0$ means that the sender and receiver are moving
+towards each other.  Quotes include:
+\begin{quote}
+and at the same time the whole atom, the whole oscillator, is moving
+along in a direction toward the observer at velocity $v$.
+\end{quote}
+Later:
+\begin{quote}
+Suppose, now, that the source is standing still and is emitting waves
+at frequency $\omega_0$, while the observer is moving with speed $v$
+toward the source.
+\end{quote}
+Feynman derives the frequency observed by the receiver $\omega$ is
+related to the frequency transmitted by the sender $\omega_0$ as:
+\begin{align*}
+\omega
+  & = \frac{\omega_0 \sqrt{1-v^2/c^2}}{1-v/c} & & \text{Feynman Eqn. (34.12)} \\
+  & = \omega_0 \sqrt{ \frac{1+\beta}{1-\beta} } \\
+  & = \omega_0 D
+\end{align*}
+If we replace $\omega$ (frequency of the receiver) with $1/T_r$ and
+$\omega_0$ (frequency of the sender) with $1/T_s$, we get:
+\begin{equation}
+\frac{T_r}{T_s} = \frac{1}{D}
+\end{equation}
+When the sender and receiver are moving away from each other, $v < 0$
+by the velocity sign convention used by Feynman here.  Thus
+$\beta < 0$, and $D < 1$.  The ratio $1/D > 1$, indicating the
+receiver's pulses are further apart than the sender's.
+
+
+\subsubsection{Using the Doppler factor, according to Wikipedia}
+\label{sec:DopplerFactorSignRulesWikipedia}
+
+The Wikipedia page ``The Relativistic Doppler
+effect''~\cite{WikipediaRelativisticDopplerEffect}.
+in its section ``Summary of major results''
+gives its velocity sign convention as follows:
+\begin{quote}
+In the following table, it is assumed that for $\beta = v/c > 0$ the
+receiver $r$ and the source $s$ are moving away from each other
+\end{quote}
+
+The expression $f_s$ is used for the frequency as transmitted by the
+sender, and $f_r$ is the frequency as measured by the receiver.
+\begin{equation}
+\frac{f_s}{f_r} = \sqrt{ \frac{1+\beta}{1-\beta} }
+\end{equation}
+Period $T$ is $1/f$, so we can write the relationship between the
+sender and receiver's period as:
+\begin{equation}
+\frac{T_r}{T_s} = \sqrt{ \frac{1+\beta}{1-\beta} } = D
+\end{equation}
+When the sender and receiver are moving away from each other,
+$\beta > 0$ by the sign convention used in that Wikipedia article.
+Thus $D > 1$, indicating the receiver's pulses are further apart than
+the sender's.
+
+
+\subsubsection{Using the Doppler factor, according to ChatGPT}
+\label{sec:DopplerFactorSignRulesChatGPT}
 
 In a fairly long interaction with ChatGPT that I had regarding
 questions related to Special Relativity, I asked:
@@ -1282,7 +1394,8 @@ questions related to Special Relativity, I asked:
 What are the rules for the beta value to use in the Doppler factor
 formula?
 \end{quote}
-This section contains the answer I received.
+This section contains the answer I received, which is the same sign
+convention as used in the Feynman lectures mentioned earlier.
 
 My goal is to compare these rules against the way I have used the
 formula for $D$ elsewhere in this document, and do one of the following:
