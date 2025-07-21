@@ -384,8 +384,8 @@ Unfortunately there are no footnotes or citation to explain what he
 meant by this.
 
 
-\section{Simple scenarios in special relativity and Lorentz Ether Theory}
-\label{sec:sr}
+\section{Simple time scenarios in special relativity and Lorentz Ether Theory}
+\label{sec:simple-sr-time}
 
 Definitions of some terms:
 \begin{align}
@@ -501,7 +501,7 @@ While we could switch perspectives to $B$'s inertial frame, we will
 not.  Instead, we are going to do all of the calculations in $A$'s
 inertial frame.
 
-The definitions of Section~\ref{sec:sr} remain the same here, but note
+The definitions of Section~\ref{sec:simple-sr-time} remain the same here, but note
 that the values of $q_A(n)$ and $q_B(n)$ here are {\em different} than
 those in Section~\ref{sec:scen1BtoA}.
 
@@ -564,7 +564,7 @@ then use that to calculate $\beta_B$ and $v_B$.
 
 Note in Sections~\ref{sec:scen1BtoA} and~\ref{sec:scen1AtoB}, that
 except for algebra and the definitions of symbols from
-Section~\ref{sec:sr}, the only assumptions we used from special relativity were:
+Section~\ref{sec:simple-sr-time}, the only assumptions we used from special relativity were:
 \begin{itemize}
 \item The one-way speed of light is $c$ in all directions in $A$'s
   inertial frame.
@@ -1002,6 +1002,101 @@ receiver.
 If we adopt Lorentz Ether Theory, but remain ignorant of how to
 measure our velocity relative to the ether, Scenario 2's results
 strongly suggest a proper understanding of relative velocity.
+
+
+\section{Simple length contraction scenarios in special relativity and Lorentz Ether Theory}
+\label{sec:simple-sr-length-contraction}
+
+
+\subsection{Special Relativity Scenario 3: Two rods moving towards each other at constant velocity}
+\label{sec:scen3}
+
+In this scenario (see Figure~\ref{fig:scenario3-setup}), there are two
+rods $R$ and $S$ with the same rest length $L$.  They are parallel to
+each other, and both lie along a common straight line, initially at
+some distance apart.  We will say $R$ is to the left of $S$ for the
+purposes of drawing and discussing events of interest.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{scenario3-setup-cropped.pdf}
+	\caption{Two collinear rods moving towards each other, observers far away in perpendicular direction}
+	\label{fig:scenario3-setup}
+\end{figure}
+
+There is a person $A$ at rest relative to $R$, at a distance $D \gg L$
+from the $R$'s center, at a direction $U$ perpendicular to $R$'s
+length.  There is another person $B$ at rest relative to $S$ at a
+distance $D$ from $S$'s center, in the same direction $U$ from $S$'s
+center.
+
+There are 3 events of interest, shown in Figure~\ref{fig:scenario3-events}:
+\begin{itemize}
+\item Event 1: The right end of $R$ meets the left end of $S$.
+\item Event 2: The right end of $R$ meets the right end of $S$.
+\item Event 3: The left end of $R$ meets the left end of $S$.
+\end{itemize}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1.0\textwidth]{scenario3-events-cropped.pdf}
+	\caption{Events of interest for Scenario 3}
+	\label{fig:scenario3-events}
+\end{figure}
+
+Each of these events causes a radio pulse to be emitted from the right
+or left end of rod $R$, when the event is detected locally by some
+devices built into the rods at each end.
+
+The figure shows the order of events as observed by $A$ in $A$'s
+frame.  The figure shows the moving rod $S$ contracts in length by a
+large factor, to emphasize this.  We assume that the pulses can be
+distinguished by $A$ in some way, e.g. by relative intensity,
+frequency, and/or duration.
+
+I have read that according to special relativity, because $D \gg L$,
+the propagation time of the pulses from their sending points to $A$
+should be effectively equal, and thus the relative order that $A$
+receives the pulses is the same order that they are sent, and also the
+difference in their arrival times should be equal to the difference in
+their sending times.
+
+In $A$'s frame, the sending times of the pulses are:
+\begin{align*}
+q_{1,A} & = 0 & & \text{for convenience as a starting time} \\
+q_{2,A} & = \frac{L/\gamma}{v} & & \text{distance moved by $S$ since Event 1 is its contracted length} \\
+q_{3,A} & = \frac{L}{v} & & \text{distance moved by $S$ since Event 1 is $R$'s rest length}
+\end{align*}
+Let $r_{1,A}, r_{2,A}, r_{3,A}$ be the times that $A$ measures for
+receiving the 3 pulses.
+\begin{align*}
+r_{2,A} - r_{1,A} & = \frac{L}{\gamma v} & & \text{equal to $q_{2,A} - q_{1,A}$} \\
+r_{3,A} - r_{1,A} & = \frac{L}{v} & & \text{equal to $q_{3,A} - q_{1,A}$}
+\end{align*}
+
+According to special relativity, if we calculate in $B$'s frame the
+interval between $B$ receiveing the pulses, we find that Event 3's
+pulse reaches $B$ before Event 2's pulse, because in $B$'s frame, $S$
+is its full rest length $L$, and $R$ is contracted in length.  So the
+sequence of events is the ``mirror image'' of
+Figure~\ref{fig:scenario3-events}.
+
+\begin{align*}
+q_{1,B} & = 0 & & \text{this is just a convenient starting time, with no attempt to quantify any relationship between this and $q_{1,A}$}\\
+q_{2,B} & = \frac{L}{v} & & \text{distance moved by $R$ since Event 1 is $S$'s rest length} \\
+q_{3,B} & = \frac{L/\gamma}{v} & & \text{distance moved by $R$ since Event 1 is its contracted length} \\
+r_{2,B} - r_{1,B} & = \frac{L}{v} & & \text{equal to $q_{2,B} - q_{1,B}$} \\
+r_{3,B} - r_{1,B} & = \frac{L}{\gamma v} & & \text{equal to $q_{3,B} - q_{1,B}$}
+\end{align*}
+
+TODO: Is this all correct?
+
+TODO: How can we analyze what $B$ measures, in $A$'s frame?
+
+TODO: Is there any subtle effect here if the pulses are emitted from a
+transmitter physically attached to rod $R$, versus attached to rod
+$S$?
+
 
 %\newpage
 \bibliography{refs}
