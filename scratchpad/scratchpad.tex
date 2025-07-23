@@ -97,6 +97,7 @@
 \newcommand{\khat}{\textbf{k}}
 \newcommand{\rhat}{\hat{\textbf{r}}}
 \newcommand{\vect}[1]{\textbf{#1}}
+\newcommand{\hatvec}[1]{\hat{\textbf{#1}}}
 
 \begin{document}
 \maketitle
@@ -1398,6 +1399,108 @@ $D_{-v} = 1/D_v$, so $D_w = D_u / D_v$.
 
 Apparently these facts are well-known among those working with
 relativistic Doppler factors.
+
+
+\subsection{When a moving observer intersects with a spherically spreading pulse}
+\label{app:IntersectingSpreadingPule}
+
+\begin{lemma}
+\label{lem:IntersectingSpreadingPulse}
+A spherically spreading ``pulse'' (e.g. a light pulse, or a brief
+sound wave) is emitted from a position $\vect{s}$ in the $XY$ plane at
+time $t_0$, propagating in all directions at speed $c$.
+
+An observer $O$ is moving at constant velocity $v$ in the $x$
+direction (i.e. no motion in the $y$ or $z$ components) starting at
+position $\vect{s} + \vect{r}$ at time $t_0$, where
+$\vect{r} = (x_0,y_0)$.
+
+If $|v| < c$, then there is exactly one time $t_r \geq t_0$ that $O$
+encounters the pulse signal, given by:
+\begin{equation}
+t_r = t_0 + \frac{vx_0 + \sqrt{c^2r^2 - v^2y_0^2}}{c^2-v^2}
+\end{equation}
+$t_0, v, x_0, y_0, c$ can be arbitrary real numbers subject to
+the restriction $|v| < c$.
+\end{lemma}
+
+The position of $O$ at time $t$ is given by:
+\begin{equation}
+x_O(t) = s_x + x_0 + v(t-t_0), y_0(t)=s_y + y_0
+\end{equation}
+This is simply a slight generalization of
+Lemma~\ref{lem:IntersectingSpreadingPulse2}, but with the light pulse
+starting point translated from the origin to $\vect{s}$, and the pulse
+being transmitted at a translated time $t_0$ instead of 0.
+
+
+\subsubsection{Proof for simplified case}
+
+\begin{lemma}
+\label{lem:IntersectingSpreadingPulse2}
+A spherically spreading ``pulse'' (e.g. a light pulse, or a brief
+sound wave) is emitted from the origin at time $t=0$, propagating in
+all directions at speed $c$.
+
+An observer $O$ is moving at constant velocity $v$ in the $x$
+direction (i.e. no motion in the $y$ or $z$ components) starting at
+position $\vect{r} = (x_0,y_0)$ at $t=0$.
+
+If $|v| < c$, then there is exactly one time $t_r$ that $O$ encounters
+the pulse signal, given by:
+\begin{equation}
+t_r = \frac{vx_0 + \sqrt{c^2r^2 - v^2y_0^2}}{c^2-v^2}
+\end{equation}
+$v, x_0, y_0, c$ can be arbitrary real numbers subject to the
+restriction $|v| < c$.
+\end{lemma}
+Aside: In addition to the proof below, I have verified the equation
+above with a handful of sets of values for $c, v, x_0, y_0$ and
+verified that it gives a positive value of $t_r$ such that the
+position of the observer at time $t_r$ is distance $ct_r$ from the
+origin.
+\begin{proof}
+Since $O$ moves only in the $XY$ plane, we need only concern ourselves
+with the circle of the wavefront in that plane, and when $O$
+intersects with it.  The wavefront is spread along a circle with
+points $(x,y)$ satisfying the equation:
+\begin{equation}
+x^2 + y^2 = c^2t^2 \label{eqn:circularwavefront}
+\end{equation}
+The position of observer $O$ at time $t$ is:
+\begin{equation}
+x_O(t) = x_0 + vt, y_0(t)=y_0
+\end{equation}
+$O$ receives the pulse when its position satisfies
+Equation~\eqref{eqn:circularwavefront}.
+\begin{align*}
+(x_0 + vt)^2 + y_0^2 & = c^2t^2 \\
+x_0^2 + 2x_0vt + v^2t^2 + y_0^2 & = c^2t^2 & & \text{algebra} \\
+(v^2 - c^2)t^2 + 2x_0vt + (x_0^2 + r_0^2) & = 0 & & \text{collect like terms by powers of $t$}
+\end{align*}
+Use the quadratic equation, and let $r^2 = x_0^2 + y_0^2$ to reduce
+the number of symbols a bit.  First evaluate the discriminant:
+\begin{align*}
+b^2 - 4ac
+  & = (2x_0v)^2 - 4(v^2-c^2)(x_0^2+y_0^2) \\
+  & = 4x_0^2v^2 - 4v^2x_0^2 - 4v^2y_0^2 + 4c^2x_0^2 + 4c^2y_0^2 \\
+  & = 4 \left[ c^2(x_0^2 + y_0^2) - v^2y_0^2 \right] \\
+  & = 4 \left[ c^2r^2 - v^2y_0^2 \right]
+\end{align*}
+The full solutions to the equation are:
+\begin{align*}
+t_r
+  & = \frac{-2vx_0 \pm \sqrt{4 (c^2r^2 - v^2y_0^2) }}{2(v^2-c^2)} \\
+  & = \frac{vx_0 \pm \sqrt{c^2r^2 - v^2y_0^2}}{c^2-v^2} & & \text{multiply numerator and denominator by $-1/2$}
+\end{align*}
+We want only a positive solution, since that is after the pulse is
+emitted.  $v < c$, so the denominator is positive.  The square root is
+at least $cr$, which is greater than $|vx_0|$, so we should use the
+addition alternative among the two solutions.
+\begin{align*}
+t_r & = \frac{vx_0 + \sqrt{c^2r^2 - v^2y_0^2}}{c^2-v^2}
+\end{align*}
+\end{proof}
 
 
 \section{Double-check results from ChatGPT}
