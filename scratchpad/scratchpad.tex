@@ -1144,26 +1144,122 @@ the graphs drawn above (which are the graphs for $v_o=0$)?
 \subsubsection{Where do observers at rest in $A$'s frame receive event 2 or 3 pulse first?}
 \label{sec:scen3-restpulsefirst}
 
-In scenario 3, consider every location in the $XY$ plane.  A radio
-receiver at rest relative to rod $R$ will receive the pulse from event
-2 before the pulse from event 3 in many locations, e.g. at the
-location of event 2 at the right end of $R$.  Similarly, there are
-many locations that will receive the event 3 pulse first, e.g. at the
-location of event 3 at the left end of $R$.  There are also many
-locations that receive both pulses at the same time.
+For this section, assume either Special Relativity where rod $R$ and
+observer $A$ are motionless with respect to us, or Lorentz Ether
+Theory where they are motionless with respect to the ether.  Thus in
+this section, light propagates in all directions with speed $c$.  For
+SR, all times will be measured in $R$'s frame.  For LET, all times are
+true times, as measured by clocks at rest relative to the ether.  We
+will analyze more general situations later, if we can get a good
+understanding of this one.
+
+In scenario 3, consider every location in the $XY$ plane.  A receiver
+at rest relative to rod $R$ will receive the pulse from event 2 before
+the pulse from event 3 in many locations, e.g. at the location of
+event 2 at the right end of $R$.  Similarly, there are many locations
+that will receive the event 3 pulse first, e.g. at the location of
+event 3 at the left end of $R$.  There are also many locations that
+receive both pulses at the same time.
 
 What is the shape of all such places?
 
-To start with simple cases, consider all of the locations along the
-straight line that rod $R$ lies on.  The right end of $R$ receives
-event 2, of course, since that is where the pulse is generated.
-Similarly all locations on the line to the right of $R$ will receive
-the event 2 pulse first.  The left end of $R$ and all points on the
-line to its left will receive the event 3 pulse first.
+Let $R$'s left end be placed at coordinates $(-L/2,0)$ and its right
+end at $(L/2,0)$.
+As discussed in the previous section, the sending times of pulses for
+events 1, 2, and 3 are as follows (we omit the $A$ in the subscripts
+for brevity here);
+\begin{align*}
+q_1 & = 0 & & \text{for convenience as a starting time} \\
+q_2 & = \frac{L/\gamma}{v} & & \text{distance moved by $S$ since Event 1 is its contracted length} \\
+q_3 & = \frac{L}{v} & & \text{distance moved by $S$ since Event 1 is $R$'s rest length}
+\end{align*}
 
-What about points between $R$'s ends?  In particular, start with
-considering the point on this line where both pulses arrive at the
-same time.
+At an arbitrary location $(x,y)$, it receives the pulse from event 2
+at time $e_2$, and the pulse from event 3 at time $e_3$, given by:
+\begin{align*}
+e_2 & = q_2 + d_r/c & & \text{$d_r$ is distance between right end of $R$ and $(x,y)$} \\
+e_3 & = q_3 + d_l/c & & \text{$d_r$ is distance between left end of $R$ and $(x,y)$}
+\end{align*}
+For a location that receives pulse 3 time $k$ later than receiving
+pulse 2 (or before if $k$ is negative) the following equation must be
+true:
+\begin{align}
+e_3 - e_2 & = k \nonumber \\
+(q_3 + \frac{d_l}{c}) - (q_2 + \frac{d_r}{c}) & = k & & \text{defns. of $e_2, e_3$} \nonumber \\
+d_l - d_r & = c (k - (q_3 - q_2)) & & \text{algebra} \label{eqn:pulserecvdiff1}
+\end{align}
+Below we derive equivalent formulas for $q_3 - q_2$:
+\begin{align}
+q_3 - q_2
+  & = \frac{L}{v} - \frac{L}{\gamma v} & & \text{defns. of $q_2, q_3$} \nonumber \\
+  & = \frac{L}{v} (1 - \frac{1}{\gamma}) & & \text{algebra} \nonumber \\
+  & = \frac{L}{\beta c} (1 - \sqrt{ 1 - \beta^2 }) & & \text{defns. of $\beta, \gamma$} \nonumber \\
+  & = \frac{L}{\beta c} (1 - \sqrt{ 1 - \beta^2 }) \frac{1 + \sqrt{1-\beta^2}}{1 + \sqrt{1-\beta^2}} & & \text{multiply by a complicated-looking 1} \nonumber \\
+  & = \left( \frac{L}{\beta c} \right) \frac{1 - (1 - \beta^2)}{1 + \sqrt{1-\beta^2}} & & \text{algebra} \nonumber \\
+  & = \left( \frac{L}{c} \right) \frac{\beta}{1 + \sqrt{1-\beta^2}} & & \text{algebra} \label{eqn:pulsesenddiff}
+\end{align}
+The funny multiplying by 1 step was done because the resulting formula
+below is easier to understand its behavior for values of $\beta$ near 0:
+\begin{align*}
+\frac{\beta}{1 + \sqrt{1-\beta^2}}
+\end{align*}
+When $\beta$ approaches 0, this value approaches $0/2 = 0$.
+When $\beta$ approaches 1, this value approaches $1/1 = 1$.
+It is straightforward to verify by calculating the derivative that
+this function is strictly increasing with $\beta$ over the interval $(0,1)$.
+
+Substituting Equation~\eqref{eqn:pulsesenddiff} into
+Equation~\eqref{eqn:pulserecvdiff1} gives:
+\begin{align}
+d_l - d_r
+  & = c (k - \left( \frac{L}{c} \right) \frac{\beta}{1 + \sqrt{1-\beta^2}}) \nonumber \\
+  & = ck - \frac{L \beta}{1 + \sqrt{1-\beta^2}}
+\end{align}
+If we restrict our attention to situations where $L$, $\beta$, and $k$
+are given constants, this equation is of the form $d_l - d_r$ equal to
+a constant.  The shape of all such curves is a hyperbola.
+
+Figure~\ref{fig:pulse-receive-deltas-L-1.0-beta-0.50} shows the $XY$
+plane with $x$ and $y$ coordinates in units of light-seconds.  $L=1$
+light-second, with rod $R$ parallel to the $x$ axis, centered at the
+origin.  $\beta=0.5$ for this figure.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=1.0\textwidth]{pulse-receive-deltas-L-1.0-beta-0.50.pdf}
+	\caption{Locations with selected values of $k$ for $\beta=0.5$, $q_3 - q_2 = 0.27$ sec}
+	\label{fig:pulse-receive-deltas-L-1.0-beta-0.50}
+\end{figure}
+First consider the line labeled $k=0.27$ in the figure.  This is the
+line where $k = q_3 - q_2$, so the pulse for event 3 arrives $k=0.27$
+sec after the pulse for event 2.  This is exactly the difference in
+times between when the pulses are generated, so this line is all of
+the points equally distant in length from the two ends of rod $R$; a
+vertical line along the $y$ axis.
+
+Next consider the curve labeled $k=0$.  These are all locations where
+the two pulses arrive simultaneously.  Since pulse 2 is sent 0.27 sec
+earlier than pulse 3, all of these locations are further from the
+right end of $R$ than from the left end.
+
+The last curve we will give special attention to is the curve labeled
+$k=-0.27$.  These are all locations where pulse 3 (emitted later),
+arrives 0.27 {\em earlier} than pulse 2 (emitted earlier).
+
+For the line $y=-D$ where $A$ and $B$ are (this is far down below the
+bounds of the figure), $A$ and $B$ are both very far from the line
+$k=-0.27$ when the receive the pulses.
+
+TODO: Is there any way to analyze this scenario in $A$ and $R$'s frame
+such that $B$ receives event 3's pulse significantly before event 2's
+pulse?  I do not see how, without putting $B$ quite far to the left of
+$A$.
+
+TODO: I plan to repeat this analysis in $A$ and $R$'s frame for an
+observer moving at a constant speed $v$ in the $x$ direction, just in
+case that shows significantly different results, but it would surprise
+me greatly if that resulted in $B$ receiving the pulses in the
+opposite order from $A$, with a similar time interval between them as
+$A$ measures.
 
 
 %\newpage
