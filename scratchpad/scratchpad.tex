@@ -896,6 +896,16 @@ and $(D_B / D_C)$, can also calculate the same kind of relative
 velocity between $B$ and $C$ as described at the end of the previous
 section.
 
+TODO: It would be nice to generalize the analysis of Scenario 2 so
+that $B$ and $C$ are moving with (nearly) arbitrary 2-d velocities
+relative to $A$ (i.e. relative to the ether).  They should still be
+moving directly towards each other, or directly away from each other.
+They are moving directly towards each other, from their perspectives,
+if in $A$'s frame their starting positions and velocities are such
+that their positions become the same at some point in the future.
+After the time when they meet, they are then moving directly away from
+each other.
+
 
 \subsection{Summary of results in this section}
 \label{sec:summary}
@@ -1181,8 +1191,7 @@ e_2 & = q_2 + d_r/c & & \text{$d_r$ is distance between right end of $R$ and $(x
 e_3 & = q_3 + d_l/c & & \text{$d_r$ is distance between left end of $R$ and $(x,y)$}
 \end{align*}
 For a location that receives pulse 3 time $k$ later than receiving
-pulse 2 (or before if $k$ is negative) the following equation must be
-true:
+pulse 2 (or before if $k < 0$) the following equation must be true:
 \begin{align}
 e_3 - e_2 & = k \nonumber \\
 (q_3 + \frac{d_l}{c}) - (q_2 + \frac{d_r}{c}) & = k & & \text{defns. of $e_2, e_3$} \nonumber \\
@@ -1212,7 +1221,7 @@ Substituting Equation~\eqref{eqn:pulsesenddiff} into
 Equation~\eqref{eqn:pulserecvdiff1} gives:
 \begin{align}
 d_l - d_r
-  & = c (k - \left( \frac{L}{c} \right) \frac{\beta}{1 + \sqrt{1-\beta^2}}) \nonumber \\
+  & = c \left( k - \left( \frac{L}{c} \right) \frac{\beta}{1 + \sqrt{1-\beta^2}} \right) \nonumber \\
   & = ck - \frac{L \beta}{1 + \sqrt{1-\beta^2}}
 \end{align}
 If we restrict our attention to situations where $L$, $\beta$, and $k$
@@ -1247,19 +1256,22 @@ arrives 0.27 {\em earlier} than pulse 2 (emitted earlier).
 
 For the line $y=-D$ where $A$ and $B$ are (this is far down below the
 bounds of the figure), $A$ and $B$ are both very far from the line
-$k=-0.27$ when the receive the pulses.
+$k=-0.27$ when they receive the pulses.
 
-TODO: Is there any way to analyze this scenario in $A$ and $R$'s frame
-such that $B$ receives event 3's pulse significantly before event 2's
+TODO: Is there any way to analyze this scenario in $R$'s frame such
+that $B$ receives event 3's pulse significantly before event 2's
 pulse?  I do not see how, without putting $B$ quite far to the left of
-$A$.
+$A$.  I believe that according to Special Relativity, $B$ receives the
+pulse from event 3 significantly before the pulse from event 2, even
+if it is very near $A$ when the pulses are received.
 
-TODO: I plan to repeat this analysis in $A$ and $R$'s frame for an
-observer moving at a constant speed $v$ in the $x$ direction, just in
-case that shows significantly different results, but it would surprise
-me greatly if that resulted in $B$ receiving the pulses in the
-opposite order from $A$, with a similar time interval between them as
-$A$ measures.
+TODO: I plan to repeat this analysis in $R$'s frame for an observer
+moving at a constant speed $v$ in the $x$ direction, just in case that
+shows significantly different results.  It would surprise me greatly
+if that resulted in $B$ receiving the pulses in the opposite order
+from $A$, with a similar time interval between them as $A$ measures.
+(Note: Lemma\ref{lem:IntersectingSpreadingPulse} is some work towards
+this goal.)
 
 
 %\newpage
@@ -1669,8 +1681,8 @@ t_r
   & = \frac{vx_0 \pm \sqrt{c^2r^2 - v^2y_0^2}}{c^2-v^2} & & \text{multiply numerator and denominator by $-1/2$}
 \end{align*}
 We want only a positive solution, since that is after the pulse is
-emitted.  $v < c$, so the denominator is positive.  The square root is
-at least $cr$, which is greater than $|vx_0|$, so we should use the
+emitted.  $|v| < c$, so the denominator is positive.  If $vx_0$ is
+negative, the only way to get a positive solution is to use the
 addition alternative among the two solutions.
 \begin{align*}
 t_r & = \frac{vx_0 + \sqrt{c^2r^2 - v^2y_0^2}}{c^2-v^2}
