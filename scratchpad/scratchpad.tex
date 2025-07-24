@@ -423,7 +423,7 @@ $v_B < 0$ means $B$ moves towards $A$.
 \subsubsection{$B$ sends periodic pulses to $A$}
 \label{sec:scen1BtoA}
 
-$B$ uses his local clock to time the sending of radio pulses to $A$,
+$B$ uses his local clock to time the sending of light pulses to $A$,
 sending pulses once every time interval $T$.
 At what period does $A$ receive the pulses?
 
@@ -495,7 +495,7 @@ $A$'s clock.
 \subsubsection{$A$ sends periodic pulses to $B$}
 \label{sec:scen1AtoB}
 
-Now $A$ uses his local clock to time the sending of radio pulses to $B$,
+Now $A$ uses his local clock to time the sending of light pulses to $B$,
 sending pulses once every time interval $T$.
 At what period does $B$ receive the pulses?
 
@@ -714,7 +714,7 @@ ensure this.
 \subsubsection{$B$ sends periodic pulses to $C$}
 \label{sec:scen2BtoCLETfriendly}
 
-$B$ uses his local clock to time the sending of radio pulses to $C$,
+$B$ uses his local clock to time the sending of light pulses to $C$,
 sending pulses once every time interval $T$, according to $B$'s clock.
 At what period does $C$ receive the pulses?
 
@@ -1059,7 +1059,7 @@ on the appropriate end of $R$.
 	\label{fig:scenario3-events}
 \end{figure}
 
-Each of these events causes a radio pulse to be emitted from the left
+Each of these events causes a light pulse to be emitted from the left
 or right end of rod $R$, when the event is detected locally by some
 devices built into the rods at each end.
 
@@ -1193,7 +1193,8 @@ Below we derive equivalent formulas for $q_3 - q_2$:
 q_3 - q_2
   & = \frac{L}{v} - \frac{L}{\gamma v} & & \text{defns. of $q_2, q_3$} \nonumber \\
   & = \frac{L}{v} (1 - \frac{1}{\gamma}) & & \text{algebra} \nonumber \\
-  & = \frac{L}{\beta c} (1 - \sqrt{ 1 - \beta^2 }) & & \text{defns. of $\beta, \gamma$} \nonumber \\
+  & = \frac{L}{\beta c} (1 - \frac{1}{\gamma}) & & \text{replace $v$ with $\beta c$} \label{eqn:pulsesenddiff2} \\
+  & = \frac{L}{\beta c} (1 - \sqrt{ 1 - \beta^2 }) & & \text{defn. of $\gamma$} \nonumber \\
   & = \frac{L}{\beta c} (1 - \sqrt{ 1 - \beta^2 }) \frac{1 + \sqrt{1-\beta^2}}{1 + \sqrt{1-\beta^2}} & & \text{multiply by a complicated-looking 1} \nonumber \\
   & = \left( \frac{L}{\beta c} \right) \frac{1 - (1 - \beta^2)}{1 + \sqrt{1-\beta^2}} & & \text{algebra} \nonumber \\
   & = \left( \frac{L}{c} \right) \frac{\beta}{1 + \sqrt{1-\beta^2}} & & \text{algebra} \label{eqn:pulsesenddiff}
@@ -1248,28 +1249,109 @@ arrives 0.27 {\em earlier} than pulse 2 (emitted earlier), which is
 the relative order and separation in time that $B$ receives the pulses
 according to SR.
 
-For the line $y=D$ where $A$ and $B$ are (far above the bounds of the
-figure), $A$ is on the line $k=0.27$ at coordinates $(0, D)$.
-But note that $B$ is moving to the right at speed $v$ when the pulses
-are emitted, so it is some distance to the right of $A$ when $B$
-receives the pulses.  Is it so far to the right that it is on the
-$k=-0.27$ line?
+For the line $y=D$ where $A$ and $B$ are located (far above the bounds
+of the figure), $A$ is on the line $k=0.27$ at coordinates $(0, D)$.
+But $B$ is moving to the right at speed $v$, so even though it is near
+$A$ when the pulses are emitted, $B$ is a significant distance to the
+right of $A$ when $B$ receives the pulses.  Is it so far to the right
+that it is on the $k=-0.27$ line?
 
-As we will soon see, it turns out that $B$ reaches far enough that if
-you measure the difference in times that it receives the pulses,
-according to time in $A$'s frame, and then multiply that by $1/\gamma$
-to account for $B$'s clock running slower than $A$'s clock, the result
-is $-0.27$ sec.  And this correspondence is true for all $\beta$
-values, not only $\beta=0.5$ used in
+As we will show in the next section, $B$ reaches far enough to the
+right that if you measure the difference in times that it receives the
+pulses, according to time in $A$'s frame, and then multiply that by
+$1/\gamma$ to account for $B$'s clock running slower than $A$'s clock,
+the result is $-0.27$ sec.  And this correspondence is true for all
+$\beta$ values, not only $\beta=0.5$ used in
 Figure~\ref{fig:pulse-receive-deltas-L-1.0-beta-0.50}.
 
-TODO: I plan to repeat this analysis in $R$'s frame for an observer
-moving at a constant speed $v$ in the $x$ direction, just in case that
-shows significantly different results.  It would surprise me greatly
-if that resulted in $B$ receiving the pulses in the opposite order
-from $A$, with a similar time interval between them as $A$ measures.
-(Note: Lemma\ref{lem:IntersectingSpreadingPulse} is some work towards
-this goal.)
+
+\subsubsection{Difference in time of pulses arriving to $B$, calculated in $A$'s frame}
+\label{sec:scen3-Breceivepulsetimes}
+
+We will make use of Lemma~\ref{lem:IntersectingSpreadingPulse} from
+Appendix~\ref{app:IntersectingSpreadingPulse} here.
+
+For calculating when $B$ receives the pulses from events 2 and 3, it
+is useful to know the location of $B$ at any time where it is
+convenient to determine.  At the time of event 1 ($q_1=0$) the right
+end of rod $S$ is at the same $x$ coordinate as the left end of rod
+$R$, $x=-L/2$.  The center of rod $S$ is thus half of $S$'s contracted
+length further to the left, at $x=-(L/2)(1+1/\gamma)$.  $B$'s $x$
+coordinate is the same as the center of $S$ at all times.
+
+\paragraph{Time when $B$ receives pulse from event 2}
+
+Note that this time is calculated in $R$'s frame.
+In the notation of Lemma~\ref{lem:IntersectingSpreadingPulse}:
+\begin{align*}
+\vect{s} & = (-L/2, 0) & & \text{pulse sent from $\vect{s}$, location of event 2} \\
+t_0 & = \frac{L}{\gamma v} & & \text{pulse sent at time $t_0$, time of event 2} \\
+\vect{s} + \vect{r} & = ((-L/2)(1+1/\gamma), D) & & \text{$\vect{s}+\vect{r}$ is location of $B$ at time $t_1=0$} \\
+\vect{r} & = (x_0, y_0) = (-L/(2 \gamma), D) & & \text{subtract $\vect{s}$ from previous line to get $\vect{r}$} \\
+{x_0}' & = x_0 + v(t_0 - t_1) = L/(2\gamma) & & \text{a little algebra from the above} \\
+{r'}^2 & = {{x_0}'}^2 + y_0^2 = \frac{L}{4 \gamma^2} + D^2
+\end{align*}
+The result of Lemma~\ref{lem:IntersectingSpreadingPulse} gives us the
+time (in $R$'s frame) when $B$ receives the event 2 pulse:
+\begin{equation}
+  e_2 = \frac{L}{\gamma v} +
+        \frac{ \frac{Lv}{2\gamma} + \sqrt{ c^2 ( \frac{L^2}{4 \gamma^2} + D^2 ) - v^2 D^2} }{c^2 - v^2}
+\label{eqn:Breceivespulse2}
+\end{equation}
+
+\paragraph{Time when $B$ receives pulse from event 3}
+
+This is very similar to the calculation for event 2.
+Again in the notation of Lemma~\ref{lem:IntersectingSpreadingPulse}:
+\begin{align*}
+\vect{s} & = (L/2, 0) & & \text{pulse sent from $\vect{s}$, location of event 3} \\
+t_0 & = \frac{L}{v} & & \text{pulse sent at time $t_0$, time of event 3} \\
+\vect{s} + \vect{r} & = ((-L/2)(1+1/\gamma), D) & & \text{$\vect{s}+\vect{r}$ is location of $B$ at time $t_1=0$, same as above} \\
+\vect{r} & = (x_0, y_0) = (-L - L/(2 \gamma), D) & & \text{subtract $\vect{s}$ from previous line to get $\vect{r}$} \\
+{x_0}' & = x_0 + v(t_0 - t_1) = -L/(2\gamma) & & \text{a little algebra from the above} \\
+{r'}^2 & = {{x_0}'}^2 + y_0^2 = \frac{L}{4 \gamma^2} + D^2
+\end{align*}
+The result of Lemma~\ref{lem:IntersectingSpreadingPulse} gives us the
+time (in $R$'s frame) when $B$ receives the event 3 pulse:
+\begin{equation}
+  e_3 = \frac{L}{v} +
+        \frac{ -\frac{Lv}{2\gamma} + \sqrt{ c^2 ( \frac{L^2}{4 \gamma^2} + D^2 ) - v^2 D^2} }{c^2 - v^2}
+\label{eqn:Breceivespulse3}
+\end{equation}
+
+\paragraph{Relative time when $B$ receives pulses from events 2 and 3}
+
+It is convenient that the subexpressions of
+Equations~\eqref{eqn:Breceivespulse2} and~\eqref{eqn:Breceivespulse3}
+under the radicals are equal, so they cancel out when we determine
+$e_3 - e_2$, resulting in:
+\begin{align}
+e_3 - e_2
+  & = \frac{L}{v}(1-\frac{1}{\gamma}) + \frac{ -\frac{Lv}{2\gamma} - \frac{Lv}{2\gamma} }{c^2-v^2} \nonumber \\
+  & = \frac{L}{v}(1-\frac{1}{\gamma}) - \frac{Lv}{\gamma(c^2-v^2)} & & \text{algebra} \nonumber \\
+  & = \frac{L}{c} \left[ \frac{1}{\beta}(1-\frac{1}{\gamma}) - \frac{\beta c^2}{\gamma(c^2-v^2)} \right] & & \text{replace $v$ with $\beta c$ and algebra} \nonumber \\
+  & = \frac{L}{c} \left[ \frac{1}{\beta}(1-\frac{1}{\gamma}) - \beta \gamma \right] & & \text{$c^2 / (c^2 - v^2) = \gamma^2$, and a little algebra} \label{eqn:Bdeltatime3minus2} \\
+\end{align}
+
+We want to show that when we convert this difference $e_3 - e_2$ into
+$B$'s slower-running clock, by multiplying by $1/\gamma$, we get the
+{\em negative} of $q_3 - q_2$, where $q_3 - q_2$ is the (positive)
+time that event 3's pulse is sent after event 2's pulse is sent, in
+$A$'s frame.
+
+\begin{align*}
+\frac{1}{\gamma}(e_3 - e_2) & = -(q_3 - q_2) & & \text{what we want to show} \\
+\frac{L}{c\gamma} \left[ \frac{1}{\beta}(1-\frac{1}{\gamma}) - \beta \gamma \right] & = - \frac{L}{\beta c} (1 - \frac{1}{\gamma}) & & \text{Eqns.~\eqref{eqn:Bdeltatime3minus2} and~\eqref{eqn:pulsesenddiff2}} \\
+(1-\frac{1}{\gamma}) - \beta^2 \gamma & = -\gamma (1 - \frac{1}{\gamma}) & & \text{multiply both sides by $\gamma \beta c/L$} \\
+(1-\frac{1}{\gamma}) + \gamma (1 - \frac{1}{\gamma}) & = \beta^2 \gamma & & \text{Add same expressions to both sides to rearrange terms} \\
+\frac{(\gamma + 1)(\gamma - 1)}{\gamma} & = \beta^2 \gamma & & \text{algebra on left-hand side} \\
+\frac{\gamma^2 - 1}{\gamma} & = \beta^2 \gamma & & \text{algebra on left-hand side} \\
+1 - \frac{1}{\gamma^2} & = \beta^2 & & \text{divide both side by $\gamma$, algebra} \\
+1 - (1-\beta^2) & = \beta^2 & & \text{defn. of $\gamma$.  This is true!}
+\end{align*}
+All multiplications, divisions, and cancellations avoided multiplying
+or dividing by 0.  Therefore, since the final equation is true, so are
+all earlier ones, including the first that we wanted to prove.
 
 
 %\newpage
@@ -1534,6 +1616,17 @@ relativistic Doppler factors.
 
 \subsection{When a moving observer intersects with a spherically spreading pulse}
 \label{app:IntersectingSpreadingPulse}
+
+Note: All calculations and results of lemmas in this appendix
+calculate a pulse receive time under the assumptions given, e.g. that
+the signal propagates at the same speed $c$ in all directions.  Thus
+the results apply in any inertial frame when assuming the postulates
+of SR, but note that the receive time is in the frame where the
+receiver is moving with velocity $v$, {\em not} the receiver's time
+dilated frame.
+In LET, these lemmas only apply in the frame that is at rest relative
+to the ether, and the times calculated are in that frame, not the
+pulse receiver's clock.
 
 Lemma~\ref{lem:IntersectingSpreadingPulse} below slightly generalizes
 Lemma~\ref{lem:IntersectingSpreadingPulse2}, to enable you to choose
