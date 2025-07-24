@@ -1157,9 +1157,9 @@ understanding of this one.
 In scenario 3, consider every location in the $XY$ plane.  A receiver
 at rest relative to rod $R$ will receive the pulse from event 2 before
 the pulse from event 3 in many locations, e.g. at the location of
-event 2 at the right end of $R$.  Similarly, there are many locations
+event 2 at the left end of $R$.  Similarly, there are many locations
 that will receive the event 3 pulse first, e.g. at the location of
-event 3 at the left end of $R$.  There are also many locations that
+event 3 at the right end of $R$.  There are also many locations that
 receive both pulses at the same time.
 
 What is the shape of all such places?
@@ -1178,15 +1178,15 @@ q_3 & = \frac{L}{v} & & \text{distance moved by $S$ since Event 1 is $R$'s rest 
 At an arbitrary location $(x,y)$, it receives the pulse from event 2
 at time $e_2$, and the pulse from event 3 at time $e_3$, given by:
 \begin{align*}
-e_2 & = q_2 + d_r/c & & \text{$d_r$ is distance between right end of $R$ and $(x,y)$} \\
-e_3 & = q_3 + d_l/c & & \text{$d_r$ is distance between left end of $R$ and $(x,y)$}
+e_2 & = q_2 + d_l/c & & \text{$d_l$ is distance between left end of $R$ and $(x,y)$} \\
+e_3 & = q_3 + d_r/c & & \text{$d_r$ is distance between right end of $R$ and $(x,y)$}
 \end{align*}
 For a location that receives pulse 3 time $k$ later than receiving
 pulse 2 (or before if $k < 0$) the following equation must be true:
 \begin{align}
 e_3 - e_2 & = k \nonumber \\
-(q_3 + \frac{d_l}{c}) - (q_2 + \frac{d_r}{c}) & = k & & \text{defns. of $e_2, e_3$} \nonumber \\
-d_l - d_r & = c (k - (q_3 - q_2)) & & \text{algebra} \label{eqn:pulserecvdiff1}
+(q_3 + \frac{d_r}{c}) - (q_2 + \frac{d_l}{c}) & = k & & \text{defns. of $e_2, e_3$} \nonumber \\
+d_r - d_l & = c (k - (q_3 - q_2)) & & \text{algebra} \label{eqn:pulserecvdiff1}
 \end{align}
 Below we derive equivalent formulas for $q_3 - q_2$:
 \begin{align}
@@ -1211,13 +1211,14 @@ this function is strictly increasing with $\beta$ over the interval $(0,1)$.
 Substituting Equation~\eqref{eqn:pulsesenddiff} into
 Equation~\eqref{eqn:pulserecvdiff1} gives:
 \begin{align}
-d_l - d_r
+d_r - d_l
   & = c \left( k - \left( \frac{L}{c} \right) \frac{\beta}{1 + \sqrt{1-\beta^2}} \right) \nonumber \\
   & = ck - \frac{L \beta}{1 + \sqrt{1-\beta^2}}
 \end{align}
 If we restrict our attention to situations where $L$, $\beta$, and $k$
-are given constants, this equation is of the form $d_l - d_r$ equal to
-a constant.  The shape of all such curves is a hyperbola.
+are given constants, this equation is of the form $d_r - d_l$ equal to
+a constant.  The shape of all such curves is a
+hyperbola~\cite{WikipediaHyperbolaDefnLocusOfPoints}.
 
 Figure~\ref{fig:pulse-receive-deltas-L-1.0-beta-0.50} shows the $XY$
 plane with $x$ and $y$ coordinates in units of light-seconds.  $L=1$
@@ -1238,23 +1239,29 @@ vertical line along the $y$ axis.
 
 Next consider the curve labeled $k=0$.  These are all locations where
 the two pulses arrive simultaneously.  Since pulse 2 is sent 0.27 sec
-earlier than pulse 3, all of these locations are further from the
-right end of $R$ than from the left end.
+earlier than pulse 3, all of these locations are 0.27 light-seconds
+further from the left end of $R$ than from the right end.
 
 The last curve we will give special attention to is the curve labeled
 $k=-0.27$.  These are all locations where pulse 3 (emitted later),
-arrives 0.27 {\em earlier} than pulse 2 (emitted earlier).
+arrives 0.27 {\em earlier} than pulse 2 (emitted earlier), which is
+the relative order and separation in time that $B$ receives the pulses
+according to SR.
 
-For the line $y=-D$ where $A$ and $B$ are (this is far down below the
-bounds of the figure), $A$ and $B$ are both very far from the line
-$k=-0.27$ when they receive the pulses.
+For the line $y=D$ where $A$ and $B$ are (far above the bounds of the
+figure), $A$ is on the line $k=0.27$ at coordinates $(0, D)$.
+But note that $B$ is moving to the right at speed $v$ when the pulses
+are emitted, so it is some distance to the right of $A$ when $B$
+receives the pulses.  Is it so far to the right that it is on the
+$k=-0.27$ line?
 
-TODO: Is there any way to analyze this scenario in $R$'s frame such
-that $B$ receives event 3's pulse significantly before event 2's
-pulse?  I do not see how, without putting $B$ quite far to the left of
-$A$.  I believe that according to Special Relativity, $B$ receives the
-pulse from event 3 significantly before the pulse from event 2, even
-if it is very near $A$ when the pulses are received.
+As we will soon see, it turns out that $B$ reaches far enough that if
+you measure the difference in times that it receives the pulses,
+according to time in $A$'s frame, and then multiply that by $1/\gamma$
+to account for $B$'s clock running slower than $A$'s clock, the result
+is $-0.27$ sec.  And this correspondence is true for all $\beta$
+values, not only $\beta=0.5$ used in
+Figure~\ref{fig:pulse-receive-deltas-L-1.0-beta-0.50}.
 
 TODO: I plan to repeat this analysis in $R$'s frame for an observer
 moving at a constant speed $v$ in the $x$ direction, just in case that

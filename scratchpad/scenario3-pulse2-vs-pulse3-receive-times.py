@@ -100,20 +100,20 @@ while len(colors) < len(k_values):
 
 for k, diff, color in zip(k_values, diff_values, colors):
     print("k=%s diff=%s color=%s" % (k, diff, color))
-    # Compute mask for the level set d_l - d_r = k
-    CS = plt.contour(XX, YY, d_l - d_r, levels=[diff], colors=color)
+    # Compute mask for the level set d_r - d_l = k
+    CS = plt.contour(XX, YY, d_r - d_l, levels=[diff], colors=color)
     label = "k=%.2f" % (k)
     fmt = {CS.levels[0]: label}
     if diff < 0:
-        manual_label_location = [(-2*L, 2*L)]
-    else:
         manual_label_location = [(2*L, 2*L)]
+    else:
+        manual_label_location = [(-2*L, 2*L)]
     plt.clabel(CS, fmt=fmt, fontsize=10, inline=True,
                manual=manual_label_location)
 
 # Mark points l and r
-plt.plot(l[0], l[1], 'ko', label='Point l (%.2f,0) (event 3)' % (-L/2))
-plt.plot(r[0], r[1], 'ks', label='Point r (%.2f,0) (event 2)' % (L/2))
+plt.plot(l[0], l[1], 'ko', label='Point l (%.2f,0) (event 2)' % (-L/2))
+plt.plot(r[0], r[1], 'ks', label='Point r (%.2f,0) (event 3)' % (L/2))
 
 # Labels and styling
 plt.xlabel("X")
