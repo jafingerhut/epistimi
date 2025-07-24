@@ -1025,7 +1025,7 @@ strongly suggest a proper understanding of relative velocity.
 In this scenario (see Figure~\ref{fig:scenario3-setup}), there are two
 rods $R$ and $S$ with the same rest length $L$.  They are parallel to
 each other, and both lie along a common straight line, initially at
-some distance apart.  We will say $R$ is to the left of $S$ for the
+some distance apart.  We will say $R$ is to the right of $S$ for the
 purposes of drawing and discussing events of interest.
 
 \begin{figure}[ht]
@@ -1037,9 +1037,10 @@ purposes of drawing and discussing events of interest.
 
 There is a person $A$ at rest relative to $R$, at a distance $D \gg L$
 from the $R$'s center, at a direction $U$ perpendicular to $R$'s
-length.  There is another person $B$ at rest relative to $S$ at a
-distance $D$ from $S$'s center, in the same direction $U$ from $S$'s
-center.
+length.  Rod $S$ is moving left to right with velocity $v$ ($0 < v <
+c$) relative to relative to $R$.  There is another person $B$ at rest
+relative to $S$ at a distance $D$ from $S$'s center, in the same
+direction $U$ from $S$'s center.
 
 There are 3 events of interest, shown in Figure~\ref{fig:scenario3-events}:
 \begin{itemize}
@@ -1047,6 +1048,8 @@ There are 3 events of interest, shown in Figure~\ref{fig:scenario3-events}:
 \item Event 2: The right end of $R$ meets the right end of $S$.
 \item Event 3: The left end of $R$ meets the left end of $S$.
 \end{itemize}
+In the figure, the location of each event is shown by a small circle
+on the appropriate end of $R$.
 
 \begin{figure}[ht]
 	\centering
@@ -1055,8 +1058,8 @@ There are 3 events of interest, shown in Figure~\ref{fig:scenario3-events}:
 	\label{fig:scenario3-events}
 \end{figure}
 
-Each of these events causes a radio pulse to be emitted from the right
-or left end of rod $R$, when the event is detected locally by some
+Each of these events causes a radio pulse to be emitted from the left
+or right end of rod $R$, when the event is detected locally by some
 devices built into the rods at each end.
 
 The figure shows the order of events as observed by $A$ in $A$'s
@@ -1072,7 +1075,9 @@ receives the pulses is the same order that they are sent, and also the
 difference in their arrival times should be equal to the difference in
 their sending times.
 
-In $A$'s frame, the sending times of the pulses are:
+In $A$'s frame, the sending times of the pulses are as follows.
+(Detail: These equations can use $v$ instead of $|v|$ because
+we are assuming $v > 0$.)
 \begin{align*}
 q_{1,A} & = 0 & & \text{for convenience as a starting time} \\
 q_{2,A} & = \frac{L/\gamma}{v} & & \text{distance moved by $S$ since Event 1 is its contracted length} \\
@@ -1086,8 +1091,8 @@ r_{3,A} - r_{1,A} & = \frac{L}{v} & & \text{equal to $q_{3,A} - q_{1,A}$}
 \end{align*}
 
 According to special relativity, if we calculate in $B$'s frame the
-interval between $B$ receiveing the pulses, we find that Event 3's
-pulse reaches $B$ before Event 2's pulse, because in $B$'s frame, $S$
+interval between $B$ receiving the pulses, we find that Event 3's
+pulse reaches $B$ {\em before} Event 2's pulse, because in $B$'s frame, $S$
 is its full rest length $L$, and $R$ is contracted in length.  So the
 sequence of events is the ``mirror image'' of
 Figure~\ref{fig:scenario3-events}.
@@ -1115,10 +1120,6 @@ $R$ starting when event 2 occurs, to the left end of $R$ by the time
 event 3 occurs.  According to Special Relativity, there exist at least
 some pairs of observers that could observe events 2 or 3 in different
 orders from each other.
-
-TODO: Is this all correct?
-
-TODO: How can we analyze what $B$ measures, in $A$'s frame?
 
 TODO: Is there any subtle effect here if the pulses are emitted from a
 transmitter physically attached to rod $R$, versus attached to rod
