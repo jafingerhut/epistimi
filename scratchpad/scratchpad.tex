@@ -1514,6 +1514,59 @@ And the last inequality is true.  Proving the part that
 And the last inequality is true.
 
 
+\subsection{Using hyperbolic trigonometric functions for relativistic velocity arithmetic in one dimension}
+\label{app:1drelVelocityUsingHyperbolicTrig}
+
+Logarithms and exponential functions are well known for the following
+properties:
+\begin{align*}
+l & = \log_{10} x \\
+x & = 10^x \\
+l_3 = l_1 + l_2 & \Leftrightarrow x_3 = x_1 x_2 & & \text{$+$ of logs corresponds to multiplication of numbers} \\
+l_3 = l_1 - l_2 & \Leftrightarrow x_3 = x_1 / x_2 & & \text{$-$ of logs corresponds to division of numbers} \\
+l_3 = c l_1 & \Leftrightarrow x_3 = x_1^c & & \text{multiplying log by constant corresponds to exponentiation of numbers} \\
+l_3 = l_1/c & \Leftrightarrow x_3 = x_1^{1/c} & & \text{dividing log by constant corresponds to taking $c$-th root of numbers} \\
+\end{align*}
+
+Hyperbolic functions~\cite{WikipediaHyperbolicFunctions} have a
+similar correspondence to relativistic velocities $\beta$ and related
+quantities like the Lorentz factor $\gamma$.
+\begin{align}
+\eta & = \tanh^{-1} \beta & & \text{calculate the {\em rapidity} $\eta$ from relativistic velocity} \\
+\beta & = \tanh \eta & & \text{get $\beta$ from rapidity} \\
+\gamma & = \cosh \eta & & \text{get $\gamma$ from rapidity} \\
+\beta \gamma & = \sinh \eta & & \text{get $\beta \gamma$ from rapidity} \\
+\eta_3 = \eta_1 + \eta_2 & \Leftrightarrow \beta_3 = \beta_1 \oplus \beta_2 & & \text{$+$ of rapidity corresponds to relativistic velocity $\oplus$} \\
+\eta_3 = \eta_1 - \eta_2 & \Leftrightarrow \beta_3 = \beta_1 \ominus \beta_2 & & \text{$-$ of rapidity corresponds to relativistic velocity $\ominus$}
+\end{align}
+Also:
+\begin{itemize}
+\item Multiplying a rapidity by a positive number $n$ corresponds to
+  repeatedly adding that relativistic velocity $n$ times.
+\item Dividing a rapidity by a positive number $n$ corresponds to
+  finding a relativistic velocity $\beta$ such that repeated velocity
+  addition of $\beta$ $n$ times will give back the original
+  relativistic velocity.
+\end{itemize}
+There are an abundance of identities involving hyperbolic functions,
+similar to the large variety of identities relating trigonometric
+functions.  These identities can be useful for finding relationships
+between relativistic $\beta$ and $\gamma$ values.
+
+Examples of a few hyperbolic function identities, but there are many
+more:
+\begin{align}
+\sinh (-x) & = -\sinh x \\
+\cosh (-x) & = \cosh x \\
+\tanh (-x) & = - \tanh x \\
+\sinh (x \pm y) & = \sinh x \cosh y \mp \cosh x \sinh y \\
+\cosh (x \pm y) & = \cosh x \cosh y \pm \sinh x \sinh y \\
+\tanh (x \pm y) & = \frac{\tanh x \pm \tanh y}{1 \pm \tanh x \tanh y} \\
+\sinh x + \sinh y & = 2 \sinh (\frac{x+y}{2} ) \cosh (\frac{x-y}{2}) \\
+\cosh x + \cosh y & = 2 \cosh (\frac{x+y}{2} ) \cosh (\frac{x-y}{2})
+\end{align}
+
+
 \subsection{Math facts about the Doppler factor}
 \label{app:DopplerFactor}
 
