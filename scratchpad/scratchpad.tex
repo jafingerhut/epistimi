@@ -93,12 +93,19 @@
 %	\today
 }
 
-\newcommand{\ihat}{\textbf{i}}
-\newcommand{\jhat}{\textbf{j}}
-\newcommand{\khat}{\textbf{k}}
-\newcommand{\rhat}{\hat{\textbf{r}}}
-\newcommand{\vect}[1]{\textbf{#1}}
-\newcommand{\hatvec}[1]{\hat{\textbf{#1}}}
+%\newcommand{\ihat}{\textbf{i}}
+%\newcommand{\jhat}{\textbf{j}}
+%\newcommand{\khat}{\textbf{k}}
+%\newcommand{\rhat}{\hat{\textbf{r}}}
+%\newcommand{\vect}[1]{\textbf{#1}}
+%\newcommand{\hatvec}[1]{\hat{\textbf{#1}}}
+
+\newcommand{\ihat}{\mathbf{i}}
+\newcommand{\jhat}{\mathbf{j}}
+\newcommand{\khat}{\mathbf{k}}
+\newcommand{\rhat}{\hat{\mathbf{r}}}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\hatvec}[1]{\hat{\mathbf{#1}}}
 
 \begin{document}
 \maketitle
@@ -1268,8 +1275,8 @@ Figure~\ref{fig:pulse-receive-deltas-L-1.0-beta-0.50}.
 \subsubsection{Difference in time of pulses arriving to $B$, calculated in $A$'s frame}
 \label{sec:scen3-Breceivepulsetimes}
 
-We will make use of Lemma~\ref{lem:IntersectingSpreadingPulse} from
-Appendix~\ref{app:IntersectingSpreadingPulse} here.
+%We will make use of Lemma~\ref{lem:IntersectingSpreadingPulse} from
+%Appendix~\ref{app:IntersectingSpreadingPulse} here.
 
 For calculating when $B$ receives the pulses from events 2 and 3, it
 is useful to know the location of $B$ at any time where it is
@@ -1286,16 +1293,17 @@ In the notation of Lemma~\ref{lem:IntersectingSpreadingPulse}:
 \begin{align*}
 \vect{s} & = (-L/2, 0) & & \text{pulse sent from $\vect{s}$, location of event 2} \\
 t_0 & = \frac{L}{\gamma v} & & \text{pulse sent at time $t_0$, time of event 2} \\
-\vect{s} + \vect{r} & = ((-L/2)(1+1/\gamma), D) & & \text{$\vect{s}+\vect{r}$ is location of $B$ at time $t_1=0$} \\
-\vect{r} & = (x_0, y_0) = (-L/(2 \gamma), D) & & \text{subtract $\vect{s}$ from previous line to get $\vect{r}$} \\
-{x_0}' & = x_0 + v(t_0 - t_1) = L/(2\gamma) & & \text{a little algebra from the above} \\
-{r'}^2 & = {{x_0}'}^2 + y_0^2 = \frac{L}{4 \gamma^2} + D^2
+\vect{s} + \vect{r}_1 & = ((-L/2)(1+1/\gamma), D) & & \text{$\vect{s}+\vect{r}_1$ is location of $B$ at time $t_1=0$} \\
+\vect{r}_1 & = (-L/(2 \gamma), D) & & \text{subtract $\vect{s}$ from previous line to get $\vect{r}_1$} \\
+\vect{r}_0 & = \vect{r}_1 + \vect{v}(t_0-t_1) \\
+           & = (-L/(2 \gamma) + vL/(\gamma v), D) \\
+           & = (L/(2 \gamma), D)
 \end{align*}
 The result of Lemma~\ref{lem:IntersectingSpreadingPulse} gives us the
 time (in $R$'s frame) when $B$ receives the event 2 pulse:
 \begin{equation}
   e_2 = \frac{L}{\gamma v} +
-        \frac{ \frac{Lv}{2\gamma} + \sqrt{ c^2 ( \frac{L^2}{4 \gamma^2} + D^2 ) - v^2 D^2} }{c^2 - v^2}
+        \frac{\gamma^2}{c^2} \left[ \frac{Lv}{2 \gamma} + \sqrt{ \frac{L^2v^2}{4 \gamma^2} + (1-\beta^2)c^2 (\frac{L^2}{4 \gamma^2} + D^2) } \right]
 \label{eqn:Breceivespulse2}
 \end{equation}
 
@@ -1306,16 +1314,17 @@ Again in the notation of Lemma~\ref{lem:IntersectingSpreadingPulse}:
 \begin{align*}
 \vect{s} & = (L/2, 0) & & \text{pulse sent from $\vect{s}$, location of event 3} \\
 t_0 & = \frac{L}{v} & & \text{pulse sent at time $t_0$, time of event 3} \\
-\vect{s} + \vect{r} & = ((-L/2)(1+1/\gamma), D) & & \text{$\vect{s}+\vect{r}$ is location of $B$ at time $t_1=0$, same as above} \\
-\vect{r} & = (x_0, y_0) = (-L - L/(2 \gamma), D) & & \text{subtract $\vect{s}$ from previous line to get $\vect{r}$} \\
-{x_0}' & = x_0 + v(t_0 - t_1) = -L/(2\gamma) & & \text{a little algebra from the above} \\
-{r'}^2 & = {{x_0}'}^2 + y_0^2 = \frac{L}{4 \gamma^2} + D^2
+\vect{s} + \vect{r}_1 & = ((-L/2)(1+1/\gamma), D) & & \text{$\vect{s}+\vect{r}_1$ is location of $B$ at time $t_1=0$, same as above} \\
+\vect{r}_1 & = (-L - L/(2 \gamma), D) & & \text{subtract $\vect{s}$ from previous line to get $\vect{r}_1$} \\
+\vect{r}_0 & = \vect{r}_1 + \vect{v}(t_0-t_1) \\
+           & = (-L - L/(2 \gamma) + vL/v, D) \\
+           & = (-L/(2 \gamma), D)
 \end{align*}
 The result of Lemma~\ref{lem:IntersectingSpreadingPulse} gives us the
 time (in $R$'s frame) when $B$ receives the event 3 pulse:
 \begin{equation}
   e_3 = \frac{L}{v} +
-        \frac{ -\frac{Lv}{2\gamma} + \sqrt{ c^2 ( \frac{L^2}{4 \gamma^2} + D^2 ) - v^2 D^2} }{c^2 - v^2}
+        \frac{\gamma^2}{c^2} \left[ -\frac{Lv}{2 \gamma} + \sqrt{ \frac{L^2v^2}{4 \gamma^2} + (1-\beta^2)c^2 (\frac{L^2}{4 \gamma^2} + D^2) } \right]
 \label{eqn:Breceivespulse3}
 \end{equation}
 
@@ -1327,10 +1336,10 @@ under the radicals are equal, so they cancel out when we determine
 $e_3 - e_2$, resulting in:
 \begin{align}
 e_3 - e_2
-  & = \frac{L}{v}(1-\frac{1}{\gamma}) + \frac{ -\frac{Lv}{2\gamma} - \frac{Lv}{2\gamma} }{c^2-v^2} \nonumber \\
-  & = \frac{L}{v}(1-\frac{1}{\gamma}) - \frac{Lv}{\gamma(c^2-v^2)} & & \text{algebra} \nonumber \\
-  & = \frac{L}{c} \left[ \frac{1}{\beta}(1-\frac{1}{\gamma}) - \frac{\beta c^2}{\gamma(c^2-v^2)} \right] & & \text{replace $v$ with $\beta c$ and algebra} \nonumber \\
-  & = \frac{L}{c} \left[ \frac{1}{\beta}(1-\frac{1}{\gamma}) - \beta \gamma \right] & & \text{$c^2 / (c^2 - v^2) = \gamma^2$, and a little algebra} \label{eqn:Bdeltatime3minus2} \\
+  & = \frac{L}{v}(1-\frac{1}{\gamma}) + \frac{\gamma^2}{c^2} \left[ -\frac{Lv}{2 \gamma} - \frac{Lv}{2 \gamma} \right] \nonumber \\
+  & = \frac{L}{v}(1-\frac{1}{\gamma}) - \frac{\gamma Lv}{c^2} & & \text{algebra} \nonumber \\
+  & = \frac{L}{\beta c}(1-\frac{1}{\gamma}) - \frac{\gamma L\beta}{c} & & \text{replace $v$ with $\beta c$ and algebra} \nonumber \\
+  & = \frac{L}{c} \left[ \frac{1}{\beta}(1-\frac{1}{\gamma}) - \beta \gamma \right] & & \text{algebra} \label{eqn:Bdeltatime3minus2}
 \end{align}
 
 We want to show that when we convert this difference $e_3 - e_2$ into
@@ -1428,7 +1437,7 @@ between -1 and 1, to avoid writing $\beta$ with subscripts all over
 the place.
 
 \begin{align}
-a \oplus b & = b \oplus a & & \text{addition is commutative} \label{defn:reladdcommutative} \\
+a \oplus b & = b \oplus a & & \text{addition is commutative (1-d only, not 3-d!)} \label{defn:1dreladdcommutative} \\
 (a \oplus b) \oplus c & = a \oplus (b \oplus c) & & \text{addition is associative (1-d only, not 3-d!)} \label{defn:1dreladdassociative} \\
 a \oplus 0 & = 0 \oplus a = a \\
 a \oplus (-b) & = a \ominus b \\
@@ -1708,149 +1717,97 @@ to correspond with a starting position for $O$.
 \begin{lemma}
 \label{lem:IntersectingSpreadingPulse}
 A spherically spreading ``pulse'' (e.g. a light pulse, or a brief
-sound wave) is emitted from a position $\vect{s} = (s_x, s_y)$ in the
-$XY$ plane at time $t_0$, propagating in all directions at speed $c$.
+sound wave) is emitted from a position $\vect{s}$ at time $t_0$,
+propagating in all directions at speed $c$.
 
-An observer $O$ is moving at constant velocity $v$ in the $x$
-direction (i.e. no motion in the $y$ or $z$ components) starting at
-position $\vect{s} + \vect{r}$ at time $t_1$, where
-$\vect{r} = (x_0,y_0)$.
-
-If $|v| < c$, then there is exactly one time $t_r \geq t_0$ that $O$
-encounters the pulse signal, given by:
+An observer $O$ is moving at constant velocity $\vect{v}$ starting at
+position $\vect{s} + \vect{r}_1$ at time $t_1$, so its position is:
 \begin{equation}
-t_r = t_0 + \frac{v{x_0}' + \sqrt{c^2{r'}^2 - v^2y_0^2}}{c^2-v^2}
+\vect{r}(t) = \vect{s} + \vect{r}_1 + \vect{v}(t - t_1)
+\end{equation}
+If $|\vect{v}| < c$, then there is exactly one time $t_r \geq t_0$
+that $O$ encounters the pulse signal, given by:
+\begin{equation}
+t_r = t_0 + \frac{\gamma^2}{c^2} \left[ (\vect{r}_0 \cdot \vect{v}) + \sqrt{(\vect{r}_0 \cdot \vect{v})^2 + (1-\beta^2)c^2 r_0^2} \right]
 \end{equation}
 where:
 \begin{align*}
-x_0' = x_0 + v(t_0 - t_1) \\
-{r'}^2 = {{x_0}'}^2 + y_0^2
+\vect{r}_0 = \vect{r}_1 + \vect{v}(t_0-t_1)
 \end{align*}
-$t_0, t_1, v, x_0, y_0, c$ can be arbitrary real numbers subject to
-the restriction $|v| < c$.
-If you choose $t_1 > t_0$, it is assumed that $O$'s constant velocity
-movement extends back to $t_0$ or earlier, and $O$ reaches the point
-$\vect{s}+\vect{r}$ at time $t_1$.
+It is assumed that $O$'s constant velocity motion has been occurring
+since the earlier of times $t_0$ and $t_1$.
 \end{lemma}
-The position of $O$ at time $t$ for
-Lemma~\ref{lem:IntersectingSpreadingPulse} is given by:
-\begin{equation}
-x_O(t) = s_x + x_0 + v(t-t_1), y_0(t)=s_y + y_0
-\end{equation}
-The proof of the above is to use the proof of
-Lemma~\ref{lem:IntersectingSpreadingPulse2} below, with $x_0'$ in
-place of $x_0$.
 
-The result for an observer at rest very simple, but we mention it here
-anyway.
-\begin{corollary}
-A spherically spreading ``pulse'' (e.g. a light pulse, or a brief
-sound wave) is emitted from a position $\vect{s}$ in the $XY$ plane at
-time $t_0$, propagating in all directions at speed $c$.
-
-An observer $O$ is at rest relative to where the pulse is emitted from,
-at position $\vect{s} + \vect{r}$, where $\vect{r} = (x_0,y_0)$.
-
-The time $t_r \geq t_0$ that $O$ encounters the pulse signal is given
-by:
-\begin{equation}
-t_r = t_0 + \frac{r}{c} = t_0 + \frac{\sqrt{ x_0^2 + y_0^2 }}{c}
-\end{equation}
-$t_0, x_0, y_0, c$ can be arbitrary real numbers subject to the
-restriction $c > 0$.
-\end{corollary}
-
-\begin{lemma}
-\label{lem:IntersectingSpreadingPulse2}
-Exactly the same scenario as described in
-Lemma~\ref{lem:IntersectingSpreadingPulse}, except that the initial
-position for observer $O$ must be given at time $t_1=t_0$, the same
-time that the pulse is emitted.
-
-The observer encounters the pulse signal at time $t_r$ given by:
-\begin{equation}
-t_r = t_0 + \frac{vx_0 + \sqrt{c^2r^2 - v^2y_0^2}}{c^2-v^2}
-\end{equation}
-$t_0, v, x_0, y_0, c$ can be arbitrary real numbers subject to
-the restriction $|v| < c$.
-\end{lemma}
-The position of $O$ at time $t$ for the lemma above is given by:
-\begin{equation}
-x_O(t) = s_x + x_0 + v(t-t_0), y_0(t)=s_y + y_0
-\end{equation}
-Lemma~\ref{lem:IntersectingSpreadingPulse2} is simply a slight
-generalization of Lemma~\ref{lem:IntersectingSpreadingPulse3}, but
-with the light pulse starting point translated from the origin to
-$\vect{s}$, and the pulse being transmitted at a translated time $t_0$
-instead of 0.
+The proof of the above is straightforward, using time $(t-t_0)$
+instead of $t$.  Note that the equation for the position $\vect{r}(t)$
+in the Lemma becomes as follows when replace $\vect{r}_1$ as shown:
+\begin{align*}
+\vect{r}(t)
+  & = \vect{s} + \vect{r}_1 + \vect{v}(t - t_1) \\
+  & = \vect{s} + \vect{r}_0 - \vect{v}(t_0-t_1) + \vect{v}(t - t_1) & & \text{substitute $\vect{r}_1$ with $\vect{r}_0 - \vect{v}(t_0-t_1)$} \\
+  & = \vect{s} + \vect{r}_0 + \vect{v}(t - t_0) & & \text{algebra}
+\end{align*}
 
 
 \subsubsection{Proof for simplified case}
 
 \begin{lemma}
-\label{lem:IntersectingSpreadingPulse3}
+\label{lem:IntersectingSpreadingPulse2}
 A spherically spreading ``pulse'' (e.g. a light pulse, or a brief
-sound wave) is emitted from the origin at time $t=0$, propagating in
-all directions at speed $c$.
+sound wave) is emitted from location $\vect{s}$ at time $t=0$,
+propagating in all directions at speed $c$.
 
-An observer $O$ is moving at constant velocity $v$ in the $x$
-direction (i.e. no motion in the $y$ or $z$ components) starting at
-position $\vect{r} = (x_0,y_0)$ at $t=0$.
-
-If $|v| < c$, then there is exactly one time $t_r$ that $O$ encounters
-the pulse signal, given by:
+An observer $O$ is moving at constant velocity $\vect{v}$ starting at
+position $\vect{s} + \vect{r}_0$ at $t=0$, so its position is:
 \begin{equation}
-t_r = \frac{vx_0 + \sqrt{c^2r^2 - v^2y_0^2}}{c^2-v^2}
+\vect{r}(t) = \vect{s} + \vect{r}_0 + \vect{v}t
 \end{equation}
-$v, x_0, y_0, c$ can be arbitrary real numbers subject to the
-restriction $|v| < c$.
+If $|\vect{v}| < c$, then there is exactly one time $t_r \geq 0$ that
+$O$ encounters the pulse signal, given by:
+\begin{equation}
+t_r = \frac{\gamma^2}{c^2} \left[ (\vect{r}_0 \cdot \vect{v}) + \sqrt{(\vect{r}_0 \cdot \vect{v})^2 + (1-\beta^2)c^2 r_0^2} \right]
+\end{equation}
 \end{lemma}
-Aside: In addition to the proof below, I have verified the equation
-above with a handful of sets of values for $c, v, x_0, y_0$ and
-verified that it gives a positive value of $t_r$ such that the
-position of the observer at time $t_r$ is distance $ct_r$ from the
-origin.
+
 \begin{proof}
-Since $O$ moves only in the $XY$ plane, we need only concern ourselves
-with the circle of the wavefront in that plane, and when $O$
-intersects with it.  The wavefront is spread along a circle with
-points $(x,y)$ satisfying the equation:
-\begin{equation}
-x^2 + y^2 = c^2t^2 \label{eqn:circularwavefront}
-\end{equation}
-The position of observer $O$ at time $t$ is:
-\begin{equation}
-x_O(t) = x_0 + vt, y_0(t)=y_0
-\end{equation}
-$O$ receives the pulse when its position satisfies
-Equation~\eqref{eqn:circularwavefront}.
+Any time $t$ when $O$ is at the wavefront of the pulse must be one
+where the distance from $O$ to $\vect{s}$ is equal to the distance
+that the pulse has traveled from $\vect{s}$:
+
 \begin{align*}
-(x_0 + vt)^2 + y_0^2 & = c^2t^2 \\
-x_0^2 + 2x_0vt + v^2t^2 + y_0^2 & = c^2t^2 & & \text{algebra} \\
-(v^2 - c^2)t^2 + 2x_0vt + (x_0^2 + r_0^2) & = 0 & & \text{collect like terms by powers of $t$}
+|\vect{r}(t) - \vect{s}| & = ct \\
+|\vect{r}_0 + \vect{v}t| & = ct & & \text{substitute value of $\vect{r}(t)$} \\
+(\vect{r}_0 + \vect{v}t) \cdot (\vect{r}_0 + \vect{v}t) & = c^2t^2 & & \text{square both sides} \\
+r_0^2 + 2(\vect{r}_0 \cdot \vect{v})t + v^2t^2 & = c^2t^2 & & \text{expand dot product} \\
+(v^2-c^2)t^2 + 2(\vect{r}_0 \cdot \vect{v})t + r_0^2 & = 0 & & \text{rearrange in preparation for quadratic equation on $t$}
 \end{align*}
-Use the quadratic equation, and let $r^2 = x_0^2 + y_0^2$ to reduce
-the number of symbols a bit.  First evaluate the discriminant:
+The discriminant $\Delta$ when applying the quadratic equation is:
 \begin{align*}
-b^2 - 4ac
-  & = (2x_0v)^2 - 4(v^2-c^2)(x_0^2+y_0^2) \\
-  & = 4x_0^2v^2 - 4v^2x_0^2 - 4v^2y_0^2 + 4c^2x_0^2 + 4c^2y_0^2 \\
-  & = 4 \left[ c^2(x_0^2 + y_0^2) - v^2y_0^2 \right] \\
-  & = 4 \left[ c^2r^2 - v^2y_0^2 \right]
+\Delta
+  & = b^2 - 4ac \\
+  & = 4(\vect{r}_0 \cdot \vect{v})^2 - 4(v^2 - c^2)r_0^2 \\
+  & = 4(\vect{r}_0 \cdot \vect{v})^2 - 4(\beta^2 c^2 - c^2)r_0^2 & & \text{$v=\beta c$} \\
+  & = 4 \left[ (\vect{r}_0 \cdot \vect{v})^2 + (1-\beta^2)c^2 r_0^2 \right] & & \text{algebra}
+% All of the below is definitely correct, but it is inconvenient to
+% use the Lemma if you now vectors r_0 and v, but not the angle theta
+% between them.
+%  & = 4 \left[ r_0^2v^2 \cos^2 \theta - v^2r_0^2 + c^2r_0^2 \right] & & \text{algebra, and use $\vect{r}_0 \cdot \vect{v} = r_0 v\cos \theta$} \\
+%  & = 4 r_0^2 \left[ v^2 \cos^2 \theta - v^2 + c^2 \right] & & \text{factor out $r_0^2$} \\
+%  & = 4 r_0^2 \left[ v^2 (\cos^2 \theta - 1) + c^2 \right] & & \text{algebra} \\
+%  & = 4 r_0^2 \left[ c^2 - v^2 \sin^2 \theta \right] & & \text{$(\cos^2 \theta - 1)=\sin^2 \theta$} \\
+%  & = 4 r_0^2 c^2 \left[ 1 - \beta^2 \sin^2 \theta \right] & & \text{$v = \beta c$ and factor out $c^2$}
 \end{align*}
-The full solutions to the equation are:
+Plugging $\Delta$ into the full quadratic equation to solve for $t$:
 \begin{align*}
-t_r
-  & = \frac{-2vx_0 \pm \sqrt{4 (c^2r^2 - v^2y_0^2) }}{2(v^2-c^2)} \\
-  & = \frac{vx_0 \pm \sqrt{c^2r^2 - v^2y_0^2}}{c^2-v^2} & & \text{multiply numerator and denominator by $-1/2$}
+t
+  & = \frac{-2(\vect{r}_0 \cdot \vect{v}) \pm \sqrt{4 \left[ (\vect{r}_0 \cdot \vect{v})^2 + (1-\beta^2)c^2 r_0^2 \right]}}{2(v^2 - c^2)} \\
+  & = -\frac{\gamma^2}{c^2} \left[ -(\vect{r}_0 \cdot \vect{v}) \pm \sqrt{(\vect{r}_0 \cdot \vect{v})^2 + (1-\beta^2)c^2 r_0^2} \right] & & \text{cancel 2, $1/(v^2-c^2) = -\gamma^2/c^2$} \\
+  & = \frac{\gamma^2}{c^2} \left[ (\vect{r}_0 \cdot \vect{v}) \mp \sqrt{(\vect{r}_0 \cdot \vect{v})^2 + (1-\beta^2)c^2 r_0^2} \right]
 \end{align*}
 We want only a positive solution, since that is after the pulse is
-emitted.  $|v| < c$, so the denominator is positive.  If $vx_0$ is
-negative, the only way to get a positive solution is to use the
-addition alternative among the two solutions.
-\begin{align*}
-t_r & = \frac{vx_0 + \sqrt{c^2r^2 - v^2y_0^2}}{c^2-v^2}
-\end{align*}
+emitted.  $(\vect{r}_0 \cdot \vect{v})$ could be positive or negative,
+so only the $+$ alternative of $\mp$ will be positive in that
+situation.
 \end{proof}
 
 
