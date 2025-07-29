@@ -1201,18 +1201,15 @@ q_3 - q_2
   & = \frac{L}{v} - \frac{L}{\gamma v} & & \text{defns. of $q_2, q_3$} \nonumber \\
   & = \frac{L}{v} (1 - \frac{1}{\gamma}) & & \text{algebra} \nonumber \\
   & = \frac{L}{\beta c} (1 - \frac{1}{\gamma}) & & \text{replace $v$ with $\beta c$} \label{eqn:pulsesenddiff2} \\
-  & = \frac{L}{\beta c} (1 - \sqrt{ 1 - \beta^2 }) & & \text{defn. of $\gamma$} \nonumber \\
-  & = \frac{L}{\beta c} (1 - \sqrt{ 1 - \beta^2 }) \frac{1 + \sqrt{1-\beta^2}}{1 + \sqrt{1-\beta^2}} & & \text{multiply by a complicated-looking 1} \nonumber \\
-  & = \left( \frac{L}{\beta c} \right) \frac{1 - (1 - \beta^2)}{1 + \sqrt{1-\beta^2}} & & \text{algebra} \nonumber \\
-  & = \left( \frac{L}{c} \right) \frac{\beta}{1 + \sqrt{1-\beta^2}} & & \text{algebra} \label{eqn:pulsesenddiff}
+  & = \frac{L}{c} \frac{\beta\gamma}{\gamma+1} & & \text{Lemma~\ref{lem:betaGammaIdentity1}} \label{eqn:pulsesenddiff}
 \end{align}
-The funny multiplying by 1 step was done because the resulting formula
-below is easier to understand its behavior for values of $\beta$ near 0:
+The equivalent equation below is a bit easier to see the behavior as
+$\beta$ approaches 0 or 1:
 \begin{align*}
-\frac{\beta}{1 + \sqrt{1-\beta^2}}
+\frac{\beta\gamma}{\gamma+1} & = \beta(1-\frac{1}{\gamma+1})
 \end{align*}
 When $\beta$ approaches 0, this value approaches $0/2 = 0$.
-When $\beta$ approaches 1, this value approaches $1/1 = 1$.
+When $\beta$ approaches 1, this value approaches $1(1-0) = 1$.
 It is straightforward to verify by calculating the derivative that
 this function is strictly increasing with $\beta$ over the interval $(0,1)$.
 
@@ -1220,8 +1217,8 @@ Substituting Equation~\eqref{eqn:pulsesenddiff} into
 Equation~\eqref{eqn:pulserecvdiff1} gives:
 \begin{align}
 d_r - d_l
-  & = c \left( k - \left( \frac{L}{c} \right) \frac{\beta}{1 + \sqrt{1-\beta^2}} \right) \nonumber \\
-  & = ck - \frac{L \beta}{1 + \sqrt{1-\beta^2}}
+  & = c \left( k - \left( \frac{L}{c} \right) \frac{\beta\gamma}{\gamma+1} \right) \nonumber \\
+  & = ck - \frac{L \beta \gamma}{\gamma+1}
 \end{align}
 If we restrict our attention to situations where $L$, $\beta$, and $k$
 are given constants, this equation is of the form $d_r - d_l$ equal to
@@ -1339,7 +1336,11 @@ e_3 - e_2
   & = \frac{L}{v}(1-\frac{1}{\gamma}) + \frac{\gamma^2}{c^2} \left[ -\frac{Lv}{2 \gamma} - \frac{Lv}{2 \gamma} \right] \nonumber \\
   & = \frac{L}{v}(1-\frac{1}{\gamma}) - \frac{\gamma Lv}{c^2} & & \text{algebra} \nonumber \\
   & = \frac{L}{\beta c}(1-\frac{1}{\gamma}) - \frac{\gamma L\beta}{c} & & \text{replace $v$ with $\beta c$ and algebra} \nonumber \\
-  & = \frac{L}{c} \left[ \frac{1}{\beta}(1-\frac{1}{\gamma}) - \beta \gamma \right] & & \text{algebra} \label{eqn:Bdeltatime3minus2}
+  & = \frac{L}{c} \left[ \frac{1}{\beta}(1-\frac{1}{\gamma}) - \beta \gamma \right] & & \text{algebra} \nonumber \\
+  & = \frac{L}{c} \left( \frac{\beta\gamma}{\gamma+1} - \beta \gamma \right) & & \text{Lemma~\ref{lem:betaGammaIdentity1}} \nonumber \\
+  & = \frac{L\beta\gamma}{c} \left( \frac{1}{\gamma+1} - 1 \right) & & \text{algebra} \nonumber \\
+  & = \frac{L\beta\gamma}{c} \left( \frac{-\gamma}{\gamma+1} \right) & & \text{algebra} \nonumber \\
+  & = - \frac{L}{c} \left( \frac{\beta\gamma^2}{\gamma+1} \right) & & \text{algebra} \label{eqn:Bdeltatime3minus2}
 \end{align}
 
 We want to show that when we convert this difference $e_3 - e_2$ into
@@ -1349,18 +1350,11 @@ time that event 3's pulse is sent after event 2's pulse is sent, in
 $A$'s frame.
 
 \begin{align*}
-\frac{1}{\gamma}(e_3 - e_2) & = -(q_3 - q_2) & & \text{what we want to show} \\
-\frac{L}{c\gamma} \left[ \frac{1}{\beta}(1-\frac{1}{\gamma}) - \beta \gamma \right] & = - \frac{L}{\beta c} (1 - \frac{1}{\gamma}) & & \text{Eqns.~\eqref{eqn:Bdeltatime3minus2} and~\eqref{eqn:pulsesenddiff2}} \\
-(1-\frac{1}{\gamma}) - \beta^2 \gamma & = -\gamma (1 - \frac{1}{\gamma}) & & \text{multiply both sides by $\gamma \beta c/L$} \\
-(1-\frac{1}{\gamma}) + \gamma (1 - \frac{1}{\gamma}) & = \beta^2 \gamma & & \text{Add same expressions to both sides to rearrange terms} \\
-\frac{(\gamma + 1)(\gamma - 1)}{\gamma} & = \beta^2 \gamma & & \text{algebra on left-hand side} \\
-\frac{\gamma^2 - 1}{\gamma} & = \beta^2 \gamma & & \text{algebra on left-hand side} \\
-1 - \frac{1}{\gamma^2} & = \beta^2 & & \text{divide both side by $\gamma$, algebra} \\
-1 - (1-\beta^2) & = \beta^2 & & \text{defn. of $\gamma$.  This is true!}
+\frac{1}{\gamma}(e_3 - e_2)
+  & = - \frac{L}{\gamma c} \left( \frac{\beta\gamma^2}{\gamma+1} \right) & & \text{Eqn.~\eqref{eqn:Bdeltatime3minus2}} \\
+  & = - \frac{L}{c} \left( \frac{\beta\gamma}{\gamma+1} \right) & & \text{algebra} \\
+  & = - (q_3 - q_2) & & \text{Eqn.~\eqref{eqn:pulsesenddiff}}
 \end{align*}
-All multiplications, divisions, and cancellations avoided multiplying
-or dividing by 0.  Therefore, since the final equation is true, so are
-all earlier ones, including the first that we wanted to prove.
 
 
 \subsection{Special Relativity Scenario 4: Two rods moving towards each other at constant velocity, and both relative to observer}
@@ -1447,6 +1441,88 @@ s_3 & = x_{S,0} + v_S \frac{L}{\gamma_R(v_S - v_R)} + \frac{L}{2\gamma_S} & & \t
 s_3 & = x_{S,0} + \frac{Lv_S}{\gamma_R(v_S - v_R)} + \frac{L}{2\gamma_S} & & \text{algebra} \label{eqn:scen4-event3xcoord}
 \end{align}
 
+
+\paragraph{Find time in rest frame that event 2 pulse reaches $A$}
+
+In the symbols used for Lemma~\ref{lem:IntersectingSpreadingPulse},
+here are the relevant details about event 2 and $A$:
+\begin{align*}
+\vect{s} & = (s_2,0) = (x_{S,0} + \frac{L}{\gamma_S} \left( \frac{v_S}{v_S - v_R} - \frac{1}{2} \right), 0) & & \text{event 2 pulse is from left end of $R$, Eqn.~\eqref{eqn:scen4-event2xcoord}} \\
+t_0 & = q_2 = \frac{L}{\gamma_S(v_S - v_R)} & & \text{event 2 pulse time from Eqn.~\eqref{eqn:scen4-event2time}} \\
+\vect{s} + \vect{r}_1 & = (x_{R,0}, D) = (x_{S,0} + \frac{L}{2} ( \frac{1}{\gamma_R} + \frac{1}{\gamma_S} ), D) & & \text{location of $A$ at time 0} \\
+t_1 & = 0 \\
+\vect{r}_1 & = (\frac{L}{2\gamma_R} + \frac{L}{\gamma_S} - \frac{Lv_S}{\gamma_S(v_S-v_R)}, D) & & \text{subtract $\vect{s}$ from $\vect{s}+\vect{r}_1$} \\
+\vect{r}_0
+  & = \vect{r}_1 + \vect{v}_R(t_0-t_1) \\
+  & = (\frac{L}{2\gamma_R} + \frac{L}{\gamma_S} - \frac{Lv_S}{\gamma_S(v_S-v_R)} + \frac{Lv_R}{\gamma_S(v_S - v_R)}, D) & & \text{substitute $\vect{r}_1$ and $t_0$ from above} \\
+%  & = (\frac{L}{2\gamma_R} + \frac{L}{\gamma_S} - \frac{L(v_S-v_R)}{\gamma_S(v_S-v_R)}, D) & & \text{algebra} \\
+  & = (\frac{L}{2\gamma_R} + \frac{L}{\gamma_S} - \frac{L}{\gamma_S}, D) & & \text{algebra} \\
+  & = (\frac{L}{2\gamma_R}, D) & & \text{algebra}
+\end{align*}
+Plug those into the equation for $t_r$ from
+Lemma~\ref{lem:IntersectingSpreadingPulse} to get $e_{2,A}$:
+\begin{align*}
+e_{2,A} & = \frac{L}{\gamma_S(v_S - v_R)} + \frac{\gamma_R^2}{c^2} \left[ \frac{Lv_R}{2\gamma_R} + \sqrt{\frac{L^2v_R^2}{4\gamma_R^2} + (1-\beta_R)^2c^2 (\frac{L^2}{4\gamma_r^2} + D^2)} \right]
+\end{align*}
+
+
+\paragraph{Find time in rest frame that event 3 pulse reaches $A$}
+
+In the symbols used for Lemma~\ref{lem:IntersectingSpreadingPulse},
+here are the relevant details about event 3 and $A$:
+\begin{align*}
+\vect{s} & = (s_3,0) = (x_{S,0} + \frac{Lv_S}{\gamma_R(v_S - v_R)} + \frac{L}{2\gamma_S}, 0) & & \text{event 3 pulse is from right end of $R$, Eqn.~\eqref{eqn:scen4-event3xcoord}} \\
+t_0 & = q_3 = \frac{L}{\gamma_R(v_S - v_R)} & & \text{event 3 pulse time from Eqn.~\eqref{eqn:scen4-event3time}} \\
+\vect{s} + \vect{r}_1 & = (x_{R,0}, D) = (x_{S,0} + \frac{L}{2} ( \frac{1}{\gamma_R} + \frac{1}{\gamma_S} ), D) & & \text{location of $A$ at time 0} \\
+t_1 & = 0 \\
+\vect{r}_1 & = (\frac{L}{2\gamma_R} - \frac{Lv_S}{\gamma_R(v_S - v_R)}, D) & & \text{subtract $\vect{s}$ from $\vect{s}+\vect{r}_1$} \\
+\vect{r}_0
+  & = \vect{r}_1 + \vect{v}_R(t_0-t_1) \\
+  & = (\frac{L}{2\gamma_R} - \frac{Lv_S}{\gamma_R(v_S - v_R)} + \frac{Lv_R}{\gamma_R(v_S - v_R)}, D) & & \text{substitute $\vect{r}_1$ and $t_0$ from above} \\
+  & = (\frac{L}{2\gamma_R} - \frac{L}{\gamma_R}, D) & & \text{algebra} \\
+  & = (-\frac{L}{2\gamma_R}, D) & & \text{algebra}
+\end{align*}
+Plug those into the equation for $t_r$ from
+Lemma~\ref{lem:IntersectingSpreadingPulse} to get $e_{3,A}$:
+\begin{align*}
+e_{3,A} & = \frac{L}{\gamma_R(v_S - v_R)} + \frac{\gamma_R^2}{c^2} \left[ -\frac{Lv_R}{2\gamma_R} + \sqrt{\frac{L^2v_R^2}{4\gamma_R^2} + (1-\beta_R)^2c^2 (\frac{L^2}{4\gamma_r^2} + D^2)} \right]
+\end{align*}
+
+
+\paragraph{Find difference in times that event 2 and event 3 pulses reach $A$, on $A$'s clock}
+
+\begin{align*}
+e_{3,A}-e_{2,A}
+  & = \left[ \frac{L}{\gamma_R(v_S - v_R)} - \frac{L}{\gamma_S(v_S - v_R)} \right] + \frac{\gamma_R^2}{c^2} \left[ -\frac{Lv_R}{2\gamma_R} - \frac{Lv_R}{2\gamma_R} \right] \\
+  & = \frac{L}{c} \frac{\frac{1}{\gamma_R} - \frac{1}{\gamma_S}}{(\beta_S - \beta_R)} - \frac{L\gamma_R\beta_R}{c} \\
+  & = \frac{L}{c} \left[ \frac{\frac{1}{\gamma_R} - \frac{1}{\gamma_S}}{(\beta_S - \beta_R)} - \gamma_R\beta_R \right] \\
+  & = \frac{\gamma_R L}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] & & \text{TODO: lots of algebra from prev line}
+\end{align*}
+
+As a quick double-check, let us see what happens if we plug in $v_R=0$
+and thus also $\beta_R=0$ and $\gamma_R=1$:
+
+\begin{align*}
+e_{3,A}-e_{2,A}
+  & = \frac{L}{c} \left( \frac{\beta_S\gamma_S}{\gamma_S + 1} \right) & & \text{plug in values for $R$}
+\end{align*}
+This is the same as Equation~\eqref{eqn:pulsesenddiff}, as it should
+be when $R$ and $A$ are at rest.
+
+
+\paragraph{Find time in rest frame that event 2 pulse reaches $B$}
+
+TODO
+
+
+\paragraph{Find time in rest frame that event 3 pulse reaches $B$}
+
+TODO
+
+
+\paragraph{Find difference in times that event 2 and event 3 pulses reach $B$, on $B$'s clock}
+
+TODO
 
 %\newpage
 \bibliography{refs}
@@ -1661,7 +1737,7 @@ more:
 \end{align}
 
 
-\subsection{Math facts about the Doppler factor}
+\subsection{Math facts about the Doppler factor and Lorentz factor}
 \label{app:DopplerFactor}
 
 This appendix is restricted to proofs of mathematical relationships.
@@ -1759,6 +1835,28 @@ $D_{-v} = 1/D_v$, so $D_w = D_u / D_v$.
 
 Apparently these facts are well-known among those working with
 relativistic Doppler factors.
+The following lemma is occasionally useful.
+\begin{lemma}
+\label{lem:betaGammaIdentity1}
+Let $\beta$ be in range $0 < \beta < 1$,
+and let $\gamma = 1/\sqrt{1-\beta^2}$ be the Lorentz factor
+corresponding to it.
+Then:
+\begin{equation}
+\frac{1}{\beta} (1-\frac{1}{\gamma}) = \frac{\beta\gamma}{\gamma+1}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+\begin{align*}
+\frac{1}{\beta} (1-\frac{1}{\gamma})
+  & = \frac{1}{\beta} \frac{\gamma-1}{\gamma} \frac{\gamma+1}{\gamma+1} & & \text{algebra} \\
+  & = \frac{1}{\beta} \frac{\gamma^2-1}{\gamma(\gamma+1)} & & \text{algebra} \\
+  & = \frac{1}{\beta} \frac{\gamma^2(1-\frac{1}{\gamma^2})}{\gamma(\gamma+1)} & & \text{algebra} \\
+  & = \frac{1}{\beta} \frac{\gamma(1-(1-\beta^2))}{\gamma+1} & & \text{defn. of $\gamma$, algebra} \\
+  & = \frac{\beta\gamma}{\gamma+1} & & \text{algebra}
+\end{align*}
+\end{proof}
 
 
 \subsection{When a moving observer intersects with a spherically spreading pulse}
