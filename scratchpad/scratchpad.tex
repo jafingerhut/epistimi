@@ -1429,6 +1429,42 @@ from the equations above that:
 \frac{1}{\gamma_R} (e_{3,A}-e_{2,A}) = -\frac{1}{\gamma_S} (e_{3,B}-e_{2,B})
 \end{equation}
 
+Similar to what was described at the end of
+Section~\ref{sec:scen2BtoCLETfriendly} for Scenario 2, where $B$ and
+$C$, both in motion relative to $A$, get measurements consistent with
+$B$ being at rest and $C$ having relative velocity equal to $v_C
+\ominus v_B$ relative to $B$ (or $C$ at rest and $B$ having relative
+velocity $v_B \ominus v_C$ relative to $C$), there is a similar result
+here.
+
+The difference in time measured by $A$ on its local clock of the two
+pulses is:
+\begin{align*}
+\frac{1}{\gamma_R} (e_{3,A}-e_{2,A})
+  = \frac{L}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] & & \text{Eqn.~\eqref{eqn:scen4-pulseReceiveDiffForA}} \\
+  = \frac{L}{c} \tanh \frac{\eta_S-\eta_R}{2} & & \text{Lemma~\ref{lem:halfRapidityDifference} in Appendix~\ref{app:1drelVelocityUsingHyperbolicFns}} \\
+  = \frac{L}{c} \tanh \frac{\eta_{\Delta}}{2} & & \text{define $\eta_{\Delta}=\eta_S-\eta_R$}
+\end{align*}
+where $\eta_S = \tanh^{-1} \beta_S$ and $\eta_R = \tanh^{-1} \beta_R$.
+The rapidity value $\eta_{\Delta}$ corresponds to the relativistic
+velocity $\beta_{\Delta} = \beta_S \ominus \beta_R$.  Thus as long as
+$A$ knows $L$, it can calculate a value of $\beta_{\Delta}$ from
+its measured difference between the pulse arrival times $T$:
+\begin{align}
+T & = \frac{L}{c} \tanh \frac{\eta_{\Delta}}{2} & & \text{from above} \nonumber \\
+\tanh \frac{\eta_{\Delta}}{2} & = \frac{cT}{L} & & \text{algebra} \label{eqn:tanhOfHalfEtaDelta}
+\end{align}
+then:
+\begin{align*}
+\beta_{\Delta}
+  & = \tanh \eta_{\Delta} & & \text{relationship between $\beta$ and $\eta$ Eqn.~\eqref{eqn:betaHyperbolic}} \\
+  & = \frac{2\tanh \frac{\eta_{\Delta}}{2}}{1+\tanh^2 \frac{\eta_{\Delta}}{2}} & & \text{Eqn.~\eqref{eqn:tanhDoubleAngle}} \\
+  & = \frac{2 (\frac{cT}{L})}{1+(\frac{cT}{L})^2} & & \text{Eqn.~\eqref{eqn:tanhOfHalfEtaDelta}} \\
+\end{align*}
+$B$ measures exactly the negative of the time difference, and
+following the same kinds of calculations can calculate the negative of
+$\beta_{\Delta}$ that $A$ does.
+
 
 %\newpage
 \bibliography{refs}
@@ -1642,7 +1678,8 @@ more~\cite{WikipediaHyperbolicFunctions}:
 \cosh (x \pm y) & = \cosh x \cosh y \pm \sinh x \sinh y \\
 \tanh (x \pm y) & = \frac{\tanh x \pm \tanh y}{1 \pm \tanh x \tanh y} \\
 \sinh x + \sinh y & = 2 \sinh (\frac{x+y}{2} ) \cosh (\frac{x-y}{2}) \label{eqn:sinhHalfAngleSum} \\
-\cosh x + \cosh y & = 2 \cosh (\frac{x+y}{2} ) \cosh (\frac{x-y}{2}) \label{eqn:coshHalfAngleSum}
+\cosh x + \cosh y & = 2 \cosh (\frac{x+y}{2} ) \cosh (\frac{x-y}{2}) \label{eqn:coshHalfAngleSum} \\
+\tanh 2x & = \frac{2 \tanh x}{1+\tanh^2 x} \label{eqn:tanhDoubleAngle}
 \end{align}
 
 Below are a couple of examples of the use of hyperbolic functions,
