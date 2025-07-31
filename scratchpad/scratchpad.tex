@@ -1590,14 +1590,14 @@ And the last inequality is true.  Proving the part that
 And the last inequality is true.
 
 
-\subsection{Using hyperbolic trigonometric functions for relativistic velocity arithmetic in one dimension}
-\label{app:1drelVelocityUsingHyperbolicTrig}
+\subsection{Using hyperbolic functions for relativistic velocity arithmetic in one dimension}
+\label{app:1drelVelocityUsingHyperbolicFns}
 
 Logarithms and exponential functions are well known for the following
 properties:
 \begin{align*}
 l & = \log_{10} x \\
-x & = 10^x \\
+x & = 10^l \\
 l_3 = l_1 + l_2 & \Leftrightarrow x_3 = x_1 x_2 & & \text{$+$ of logs corresponds to multiplication of numbers} \\
 l_3 = l_1 - l_2 & \Leftrightarrow x_3 = x_1 / x_2 & & \text{$-$ of logs corresponds to division of numbers} \\
 l_3 = c l_1 & \Leftrightarrow x_3 = x_1^c & & \text{multiplying log by constant corresponds to exponentiation of numbers} \\
@@ -1609,11 +1609,14 @@ similar correspondence to relativistic velocities $\beta$ and related
 quantities like the Lorentz factor $\gamma$.
 \begin{align}
 \eta & = \tanh^{-1} \beta & & \text{calculate the {\em rapidity} $\eta$ from relativistic velocity} \\
-\beta & = \tanh \eta & & \text{get $\beta$ from rapidity} \\
-\gamma & = \cosh \eta & & \text{get $\gamma$ from rapidity} \\
-\beta \gamma & = \sinh \eta & & \text{get $\beta \gamma$ from rapidity} \\
-\eta_3 = \eta_1 + \eta_2 & \Leftrightarrow \beta_3 = \beta_1 \oplus \beta_2 & & \text{$+$ of rapidity corresponds to relativistic velocity $\oplus$} \\
-\eta_3 = \eta_1 - \eta_2 & \Leftrightarrow \beta_3 = \beta_1 \ominus \beta_2 & & \text{$-$ of rapidity corresponds to relativistic velocity $\ominus$}
+\beta & = \tanh \eta & & \text{get $\beta$ from rapidity} \label{eqn:betaHyperbolic} \\
+\gamma & = \cosh \eta & & \text{get $\gamma$ from rapidity} \label{eqn:gammaHyperbolic} \\
+D & = \sqrt{\frac{1+\beta}{1-\beta}} = e^\eta & & \text{get Doppler factor from rapidity} \label{eqn:dopplerFactorHyperbolic} \\
+\beta \gamma & = \sinh \eta & & \text{get $\beta \gamma$ from rapidity} \label{eqn:betaGammaHyperbolic} \\
+\eta_3 = \eta_1 + \eta_2 & \Leftrightarrow \beta_3 = \beta_1 \oplus \beta_2 & & \text{$+$ of rapidity corresponds to 1-d relativistic velocity $\oplus$} \\
+    & \Leftrightarrow D_3 = D_1 D_2 & & \text{and to 1-d Doppler factor multiplication} \\
+\eta_3 = \eta_1 - \eta_2 & \Leftrightarrow \beta_3 = \beta_1 \ominus \beta_2 & & \text{$-$ of rapidity corresponds to 1-d relativistic velocity $\ominus$} \\
+    & \Leftrightarrow D_3 = D_1 / D_2 & & \text{and to 1-d Doppler factor division} \\
 \end{align}
 Also:
 \begin{itemize}
@@ -1630,7 +1633,7 @@ functions.  These identities can be useful for finding relationships
 between relativistic $\beta$ and $\gamma$ values.
 
 Examples of a few hyperbolic function identities, but there are many
-more:
+more~\cite{WikipediaHyperbolicFunctions}:
 \begin{align}
 \sinh (-x) & = -\sinh x \\
 \cosh (-x) & = \cosh x \\
@@ -1638,9 +1641,50 @@ more:
 \sinh (x \pm y) & = \sinh x \cosh y \mp \cosh x \sinh y \\
 \cosh (x \pm y) & = \cosh x \cosh y \pm \sinh x \sinh y \\
 \tanh (x \pm y) & = \frac{\tanh x \pm \tanh y}{1 \pm \tanh x \tanh y} \\
-\sinh x + \sinh y & = 2 \sinh (\frac{x+y}{2} ) \cosh (\frac{x-y}{2}) \\
-\cosh x + \cosh y & = 2 \cosh (\frac{x+y}{2} ) \cosh (\frac{x-y}{2})
+\sinh x + \sinh y & = 2 \sinh (\frac{x+y}{2} ) \cosh (\frac{x-y}{2}) \label{eqn:sinhHalfAngleSum} \\
+\cosh x + \cosh y & = 2 \cosh (\frac{x+y}{2} ) \cosh (\frac{x-y}{2}) \label{eqn:coshHalfAngleSum}
 \end{align}
+
+Below are a couple of examples of the use of hyperbolic functions,
+relevant elsewhere in this document, that I have personally found much
+more difficult to validate without using hyperbolic functions.
+
+\begin{lemma}
+\label{lem:halfRapidityDifference}
+Let $\beta_1, \beta_1$ be any real values in the range $(-1,1)$,
+$\gamma_1, \gamma_1$ their corresponding Lorentz factors, and $\eta_i
+= \tanh^{-1} \beta_i$ their rapidities.
+Then:
+\begin{equation}
+\frac{\beta_1 \gamma_1 - \beta_2 \gamma_2}{\gamma_1 + \gamma_2} = \tanh \frac{\eta_1-\eta_2}{2}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+\begin{align*}
+\frac{\beta_1 \gamma_1 - \beta_2 \gamma_2}{\gamma_1 + \gamma_2}
+  & = \frac{\sinh \eta_1 - \sinh \eta_2}{\cosh \eta_1 + \cosh \eta_2} & & \text{Eqns.~\eqref{eqn:betaGammaHyperbolic} and~\eqref{eqn:gammaHyperbolic}} \\
+  & = \frac{2 \sinh ( \frac{\eta_1-\eta_2}{2} ) \cosh ( \frac{\eta_1+\eta_2}{2} ) }{2 \cosh ( \frac{\eta_1+\eta_2}{2} ) \cosh ( \frac{\eta_1-\eta_2}{2} ) } & & \text{Eqns.~\eqref{eqn:sinhHalfAngleSum} and~\eqref{eqn:coshHalfAngleSum}} \\
+  & = \frac{\sinh ( \frac{\eta_1-\eta_2}{2} ) }{\cosh ( \frac{\eta_1-\eta_2}{2} ) } & & \text{cancel common terms} \\
+  & = \tanh \frac{\eta_1-\eta_2}{2} & & \text{$\tanh x = \sinh x / \cosh x$}
+\end{align*}
+\end{proof}
+
+\begin{corollary}
+Let $\beta$ be any real value in the range $(-1,1)$, $\gamma$ its
+corresponding Lorentz factor, and $\eta = \tanh^{-1} \beta$ its
+rapidity.
+Then:
+\begin{equation}
+\frac{\beta \gamma}{\gamma + 1} = \tanh \frac{\eta}{2}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Follows directly from Lemma~\ref{lem:halfRapidityDifference} by
+substituting $\beta_2 =0$, from which follows $\gamma_2 = 1$ and
+$\eta_2=0$.
+\end{proof}
 
 
 \subsection{Math facts about the Doppler factor and Lorentz factor}
@@ -2261,7 +2305,7 @@ e_{3,A} & = \frac{L}{\gamma_R(v_S - v_R)} + \frac{\gamma_R^2}{c^2} \left[ -\frac
 
 \paragraph{Find difference in times that event 2 and event 3 pulses reach $A$, on $A$'s clock}
 
-The expressions on the radicals are equal, and cancel out:
+The expressions under the radicals are equal, and cancel out:
 \begin{align*}
 e_{3,A}-e_{2,A}
   & = \left[ \frac{L}{\gamma_R(v_S - v_R)} - \frac{L}{\gamma_S(v_S - v_R)} \right] + \frac{\gamma_R^2}{c^2} \left[ -\frac{Lv_R}{2\gamma_R} - \frac{Lv_R}{2\gamma_R} \right] \\
@@ -2270,6 +2314,10 @@ e_{3,A}-e_{2,A}
   & = \frac{L}{c} \left[ \frac{\gamma_R\gamma_S(\beta_R+\beta_S)}{\gamma_R+\gamma_S} - \gamma_R\beta_R \right] & & \text{Lemma~\ref{lem:betaGammaIdentity2}} \\
   & = \frac{\gamma_R L}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] & & \text{a few algebra steps}
 \end{align*}
+Since all of these calculations were done with the assumption that
+$v_S > v_R$ and $v_S > 0$, it follows that $\beta_S > \beta_R$,
+$\beta_S > 0$, and $\gamma_S > \gamma_R$.  Thus
+$\beta_S\gamma_S > \beta_R\gamma_R$, and $e_{3,A}-e_{2,A}$ is positive.
 
 As a quick double-check, let us see what happens if we plug in $v_R=0$
 and thus also $\beta_R=0$ and $\gamma_R=1$:
@@ -2330,7 +2378,7 @@ e_{3,B} & = \frac{L}{\gamma_R(v_S - v_R)} + \frac{\gamma_S^2}{c^2} \left[ -\frac
 
 \paragraph{Find difference in times that event 2 and event 3 pulses reach $B$, on $B$'s clock}
 
-The expressions on the radicals are equal, and cancel out:
+The expressions under the radicals are equal, and cancel out:
 \begin{align*}
 e_{3,B}-e_{2,B}
   & = \left[ \frac{L}{\gamma_R(v_S - v_R)} - \frac{L}{\gamma_S(v_S - v_R)} \right] + \frac{\gamma_S^2}{c^2} \left[ -\frac{Lv_S}{2\gamma_S} - \frac{Lv_S}{2\gamma_S} \right] \\
@@ -2339,6 +2387,8 @@ e_{3,B}-e_{2,B}
   & = \frac{L}{c} \left[ \frac{\gamma_R\gamma_S(\beta_R+\beta_S)}{\gamma_R+\gamma_S} - \gamma_S\beta_S \right] & & \text{Lemma~\ref{lem:betaGammaIdentity2}} \\
   & = -\frac{\gamma_S L}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] & & \text{a few algebra steps}
 \end{align*}
+For the same reasons that were explained above why $e_{3,A}-e_{2,A}$
+is positive, we know that $e_{3,B}-e_{2,B}$ must be negative.
 
 
 \end{document}
