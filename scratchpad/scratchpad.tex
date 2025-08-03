@@ -2486,6 +2486,7 @@ $\vect{x}_0$, and thus away from each other.
 $B$'s clock runs $1/\gamma_B$ times the speed of $A$'s clock.
 $C$'s clock runs $1/\gamma_C$ times the speed of $A$'s clock.
 
+
 \subsection{$B$ sends periodic pulses to $C$}
 \label{app:scen2b-Bsending}
 
@@ -2493,7 +2494,7 @@ $B$ sends its $n$-th pulse at the following times, on $B$'s and $A$'s
 clock:
 \begin{align}
 q_B(n) & = t_{0,B} + nT_B \\
-q_A(n) & = t_{0,A} + \frac{1}{\gamma_B}nT_B
+q_A(n) & = t_{0,A} + \gamma_B nT_B
 \end{align}
 
 What is $C$'s time when it receives the $B$'s $n$-th pulse?  We find
@@ -2503,53 +2504,53 @@ situation:
 
 \begin{align*}
 \vect{v} & = \vect{v}_C & & \text{pulse receiver $C$'s velocity} \\
-\vect{s} & = \vect{x}_B(q_A(n)) = \vect{x}_0 + \vect{v}_B t_{0,A} + \frac{1}{\gamma_B} \vect{v}_B n T_B  & & \text{} \\
-t_0 & = q_A(n) = t_{0,A} + \frac{1}{\gamma_B} nT_B & & \text{} \\
+\vect{s} & = \vect{x}_B(q_A(n)) = \vect{x}_0 + \vect{v}_B t_{0,A} + \gamma_B \vect{v}_B n T_B  & & \text{} \\
+t_0 & = q_A(n) = t_{0,A} + \gamma_B nT_B & & \text{} \\
 \vect{s} + \vect{r}_1 & = \vect{x}_0 & & \text{location of $C$ at time 0} \\
 t_1 & = 0 \\
-\vect{r}_1 & = - \vect{v}_B t_{0,A} - \frac{1}{\gamma_B} \vect{v}_B n T_B & & \text{subtract $\vect{s}$ from $\vect{s}+\vect{r}_1$} \\
+\vect{r}_1 & = - \vect{v}_B t_{0,A} - \gamma_B \vect{v}_B n T_B & & \text{subtract $\vect{s}$ from $\vect{s}+\vect{r}_1$} \\
 \vect{r}_0
   & = \vect{r}_1 + \vect{v}_C(t_0-t_1) \\
-  & = - \vect{v}_B t_{0,A} - \frac{1}{\gamma_B} \vect{v}_B n T_B + \vect{v}_C (t_{0,A} + \frac{1}{\gamma_B} nT_B) & & \text{substitute $\vect{r}_1$ and $t_0$ from above} \\
-  & = (\vect{v}_C - \vect{v}_B) (\frac{1}{\gamma_B} n T_B + t_{0,A}) & & \text{algebra}
+  & = - \vect{v}_B t_{0,A} - \gamma_B \vect{v}_B n T_B + \vect{v}_C (t_{0,A} + \gamma_B nT_B) & & \text{substitute $\vect{r}_1$ and $t_0$ from above} \\
+  & = (\vect{v}_C - \vect{v}_B) (\gamma_B n T_B + t_{0,A}) & & \text{algebra}
 \end{align*}
 Plug those into the equation for $t_r$ from
 Lemma~\ref{lem:IntersectingSpreadingPulse} to get $e_{C}(n)$:
 \begin{align*}
-e_{C}(n) & = t_{0,A} + \frac{1}{\gamma_B} nT_B + \frac{\gamma_C^2}{c^2} \left[ (\vect{r}_0 \cdot \vect{v}_C) + \sqrt{(\vect{r}_0 \cdot \vect{v}_C)^2 + (1-\beta_C^2)c^2 r_0^2} \right] & & \text{substitute $t_0$ but not yet $\vect{r}_0$}
+e_{C}(n) & = t_{0,A} + \gamma_B nT_B + \frac{\gamma_C^2}{c^2} \left[ (\vect{r}_0 \cdot \vect{v}_C) + \sqrt{(\vect{r}_0 \cdot \vect{v}_C)^2 + (1-\beta_C^2)c^2 r_0^2} \right] & & \text{substitute $t_0$ but not yet $\vect{r}_0$}
 \end{align*}
 
 To begin the substitutions and simplification of this, start with the
 expression $\vect{r}_0 \cdot \vect{v}_C$:
 \begin{align*}
 \vect{r}_0 \cdot \vect{v}_C
-  & = (\vect{v}_C - \vect{v}_B) (\frac{1}{\gamma_B} n T_B + t_{0,A}) \cdot \vect{v}_C \\
-  & = (v_C^2 - \vect{v}_B \cdot \vect{v}_C) (\frac{nT_B}{\gamma_B} + t_{0,A})
+  & = (\vect{v}_C - \vect{v}_B) (\gamma_B n T_B + t_{0,A}) \cdot \vect{v}_C \\
+  & = (v_C^2 - \vect{v}_B \cdot \vect{v}_C) (\gamma_B nT_B + t_{0,A})
 \end{align*}
 Substituting into the formula for $e_C(n)$:
 \begin{align*}
-e_{C}(n) & = t_{0,A} + \frac{nT_B}{\gamma_B} + \frac{\gamma_C^2}{c^2} \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) (\frac{nT_B}{\gamma_B} + t_{0,A}) + \sqrt{F} \right]
+e_{C}(n) & = t_{0,A} + \gamma_B nT_B + \frac{\gamma_C^2}{c^2} \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) (\gamma_B nT_B + t_{0,A}) + \sqrt{F} \right]
 \end{align*}
 where:
 \begin{align*}
-F & = (v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2 (\frac{nT_B}{\gamma_B} + t_{0,A})^2 + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2 (\frac{nT_B}{\gamma_B} + t_{0,A})^2 \\
-  & = (\frac{nT_B}{\gamma_B} + t_{0,A})^2 \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2  + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2 \right] \\
-  & = (\frac{nT_B}{\gamma_B} + t_{0,A})^2 G
+F & = (v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2 (\gamma_B nT_B + t_{0,A})^2 + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2 (\gamma_B nT_B + t_{0,A})^2 \\
+  & = (\gamma_B nT_B + t_{0,A})^2 \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2  + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2 \right] \\
+  & = (\gamma_B nT_B + t_{0,A})^2 G
 \end{align*}
 Note that the part given the name $G$ does not depend on $n$.
 Plugging that back into the equation for $e_C(n)$ and doing a little
 bit more algebra we can get:
 \begin{align*}
 e_{C}(n)
-  & = t_{0,A} + \frac{nT_B}{\gamma_B} + \frac{\gamma_C^2}{c^2} \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) (\frac{nT_B}{\gamma_B} + t_{0,A}) + (\frac{nT_B}{\gamma_B} + t_{0,A}) \sqrt{G} \right] \\
-  & = t_{0,A} + \frac{nT_B}{\gamma_B} + \frac{\gamma_C^2}{c^2} (\frac{nT_B}{\gamma_B} + t_{0,A}) \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{G} \right]
+  & = t_{0,A} + \gamma_B nT_B + \frac{\gamma_C^2}{c^2} \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) (\gamma_B nT_B + t_{0,A}) + (\gamma_B nT_B + t_{0,A}) \sqrt{G} \right] \\
+  & = t_{0,A} + \gamma_B nT_B + \frac{\gamma_C^2}{c^2} (\gamma_B nT_B + t_{0,A}) \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{G} \right]
 \end{align*}
 When calculating the difference between two consecutive pulses
 arriving to $C$, all terms independent of $n$ cancel out, and we are
 left with the following:
 \begin{align*}
 e_{C}(n+1) - e_{C}(n)
-  & = \frac{T_B}{\gamma_B} + \frac{\gamma_C^2}{c^2} (\frac{T_B}{\gamma_B}) \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{G} \right]
+  & = \gamma_B T_B + \frac{\gamma_C^2}{c^2} (\gamma_B T_B) \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{G} \right]
 \end{align*}
 
 \end{document}
