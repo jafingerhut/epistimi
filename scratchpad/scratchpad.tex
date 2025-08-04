@@ -1725,6 +1725,56 @@ $\eta_2=0$.
 
 
 \subsection{Relativistic velocity addition and subtraction in 3 dimensions}
+\label{app:3drelvelocityaddsub}
+
+
+\subsubsection{Decomposing vector $\vect{u}$ into components parallel and perpendicular to vector $\vect{v}$}
+\label{app:decomposeVectorIntoParallelPlusPerpendicular}
+
+Sometimes it can be useful to take vectors $\vect{u}$ and $\vect{v}$,
+and express $\vect{u}$ as a sum of two vectors $\vect{u}_{\parallel}$
+and $\vect{u}_{\perp}$ that satisfy these conditions:
+\begin{itemize}
+\item $\vect{u} = \vect{u}_{\parallel} + \vect{u}_{\perp}$
+\item $\vect{u}_{\parallel}$ is parallel to $\vect{v}$.
+\item $\vect{u}_{\perp}$ is perpendicular to $\vect{v}$,
+  i.e. $\vect{u}_{\perp} \cdot \vect{v} = 0$.
+\end{itemize}
+
+The direction of $\vect{u}_{\parallel}$ is parallel to $\vect{v}$.
+The magnitude of $\vect{u}_{\parallel}$ is the portion of $\vect{u}$'s
+magnitude that is parallel to $\vect{v}$, which is $u \cos \theta$,
+where $\theta$ is the angle between $\vect{u}$ and $\vect{v}$.
+\begin{align}
+\vect{u}_{\parallel}
+  & = (\text{unit vector in direction of $\vect{v}$})(\text{magnitude of $\vect{u}_{\parallel}$}) \nonumber \\
+  & = (\frac{\vect{v}}{v}) (u \cos \theta) \nonumber \\
+  & = (\frac{\vect{v}}{v}) (u \frac{\vect{u} \cdot \vect{v}}{uv}) & & \text{$\vect{u} \cdot \vect{v} = uv \cos \theta$} \nonumber \\
+  & = (\frac{\vect{v}}{v^2}) (\vect{u} \cdot \vect{v}) & & \text{algebra} \nonumber \\
+\vect{u}_{\parallel}
+  & = \frac{\vect{u} \cdot \vect{v}}{v^2} \vect{v} & & \text{algebra} \label{eqn:uParallel}
+\end{align}
+
+This vector equation turns out to be useful in finding an equation for
+$\vect{u}_{\perp}$ in other forms:
+\begin{equation}
+(\vect{u} \times \vect{v}) \times \vect{v} = (\vect{u} \cdot \vect{v}) \vect{v} - v^2 \vect{u} \label{eqn:2CrossProductsIdentity}
+\end{equation}
+Divide both sides of that equation by $v^2$ and rearrange a bit to get:
+\begin{equation}
+\frac{(\vect{u} \cdot \vect{v})}{v^2} \vect{v} = \frac{1}{v^2} (\vect{u} \times \vect{v}) \times \vect{v} + \vect{u} \label{eqn:2CrossProductsIdentityRearranged}
+\end{equation}
+\begin{align}
+\vect{u} & = \vect{u}_{\parallel} + \vect{u}_{\perp} \nonumber \\
+\vect{u}_{\perp}
+  & = \vect{u} - \vect{u}_{\parallel} & & \text{algebra} \nonumber \\
+  & = \vect{u} - \frac{\vect{u} \cdot \vect{v}}{v^2} \vect{v} & & \text{Eqn.~\eqref{eqn:uParallel}} \nonumber \\
+  & = \vect{u} - (\frac{1}{v^2} (\vect{u} \times \vect{v}) \times \vect{v} + \vect{u}) & & \text{Eqn.~\eqref{eqn:2CrossProductsIdentityRearranged}} \nonumber \\\vect{u}_{\perp}
+  & = - \frac{1}{v^2} (\vect{u} \times \vect{v}) \times \vect{v} & & \text{algebra} \label{eqn:uPerpendicular}
+\end{align}
+
+
+\subsubsection{Relativistic velocity addition in 3 dimensions}
 \label{app:3drelvelocityadd}
 
 Let:
@@ -1741,11 +1791,6 @@ Let:
   & = \frac{ \vect{v}_A - \vect{v}_B + \frac{\gamma_B}{\gamma_B+1} (\vect{v}_A \times \vect{v}_B) \times \vect{v}_B / c^2 }
            { 1 - \frac{\vect{v}_A \cdot \vect{v}_B}{c^2} } & & \text{\cite{Koczan2021}}
 \end{align}
-This vector equation may be useful in putting the last equation above
-in other forms:
-\begin{equation}
-(\vect{u} \times \vect{v}) \times \vect{v} = (\vect{u} \cdot \vect{v}) \vect{v} - v^2 \vect{u}
-\end{equation}
 
 
 \subsection{Math facts about the Doppler factor and Lorentz factor}
