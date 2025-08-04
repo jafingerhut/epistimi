@@ -1785,11 +1785,42 @@ Let:
 \end{align*}
 \begin{align}
 \vect{v}_A = \vect{v}_B \oplus \vect{u}'
-  & = \frac{ \vect{u}' + \left[ (\gamma_B-1) \frac{\vect{u}' \cdot \vect{v}_B}{v_B^2} + \gamma_B \right] \vect{v}_B }
-           { \gamma_B (1 + \frac{\vect{u}' \cdot \vect{v}_B}{c^2}) } & & \text{\cite{WikipediaVelocityAdditionFormula}} \\
-\vect{u}' = \vect{v}_A - \vect{v}_B
+  & = \frac{ \vect{u}' + \left[ (\gamma_B-1) \frac{\vect{v}_B \cdot \vect{u}'}{v_B^2} + \gamma_B \right] \vect{v}_B }
+           { \gamma_B (1 + \frac{\vect{v}_B \cdot \vect{u}'}{c^2}) } & & \text{\cite{WikipediaVelocityAdditionFormula}} \label{eqn:relVelocityAdd1} \\
+  & = \frac{ \vect{v}_B + \vect{u}' + \frac{\gamma_B}{\gamma_B+1} (\vect{u}' \times \vect{v}_B) \times \vect{v}_B / c^2 }
+           { 1 + \frac{\vect{v}_B \cdot \vect{u}'}{c^2} } \label{eqn:relVelocityAdd2} \\
+  & = \vect{v}_{A \parallel} + \vect{v}_{A \perp} \label{eqn:relVelocityAddComponents}
+\end{align}
+where:
+\begin{align}
+\vect{v}_{A \parallel}
+  & = \frac{ \vect{v}_B + \vect{u}'_{\parallel} }{1 + \frac{ \vect{v}_B \cdot \vect{u}'}{c^2} } \label{eqn:relVelocityAddParallelComponent} \\
+\vect{v}_{A \perp}
+  & = \frac{ \vect{u}'_{\perp} }{\gamma_B (1 + \frac{ \vect{v}_B \cdot \vect{u}'}{c^2} )} \label{eqn:relVelocityAddPerpendicularComponent}
+\end{align}
+and formulas for $\vect{u}'_{\parallel}$ and $\vect{u}'_{\perp}$ can
+be found in the previous section.  It is only a few steps of algebra
+to plug Equations~\eqref{eqn:relVelocityAddParallelComponent}
+and~\eqref{eqn:relVelocityAddPerpendicularComponent}
+into~\eqref{eqn:relVelocityAddComponents} and show it is equal
+to~\eqref{eqn:relVelocityAdd1}, so we will not do so here.
+Similarly, it is not many steps to show that
+Equations~\eqref{eqn:relVelocityAdd1} and~\eqref{eqn:relVelocityAdd2}
+are equal, using~\eqref{eqn:uPerpendicular}.
+
+Relativistic velocity subtraction:
+\begin{align}
+\vect{u}' = \vect{v}_A \ominus \vect{v}_B
   & = \frac{ \vect{v}_A - \vect{v}_B + \frac{\gamma_B}{\gamma_B+1} (\vect{v}_A \times \vect{v}_B) \times \vect{v}_B / c^2 }
-           { 1 - \frac{\vect{v}_A \cdot \vect{v}_B}{c^2} } & & \text{\cite{Koczan2021}}
+           { 1 - \frac{\vect{v}_A \cdot \vect{v}_B}{c^2} } & & \text{\cite{Koczan2021}} \\
+  & = \vect{u}'_{\parallel} + \vect{u}'_{\perp} \label{eqn:relVelocitySubComponents}
+\end{align}
+where:
+\begin{align}
+\vect{u}'_{\parallel}
+  & = \frac{ \vect{v}_{A \parallel} - \vect{v}_B}{1 - \frac{ \vect{v}_A \cdot \vect{v}_B}{c^2} } \label{eqn:relVelocitySubParallelComponent} \\
+\vect{u}'_{\perp}
+  & = \frac{ \vect{v}_{A \perp} }{\gamma_B (1 - \frac{ \vect{v}_A \cdot \vect{v}_B}{c^2} )} \label{eqn:relVelocitySubPerpendicularComponent}
 \end{align}
 
 
