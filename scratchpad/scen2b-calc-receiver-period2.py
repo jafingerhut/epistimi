@@ -87,15 +87,15 @@ def relativistic_velocity_subtract(v_A, v_B):
     return u_prime_parallel + u_prime_perp
 
 def random_rescale_if_faster_than_c(v):
-    mag = np.sqrt(np.dot(v, v))
-    if mag < c:
+    mag1 = np.sqrt(np.dot(v, v))
+    if mag1 < c:
         return v
-    print("v >= c, rescaling it so its direction is same, but its magnitude is a uniform random value in the range [0,c)")
     new_beta = random.random()
-    v = (v / mag) * c * new_beta
-    mag = np.sqrt(np.dot(v, v))
-    if mag >= c:
-        print(f"BUG in program.  New magnitude after rescaling is > c.  v={v} mag={mag}")
+    v = (v / mag1) * c * new_beta
+    mag2 = np.sqrt(np.dot(v, v))
+    print(f"|v|={mag1} >= c, rescaling it so its direction is same, but its magnitude is a uniform random value in the range [0,c) mag2={mag2}")
+    if mag2 >= c:
+        print(f"BUG in program.  New magnitude after rescaling is > c.  v={v} mag2={mag2}")
         sys.exit(1)
     return v
 
