@@ -64,22 +64,31 @@ def compute_delta_tau_C_n(v_B, v_C, n, c=299792458.0):
 # using method in Appendix D.1 with intermediate value G.
 def reception_time2(v_B, v_C, T_B):
     v_B_dot_v_C = np.dot(v_B, v_C)
-    v_C_mag_sq = np.dot(v_C, v_C)
+    normvC = np.dot(v_C, v_C)
     gamma_B = lorentz_gamma(v_B)
     gamma_C = lorentz_gamma(v_C)
-    v_C_minus_v_B_mag_sq = np.dot(v_C - v_B, v_C - v_B)
-    v_C_mag_sq_minus_v_B_dot_v_C = v_C_mag_sq - v_B_dot_v_C
-    G = (v_C_mag_sq_minus_v_B_dot_v_C**2) + (c**2 - v_C_mag_sq) * v_C_minus_v_B_mag_sq
-    delta = (gamma_B * T_B / gamma_C) * (1 + ((gamma_C / c)**2) * (v_C_mag_sq_minus_v_B_dot_v_C + np.sqrt(G)))
+    norm_v_C_minus_v_B = np.dot(v_C - v_B, v_C - v_B)
+    norm_vC_minus_v_B_dot_v_C = normvC - v_B_dot_v_C
+    G = (norm_vC_minus_v_B_dot_v_C**2) + (c**2 - normvC) * norm_v_C_minus_v_B
+    delta = (gamma_B * T_B / gamma_C) * (1 + ((gamma_C / c)**2) * (norm_vC_minus_v_B_dot_v_C + np.sqrt(G)))
     return delta
+
+
+# Calculate and return v_B \oplus u
+def relativistic_velocity_add(v_B, u):
+    normvB = np.dot(v_B, v_B)
+    v_B_dot_u = np.dot(v_B, u)
+    gamma_B = lorentz_gamma(v_B)
+    factor = 1.0 / (gamma_B * (1.0 + v_B_dot_u / (c**2)))
+    return factor * (u + (((gamma_B-1) * v_B_dot_u / normvB) + gamma_B) * v_B)
 
 
 # Calculate and return v_A \ominus v_B
 def relativistic_velocity_subtract(v_A, v_B):
     v_A_dot_V_B = np.dot(v_A, v_B)
-    v_B_mag_sq = np.dot(v_B, v_B)
+    normvB = np.dot(v_B, v_B)
     gamma_B = lorentz_gamma(v_B)
-    v_A_parallel = (v_A_dot_V_B / v_B_mag_sq) * v_B
+    v_A_parallel = (v_A_dot_V_B / normvB) * v_B
     v_A_perp = v_A - v_A_parallel
     denom = 1 - (v_A_dot_V_B / (c**2))
     u_prime_parallel = (v_A_parallel - v_B) / denom
@@ -165,6 +174,10 @@ for test_case in test_cases:
     D = np.sqrt((1+beta_diff) / (1-beta_diff))
     delta3 = D * T_B
     print(f"delta3={delta3:.9f} s")
+
+    vecsum = relativistic_velocity_add(v_B, diff)
+    print(f"v_C={v_C}")
+    print(f"vecsum={vecsum}")
 
     ratio = delta2 / delta3
     print(f"ratio=delta2 / delta3={delta2/delta3}")
