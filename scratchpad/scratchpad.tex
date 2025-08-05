@@ -1823,6 +1823,16 @@ where:
   & = \frac{ \vect{v}_{A \perp} }{\gamma_B (1 - \frac{ \vect{v}_A \cdot \vect{v}_B}{c^2} )} \label{eqn:relVelocitySubPerpendicularComponent}
 \end{align}
 
+I was able to get Mathematica to confirm that
+for all vectors $\vect{v}_B$, $\vect{u}'$:
+\begin{equation}
+(\vect{v}_B \oplus \vect{u}') \ominus \vect{v}_B = \vect{u}'
+\end{equation}
+Similarly for all vectors $\vect{v}_A$, $\vect{v}_B$:
+\begin{equation}
+\vect{v}_B \oplus (\vect{v}_A \ominus \vect{v}_B) = \vect{v}_A
+\end{equation}
+
 
 \subsection{Math facts about the Doppler factor and Lorentz factor}
 \label{app:DopplerFactor}
@@ -2628,5 +2638,21 @@ left with the following:
 e_{C}(n+1) - e_{C}(n)
   & = \gamma_B T_B + \frac{\gamma_C^2}{c^2} (\gamma_B T_B) \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{G} \right]
 \end{align*}
+On $C$'s clock, the period is $1/\gamma_C$ times the period on $A$'s
+clock, thus:
+\begin{align}
+T_C
+  & = \frac{\gamma_B}{\gamma_C} T_B (1 + \frac{\gamma_C^2}{c^2} \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{(v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2  + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2} \right] ) \label{eqn:scen2b-TC}
+\end{align}
+
+Let $r$ be the 3-d relativistic velocity difference
+$\vect{v}_C \ominus \vect{v}_B$ given by
+Equation~\eqref{eqn:relVelocitySubComponents} in Appendix
+~\ref{app:3drelvelocityadd}.  Then while I have not yet proved that
+$T_C = D_r T_B$ is equal to Equation~\eqref{eqn:scen2b-TC} for all
+$\vect{v}_A$, $\vect{v}_B$, I have written a simple program that
+demonstrates those equations give the same result for many randomly
+selected pairs of values for $\vect{v}_A$, $\vect{v}_B$, so it is highly
+likely those two equations always give the same result.
 
 \end{document}
