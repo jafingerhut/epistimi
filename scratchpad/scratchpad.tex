@@ -682,7 +682,7 @@ precise terminology, a shorter precise statement would perhaps be:
 \end{itemize}
 
 
-\subsection{Special Relativity Scenario 1b: Three entities, two of them moving at constant velocity}
+\subsection{Special Relativity Scenario 1b: Three entities, two of them moving at constant velocity along $x$ axis}
 \label{sec:scen1b}
 
 $A$ is at rest.
@@ -915,8 +915,60 @@ After the time when they meet, they are then moving directly away from
 each other.
 
 
+\subsection{Special Relativity Scenario 1c: Three entities, two of them moving at constant velocity towards or away from each other, but otherwise arbitrary 3-d directions}
+\label{sec:scen1c}
+
+This is a generalized version of Special Relativity Scenario 1b in
+Section~\ref{sec:scen1b}.
+
+$A$ is at rest at the origin, as before.
+
+$B$ is moving at constant velocity $\vect{v}_B$ relative to $A$, but
+here it is allowed to be any general 3-d direction and magnitude, not
+restricted to lie along the $x$ axis.
+
+Similarly for $C$, moving at constant velocity $\vect{v}_C$ relative
+to $A$.
+
+$B$ and $C$ are restricted in their movement in the following way:
+relative to each other, they must be moving directly towards or
+directly away from the other.  If they are moving directly towards
+each other, they must be moving towards the same position, arriving
+there at the same time.  If they are moving directly away from each
+other, they must be moving away from a common starting position,
+having left it at the same time.  We define $\vect{x}_0$ to be this
+common position, and the equations of position for $B$ and $C$ are:
+\begin{align}
+\vect{x}_B(t) & = \vect{x}_0 + \vect{v}_B t_A \label{eqn:scen1c-Bpos} \\
+\vect{x}_C(t) & = \vect{x}_0 + \vect{v}_C t_A \label{eqn:scen1c-Cpos}
+\end{align}
+These positions are relative to $A$, and $t_A$ is the time in $A$'s
+frame.  If $t < 0$, $B$ and $C$ are moving towards $\vect{x}_0$, and
+thus towards each other.  If $t > 0$, $B$ and $C$ are moving away from
+$\vect{x}_0$, and thus away from each other.
+
+$B$'s clock runs $1/\gamma_B$ times the speed of $A$'s clock.
+$C$'s clock runs $1/\gamma_C$ times the speed of $A$'s clock.
+
+The calculations are a bit more involved than those in the previous
+section, but basically they are straightforward applications of
+Lemma~\ref{lem:IntersectingSpreadingPulse}.  We placed the details in
+Appendix~\ref{app:scen1c}.
+
+When $B$ sends pulses with period $T_B$ measured on $B$'s clock, $C$
+receives pulses with period $T_C$ measured on $C$'s clock, where:
+\begin{align}
+T_C
+  & = \frac{\gamma_B}{\gamma_C} T_B (1 + \frac{\gamma_C^2}{c^2} \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{(v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2  + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2} \right] ) & & \text{Eqn.~\eqref{eqn:scen1c-TC}}
+\end{align}
+
+TODO: Add equation for $C$ sending pulses to $B$.
+
+
 \subsection{Summary of results in this section}
 \label{sec:summary}
+
+TODO: Add summary of results of Section~\ref{sec:scen1c} here.
 
 Here is a summary of what we have shown so far.
 
@@ -1357,7 +1409,7 @@ $A$'s frame.
 \end{align*}
 
 
-\subsection{Special Relativity Scenario 2b: Two rods moving towards each other at constant velocity, and both relative to observer}
+\subsection{Special Relativity Scenario 2b: Two rods moving towards each other at constant velocity along $x$ axis, and both relative to observer}
 \label{sec:scen2b}
 
 Scenario 2b is a small generalization of Scenario 2a.  The intent in
@@ -2538,39 +2590,8 @@ For the same reasons that were explained above why $e_{3,A}-e_{2,A}$
 is positive, we know that $e_{3,B}-e_{2,B}$ must be negative.
 
 
-\section{Beginnings of calculations for Scenario 1c}
+\section{Details of Scenario 1c calculations}
 \label{app:scen1c}
-
-This is a generalized version of Special Relativity Scenario 1b in
-Section~\ref{sec:scen1b}.
-
-$A$ is at rest at the origin, as before.
-
-$B$ is moving at constant velocity $\vect{v}_B$ relative to $A$, but
-here it is allowed to be any general 3-d direction and magnitude, not
-restricted to lie along the $x$ axis.
-
-Similarly for $C$, moving at constant velocity $\vect{v}_C$ relative
-to $A$.
-
-$B$ and $C$ are restricted in their movement in the following way:
-relative to each other, they must be moving directly towards or
-directly away from the other.  If they are moving directly towards
-each other, they must be moving towards the same position.  If they
-are moving directly away from each other, they must be moving away
-from a common starting position.  We define $\vect{x}_0$ to be this
-common position, and the equations of position for $B$ and $C$ are:
-\begin{align}
-\vect{x}_B(t) & = \vect{x}_0 + \vect{v}_B t_A \label{eqn:scen1c-Bpos} \\
-\vect{x}_C(t) & = \vect{x}_0 + \vect{v}_C t_A \label{eqn:scen1c-Cpos}
-\end{align}
-These positions are relative to $A$, and $t_A$ is the time in $A$'s
-frame.  If $t < 0$, $B$ and $C$ are moving towards $\vect{x}_0$, and
-thus towards each other.  If $t > 0$, $B$ and $C$ are moving away from
-$\vect{x}_0$, and thus away from each other.
-
-$B$'s clock runs $1/\gamma_B$ times the speed of $A$'s clock.
-$C$'s clock runs $1/\gamma_C$ times the speed of $A$'s clock.
 
 
 \subsection{$B$ sends periodic pulses to $C$}
@@ -2652,9 +2673,18 @@ Equation~\eqref{eqn:relVelocitySubComponents} in
 Appendix~\ref{app:3drelvelocityadd}.  I have not yet proved
 mathematically that $T_C = D_r T_B$ is equal to
 Equation~\eqref{eqn:scen1c-TC} for all $\vect{v}_A$, $\vect{v}_B$.
-However, I have written a simple program that demonstrates those
+However, I have written a simple
+program~\cite{FingerhutScenario1c-program} that demonstrates those
 equations give the same result for many randomly selected pairs of
 values for $\vect{v}_A$, $\vect{v}_B$, so it is highly likely those
 two equations always give the same result.
+
+
+\subsection{$C$ sends periodic pulses to $B$}
+\label{app:scen1c-Csending}
+
+TODO: Do these calculations, which should be very similar to those in
+the previous section.
+
 
 \end{document}
