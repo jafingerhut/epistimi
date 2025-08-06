@@ -418,8 +418,8 @@ D & = \gamma (1+\beta) > 0 & & \text{$D$ increases as $\beta$ does} \label{eqn:D
 \end{align}
 
 
-\subsection{Special Relativity Scenario 1: Two entities moving relative to each other at constant velocity}
-\label{sec:scen1}
+\subsection{Special Relativity Scenario 1a: Two entities moving relative to each other at constant velocity}
+\label{sec:scen1a}
 
 $A$ is at rest.  $B$ is moving at constant velocity $v_B$ relative to $A$,
 either directly away from $A$, or directly towards $A$.
@@ -428,7 +428,7 @@ $v_B < 0$ means $B$ moves towards $A$.
 
 
 \subsubsection{$B$ sends periodic pulses to $A$}
-\label{sec:scen1BtoA}
+\label{sec:scen1a-BtoA}
 
 $B$ uses his local clock to time the sending of light pulses to $A$,
 sending pulses once every time interval $T$.
@@ -445,7 +445,7 @@ is running $\gamma_B$ times slower than $A$'s clock.  Note: $A$ cannot
 directly observe $B$'s clock, as it is too far away.  From this $A$
 also deduces:
 \begin{equation}
-q_A(n) = \gamma_B nT + \Delta  \label{eqn:scen1timeA}
+q_A(n) = \gamma_B nT + \Delta  \label{eqn:scen1a-timeA}
 \end{equation}
 $\Delta$ is the time that $A$ reads on his clock
 when $B$ reads 0 on his clock.  The value of $\Delta$
@@ -469,7 +469,7 @@ r_A(n)
   & = q_A(n) + x_B(q_A(n))/c & & \text{definition of $r_A(n)$} \\
   & = q_A(n) + (I_B + v_B q_A(n))/c & & \text{substitute equation for $x_B$} \\
   & = (1 + v_B/c) q_A(n) + I_B/c & & \text{rearrangement by algebra} \\
-  & = (1 + \beta_B) (\gamma_B nT + \Delta) + I_B/c & & \text{Defn.~\eqref{defn:betaB} and Eqn.~\eqref{eqn:scen1timeA}} \\
+  & = (1 + \beta_B) (\gamma_B nT + \Delta) + I_B/c & & \text{Defn.~\eqref{defn:betaB} and Eqn.~\eqref{eqn:scen1a-timeA}} \\
   & = (1 + \beta_B) \gamma_B Tn + ((1 + \beta_B) \Delta + I_B/c) & & \text{algebra to collect all terms independent of $n$ at the end}
 \end{align*}
 The time that $A$ measures on his clock between two consecutive received
@@ -500,7 +500,7 @@ $A$'s clock.
 
 
 \subsubsection{$A$ sends periodic pulses to $B$}
-\label{sec:scen1AtoB}
+\label{sec:scen1a-AtoB}
 
 Now $A$ uses his local clock to time the sending of light pulses to $B$,
 sending pulses once every time interval $T$.
@@ -512,7 +512,7 @@ inertial frame.
 
 The definitions of Section~\ref{sec:simple-sr-time} remain the same here, but note
 that the values of $q_A(n)$ and $q_B(n)$ here are {\em different} than
-those in Section~\ref{sec:scen1BtoA}.
+those in Section~\ref{sec:scen1a-BtoA}.
 
 Define $q_A(n) = nT$ to be the time on A's clock when it transmits its
 $n$-th pulse.
@@ -533,7 +533,7 @@ I_B + v_B r_A(n) & = c(r_A(n) - nT) & & \text{substitute for defns. of $x_B$ and
 I_B/c + (v_B/c) r_A(n) & = r_A(n) - nT & & \text{divide by $c$} \nonumber \\
 nT + I_B/c & = (1 - v_B/c) r_A(n) & & \text{a little more algebra} \nonumber \\
 r_A(n) & = \frac{nT}{1 - v_B/c} + \frac{I_B}{c-v_B} & & \text{divide by $(1-v_B/c)$} \nonumber \\
-r_A(n) & = \frac{nT}{1 - \beta_B} + \frac{I_B}{c-v_B} & & \text{Defn.\eqref{defn:betaB}} \label{eqn:scen1Arecvtime}
+r_A(n) & = \frac{nT}{1 - \beta_B} + \frac{I_B}{c-v_B} & & \text{Defn.\eqref{defn:betaB}} \label{eqn:scen1a-Arecvtime}
 \end{align}
 By the assumptions of special relativity, $A$ deduces that $B$'s clock
 is running $\gamma_B$ times slower than $A$'s clock.
@@ -543,7 +543,7 @@ when $A$ reads 0 on his clock (as in the previous section,
 the value of $\Delta$ is irrelevant in our final answer):
 \begin{align*}
 r_B(n) & = r_A(n) / \gamma_B + \Delta & & \text{$B$'s clock slower by factor $\gamma_B$} \\
-       & = \frac{nT}{\gamma_B(1 - \beta_B)} + (\frac{I_B}{\gamma_B(c-v_B)} + \Delta) & & \text{Eqn.~\eqref{eqn:scen1Arecvtime}, move things independent of $n$ to end}
+       & = \frac{nT}{\gamma_B(1 - \beta_B)} + (\frac{I_B}{\gamma_B(c-v_B)} + \Delta) & & \text{Eqn.~\eqref{eqn:scen1a-Arecvtime}, move things independent of $n$ to end}
 \end{align*}
 The time that $B$ measures on his clock between two consecutive received
 pulses is:
@@ -569,9 +569,9 @@ then use that to calculate $\beta_B$ and $v_B$.
 
 
 \subsubsection{Relationship to Lorentz Ether Theory}
-\label{sec:scen1LET}
+\label{sec:scen1a-LET}
 
-Note in Sections~\ref{sec:scen1BtoA} and~\ref{sec:scen1AtoB}, that
+Note in Sections~\ref{sec:scen1a-BtoA} and~\ref{sec:scen1a-AtoB}, that
 except for algebra and the definitions of symbols from
 Section~\ref{sec:simple-sr-time}, the only assumptions we used from special relativity were:
 \begin{itemize}
@@ -682,8 +682,8 @@ precise terminology, a shorter precise statement would perhaps be:
 \end{itemize}
 
 
-\subsection{Special Relativity Scenario 2: Three entities, two of them moving at constant velocity}
-\label{sec:scen2}
+\subsection{Special Relativity Scenario 1b: Three entities, two of them moving at constant velocity}
+\label{sec:scen1b}
 
 $A$ is at rest.
 $B$ is moving at constant velocity $v_B$ relative to $A$,
@@ -692,10 +692,10 @@ $C$ is moving at constant velocity $v_C$ relative to $A$,
 with same sign conventions as $B$'s velocity.
 
 For $B$ sending periodic pulses to $A$ or vice versa, everything in
-Sections~\ref{sec:scen1BtoA} and~\ref{sec:scen1AtoB} applies without
+Sections~\ref{sec:scen1a-BtoA} and~\ref{sec:scen1a-AtoB} applies without
 change.
 For $C$ sending periodic pulses to $A$ or vice versa, everything in
-Section~\ref{sec:scen1BtoA} and~\ref{sec:scen1AtoB} applies,
+Section~\ref{sec:scen1a-BtoA} and~\ref{sec:scen1a-AtoB} applies,
 except replace $B$ subscripts
 with $C$ subscripts, i.e. use $v_C$, $\gamma_C$, $\beta_C$, and $D_C$.
 
@@ -719,7 +719,7 @@ ensure this.
 
 
 \subsubsection{$B$ sends periodic pulses to $C$}
-\label{sec:scen2BtoCLETfriendly}
+\label{sec:scen1b-BtoCLETfriendly}
 
 $B$ uses his local clock to time the sending of light pulses to $C$,
 sending pulses once every time interval $T$, according to $B$'s clock.
@@ -729,16 +729,16 @@ To make the calculations as easily applicable to Lorentz Ether Theory
 as possible, all calculations will be done in $A$'s inertial frame.
 
 Define $q_A(n)$ and $q_B(n)$ the same way as they were in
-Section~\ref{sec:scen1BtoA}.  As explained there, when $A$ makes the
+Section~\ref{sec:scen1a-BtoA}.  As explained there, when $A$ makes the
 assumptions according to special relativity theory:
 \begin{align}
 q_B(n) & = nT & & \text{by the setup of the experiment} \nonumber \\
 t_A & = \gamma_B t_B + \Delta_B & & \text{$B$'s clock runs $\gamma_B$ times slower than $A$'s} \nonumber \\
-q_A(n) & = \gamma_B nT + \Delta_B \label{eqn:scen2timeArelB} \\
+q_A(n) & = \gamma_B nT + \Delta_B \label{eqn:scen1b-timeArelB} \\
 t_A & = \gamma_C t_C + \Delta_C & & \text{$C$'s clock runs $\gamma_C$ times slower than $A$'s} \nonumber \\
-t_C & = t_A/\gamma_C - \Delta_C/\gamma_C & & \text{equivalent to previous equation, but solved for $t_C$} \label{eqn:scen2timeArelC} \\
-x_B(t_A) & = I_B + v_B t_A & & \text{relationship of $B$'s position and time, in $A$'s frame} \label{eqn:scen2posB} \\
-x_C(t_A) & = I_C + v_C t_A & & \text{relationship of $C$'s position and time, in $A$'s frame} \label{eqn:scen2posC}
+t_C & = t_A/\gamma_C - \Delta_C/\gamma_C & & \text{equivalent to previous equation, but solved for $t_C$} \label{eqn:scen1b-timeArelC} \\
+x_B(t_A) & = I_B + v_B t_A & & \text{relationship of $B$'s position and time, in $A$'s frame} \label{eqn:scen1b-posB} \\
+x_C(t_A) & = I_C + v_C t_A & & \text{relationship of $C$'s position and time, in $A$'s frame} \label{eqn:scen1b-posC}
 \end{align}
 Also by special relativity assumptions, $A$ considers the pulse to
 travel from $B$ to $C$ at constant speed $c$.
@@ -753,16 +753,16 @@ l_A(n, t_A)
   & = \text{position of $B$ when emitted} \\
   &   + \text{distance traveled after emission} \\
   & = x_B(q_A(n)) + d (t_A - q_A(n)) c & & \text{for any time $t_A \geq q_A(n)$} \\
-  & = I_B + v_B q_A(n) + d (t_A - q_A(n)) c & & \text{substitute Eqn.~\eqref{eqn:scen2posB}} \\
+  & = I_B + v_B q_A(n) + d (t_A - q_A(n)) c & & \text{substitute Eqn.~\eqref{eqn:scen1b-posB}} \\
   & = (v_B - dc) q_A(n) + dc t_A + I_B & & \text{algebra} \\
-  & = (v_B - dc) \gamma_B nT + dc t_A + ((v_B-c)\Delta_B + I_B) & & \text{substitute Eqn.~\eqref{eqn:scen2timeArelB}} \\
+  & = (v_B - dc) \gamma_B nT + dc t_A + ((v_B-c)\Delta_B + I_B) & & \text{substitute Eqn.~\eqref{eqn:scen1b-timeArelB}} \\
   & = (v_B - dc) \gamma_B nT + dc t_A + Z & & \text{$Z$ is constants, independent of $n$ and $t_A$}
 \end{align*}
 To find $A$'s time $r_A(n)$ when $C$ receives the pulse,
 solve for the time that makes the pulse position the same as $C$'s position:
 \begin{align*}
 x_C(r_A(n)) & = l_A(n, r_A(n)) \\
-I_C + v_C r_A(n) & = (v_B - dc) \gamma_B nT + dc r_A(n) + Z & & \text{substitute Eqn.~\eqref{eqn:scen2posC}} \\
+I_C + v_C r_A(n) & = (v_B - dc) \gamma_B nT + dc r_A(n) + Z & & \text{substitute Eqn.~\eqref{eqn:scen1b-posC}} \\
 (v_C - dc) r_A(n) & = (v_B - dc) \gamma_B nT + (Z - I_C) & & \text{algebra} \\
 r_A(n) & = \frac{v_B - dc}{v_C - dc} \gamma_B nT + \frac{Z - I_C}{v_C - c} & & \text{divide by $v_C-dc$} \\
 r_A(n) & = \frac{d - \beta_B}{d -  \beta_C} \gamma_B nT + \frac{Z - I_C}{v_C - c} & & \text{defn. of $\beta_B, \beta_C$} \\
@@ -772,7 +772,7 @@ According to $A$ and its special relativity assumptions,
 $C$'s clock runs slower, at a rate $1/\gamma_C$ times that of $A$'s clock.
 So $C$'s time $r_C(n)$ to receive the $n$-th pulse sent by $B$ is:
 \begin{align*}
-r_C(n) & = \frac{1}{\gamma_C} r_A(n) - \Delta_C/\gamma_C & & \text{Eqn.~\eqref{eqn:scen2timeArelC}} \\
+r_C(n) & = \frac{1}{\gamma_C} r_A(n) - \Delta_C/\gamma_C & & \text{Eqn.~\eqref{eqn:scen1b-timeArelC}} \\
        & = \frac{\gamma_B}{\gamma_C} \left( \frac{d-\beta_B}{d-\beta_C} \right) nT + \frac{Y-\Delta_C}{\gamma_C}
 \end{align*}
 The time that $B$ measures on his clock between two consecutive received
@@ -825,9 +825,9 @@ one that is less than 1 if $B$ and $C$ are getting closer over time,
 you will get the right answer.
 
 Aside: If you are curious, the answer provided by ChatGPT for solving
-this problem can be found in Appendix~\ref{sec:scen2BtoCdoublecheck}.
+this problem can be found in Appendix~\ref{sec:scen1b-BtoCdoublecheck}.
 
-Near the end of Sections~\ref{sec:scen1BtoA} and~\ref{sec:scen1AtoB},
+Near the end of Sections~\ref{sec:scen1a-BtoA} and~\ref{sec:scen1a-AtoB},
 we noted that if the receiver knew somehow the period $T$ that the
 sender is sending pulses, the receiver could calculate a $D$ value
 that enabled the receiver to determine what the velocity of $B$ is.
@@ -869,10 +869,10 @@ which is interesting.
 
 
 \subsubsection{$C$ sends periodic pulses to $B$}
-\label{sec:scen2CtoBLETfriendly}
+\label{sec:scen1b-CtoBLETfriendly}
 
 The derivation is nearly identical to that in
-Section~\ref{sec:scen2BtoCLETfriendly}.
+Section~\ref{sec:scen1b-BtoCLETfriendly}.
 Here we only mention a few equations along the way that have
 noticeable differences.
 
@@ -904,7 +904,7 @@ and $(D_B / D_C)$, can also calculate the same kind of relative
 velocity between $B$ and $C$ as described at the end of the previous
 section.
 
-TODO: It would be nice to generalize the analysis of Scenario 2 so
+TODO: It would be nice to generalize the analysis of Scenario 1b so
 that $B$ and $C$ are moving with (nearly) arbitrary 2-d velocities
 relative to $A$ (i.e. relative to the ether).  They should still be
 moving directly towards each other, or directly away from each other.
@@ -921,7 +921,7 @@ each other.
 Here is a summary of what we have shown so far.
 
 \begin{itemize}
-\item In the scenario of Section~\ref{sec:scen1} where $A$ is at rest,
+\item In the scenario of Section~\ref{sec:scen1a} where $A$ is at rest,
   and $B$ is moving at velocity $v_B$ relative to $A$ in $A$'s frame
   (negative for velocity towards $A$, positive for velocity away from
   $A$):
@@ -933,7 +933,7 @@ Here is a summary of what we have shown so far.
       to $A$'s clock, $B$ measures received pulses every time period
       $D_B T$ according to $B$'s clock.
   \end{itemize}
-\item In the scenario of Section~\ref{sec:scen2} where $A$ is at rest,
+\item In the scenario of Section~\ref{sec:scen1b} where $A$ is at rest,
   $B$ and $C$ are moving at velocity $v_B$ and $v_C$ relative to $A$
   in $A$'s frame (same sign conventions as above), and the position of
   $C$ is always ``to the right'' of $B$ during the scenario:
@@ -947,7 +947,7 @@ Here is a summary of what we have shown so far.
   \end{itemize}
 \end{itemize}
 
-The table below is another way to summarize the results of Scenario 1.
+The table below is another way to summarize the results of Scenario 1a.
 All formulas for periods have been simplified by using $T=1$, i.e. you
 can multiply them all by $T$ to get the original answer derived
 earlier.  It also shows how much the previous period is multiplied by
@@ -974,7 +974,7 @@ $A \leftarrow B$ & $D_B$\tikzmark{ba1r}{} & \tikzmark{ba2l}{}$(1+\beta_B)$\tikzm
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 And the table below is another way to summarize the results of
-Scenario 2:
+Scenario 1b:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % I created the table below, with arrows between selected cells, by
@@ -1019,7 +1019,7 @@ strongly related to the relative velocity of the sender and the
 receiver.
 
 If we adopt Lorentz Ether Theory, but remain ignorant of how to
-measure our velocity relative to the ether, Scenario 2's results
+measure our velocity relative to the ether, Scenario 1b's results
 strongly suggest a proper understanding of relative velocity.
 
 
@@ -1027,10 +1027,10 @@ strongly suggest a proper understanding of relative velocity.
 \label{sec:simple-sr-length-contraction}
 
 
-\subsection{Special Relativity Scenario 3: Two rods moving towards each other at constant velocity}
-\label{sec:scen3}
+\subsection{Special Relativity Scenario 2a: Two rods moving towards each other at constant velocity}
+\label{sec:scen2a}
 
-In this scenario (see Figure~\ref{fig:scenario3-setup}), there are two
+In this scenario (see Figure~\ref{fig:scenario2a-setup}), there are two
 rods $R$ and $S$ with the same rest length $L$.  They are parallel to
 each other, and both lie along a common straight line, initially at
 some distance apart.  We will say $R$ is to the right of $S$ for the
@@ -1038,9 +1038,9 @@ purposes of drawing and discussing events of interest.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.6\textwidth]{scenario3-setup-cropped.pdf}
+	\includegraphics[width=0.6\textwidth]{scenario2a-setup-cropped.pdf}
 	\caption{Two collinear rods moving towards each other, observers far away in perpendicular direction}
-	\label{fig:scenario3-setup}
+	\label{fig:scenario2a-setup}
 \end{figure}
 
 There is a person $A$ at rest relative to $R$, at a distance $D \gg L$
@@ -1050,7 +1050,7 @@ length.  Rod $S$ is moving left to right with velocity $v$
 relative to $S$ at a distance $D$ from $S$'s center, in the same
 direction $U$ from $S$'s center.
 
-There are 3 events of interest, shown in Figure~\ref{fig:scenario3-events}:
+There are 3 events of interest, shown in Figure~\ref{fig:scenario2a-events}:
 \begin{itemize}
 \item Event 1: The left end of $R$ meets the right end of $S$.
 \item Event 2: The left end of $R$ meets the left end of $S$.
@@ -1061,9 +1061,9 @@ on the appropriate end of $R$.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=1.0\textwidth]{scenario3-events-cropped.pdf}
-	\caption{Events of interest for Scenario 3}
-	\label{fig:scenario3-events}
+	\includegraphics[width=1.0\textwidth]{scenario2a-events-cropped.pdf}
+	\caption{Events of interest for Scenario 2a}
+	\label{fig:scenario2a-events}
 \end{figure}
 
 Each of these events causes a light pulse to be emitted from the left
@@ -1103,7 +1103,7 @@ interval between $B$ receiving the pulses, we find that Event 3's
 pulse reaches $B$ {\em before} Event 2's pulse, because in $B$'s frame, $S$
 is its full rest length $L$, and $R$ is contracted in length.  So the
 sequence of events is the ``mirror image'' of
-Figure~\ref{fig:scenario3-events}.
+Figure~\ref{fig:scenario2a-events}.
 
 \begin{align*}
 q_{1,B} & = 0 & & \text{see Note 1 below}\\
@@ -1127,7 +1127,7 @@ Events 2 and 3 are spacelike separated, because it would require
 faster-than-light travel in $A$'s frame to move from the left end of
 $R$ starting when event 2 occurs, to the right end of $R$ by the time
 event 3 occurs.  As one example, note that rod $S$ in
-Figure~\ref{fig:scenario3-events} is drawn half the length of rod $R$,
+Figure~\ref{fig:scenario2a-events} is drawn half the length of rod $R$,
 so $\gamma=2$ in that figure.  This magnitude of length contraction
 requires $v \approx 0.866c$.  Something would need to travel the
 entire rest length of $R$ in the time it takes $S$ to move a distance
@@ -1150,7 +1150,7 @@ many details on this.
 
 
 \subsubsection{Where do observers at rest in $A$'s frame receive event 2 or 3 pulse first?}
-\label{sec:scen3-restpulsefirst}
+\label{sec:scen2a-restpulsefirst}
 
 For this section, assume either Special Relativity where rod $R$ and
 observer $A$ are motionless with respect to us, or Lorentz Ether
@@ -1161,7 +1161,7 @@ true times, as measured by clocks at rest relative to the ether.  We
 will analyze more general situations later, if we can get a good
 understanding of this one.
 
-In scenario 3, consider every location in the $XY$ plane.  A receiver
+In scenario 2a, consider every location in the $XY$ plane.  A receiver
 at rest relative to rod $R$ will receive the pulse from event 2 before
 the pulse from event 3 in many locations, e.g. at the location of
 event 2 at the left end of $R$.  Similarly, there are many locations
@@ -1270,7 +1270,7 @@ Figure~\ref{fig:pulse-receive-deltas-L-1.0-beta-0.50}.
 
 
 \subsubsection{Difference in time of pulses arriving to $B$, calculated in $A$'s frame}
-\label{sec:scen3-Breceivepulsetimes}
+\label{sec:scen2a-Breceivepulsetimes}
 
 %We will make use of Lemma~\ref{lem:IntersectingSpreadingPulse} from
 %Appendix~\ref{app:IntersectingSpreadingPulse} here.
@@ -1357,10 +1357,10 @@ $A$'s frame.
 \end{align*}
 
 
-\subsection{Special Relativity Scenario 4: Two rods moving towards each other at constant velocity, and both relative to observer}
-\label{sec:scen4}
+\subsection{Special Relativity Scenario 2b: Two rods moving towards each other at constant velocity, and both relative to observer}
+\label{sec:scen2b}
 
-Scenario 4 is a small generalization of Scenario 3.  The intent in
+Scenario 2b is a small generalization of Scenario 2a.  The intent in
 doing this is that in LET, if $A$ and $B$ do not know their motion
 relative to the ether, the results in this section will show what they
 will be able to observe and measure, for at least some kinds of motion
@@ -1372,7 +1372,7 @@ uniform speed motion towards each other, but they both have an
 arbitrary 2-dimensional velocity vector $\vect v = (v_x, v_y)$ in the
 $XY$ plane.
 
-The only differences between Scenario 4 and Scenario 3 are that rod
+The only differences between Scenario 2b and Scenario 2a are that rod
 $R$ and $A$ are moving parallel to the $x$ direction with velocity
 $v_R$.  The velocity of $S$ and $B$ is denoted $v_S$ to distinguish it
 from $v_R$.
@@ -1380,7 +1380,7 @@ from $v_R$.
 $S$ starts at a lesser $x$ coordinate than $R$.  We want $S$ to catch
 up to $R$, so we only consider $v_S > v_R$.  We also want $S$ to be
 length-contracted to a shorter length than $R$, to make it similar to
-Scenario 3 and reduce the number of cases to consider, so we only
+Scenario 2a and reduce the number of cases to consider, so we only
 consider $|v_S| > |v_R|$.
 
 All calculations are done in the rest frame, except for conversion of
@@ -1391,14 +1391,14 @@ observer $O$ with velocity 0.
 
 $R$ is contracted to length $L/\gamma_{R}$,
 and $S$ is contracted to length $L/\gamma_{S}$.
-Events 1, 2, and 3 are the same as in Scenario 3.
+Events 1, 2, and 3 are the same as in Scenario 2a.
 \begin{align}
 x_R(t) & = x_{R,0} + v_R t & & \text{$x_R(t)$ is $x$ coordinate of $R$'s center at time $t$} \\
 x_S(t) & = x_{S,0} + v_S t & & \text{$x_S(t)$ is $x$ coordinate of $S$'s center at time $t$}
 \end{align}
 
-The details of the calculations are in Appendix~\ref{app:scen4}.
-They are very similar to those for Scenario 3.
+The details of the calculations are in Appendix~\ref{app:scen2b}.
+They are very similar to those for Scenario 2a.
 
 The result is that the times $e_{2,A}$ and $e_{3,A}$ when $A$ receives
 the pulses from event 2 and 3, as measured in the rest frame, differ
@@ -1406,7 +1406,7 @@ by the following (a positive value, since $A$ receives the pulse for
 event 2 before the pulse for event 3):
 \begin{equation}
 e_{3,A}-e_{2,A}
-  = \frac{\gamma_R L}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] \label{eqn:scen4-pulseReceiveDiffForA}
+  = \frac{\gamma_R L}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] \label{eqn:scen2b-pulseReceiveDiffForA}
 \end{equation}
 
 The times $e_{2,B}$ and $e_{3,B}$ when $B$ receives the pulses, as
@@ -1415,22 +1415,22 @@ since $B$ receives the pulse for event 3 before the pulse for event
 2):
 \begin{equation}
 e_{3,B}-e_{2,B}
-  = -\frac{\gamma_S L}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] \label{eqn:scen4-pulseReceiveDiffForB}
+  = -\frac{\gamma_S L}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] \label{eqn:scen2b-pulseReceiveDiffForB}
 \end{equation}
 
 The difference between receiving the pulses as measured on $A$'s
 slower clock is $1/\gamma_R$ times
-Equation~\eqref{eqn:scen4-pulseReceiveDiffForA}.  Similarly the
+Equation~\eqref{eqn:scen2b-pulseReceiveDiffForA}.  Similarly the
 difference between receiving the pulses as measured on $B$'s slower
 clock is $1/\gamma_S$ times
-Equation~\eqref{eqn:scen4-pulseReceiveDiffForB}.  It is easily seen
+Equation~\eqref{eqn:scen2b-pulseReceiveDiffForB}.  It is easily seen
 from the equations above that:
 \begin{equation}
 \frac{1}{\gamma_R} (e_{3,A}-e_{2,A}) = -\frac{1}{\gamma_S} (e_{3,B}-e_{2,B})
 \end{equation}
 
 Similar to what was described at the end of
-Section~\ref{sec:scen2BtoCLETfriendly} for Scenario 2, where $B$ and
+Section~\ref{sec:scen1b-BtoCLETfriendly} for Scenario 1b, where $B$ and
 $C$, both in motion relative to $A$, get measurements consistent with
 $B$ being at rest and $C$ having relative velocity equal to $v_C
 \ominus v_B$ relative to $B$ (or $C$ at rest and $B$ having relative
@@ -1441,7 +1441,7 @@ The difference in time measured by $A$ on its local clock of the two
 pulses is:
 \begin{align*}
 \frac{1}{\gamma_R} (e_{3,A}-e_{2,A})
-  = \frac{L}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] & & \text{Eqn.~\eqref{eqn:scen4-pulseReceiveDiffForA}} \\
+  = \frac{L}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] & & \text{Eqn.~\eqref{eqn:scen2b-pulseReceiveDiffForA}} \\
   = \frac{L}{c} \tanh \frac{\eta_S-\eta_R}{2} & & \text{Lemma~\ref{lem:halfRapidityDifference} in Appendix~\ref{app:1drelVelocityUsingHyperbolicFns}} \\
   = \frac{L}{c} \tanh \frac{\eta_{\Delta}}{2} & & \text{define $\eta_{\Delta}=\eta_S-\eta_R$}
 \end{align*}
@@ -2099,11 +2099,11 @@ situation.
 \section{Double-check results from ChatGPT}
 
 
-\subsection{Scenario 2, $B$ sends periodic pulses to $C$, double-check by ChatGPT}
-\label{sec:scen2BtoCdoublecheck}
+\subsection{Scenario 1b, $B$ sends periodic pulses to $C$, double-check by ChatGPT}
+\label{sec:scen1b-BtoCdoublecheck}
 
 Since at the time of first performing the calculations in
-Section~\ref{sec:scen2BtoCLETfriendly} I was still fairly new to
+Section~\ref{sec:scen1b-BtoCLETfriendly} I was still fairly new to
 such things, I wanted a way to double-check the results.  I asked
 ChatGPT what the period would be that $C$ would receive pulses from
 $B$ and it gave an answer close to the following.
@@ -2350,10 +2350,10 @@ It will automatically give you the correct Doppler shift direction
 (blushift or redshift).
 
 
-\section{Details of Scenario 4 calculations}
-\label{app:scen4}
+\section{Details of Scenario 2b calculations}
+\label{app:scen2b}
 
-See Section~\ref{sec:scen4} for some preliminaries.
+See Section~\ref{sec:scen2b} for some preliminaries.
 
 We choose event 1 to occur at time $q_1=0$ as before.
 This equation must hold at event 1:
@@ -2361,7 +2361,7 @@ This equation must hold at event 1:
 \text{$x$ coordinate of right end of $S$} & = \text{$x$ coordinate of left end of $R$} \nonumber \\
 x_S(q_1) + \frac{L}{2\gamma_S} & = x_R(q_1) - \frac{L}{2\gamma_R} \nonumber \\
 x_{S,0} + 0 + \frac{L}{2\gamma_S} & = x_{R,0} + 0 - \frac{L}{2\gamma_R} & & \text{defns. of $x_S(t), x_R(t)$} \nonumber \\
-x_{R,0} - x_{S,0} & = \frac{L}{2} ( \frac{1}{\gamma_R} + \frac{1}{\gamma_S} ) & & \text{algebra} \label{eqn:scen4-xR0}
+x_{R,0} - x_{S,0} & = \frac{L}{2} ( \frac{1}{\gamma_R} + \frac{1}{\gamma_S} ) & & \text{algebra} \label{eqn:scen2b-xR0}
 \end{align}
 We let $x_{S,0}$ be some arbitrary real number, and then the equation
 above defines what $x_{R,0}$ must be.
@@ -2372,15 +2372,15 @@ Event 2 occurs at time $q_2$ determined by:
 x_S(q_2) - \frac{L}{2\gamma_S} & = x_R(q_2) - \frac{L}{2\gamma_R} \nonumber \\
 x_{S,0} + v_S q_2 - \frac{L}{2\gamma_S} & = x_{R,0} + v_R q_2 - \frac{L}{2\gamma_R} & & \text{defns. of $x_S(t), x_R(t)$} \nonumber \\
 (v_S - v_R) q_2 & = (x_{R,0} - x_{S,0}) + \frac{L}{2} ( \frac{1}{\gamma_S} - \frac{1}{\gamma_R} ) & & \text{algebra} \nonumber \\
-q_2 & = \frac{ \frac{L}{2} ( \frac{1}{\gamma_R} + \frac{1}{\gamma_S} + \frac{1}{\gamma_S} - \frac{1}{\gamma_R})}{v_S - v_R} & & \text{Eqn.~\eqref{eqn:scen4-xR0} and algebra} \nonumber \\
-q_2 & = \frac{L}{\gamma_S(v_S - v_R)} & & \text{algebra} \label{eqn:scen4-event2time}
+q_2 & = \frac{ \frac{L}{2} ( \frac{1}{\gamma_R} + \frac{1}{\gamma_S} + \frac{1}{\gamma_S} - \frac{1}{\gamma_R})}{v_S - v_R} & & \text{Eqn.~\eqref{eqn:scen2b-xR0} and algebra} \nonumber \\
+q_2 & = \frac{L}{\gamma_S(v_S - v_R)} & & \text{algebra} \label{eqn:scen2b-event2time}
 \end{align}
 To find the $x$ coordinate where event 2 occurs, plug time $t=q_2$
 into $x_S(t)$ and subtract half the contracted length of rod $S$:
 \begin{align}
 s_2 & = x_S(q_2) - \frac{L}{2\gamma_S} \nonumber \\
-s_2 & = x_{S,0} + v_S \frac{L}{\gamma_S(v_S - v_R)} - \frac{L}{2\gamma_S} & & \text{defn. of $x_S(t)$ and Eqn.~\eqref{eqn:scen4-event2time}} \nonumber \\
-s_2 & = x_{S,0} + \frac{L}{\gamma_S} \left( \frac{v_S}{v_S - v_R} - \frac{1}{2} \right) & & \text{algebra} \label{eqn:scen4-event2xcoord}
+s_2 & = x_{S,0} + v_S \frac{L}{\gamma_S(v_S - v_R)} - \frac{L}{2\gamma_S} & & \text{defn. of $x_S(t)$ and Eqn.~\eqref{eqn:scen2b-event2time}} \nonumber \\
+s_2 & = x_{S,0} + \frac{L}{\gamma_S} \left( \frac{v_S}{v_S - v_R} - \frac{1}{2} \right) & & \text{algebra} \label{eqn:scen2b-event2xcoord}
 \end{align}
 
 Event 3 occurs at time $q_3$ determined by:
@@ -2389,15 +2389,15 @@ Event 3 occurs at time $q_3$ determined by:
 x_S(q_3) + \frac{L}{2\gamma_S} & = x_R(q_3) + \frac{L}{2\gamma_R} \nonumber \\
 x_{S,0} + v_S q_3 + \frac{L}{2\gamma_S} & = x_{R,0} + v_R q_3 + \frac{L}{2\gamma_R} & & \text{defns. of $x_S(t), x_R(t)$} \nonumber \\
 (v_S - v_R) q_3 & = (x_{R,0} - x_{S,0}) + \frac{L}{2} ( \frac{1}{\gamma_R} - \frac{1}{\gamma_S} ) & & \text{algebra} \nonumber \\
-q_3 & = \frac{ \frac{L}{2} ( \frac{1}{\gamma_R} + \frac{1}{\gamma_S} + \frac{1}{\gamma_R} - \frac{1}{\gamma_S})}{v_S - v_R} & & \text{Eqn.~\eqref{eqn:scen4-xR0} and algebra} \nonumber \\
-q_3 & = \frac{L}{\gamma_R(v_S - v_R)} & & \text{algebra} \label{eqn:scen4-event3time}
+q_3 & = \frac{ \frac{L}{2} ( \frac{1}{\gamma_R} + \frac{1}{\gamma_S} + \frac{1}{\gamma_R} - \frac{1}{\gamma_S})}{v_S - v_R} & & \text{Eqn.~\eqref{eqn:scen2b-xR0} and algebra} \nonumber \\
+q_3 & = \frac{L}{\gamma_R(v_S - v_R)} & & \text{algebra} \label{eqn:scen2b-event3time}
 \end{align}
 To find the $x$ coordinate where event 3 occurs, plug time $t=q_3$
 into $x_S(t)$ and add half the contracted length of rod $S$:
 \begin{align}
 s_3 & = x_S(q_3) + \frac{L}{2\gamma_S} \nonumber \\
-s_3 & = x_{S,0} + v_S \frac{L}{\gamma_R(v_S - v_R)} + \frac{L}{2\gamma_S} & & \text{defn. of $x_S(t)$ and Eqn.~\eqref{eqn:scen4-event3time}} \nonumber \\
-s_3 & = x_{S,0} + \frac{Lv_S}{\gamma_R(v_S - v_R)} + \frac{L}{2\gamma_S} & & \text{algebra} \label{eqn:scen4-event3xcoord}
+s_3 & = x_{S,0} + v_S \frac{L}{\gamma_R(v_S - v_R)} + \frac{L}{2\gamma_S} & & \text{defn. of $x_S(t)$ and Eqn.~\eqref{eqn:scen2b-event3time}} \nonumber \\
+s_3 & = x_{S,0} + \frac{Lv_S}{\gamma_R(v_S - v_R)} + \frac{L}{2\gamma_S} & & \text{algebra} \label{eqn:scen2b-event3xcoord}
 \end{align}
 
 
@@ -2407,8 +2407,8 @@ In the symbols used for Lemma~\ref{lem:IntersectingSpreadingPulse},
 here are the relevant details about event 2 and $A$:
 \begin{align*}
 \vect{v} & = (v_R, 0) & & \text{$A$ velocity same as $R$} \\
-\vect{s} & = (s_2,0) = (x_{S,0} + \frac{L}{\gamma_S} \left( \frac{v_S}{v_S - v_R} - \frac{1}{2} \right), 0) & & \text{event 2 pulse is from left end of $R$, Eqn.~\eqref{eqn:scen4-event2xcoord}} \\
-t_0 & = q_2 = \frac{L}{\gamma_S(v_S - v_R)} & & \text{event 2 pulse time from Eqn.~\eqref{eqn:scen4-event2time}} \\
+\vect{s} & = (s_2,0) = (x_{S,0} + \frac{L}{\gamma_S} \left( \frac{v_S}{v_S - v_R} - \frac{1}{2} \right), 0) & & \text{event 2 pulse is from left end of $R$, Eqn.~\eqref{eqn:scen2b-event2xcoord}} \\
+t_0 & = q_2 = \frac{L}{\gamma_S(v_S - v_R)} & & \text{event 2 pulse time from Eqn.~\eqref{eqn:scen2b-event2time}} \\
 \vect{s} + \vect{r}_1 & = (x_{R,0}, D) = (x_{S,0} + \frac{L}{2} ( \frac{1}{\gamma_R} + \frac{1}{\gamma_S} ), D) & & \text{location of $A$ at time 0} \\
 t_1 & = 0 \\
 \vect{r}_1 & = (\frac{L}{2\gamma_R} + \frac{L}{\gamma_S} - \frac{Lv_S}{\gamma_S(v_S-v_R)}, D) & & \text{subtract $\vect{s}$ from $\vect{s}+\vect{r}_1$} \\
@@ -2432,8 +2432,8 @@ In the symbols used for Lemma~\ref{lem:IntersectingSpreadingPulse},
 here are the relevant details about event 3 and $A$:
 \begin{align*}
 \vect{v} & = (v_R, 0) & & \text{$A$ velocity same as $R$} \\
-\vect{s} & = (s_3,0) = (x_{S,0} + \frac{Lv_S}{\gamma_R(v_S - v_R)} + \frac{L}{2\gamma_S}, 0) & & \text{event 3 pulse is from right end of $R$, Eqn.~\eqref{eqn:scen4-event3xcoord}} \\
-t_0 & = q_3 = \frac{L}{\gamma_R(v_S - v_R)} & & \text{event 3 pulse time from Eqn.~\eqref{eqn:scen4-event3time}} \\
+\vect{s} & = (s_3,0) = (x_{S,0} + \frac{Lv_S}{\gamma_R(v_S - v_R)} + \frac{L}{2\gamma_S}, 0) & & \text{event 3 pulse is from right end of $R$, Eqn.~\eqref{eqn:scen2b-event3xcoord}} \\
+t_0 & = q_3 = \frac{L}{\gamma_R(v_S - v_R)} & & \text{event 3 pulse time from Eqn.~\eqref{eqn:scen2b-event3time}} \\
 \vect{s} + \vect{r}_1 & = (x_{R,0}, D) = (x_{S,0} + \frac{L}{2} ( \frac{1}{\gamma_R} + \frac{1}{\gamma_S} ), D) & & \text{location of $A$ at time 0} \\
 t_1 & = 0 \\
 \vect{r}_1 & = (\frac{L}{2\gamma_R} - \frac{Lv_S}{\gamma_R(v_S - v_R)}, D) & & \text{subtract $\vect{s}$ from $\vect{s}+\vect{r}_1$} \\
@@ -2483,8 +2483,8 @@ In the symbols used for Lemma~\ref{lem:IntersectingSpreadingPulse},
 here are the relevant details about event 2 and $B$:
 \begin{align*}
 \vect{v} & = (v_S, 0) & & \text{$B$ velocity same as $S$} \\
-\vect{s} & = (s_2,0) = (x_{S,0} + \frac{L}{\gamma_S} \left( \frac{v_S}{v_S - v_R} - \frac{1}{2} \right), 0) & & \text{event 2 pulse is from left end of $R$, Eqn.~\eqref{eqn:scen4-event2xcoord}} \\
-t_0 & = q_2 = \frac{L}{\gamma_S(v_S - v_R)} & & \text{event 2 pulse time from Eqn.~\eqref{eqn:scen4-event2time}} \\
+\vect{s} & = (s_2,0) = (x_{S,0} + \frac{L}{\gamma_S} \left( \frac{v_S}{v_S - v_R} - \frac{1}{2} \right), 0) & & \text{event 2 pulse is from left end of $R$, Eqn.~\eqref{eqn:scen2b-event2xcoord}} \\
+t_0 & = q_2 = \frac{L}{\gamma_S(v_S - v_R)} & & \text{event 2 pulse time from Eqn.~\eqref{eqn:scen2b-event2time}} \\
 \vect{s} + \vect{r}_1 & = (x_{S,0}, D) & & \text{location of $B$ at time 0} \\
 t_1 & = 0 \\
 \vect{r}_1 & = (-\frac{L}{\gamma_S} \left( \frac{v_S}{v_S - v_R} - \frac{1}{2} \right), D) & & \text{subtract $\vect{s}$ from $\vect{s}+\vect{r}_1$} \\
@@ -2506,8 +2506,8 @@ In the symbols used for Lemma~\ref{lem:IntersectingSpreadingPulse},
 here are the relevant details about event 2 and $B$:
 \begin{align*}
 \vect{v} & = (v_S, 0) & & \text{$B$ velocity same as $S$} \\
-\vect{s} & = (s_3,0) = (x_{S,0} + \frac{Lv_S}{\gamma_R(v_S - v_R)} + \frac{L}{2\gamma_S}, 0) & & \text{event 3 pulse is from right end of $R$, Eqn.~\eqref{eqn:scen4-event3xcoord}} \\
-t_0 & = q_3 = \frac{L}{\gamma_R(v_S - v_R)} & & \text{event 3 pulse time from Eqn.~\eqref{eqn:scen4-event3time}} \\
+\vect{s} & = (s_3,0) = (x_{S,0} + \frac{Lv_S}{\gamma_R(v_S - v_R)} + \frac{L}{2\gamma_S}, 0) & & \text{event 3 pulse is from right end of $R$, Eqn.~\eqref{eqn:scen2b-event3xcoord}} \\
+t_0 & = q_3 = \frac{L}{\gamma_R(v_S - v_R)} & & \text{event 3 pulse time from Eqn.~\eqref{eqn:scen2b-event3time}} \\
 \vect{s} + \vect{r}_1 & = (x_{S,0}, D) & & \text{location of $B$ at time 0} \\
 t_1 & = 0 \\
 \vect{r}_1 & = (-\frac{Lv_S}{\gamma_R(v_S - v_R)} - \frac{L}{2\gamma_S}, D) & & \text{subtract $\vect{s}$ from $\vect{s}+\vect{r}_1$} \\
@@ -2538,11 +2538,11 @@ For the same reasons that were explained above why $e_{3,A}-e_{2,A}$
 is positive, we know that $e_{3,B}-e_{2,B}$ must be negative.
 
 
-\section{Beginnings of calculations for Scenario 2b}
-\label{app:scen2b}
+\section{Beginnings of calculations for Scenario 1c}
+\label{app:scen1c}
 
-This is a generalized version of Special Relativity Scenario 2 in
-Section~\ref{sec:scen2}.
+This is a generalized version of Special Relativity Scenario 1b in
+Section~\ref{sec:scen1b}.
 
 $A$ is at rest at the origin, as before.
 
@@ -2561,8 +2561,8 @@ are moving directly away from each other, they must be moving away
 from a common starting position.  We define $\vect{x}_0$ to be this
 common position, and the equations of position for $B$ and $C$ are:
 \begin{align}
-\vect{x}_B(t) & = \vect{x}_0 + \vect{v}_B t_A \label{eqn:scen2b-Bpos} \\
-\vect{x}_C(t) & = \vect{x}_0 + \vect{v}_C t_A \label{eqn:scen2b-Cpos}
+\vect{x}_B(t) & = \vect{x}_0 + \vect{v}_B t_A \label{eqn:scen1c-Bpos} \\
+\vect{x}_C(t) & = \vect{x}_0 + \vect{v}_C t_A \label{eqn:scen1c-Cpos}
 \end{align}
 These positions are relative to $A$, and $t_A$ is the time in $A$'s
 frame.  If $t < 0$, $B$ and $C$ are moving towards $\vect{x}_0$, and
@@ -2574,7 +2574,7 @@ $C$'s clock runs $1/\gamma_C$ times the speed of $A$'s clock.
 
 
 \subsection{$B$ sends periodic pulses to $C$}
-\label{app:scen2b-Bsending}
+\label{app:scen1c-Bsending}
 
 $B$ sends its $n$-th pulse at the following times, on $B$'s and $A$'s
 clock:
@@ -2642,17 +2642,19 @@ On $C$'s clock, the period is $1/\gamma_C$ times the period on $A$'s
 clock, thus:
 \begin{align}
 T_C
-  & = \frac{\gamma_B}{\gamma_C} T_B (1 + \frac{\gamma_C^2}{c^2} \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{(v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2  + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2} \right] ) \label{eqn:scen2b-TC}
+  & = \frac{\gamma_B}{\gamma_C} T_B (1 + \frac{\gamma_C^2}{c^2} \left[ (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{(v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2  + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2} \right] ) \label{eqn:scen1c-TC}
 \end{align}
 
 Let $r$ be the 3-d relativistic velocity difference
 $\vect{v}_C \ominus \vect{v}_B$ given by
-Equation~\eqref{eqn:relVelocitySubComponents} in Appendix
-~\ref{app:3drelvelocityadd}.  Then while I have not yet proved that
-$T_C = D_r T_B$ is equal to Equation~\eqref{eqn:scen2b-TC} for all
-$\vect{v}_A$, $\vect{v}_B$, I have written a simple program that
-demonstrates those equations give the same result for many randomly
-selected pairs of values for $\vect{v}_A$, $\vect{v}_B$, so it is highly
-likely those two equations always give the same result.
+Equation~\eqref{eqn:relVelocitySubComponents} in
+
+Appendix~\ref{app:3drelvelocityadd}.  I have not yet proved
+mathematically that $T_C = D_r T_B$ is equal to
+Equation~\eqref{eqn:scen1c-TC} for all $\vect{v}_A$, $\vect{v}_B$.
+However, I have written a simple program that demonstrates those
+equations give the same result for many randomly selected pairs of
+values for $\vect{v}_A$, $\vect{v}_B$, so it is highly likely those
+two equations always give the same result.
 
 \end{document}

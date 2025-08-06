@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 parser = argparse.ArgumentParser(
     formatter_class=argparse.RawDescriptionHelpFormatter,
     description="""
-Generate a plot for Scenario 3 of Andy Fingerhut's scratchpad
+Generate a plot for Scenario 2a of Andy Fingerhut's scratchpad
 document, showing for a given value of beta the curves of locations
 where an observer at rest relative to rod R will receive a pulse from
 event 3 k seconds after it receives the pulse from event 2 (if k is
