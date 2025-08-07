@@ -1,0 +1,1001 @@
+\documentclass[a4paper]{article}
+
+\usepackage[pages=all, color=black, position={current page.south}, placement=bottom, scale=1, opacity=1, vshift=5mm]{background}
+%\SetBgContents{
+%	\tt This work is shared under a \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC BY-SA 4.0 license} unless otherwise noted
+%}      % copyright
+
+\usepackage[margin=1in]{geometry} % full-width
+
+% AMS Packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Unicode
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\hypersetup{
+	unicode,
+%	colorlinks,
+%	breaklinks,
+%	urlcolor=cyan,
+%	linkcolor=blue,
+	pdfauthor={Author One, Author Two, Author Three},
+	pdftitle={A simple article template},
+	pdfsubject={A simple article template},
+	pdfkeywords={article, template, simple},
+	pdfproducer={LaTeX},
+	pdfcreator={pdflatex}
+}
+
+% Natbib
+\usepackage[sort&compress,numbers,square]{natbib}
+\bibliographystyle{mplainnat}
+
+% Theorem, Lemma, etc
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}{Claim}[theorem]
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{criterion}[theorem]{Criterion}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{principle}[theorem]{Principle}
+
+\usepackage{graphicx, color}
+\graphicspath{{fig/}}
+\setlength{\abovecaptionskip}{-5pt}
+
+%\usepackage[linesnumbered,ruled,vlined,commentsnumbered]{algorithm2e} % use algorithm2e for typesetting algorithms
+\usepackage{algorithm, algpseudocode} % use algorithm and algorithmicx for typesetting algorithms
+\usepackage{mathrsfs} % for \mathscr command
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Experiment to create a table with arrows between selected pairs of
+% cells, copied from:
+% https://tex.stackexchange.com/questions/163174/table-with-arrows-between-cells
+\usepackage{tabularx}
+\usepackage{tikz}
+%\tikzset{every picture/.style={remember picture}}
+
+\renewcommand\tabularxcolumn[1]{m{#1}}
+\newcolumntype{M}{>{\centering\arraybackslash}m{1cm}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\newcommand\tikzmark[2]{%
+\tikz[remember picture,baseline] \node[inner sep=2pt,outer sep=0] (#1){#2};%
+}
+
+\newcommand\link[2]{%
+\begin{tikzpicture}[remember picture, overlay, >=stealth, shift={(0,0)}]
+  \draw[->] (#1) to (#2);
+\end{tikzpicture}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Author info
+\title{
+  Mostly Synchronized \\
+  \large How to synchronize clocks almost, but not quite (... entirely
+  unlike tea)
+  \footnote{With a hat tip to Billy Crystal in ``The Princess Bride'' and ``The Hitchhiker's Guide to the Galaxy'' by Douglas Adams}}
+\author{J. Andrew Fingerhut (\texttt{andy.fingerhut@gmail.com})}
+
+\date{
+        August 6, 2025
+%	\today
+}
+
+%\newcommand{\ihat}{\textbf{i}}
+%\newcommand{\jhat}{\textbf{j}}
+%\newcommand{\khat}{\textbf{k}}
+%\newcommand{\rhat}{\hat{\textbf{r}}}
+%\newcommand{\vect}[1]{\textbf{#1}}
+%\newcommand{\hatvec}[1]{\hat{\textbf{#1}}}
+
+\newcommand{\ihat}{\mathbf{i}}
+\newcommand{\jhat}{\mathbf{j}}
+\newcommand{\khat}{\mathbf{k}}
+\newcommand{\rhat}{\hat{\mathbf{r}}}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\hatvec}[1]{\hat{\mathbf{#1}}}
+
+\begin{document}
+\maketitle
+
+%\begin{abstract}
+%  abstract here
+%\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+\label{sec:intro}
+
+There have been many attempts made to devise methods by which two
+clocks, separated by some noticeable distance, can be synchronized so
+closely to one another, that you can use them to make a measurement of
+the speed of light in one direction.  A recent video describing some
+of these attempts was published by Veritasium in
+2021~\cite{OneWaySpeedOfLight}.
+
+There are many methods to synchronize clocks that are {\em not}
+precise enough to measure the one way speed of light, e.g. methods
+used in computer networks like the Network Time Protocol
+(NTP)~\cite{NetworkTimeProtocol} and {\sc Huygens}~\cite{GLYN2018}.
+These involve measuring the time on a local clock, sending it in
+messages to other computer systems, and sometimes performing extensive
+calculations on the contents of sequences of these messages, in order
+to get closer to a level of synchronization precision that is possible
+for causal messages passed via signals traveling at the speed of
+light, or usually slower.
+
+Those methods will not be discussed further in this document.
+
+
+\section{Methods that seem like they might be able to allow light-precise clock sychronization}
+
+\subsection{Synchronize stationary clocks with known distance between them by constant-speed traveler}
+
+I heard about this from James Ellias, who may have heard about it from
+someone else (Aviram Rosochotsky?).  It would be good to learn who
+created it, if it is known, and whether there are any published
+references to it.
+
+
+\subsubsection{First ChatGPT prompt and response}
+
+\paragraph{I asked ChatGPT to comment on it using this prompt:}
+
+Consider the following attempt to synchronize clocks precisely enough
+to measure the one way speed of light, and comment on what about it
+prevents it from achieving that level of synchronization precision.
+Two observers A and B with clocks are connected by a rod of known
+length $L$.  A traveler C with a precise clock moves with precisely
+known constant speed $v$ parallel to the length of the rod, very close
+to the line of the rod.  As C passes near A, they synchronize their
+clocks with each other by exchanging light signals.  Later as C passes
+near B, they synchronize their clocks.  Both A and B know C's speed
+precisely, and so can calculate the Lorentz factor for C's speed $v$,
+and thus B can calculate the precise amount to update its clock so
+that it becomes the same as A's clock.
+
+\paragraph{ChaptGPT's reponse:}
+
+You're describing a clever attempt to use a moving traveler (C) to
+synchronize two spatially separated clocks (A and B) without directly
+assuming the one-way speed of light — a core challenge in the
+foundations of relativity.  The method you outline cannot succeed at
+measuring the one-way speed of light independently, and the reason
+lies in an unavoidable circularity tied to the relativity of
+simultaneity and Einstein synchronization.
+
+Let’s break this down step by step:
+
+Setup Summary:
+
+\begin{itemize}
+\item A and B are at rest in some inertial frame and separated by a
+  known distance $L$.
+\item C moves at known speed $v$ from A toward B, very close to the
+  line connecting them.
+\item C passes A, synchronizes clocks with A (e.g., they agree that
+  $t_C = t_A = 0$).
+\item C continues at constant speed, passes B, and B synchronizes with
+  C’s clock.
+\item B then computes how to adjust its clock so it is synchronized
+  with A’s — using:
+  \begin{itemize}
+    \item C’s speed $v$
+    \item The Lorentz time dilation factor $\gamma$
+  \end{itemize}
+\end{itemize}
+
+The Goal
+
+To use this process to establish whether clocks A and B are
+synchronized in such a way that one can measure the one-way speed of
+light (i.e., the time it takes light to go from A to B or B to A
+without assuming it's the same in both directions).
+
+Why This Doesn't Work: Circular Dependence on Clock Synchronization
+
+Here’s the core problem:
+
+To determine how much B should adjust its clock using C’s reading and
+time dilation, you must already assume a convention for simultaneity
+-- which depends on the one-way speed of light.
+
+More precisely:
+
+\begin{enumerate}
+
+\item When C synchronizes with A, that moment is defined in A’s rest
+  frame as the clocks being equal -- fine.
+
+\item When C reaches B, its clock shows some time $t_C$, and B wants
+  to infer what time A’s clock shows now in A’s rest frame. But here’s
+  the catch:
+
+  \begin{itemize}
+  \item To determine what time it is at A simultaneously with C’s
+    arrival at B, you need a definition of simultaneity.
+  \item But simultaneity in special relativity is frame-dependent, and
+    to determine simultaneity across space, you need to assume
+    something about how signals propagate -- in particular, the
+    one-way speed of light.
+  \end{itemize}
+
+\item When B applies a correction based on time dilation (i.e.,
+  assumes that C's clock ran slow by a factor $\gamma$), that
+  correction is valid only under the assumption that A and B are
+  already Einstein-synchronized -- i.e., that the one-way speed of
+  light is the same in both directions.
+\end{enumerate}
+
+The Circular Logic
+
+\begin{itemize}
+\item You use time dilation to calculate the time at A from the clock
+  reading at C when C reaches B.
+\item But time dilation itself -- and the transformation between C's
+  time and A/B's time -- depends on the synchronization of clocks A
+  and B using Einstein's method.
+\item And Einstein synchronization assumes the one-way speed of light
+  is $c$.
+\end{itemize}
+
+Hence, you're assuming the very thing you're trying to measure.
+
+The Philosophical Core
+
+This goes back to a foundational insight of special relativity (and
+philosophy of physics):
+
+The one-way speed of light cannot be measured without already
+synchronized clocks -- and clock synchronization requires a convention
+(e.g., Einstein synchronization), which assumes the one-way speed of
+light is equal in all directions.
+
+So any procedure that seems to measure the one-way speed of light
+actually smuggles in that assumption in its setup, typically through
+how simultaneity or clock adjustments are defined.
+
+
+What You Can Measure: The Two-Way Speed of Light
+
+All actual physical measurements of light’s speed measure round-trip
+(two-way) times, which are invariant and do not depend on
+synchronization conventions.  That’s what experiments like
+Michelson-Morley and modern laser-ranging experiments measure -- and
+all confirm that the round-trip speed is exactly $c$.
+
+Related Thought Experiments
+
+\begin{itemize}
+\item Einstein’s train and platform: Demonstrates relativity of
+  simultaneity.
+\item Reichenbach’s $\epsilon$-convention: Formalizes the idea that
+  you can set the one-way speed of light arbitrarily (as long as
+  round-trip speed is $c$).
+\end{itemize}
+
+Conclusion
+
+The method you described assumes the one-way speed of light in how B
+corrects its clock using C’s time.  That assumption is buried in the
+application of Lorentz transformations and time dilation, which
+themselves depend on Einstein synchronization.
+
+Therefore, the setup cannot be used to independently measure the
+one-way speed of light or synchronize clocks to the required precision
+without circularity.
+
+Let me know if you'd like this expressed with spacetime diagrams or
+coordinate transformations to make it clearer.
+
+There are some follow up questions and answers in
+Appendix~\cite{app:chatgpt-on-clock-sync-and-one-way-speed-of-light}
+that I found interesting, but are relevant for other methods besides
+this one, hence putting them in an appendix.
+
+
+
+%\newpage
+\bibliography{refs}
+
+\appendix
+
+\section{Q\&A with ChatGPT I found interesting}
+\label{app:chatgpt-on-clock-sync-and-one-way-speed-of-light}
+
+
+\subsection{Does Einstein's clock synchronization postulate make it impossible to measure one way speed of light?}
+
+\paragraph{I followed up with this prompt:}
+
+Does Einstein's clock synchronization convention postulate effectively
+make it impossible to measure the one way speed of light by the very
+fact of accepting that postulate?
+
+\paragraph{ChaptGPT's reponse:}
+
+Yes, exactly -- and you've put your finger on a deep and often
+misunderstood point.
+
+Short Answer
+
+Yes:
+
+Einstein's clock synchronization convention defines the one-way speed
+of light to be equal to the two-way (round-trip) speed of light.  As a
+result, once you accept that convention, the one-way speed of light is
+not something you can measure independently -- it's a matter of
+definition, not discovery.
+
+Why This Is So
+
+Let's step back.
+
+In his 1905 paper, Einstein proposed a convention for synchronizing
+clocks at different locations in an inertial frame:
+
+To synchronize two clocks A and B, send a light signal from A to B and
+back to A. If the signal takes time $t_1$ to go from A to B and $t_2$
+to return, then assume the time for each leg is equal:
+
+\begin{equation}
+t_{\text{AB}} = t_{\text{BA}} = \frac{1}{2}(t_1 + t_2)
+\end{equation}
+
+This is a postulate, not a derived fact.  It assumes:
+\begin{itemize}
+\item The one-way speed of light is the same in both directions (A to
+  B and B to A).
+\item This speed is equal to $c$, the measured two-way speed.
+\end{itemize}
+
+So when we say we've synchronized two clocks ``Einstein-style,'' we've
+built in the assumption that the one-way speed of light is $c$.
+
+The Circularity
+
+If you now ask:
+
+``Can I test whether the one-way speed of light really is $c$?''
+
+You're faced with this issue:
+\begin{itemize}
+\item To measure how long it takes for light to go from A to B, you
+  need synchronized clocks at A and B.
+\item But you synchronized those clocks by assuming the very thing
+  you're trying to test -- that light takes the same amount of time in
+  both directions.
+\item Therefore, any such measurement cannot independently confirm or
+  refute the one-way speed of light being $c$; it's conventional.
+\end{itemize}
+
+The Conventionality Thesis
+
+This insight has been formalized in philosophy of physics, especially
+by thinkers like Hans Reichenbach. He proposed a more general
+synchronization scheme using a parameter $\epsilon \in [0,1]$, where:
+\begin{equation}
+t_{AB} = \epsilon(t_1 + t_2), t_{BA} = (1-\epsilon)(t_1 + t_2)
+\end{equation}
+\begin{itemize}
+\item Einstein synchronization sets $\epsilon = 0.5$
+\item But any $\epsilon \in [0,1]$ leads to a logically consistent
+  theory, as long as the two-way speed is still $c$.
+\end{itemize}
+So the one-way speed of light is not an observable quantity -- it's a
+convention that completes the formalism of relativity.
+
+What Is Measurable?
+\begin{itemize}
+\item The two-way (round-trip) speed of light: Measured directly by
+  bouncing light off a mirror and recording round-trip time with a
+  single clock.
+\item Observables like time dilation, length contraction, Doppler
+  shift, and light aberration -- all frame-independent or computable
+  with Einstein synchronization.
+\end{itemize}
+
+Why All Experiments Agree
+
+Every experiment that measures the speed of light (from
+Michelson-Morley to modern cavity resonator setups) ultimately
+measures the round-trip speed.  No known experiment can avoid the need
+for clock synchronization to measure a one-way speed, and thus none
+can determine it independently.
+
+Conclusion
+
+Yes, Einstein's synchronization convention defines the one-way speed
+of light to be $c$.  Once you accept that postulate:
+
+You've removed the one-way speed of light from the list of things you
+can empirically measure.
+
+It's not a weakness -- it's a recognition of how time and simultaneity
+must be operationally defined in special relativity.
+
+Let me know if you'd like examples or spacetime diagrams to visualize
+this.
+
+
+\subsection{If we reject Einstein's clock synchronizatino postulate, does it become possible to measure one way speed of light?}
+
+\paragraph{I followed up a bit further about rejecting Einstein's postulate:}
+
+Suppose one wished to reject Einstein's clock synchronization
+postulate, and instead follow a theory such as Lorentz Ether Theory.
+Does the one way speed of light then become a value that can be
+discovered, rather than assumed?
+
+\paragraph{ChaptGPT's reponse:}
+
+Yes -- if you reject Einstein's synchronization convention and adopt a
+framework like Lorentz Ether Theory (LET), then the one-way speed of
+light becomes, in principle, a quantity that could be discovered, not
+just assumed.
+
+But this comes with important caveats -- both philosophical and
+empirical.
+
+In Lorentz Ether Theory (LET):
+\begin{itemize}
+\item There is a preferred ``ether'' frame in which light travels
+  isotropically at speed $c$.
+\item In all other frames, light travels anisotropically (i.e., with
+  different speeds in different directions).
+\item The asymmetry in the one-way speed of light between moving
+  frames is considered physically real, not just a coordinate effect.
+\item Clocks can, in principle, be synchronized to reveal this
+  anisotropy -- if you could find the ether frame or distinguish it
+  experimentally.
+\end{itemize}
+So under LET:
+
+The one-way speed of light is not postulated to be $c$ in all
+directions -- and could be discovered, if you can identify the ether
+frame or detect the anisotropy.
+
+But Here’s the Catch:
+
+Despite this theoretical openness to a discoverable one-way speed of
+light, LET makes all the same experimental predictions as Special
+Relativity (SR) -- including:
+\begin{itemize}
+\item Michelson–Morley experiment: LET explains the null result by
+  length contraction and time dilation due to motion through the
+  ether.
+\item Kennedy–Thorndike experiment
+\item Ives–Stilwell experiment
+\end{itemize}
+
+Every experiment that tests light speed or time dilation gives results
+indistinguishable from SR, because LET essentially hides the ether’s
+effects perfectly.
+
+This is what led Einstein and later physicists to regard LET as
+superfluous -- philosophically heavier but empirically equivalent to
+SR.
+
+Why LET Still Can’t Measure the One-Way Speed of Light
+
+Even in LET, if you're inside a lab moving with respect to the ether,
+and all your measuring devices (clocks, rods) are affected by time
+dilation and length contraction according to LET, you still can’t tell
+that your one-way light speed is anisotropic -- because:
+\begin{itemize}
+\item Your rods have contracted exactly enough,
+\item Your clocks have slowed down exactly enough,
+\item So that all your measurements appear as if light speed is $c$ in
+  all directions.
+\end{itemize}
+So unless you can somehow escape or detect the ether frame (which has
+never been done), you still can’t operationally determine the one-way
+speed of light.
+
+Summary
+
+\begin{tabularx}{1.0\textwidth}{|p{3.4cm}|p{3.7cm}|p{2.8cm}|p{3.6cm}|}
+\cline{1-4} \\
+Framework & One-way speed of light: & Can be measured? & Requires synchronization convention?
+\\ \cline{1-4}
+Special Relativity & Postulated $= c$ & No & Yes (Einstein convention)
+\\ \cline{1-4}
+Lorentz Ether Theory & Anisotropic except in ether frame & No, in practice & Yes, but defined by real ether time
+\\ \cline{1-4}
+If ether frame is found & Then: discoverable & Yes, in principle & No (objective simultaneity exists)
+\\ \cline{1-4}
+\end{tabularx}
+So yes: in principle, LET treats the one-way speed of light as
+discoverable -- but in practice, due to the empirical equivalence with
+SR and the undetectability of the ether, it remains unmeasurable.
+
+Would you like to explore experimental setups that attempt to measure
+the one-way speed of light -- and why they fail -- even from a LET
+perspective?
+
+
+\subsection{Experimental setups that attempt to measure the one way speed of light, and why they fail, even from LET perspective}
+
+\paragraph{My next prompt:}
+
+Please explore experimental setups that attempt to measure the
+one-way-speed of light, and why they fail, even from a LET
+perspective.
+
+\paragraph{ChaptGPT's reponse:}
+
+Great -- let's dig into this.
+
+You're asking about experimental attempts to measure the one-way speed
+of light, and especially why they fail, even under the assumption of a
+preferred frame like in Lorentz Ether Theory (LET).
+
+This gets at a subtle point in both philosophy of physics and
+measurement theory: why clock synchronization, or the absence of a
+universal simultaneity, makes the one-way speed inaccessible, no
+matter how clever the setup.
+
+General Idea Behind One-Way Light Speed Experiments
+
+To measure the one-way speed of light from point A to point B, you
+need:
+\begin{enumerate}
+\item A clock at A to mark the light's departure time.
+\item A clock at B to mark the arrival time.
+\item The clocks must be synchronized in a physically meaningful way
+  that does not assume the very light speed you're trying to measure.
+\end{enumerate}
+This third requirement is where every setup fails -- either
+explicitly, by assuming Einstein synchronization, or implicitly, by
+using signals whose behavior depends on light's speed.
+
+Categories of Proposed Experiments (and Why They Fail)
+
+1. Einstein Synchronization Itself
+
+Method: Send a light signal from A to B and back to A.  Assume it
+travels the same speed both ways, so the midpoint of round-trip time
+is when it hit B.
+
+Why it fails: It defines the one-way speed of light to be equal in
+both directions.  So using it to measure the one-way speed is
+circular.
+
+2. Slow Clock Transport
+
+Method: Synchronize clocks at the same location, then slowly move one
+to the other location.
+
+Why it fails:
+\begin{itemize}
+\item In LET: the transported clock experiences time dilation due to
+  movement through the ether, even if slow.
+\item This makes the result frame-dependent, and if the ether is
+  undetectable, so is the effect.
+\item In SR: same problem -- the result depends on assumptions about
+  simultaneity and inertial frames.
+\end{itemize}
+So slow transport can't determine whether any observed discrepancy is
+due to clock transport or actual light anisotropy.
+
+3. Use of ``Clock-Free'' Methods (e.g., one-arm interferometers)
+
+Example: A light signal is sent from A to B, reflected back, but with
+a detector that moves to record the one-way leg specifically.
+
+Why it fails: Even if you cleverly design a setup to record only the
+forward travel, you still rely on:
+\begin{itemize}
+\item Assumptions about timing mechanisms,
+\item Mechanical or electromagnetic signals traveling at predictable
+  speeds,
+\item Which ultimately trace back to synchronization based on light or
+  some equivalent.
+\end{itemize}
+So you haven't escaped the need for synchronized clocks or signal
+calibration that presumes isotropy.
+
+4. Atomic or GPS-like Time Transfer
+
+Method: Use portable atomic clocks, or time-transfer protocols (like
+those in GPS) to synchronize clocks independently of light.
+
+Why it fails:
+\begin{itemize}
+\item All practical time-transfer methods either rely on round-trip
+  signals (so the same symmetry assumption sneaks in), or require
+  extremely precise control over motion and knowledge of all inertial
+  effects.
+\item GPS works by assuming SR's validity -- not testing it.  In fact,
+  GPS is designed assuming the one-way speed of light is isotropic in
+  ECI (Earth-Centered Inertial) frame.
+\end{itemize}
+So if you try to use GPS to ``measure'' the one-way speed, you're
+assuming what you want to test.
+
+5. Two Clocks Launched in Opposite Directions
+
+Method: Launch two synchronized clocks from a midpoint in opposite
+directions (e.g., rockets or satellites).  They both receive the same
+light pulse from the midpoint.
+
+Why it fails:
+\begin{itemize}
+\item Time dilation affects both clocks differently depending on their
+  motion.
+\item Again, interpreting the results requires assuming a simultaneity
+  convention.
+\item LET would say the different readings are due to motion through
+  the ether; SR would attribute it to coordinate-dependent
+  simultaneity.  But the observations are the same.
+\end{itemize}
+
+What LET Says About All This
+
+In Lorentz Ether Theory, there's a preferred absolute frame in which
+the one-way speed of light is isotropic.  But:
+\begin{itemize}
+\item Clocks moving through the ether tick slower,
+\item Rods contract in the direction of motion,
+\item All measuring devices conspire to hide the anisotropy of light's
+  one-way speed.
+\end{itemize}
+This ``conspiracy'' is not mystical -- it's a mathematical consequence
+of the transformation rules that LET inherits from Lorentz
+transformations (just like SR does).
+
+So any experiment done with physical clocks and rods, no matter how
+precise, will give the same result predicted by SR.  You can postulate
+a preferred frame, but you can't detect it.
+
+Bottom Line
+
+Why all known attempts fail (even in LET):
+\begin{itemize}
+\item You always need synchronized clocks at two locations.
+\item Synchronization requires assumptions -- either about signal
+  speeds or time transport.
+\item LET allows for a true one-way speed of light -- but makes it
+  experimentally undetectable, due to the way time dilation and length
+  contraction perfectly hide the ether.
+\end{itemize}
+
+What Would It Take to Measure the One-Way Speed?
+
+You'd need:
+\begin{enumerate}
+\item A way to synchronize distant clocks without using light or slow
+  transport or any system affected by ether motion.
+\item Or, detect physical effects that vary with light directionality
+  and cannot be explained by time dilation or length contraction --
+  but no such effects have ever been observed.
+\end{enumerate}
+
+Closing Thought
+
+Let's quote Einstein himself (paraphrased from his 1905 paper):
+
+``We assume the speed of light to be the same in both directions.
+That is a stipulation... not a hypothesis about the nature of light.''
+
+This is as true in Special Relativity as it is as a criticism of any
+experiment claiming to measure the one-way speed.
+
+Let me know if you'd like a diagrammatic explanation, or an overview
+of how this plays into the design of systems like GPS, or into the
+philosophy of simultaneity.
+
+
+\subsection{What would anisotropic speeds of light in Lorentz Ether Theory look like?}
+
+\paragraph{The discussion above and my own investigations led me to ask this:}
+
+Theoretically, what would anisotropic speeds of light in different
+directions look like when moving relative to the ether in Lorentz
+ether theory?
+
+\paragraph{ChaptGPT's reponse:}
+
+Excellent question.  You're now asking:
+
+If Lorentz Ether Theory (LET) is correct, and there is a preferred
+``ether frame,'' what would anisotropic one-way speeds of light look
+like in a frame moving relative to the ether?
+
+This dives into how LET conceptualizes the behavior of light and time
+across different frames -- and how it agrees numerically with Special
+Relativity while maintaining a different interpretive stance.
+
+
+Basic Setup in Lorentz Ether Theory
+
+\begin{itemize}
+\item LET postulates a preferred frame -- the ``ether frame'' -- in
+  which the laws of physics take their simplest form, and the speed of
+  light is isotropic (same in all directions), equal to $c$.
+\item All other inertial frames move relative to the ether.
+\item Objects and clocks in moving frames undergo length contraction
+  and time dilation when moving through the ether, as real physical
+  effects.
+\item The coordinate transformations between frames are still Lorentz
+  transformations -- just with a hidden preferred frame underneath.
+\end{itemize}
+
+What Happens in a Frame Moving at Velocity $\vect{v}$ Through the Ether?
+
+Suppose frame $S'$ moves at velocity $\vect{v}$ relative to the ether
+frame $S$.  In $S$, light moves at speed $c$ in all directions.
+
+In $S'$, due to LET:
+\begin{itemize}
+\item Light still takes the same total round-trip time over any path
+  (because clocks and rods are distorted in just the right way).
+\item BUT the one-way speed of light becomes anisotropic in $S'$.
+\end{itemize}
+
+Anisotropic Light Speed in LET
+
+Let $\hatvec{n}$ be a unit vector representing direction, and let
+$\vect{v}$ be the velocity of the moving frame through the ether (both
+3D vectors).
+
+Then, in LET, the one-way speed of light in direction $\hatvec{n}$ is
+given by:
+\begin{equation}
+c_{one-way}(\hatvec{n}) = \frac{c^2}{c + \vect{v}\cdot\hatvec{n}}
+\end{equation}
+Similarly, in the opposite direction $-\hatvec{n}$, it becomes:
+\begin{equation}
+c_{one-way}(-\hatvec{n}) = \frac{c^2}{c - \vect{v}\cdot\hatvec{n}}
+\end{equation}
+This is assuming you're using ``true time'' and ``true rods'' (i.e.,
+from the ether frame), and measuring what the moving observer would
+perceive as the one-way speed.
+
+Note:
+\begin{itemize}
+\item When $\vect{v} \cdot \hatvec{n} = 0$: the direction is
+  perpendicular to motion through the ether → speed = $c$
+\item When $\hatvec{n}$ is in the direction of motion, the speed is
+  less than $c$.
+\item When $\hatvec{n}$ is opposite to motion, the speed is greater
+  than $c$.
+\end{itemize}
+But since LET includes length contraction, time dilation, and
+asynchronous clocks, all these anisotropies are undetectable with
+standard equipment.
+
+Derivation Sketch (From Lorentz Transformations)
+
+\begin{enumerate}
+
+\item Light in the ether frame obeys:
+\begin{equation}
+x = ct
+\end{equation}
+
+\item Transform to the moving frame $S'$ (moving at velocity $v$ in
+  the $x$-direction):
+\begin{equation}
+x' = \gamma(x-vt), t' = \gamma(t-vx/c^2)
+\end{equation}
+
+\item Solve for the apparent speed $dx'/dt'$, and you find:
+\begin{equation}
+\frac{dx'}{dt'} = \frac{c-v}{1-(vc)/c^2} = \text{anisotropic}
+\end{equation}
+\end{enumerate}
+This calculation shows how even though light moves at speed $c$ in the
+ether frame, the transformed coordinates show direction-dependent
+speeds in the moving frame.
+
+Visual/Physical Interpretation
+
+Imagine an observer in a spaceship moving through the ether:
+\begin{itemize}
+\item If they try to measure the time it takes light to travel forward
+  vs backward using clocks at both ends, they'll measure equal times,
+  because their clocks are desynchronized in just the right way (due
+  to Lorentz transformations).
+\item But in ``real'' terms (from the ether perspective), the light
+  really did go slower in the forward direction and faster in the
+  backward one.
+\end{itemize}
+In this view:
+\begin{itemize}
+\item The one-way speed is anisotropic,
+\item But the two-way speed is always $c$.
+\item And the instruments conspire to hide the anisotropy.
+\end{itemize}
+
+Philosophical Takeaway
+
+This is where LET and SR diverge philosophically but not
+experimentally:
+
+\begin{tabularx}{1.0\textwidth}{|p{4.5cm}|p{4.5cm}|p{4.5cm}|}
+\\ \cline{1-3}
+Feature & Special Relativity & Lorentz Ether Theory
+\\ \cline{1-3}
+Speed of light (one-way) & Defined isotropic by convention & Isotropic {\em only} in ether frame
+\\ \cline{1-3}
+Simultaneity & Relative and conventional & Absolute but hidden
+\\ \cline{1-3}
+Time dilation & Symmetric between observers & Real physical effect due to motion through ether
+\\ \cline{1-3}
+Preferred frame & None & Exists but undetectable
+\\ \cline{1-3}
+Experimental predications & Identical & Identical
+\\ \cline{1-3}
+\end{tabularx}
+LET says: There is a ``true'' frame, and light is only really
+isotropic in that frame -- but our rulers and clocks deform in such a
+way that we can never prove this.
+
+Summary
+
+\begin{itemize}
+\item In Lorentz Ether Theory, the one-way speed of light in a frame
+  moving at velocity $\vect{v}$ through the ether becomes anisotropic.
+\item The apparent one-way speed in direction $\hatvec{n}$ is:
+\begin{equation}
+c_{one-way}(\hatvec{n}) = \frac{c^2}{c + \vect{v}\cdot\hatvec{n}}
+\end{equation}
+\item This anisotropy is perfectly compensated by physical effects
+  (time dilation, length contraction, clock desynchronization), making
+  it undetectable.
+\item Thus, LET and SR yield identical experimental predictions, but
+  differ in interpretation.
+\end{itemize}
+
+Would you like a diagram showing this anisotropy visually, or a code
+snippet to simulate light paths with anisotropic speed?
+
+
+\subsection{Correcting something in ChatGPT's previous answer}
+
+\paragraph{I checked the calculation in the previous answer for $dx'/dt'$, and found it is always exactly $c$, which seemed not to be what it was intended to show, which was a speed other than $c$:}
+
+The Lorentz transform sketch you gave showed that
+$dx'/dt' = (c-v)/(1-(vc)/c^2)$, which is exactly $c$.
+That does not seem to demonstrate what you wanted to show.
+
+\paragraph{ChaptGPT's reponse:}
+
+You're absolutely right -- excellent catch.
+
+The expression
+\begin{equation}
+\frac{dx'}{dt'} = \frac{c-v}{1-(vc)/c^2} = c
+\end{equation}
+is indeed exactly equal to $c$, so it doesn't show anisotropy at all.
+That was a misstep in the sketch -- it's just the standard Lorentz
+transformation preserving the speed of light for light in any
+direction (as expected in Special Relativity).  So you're right to
+point out: it fails to demonstrate what Lorentz Ether Theory (LET)
+uniquely claims -- anisotropy of one-way light speed in moving frames.
+
+Let's now correctly approach the anisotropy of the one-way speed of
+light in LET, and distinguish this from what Lorentz transformations
+show in Einstein's interpretation (SR).
+
+Correct Perspective: LET's View of One-Way Light Speed
+
+In Lorentz Ether Theory, the key is to not assume Einstein
+synchronization of clocks in the moving frame.  Instead, clocks are
+synchronized according to ``true'' simultaneity defined in the ether
+frame, and this is what reveals anisotropy.
+
+Setup:
+\begin{itemize}
+\item Ether frame: $S$
+\item Moving frame: $S'$, moving at velocity $\vect{v}$ relative to
+  the ether
+\item Light emitted from the origin at $t=0$ in all directions
+\end{itemize}
+
+From the ether frame's perspective, light travels outward spherically
+at speed $c$.  But observers in $S'$ are moving, and their rulers and
+clocks are affected by length contraction and time dilation in just
+the right way to hide anisotropy if Einstein synchronization is used.
+
+If instead they use absolute simultaneity from the ether frame to
+synchronize clocks, then one-way light speed becomes anisotropic in
+$S'$.
+
+Actual Anisotropic Speed in LET
+
+Let's derive the apparent one-way speed of light in the moving frame
+$S'$, for light traveling in some direction $\hatvec{n}$, using
+absolute simultaneity (i.e. clocks are synchronized by the ether
+frame’s simultaneity).
+
+Let:
+\begin{itemize}
+\item $\vect{v} =$ velocity of $S'$ through the ether
+\item $\hatvec{n} =$ unit vector in direction light is traveling
+\end{itemize}
+Then the one-way speed of light in $S'$, using ether-defined
+simultaneity, is:
+\begin{equation}
+c'(\hatvec{n}) = c - \vect{v} \cdot \hatvec{n}
+\end{equation}
+This is {\em not} relativistic velocity addition -- it is simply
+expressing that if the ether frame sees light move at speed $c$ and
+the moving observer travels at velocity $\vect{v}$, then the observer
+in $S'$, with clocks synchronized according to the ether, will observe
+light approaching faster or slower depending on the direction:
+\begin{itemize}
+\item In direction of motion ($\hatvec{n} = \hatvec{v}$): speed is
+  $c-v$
+\item Against direction of motion ($\hatvec{n} = -\hatvec{v}$): speed
+  is $c+v$
+\item Perpendicular ($\vect{v} \cdot \hatvec{n} = 0$): speed is $c$
+\end{itemize}
+This is the LET picture of anisotropy of one-way light speed.
+
+Why Lorentz Transformations Still Show $c$
+
+The earlier sketch used Lorentz transformations to transform
+coordinates of light motion -- but those transformations assume
+Einstein synchronization in every frame.
+
+So when you apply the Lorentz transform to light paths from the ether
+frame into $S'$, you always get light traveling at speed $c$ in all
+directions, because Einstein's postulate is baked into the
+transformation.
+
+That's why:
+\begin{itemize}
+\item In Special Relativity: light speed is always $c$, even after
+  transforming between frames.
+\item In Lorentz Ether Theory: light speed is {\em really} only
+  isotropic in the ether frame; the observed anisotropy in other
+  frames is masked unless you use absolute simultaneity to reveal it.
+\end{itemize}
+
+Summary
+
+\begin{itemize}
+
+\item You're right: the earlier expression showing $dx'/dt' = c$ is
+  correct only when using Einstein-synchronized clocks, and shows no
+  anisotropy.
+
+\item To see anisotropy, you must drop Einstein synchronization and
+  use the ether-defined simultaneity, which is not built into the
+  Lorentz transformation.
+
+\item In Lorentz Ether Theory, the one-way speed of light in a frame
+  moving at velocity $\vect{v}$ through the ether is:
+\begin{equation}
+c'(\hatvec{n}) = c - \vect{v} \cdot \hatvec{n}
+\end{equation}
+
+\item But this anisotropy is undetectable experimentally, because
+  Einstein synchronization erases it -- hence LET and SR make the same
+  predictions.
+\end{itemize}
+
+Would you like to explore how this anisotropy affects time
+synchronization and simultaneity surfaces in LET?
+
+
+\end{document}
