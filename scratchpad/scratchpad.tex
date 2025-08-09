@@ -904,16 +904,6 @@ and $(D_B / D_C)$, can also calculate the same kind of relative
 velocity between $B$ and $C$ as described at the end of the previous
 section.
 
-TODO: It would be nice to generalize the analysis of Scenario 1b so
-that $B$ and $C$ are moving with (nearly) arbitrary 2-d velocities
-relative to $A$ (i.e. relative to the ether).  They should still be
-moving directly towards each other, or directly away from each other.
-They are moving directly towards each other, from their perspectives,
-if in $A$'s frame their starting positions and velocities are such
-that their positions become the same at some point in the future.
-After the time when they meet, they are then moving directly away from
-each other.
-
 
 \subsection{Special Relativity Scenario 1c: Three entities, two of them moving at constant velocity towards or away from each other, but otherwise arbitrary 3-d directions}
 \label{sec:scen1c}
@@ -1191,14 +1181,6 @@ relative to $A$ will receive the pulses from event 2 before receiving
 the pulse from event 3.  There are other locations where an observer
 receives the pulses in the opposite order.  See the next section for
 many details on this.
-
-%TODO: Is there any subtle effect here if the pulses are emitted from a
-%transmitter physically attached to rod $R$, versus attached to rod
-%$S$?  For example, perhaps because the transmitters are moving at
-%different velocities?
-%
-%Andy: I am fairly sure the answer is "no", so commenting this out for
-%now.
 
 
 \subsubsection{Where do observers at rest in $A$'s frame receive event 2 or 3 pulse first?}
@@ -1533,9 +1515,7 @@ See Appendix~\ref{app:length-contraction} for notes on why a rod,
 where its length is at an angle to its direction of velocity, is at a
 different angle when it is length-contracted.
 
-TODO: Write that appendix.
-
-Figure~\ref{fig:diagonal-length-contraction} shows the initial
+Figure~\ref{fig:scenario-3b} shows the initial
 configuration, and the two events of interest.  Both rods $R$ and $S$
 have a rest length and angle such that their projection on the $x$
 axis has width $2w$, and their projection on the $y$ axis has height
@@ -1549,7 +1529,7 @@ $R$.
 	\centering
 	\includegraphics[width=1.0\textwidth]{scenario3b-events-cropped.pdf}
 	\caption{Two angled rods moving towards each other, and 2 events of interest}
-	\label{fig:diagonal-length-contraction}
+	\label{fig:scenario-3b}
 \end{figure}
 
 Rod $R$ has radio pulse emitters at both ends, and detectors that
@@ -1573,7 +1553,30 @@ same length-contracted width, and thus we will see that with the
 proper position, $D$ receives the pulses from both events
 simultaneously.
 
+The details of the calculation can be found in
+Appendix~\ref{app:scen3b}.  The difference in time of the pulses
+arriving to $A$, $B$, and $D$ are as follows, measured in $C$'s frame:
+\begin{align}
+e_{2,A} - e_{1,A}
+  & = \frac{2\gamma_R w}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] \label{eqn:scen3b-receiverA} \\
+e_{2,B} - e_{1,B}
+  & = -\frac{2\gamma_S w}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] \label{eqn:scen3b-receiverB} \\
+e_{2,D} - e_{1,D} & = 0 \nonumber
+\end{align}
+Note that these are the same as the results of Scenario 2b, with the
+only minor difference being that the rod length $L$ in Scenario 2b is
+replaced here with the width of the angled rod's projection onto the
+$x$ axis $2w$.  The height $h$ does not affect the results here, and
+thus these results are equivalent to Scenario 2b in the case $h=0$.
 
+As for Scenario 2b, we see here that if we calculate the difference in
+time when the pulses are received by $A$ on $A$'s clock (by dividing
+by $\gamma_R$), and the difference in time received by $B$ on $B$'s
+clock (by dividing by $\gamma_S$), $B$ has the negative of $A$'s
+difference, because $B$ receives the pulses in the opposite order.
+\begin{equation}
+\frac{1}{\gamma_R} (e_{2,A}-e_{1,A}) = - \frac{1}{\gamma_S} (e_{2,B}-e_{1,B})
+\end{equation}
 
 
 %\newpage
@@ -2206,6 +2209,53 @@ situation.
 \end{proof}
 
 
+\section{Length contraction}
+\label{app:length-contraction}
+
+
+The left side of Figure~\ref{fig:diagonal-length-contraction} shows
+the top view of a 3-dimensional rectangular prism at rest.  The right
+side shows that object moving with velocity $v=0.866c$ to the right,
+and how it would appear length-contracted by a factor of $\gamma=2$.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{length-contraction-rectangle-at-angle-cropped.pdf}
+	\caption{Length contraction of a rectangular prism moving with velocity at an angle to its sides}
+	\label{fig:diagonal-length-contraction}
+\end{figure}
+
+One way to think about length contraction of an arbitrary shape is to
+imagine slicing it up by many parallel planes, all planes
+perpendicular to the direction of the velocity vector.  The left side
+of the figure shows 7 equally spaced planes as dashed lines.
+
+When length contraction occurs, imagine that each pair of these planes
+gets closer to each other by having their original distance of
+separation multiplied by $1/\gamma$, which is 1/2 in the example
+figure on the right.
+
+Note that the internal angles at the corners change, with the ones on
+top and bottom getting smaller, and the ones on left and right getting
+larger.  The angles of the long sides relative to the velocity vector
+$\vect{v}$ are different for the length-constracted shape than when it
+was at rest.  The height of each ``slice'' of the object remains the
+same -- only its width contracts.
+
+If we imagine a rod as a rectangular prism where its length is so much
+larger than its width that the width is nearly 0 by comparison, note
+that the drawing of the length-contracted version relative to the
+at-rest original would look like that in
+Figure~\ref{fig:diagonal-length-contraction-of-rod}.  Thus the only
+measurements that we care about, i.e. the length and angle of the rod,
+change.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{length-contraction-rod-at-angle-cropped.pdf}
+	\caption{Length contraction of a thin rod moving with velocity at an angle to its sides}
+	\label{fig:diagonal-length-contraction-of-rod}
+\end{figure}
+
+
 \section{Double-check results from ChatGPT}
 
 
@@ -2781,12 +2831,14 @@ It is useful to define these vectors:
 Here are the details of each event, given using the symbols of that
 lemma.
 
+
 \paragraph{Event 1:}
 
 \begin{align}
 t_0 & = 0 \\
 \vect{s} & = x_R(t_0) - \vect{R} = -\vect{R} & & \text{$-\vect{R}$ is offset from $R$'s center to event 1}
 \end{align}
+
 
 \paragraph{Event 2:}
 
@@ -2811,29 +2863,41 @@ where:
 Here are the details of each observer, given using the symbols of the
 lemma.
 
+
 \paragraph{Observer $A$:}
 
 \begin{align}
-\vect{v} = \vect{v}_R \\
+\vect{v} & = \vect{v}_R \\
 \vect{t_1} & = 0 & & \text{lemma lets us pick any time $t_1$ convenient for us} \\
 \vect{s} + \vect{r}_1 & = \vect{D} & & \text{at that time we know $A$ is above the origin}
 \end{align}
 
+
 \paragraph{Observer $B$:}
 
 \begin{align}
-\vect{v} = \vect{v}_S \\
+\vect{v} & = \vect{v}_S \\
 \vect{t_1} & = 0 & & \text{lemma lets us pick any time $t_1$ convenient for us} \\
 \vect{s} + \vect{r}_1 & = x_{S,0}\hatvec{i} + \vect{D} = (w_S - w_R)\hatvec{i} + \vect{D} & & \text{$B$ is above $S$'s center}
 \end{align}
 
+
 \paragraph{Observer $D$:}
 
-TODO observer $D$
+Note that we want $\vect{v}_D$ to be related to $\vect{v}_R$ and
+$\vect{v}_S$ such that $D$'s rapidity (see
+Appendix~\ref{app:1drelVelocityUsingHyperbolicFns} ) is the average of
+the rapidity of $R$ and $S$.
+\begin{align}
+\vect{v} & = \vect{v}_D = \beta_D c = \frac{\beta_R\gamma_R + \beta_S\gamma_S}{\gamma_R + \gamma_S} c & & \text{Lemma~\ref{lem:halfRapidityDifference} with $\eta_1 = \tanh^{-1}\beta_R$ and $\eta_2 = -\tanh^{-1}\beta_S$} \\
+\vect{t_1} & = 0 & & \text{lemma lets us pick any time $t_1$ convenient for us} \\
+\vect{s} + \vect{r}_1 & = -k\hatvec{i} + \vect{D} & & \text{$k$ to be determined later}
+\end{align}
 
 Now all that is left is applying
 Lemma~\ref{lem:IntersectingSpreadingPulse} for each pair of event and
 observer of interest to us, and some algebra to simplify.
+
 
 \paragraph{Event 1, Observer $A$:}
 
@@ -2841,9 +2905,10 @@ observer of interest to us, and some algebra to simplify.
 \vect{r}_1 & = \vect{D} - (-\vect{R}) = \vect{R} + \vect{D} \\
 \vect{r}_0 & = \vect{r}_1 + \vect{v}_R (t_0 - t_1) = \vect{r}_1 \\
 \vect{r}_0 \cdot \vect{v}_R & = w_Rv_R \\
-\vect{r}_0^2 & = R^2 + D^2 & & \text{$\vect{R} \cdot \vect{D} = 0$} \\
+r_0^2 & = R^2 + D^2 & & \text{$\vect{R} \cdot \vect{D} = 0$} \\
 e_{1,A} & = \frac{\gamma_R^2}{c^2} \left[ w_Rv_R + \sqrt{ (w_Rv_R)^2 + (1-\beta_R^2)c^2r_0^2 } \right]
 \end{align*}
+
 
 \paragraph{Event 2, Observer $A$:}
 
@@ -2854,9 +2919,10 @@ e_{1,A} & = \frac{\gamma_R^2}{c^2} \left[ w_Rv_R + \sqrt{ (w_Rv_R)^2 + (1-\beta_
   & = (\vect{D} - \vect{f} - \vect{R}) + \vect{v}_R q_2 \\
   & = \vect{D} - \vect{R} & & \text{$\vect{f}$ and $\vect{v}_R q_2$ are equal and cancel} \\
 \vect{r}_0 \cdot \vect{v}_R & = -w_Rv_R & & \text{$\vect{D} \cdot \vect{v}_R = 0$} \\
-\vect{r}_0^2 & = R^2 + D^2 & & \text{$\vect{R} \cdot \vect{D} = 0$} \\
+r_0^2 & = R^2 + D^2 & & \text{$\vect{R} \cdot \vect{D} = 0$} \\
 e_{2,A} & = q_2 + \frac{\gamma_R^2}{c^2} \left[ -w_Rv_R + \sqrt{ (w_Rv_R)^2 + (1-\beta_R^2)c^2r_0^2 } \right]
 \end{align*}
+
 
 \paragraph{Observer $A$ difference in time receiving pulses:}
 
@@ -2869,15 +2935,17 @@ e_{2,A} - e_{1,A}
   & = \frac{2\gamma_R w}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] & & \text{So equal to Eqn.~\eqref{eqn:scen2b-observerA-finalstep} with same replacement}
 \end{align*}
 
+
 \paragraph{Event 1, Observer $B$:}
 
 \begin{align*}
 \vect{r}_1 & = (w_S - w_R)\hatvec{i} + \vect{D} - (-\vect{R}) = (w_S - w_R)\hatvec{i} + \vect{R} + \vect{D} \\
 \vect{r}_0 & = \vect{r}_1 + \vect{v}_R (t_0 - t_1) = \vect{r}_1 \\
 \vect{r}_0 \cdot \vect{v}_S & = (w_S - w_R)v_S + w_Rv_S = w_Sv_S \\
-\vect{r}_0^2 & = ((w_S-w_R)\hatvec{i} + \vect{R})^2 + D^2 & & \text{$\vect{R} \cdot \vect{D} = 0$} \\
+r_0^2 & = ((w_S-w_R)\hatvec{i} + \vect{R})^2 + D^2 & & \text{$\vect{R} \cdot \vect{D} = 0$} \\
 e_{1,B} & = \frac{\gamma_S^2}{c^2} \left[ w_Sv_S + \sqrt{ (w_Sv_S)^2 + (1-\beta_S^2)c^2r_0^2 } \right]
 \end{align*}
+
 
 \paragraph{Event 2, Observer $B$:}
 
@@ -2893,11 +2961,12 @@ e_{1,B} & = \frac{\gamma_S^2}{c^2} \left[ w_Sv_S + \sqrt{ (w_Sv_S)^2 + (1-\beta_
 \vect{r}_0 \cdot \vect{v}_S
   & = (w_R - w_S)v_S - w_Rv_S \\
   & = - w_Sv_S \\
-\vect{r}_0^2
+r_0^2
   & = (-(w_S-w_R)\hatvec{i} - \vect{R})^2 + D^2 & & \text{$\vect{R} \cdot \vect{D} = 0$} \\
   & = ((w_S-w_R)\hatvec{i} + \vect{R})^2 + D^2 & & \text{same as for Event 1, Observer $B$ above} \\
 e_{2,B} & = q_2 + \frac{\gamma_S^2}{c^2} \left[ -w_Sv_S + \sqrt{ (w_Sv_S)^2 + (1-\beta_S^2)c^2r_0^2 } \right]
 \end{align*}
+
 
 \paragraph{Observer $B$ difference in time receiving pulses:}
 
@@ -2908,6 +2977,63 @@ e_{2,B} - e_{1,B}
   & = 2w \left[ \frac{\frac{1}{\gamma_R} - \frac{1}{\gamma_S}}{\beta_S c - \beta_R c} - \frac{\gamma_S}{c} \beta_S \right] & & \text{algebra, defn. of $w_S$, $w_R$} \\
   & = \frac{2w}{c} \left[ \frac{\frac{1}{\gamma_R} - \frac{1}{\gamma_S}}{\beta_S-\beta_R} - \gamma_S \beta_S \right] & & \text{algebra. Same as Eqn.~\eqref{eqn:scen2b-observerB-step1} except $2w$ instead of $L$} \\
   & = -\frac{2\gamma_S w}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] & & \text{So equal to Eqn.~\eqref{eqn:scen2b-observerB-finalstep} with same replacement}
+\end{align*}
+
+
+\paragraph{Event 1, Observer $D$:}
+
+\begin{align}
+\vect{r}_1 & = -k\hatvec{i} + \vect{D} - (-\vect{R}) = \vect{R} - k\hatvec{i} + \vect{D} \nonumber \\
+\vect{r}_0 & = \vect{r}_1 + \vect{v}_R (t_0 - t_1) = \vect{r}_1 & & \text{$t_0=t_1=0$} \nonumber \\
+\vect{r}_0 \cdot \vect{v}_D & = w_Rv_D - kv_D \label{eqn:scen3b-event1d-r0v} \\
+r_0^2 & = (w_R-k)^2 + h^2 + D^2 & & \text{$\vect{R} \cdot \vect{D} = 0$} \nonumber \\
+e_{1,D} & = \frac{\gamma_D^2}{c^2} \left[ (w_R-k)v_D + \sqrt{ ((w_R-k)v_D)^2 + (1-\beta_D^2)c^2r_0^2 } \right] \nonumber
+\end{align}
+
+
+\paragraph{Event 2, Observer $D$:}
+
+\begin{align}
+\vect{r}_1 & = -k\hatvec{i} + \vect{D} - (\vect{f} + \vect{R}) = -\vect{R} - k\hatvec{i} - \vect{f} + \vect{D} \nonumber \\
+\vect{r}_0
+  & = \vect{r}_1 + \vect{v}_D (t_0 - t_1) \nonumber \\
+  & = \vect{r}_1 + q_2 \vect{v}_D & & \text{$t_0 - t_1 = q_2$} \nonumber \\
+  & = - \vect{R} - k\hatvec{i} - q_2\vect{v}_R + \vect{D} + q_2 \vect{v}_D & & \text{$\vect{f} = q_2 \vect{v}_R$} \nonumber \\
+  & = - \vect{R} - k\hatvec{i} + q_2 (\vect{v}_D - \vect{v}_R) + \vect{D} & & \text{algebra} \nonumber \\
+\vect{r}_0 \cdot \vect{v}_D & = - w_Rv_D - kv_D + q_2(v_D-v_R)v_D \label{eqn:scen3b-event2d-r0v} \\
+r_0^2
+  & = (-w_R - k + q_2(v_D-v_R))^2 + h^2 + D^2 & & \text{$\vect{R} \cdot \vect{D} = 0$} \nonumber
+\end{align}
+
+In order for the terms under the radicals to cancel out when we
+calculate $e_{2,D} - e_{1,D}$, we want
+the squares of Equations~\eqref{eqn:scen3b-event1d-r0v}
+and~\eqref{eqn:scen3b-event2d-r0v} to be equal, and also the
+expressions for $r_0^2$ to be equal.
+This is achieved with the following value for $k$:
+\begin{align*}
+w_Rv_D - kv_D & = -(- w_Rv_D - kv_D + q_2(v_D-v_R)v_D) \\
+w_R - k & = w_R + k - q_2(v_D-v_R) & & \text{divide by $v_D$, algebra} \\
+-2k & = -q_2(v_D-v_R) & & \text{algebra} \\
+k & = q_2(v_D-v_R)/2 \\
+\end{align*}
+
+
+\paragraph{Observer $D$ difference in time receiving pulses:}
+
+\begin{align*}
+e_{2,D} - e_{1,D}
+  & = q_2 + \frac{\gamma_D^2}{c^2} (-2 w_R v_D + q_2(v_D-v_R)v_D) \\
+  & = \gamma_D^2 \left[ q_2 \left( \frac{1}{\gamma_D^2} + \frac{1}{c^2}(v_D-v_R)v_D \right) - \frac{2w_Rv_D}{c^2} \right] & & \text{collect terms with $q_2$, factor out $\gamma_D^2$} \\
+  & = \gamma_D^2 \left[ \frac{2(w_R-w_S)}{(\beta_S-\beta_R)c} \left( (1-\beta_D^2) + (\beta_D-\beta_R)\beta_D \right) - \frac{2w_R\beta_D}{c} \right] & & \text{substitute $q_2$ with value, $v=\beta c$, $1/\gamma^2 = 1-\beta^2$} \\
+  & = \frac{2\gamma_D^2}{c} \left[ \frac{w(\frac{1}{\gamma_R}-\frac{1}{\gamma_S})}{\beta_S-\beta_R} \left( 1-\beta_D^2 + \beta_D^2-\beta_R\beta_D \right) - \frac{w\beta_D}{\gamma_R} \right] & & \text{replace $w_i = w/\gamma_i$, factor out $2/c$} \\
+  & = \frac{2w\gamma_D^2}{c\gamma_R\gamma_S(\beta_S-\beta_R)} \left[ (\gamma_S-\gamma_R) \left( 1-\beta_R\beta_D \right) - (\beta_S-\beta_R)\beta_D\gamma_S \right] & & \text{factor out $w/(\gamma_R\gamma_S(\beta_S-\beta_R))$} \\
+  & = C \left[ \gamma_S-\gamma_R -\gamma_S\beta_R\beta_D + \gamma_R\beta_R\beta_D - \beta_S\beta_D\gamma_S+\beta_R\beta_D\gamma_S \right] & & \text{replace initial factor with $C$, algebra} \\
+  & = C \left[ \gamma_S - \gamma_R + (\gamma_R\beta_R - \gamma_S\beta_S)\beta_D \right] & & \text{algebra} \\
+  & = C \left[ \gamma_S - \gamma_R + (\gamma_R\beta_R - \gamma_S\beta_S) \frac{\beta_R\gamma_R + \beta_S\gamma_S}{\gamma_R + \gamma_S} \right] & & \text{replace $\beta_D$ with its value} \\
+  & = \frac{C}{\gamma_R+\gamma_S} \left[ \gamma_S^2 - \gamma_R^2 + \gamma_R^2\beta_R^2 - \gamma_S^2\beta_S^2 \right] & & \text{factor out $1/(\gamma_R+\gamma_S)$, algebra} \\
+  & = \frac{C}{\gamma_R+\gamma_S} \left[ \gamma_S^2(1-\beta_S^2) - \gamma_R^2(1 - \beta_R^2) \right] & & \text{algebra} \\
+  & = 0 & & \text{$\gamma_i^2(1-\beta_i^2) = 1$}
 \end{align*}
 
 
