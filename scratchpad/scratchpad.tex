@@ -2743,17 +2743,18 @@ e_{3,E} & = q_3 + \frac{\gamma_S^2}{c^2} \left[ Z_{-}v_S + \sqrt{ Z_{-}^2v_S^2 +
 \paragraph{Find difference in times that event 2 and event 3 pulses reach $E$, on $A$'s clock}
 
 Note that this time the expressions on the radicals are not equal, and
-do not cancel.  We will use $F$ to denote the difference of those
-radicals for the moment.
+do not cancel.  We will use $F$ to denote the last term, containing
+$\frac{\gamma_S^2}{c^2}$ times the difference of those radicals.
 \begin{align}
 e_{3,E}-e_{2,E}
-  & = q_3 - q_2 + \frac{\gamma_S^2}{c^2} ( Z_{-}v_S - Z_{+}v_S ) + \frac{\gamma_S^2}{c^2} F \nonumber \\
-  & = q_3 - q_2 - \frac{\gamma_S^2}{c^2} ( \frac{Lv_S}{\gamma_S} ) + \frac{\gamma_S^2}{c^2} F \nonumber \\
-  & = (e_{3,B}-e_{2,B}) + \frac{\gamma_S^2}{c^2} F \nonumber
+  & = q_3 - q_2 + \frac{\gamma_S^2}{c^2} ( Z_{-}v_S - Z_{+}v_S ) + F \nonumber \\
+  & = q_3 - q_2 - \frac{\gamma_S^2}{c^2} ( \frac{Lv_S}{\gamma_S} ) + F \nonumber \\
+  & = (e_{3,B}-e_{2,B}) + F \nonumber
 \end{align}
 Notice that except for the term containing $F$, everything else is
 equal to $(e_{3,B}-e_{2,B})$, so we will spend the rest of our effort
-focusing only on $F$.
+focusing only on $F$.  Let us focus first on only the first radical
+expression of $F$:
 \begin{align*}
   &   \sqrt{ Z_{-}^2v_S^2 + (1-\beta_S^2)c^2(Z_{-}^2 + D^2) } \\
   & = |Z_{-}| \sqrt{ v_S^2 + (1-\beta_S^2)c^2(1 + (D/Z_{-})^2) } & & \text{factor out $|Z_{-}|$} \\
@@ -2771,14 +2772,15 @@ radical expression:
 Thus $F$ can be written as:
 \begin{align*}
 F
-  & = \frac{c}{\gamma_S} \left[ |Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } - |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 } \right]
+  & = \frac{\gamma_S^2}{c^2} (\frac{c}{\gamma_S}) \left[ |Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } - |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 } \right] \\
+  & = \frac{\gamma_S}{c} \left[ |Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } - |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 } \right]
 \end{align*}
 Temporarily using $a$ and $b$ to denote these expressions:
 \begin{align*}
 a & = |Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } \\
 b & = |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }
 \end{align*}
-then $F = \frac{c}{\gamma_S} (a-b)$.  Focusing on the $a-b$ part, we
+then $F = \frac{\gamma_S}{c} (a-b)$.  Focusing on the $a-b$ part, we
 can multiply it by $(a+b)/(a+b)$, resulting in $(a^2-b^2)/(a+b)$.  The
 numerator of this can be simplified quite a bit:
 \begin{align*}
@@ -2794,9 +2796,23 @@ a^2 - b^2
 Plugging all of this back into the equation for $F$:
 \begin{align*}
 F
-  & = (\frac{c}{\gamma_S}) \frac{a^2-b^2}{a+b} \\
-  & = (\frac{c}{\gamma_S}) \frac{-2LZ\gamma_S}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \\
-  & = \frac{-2LZc}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \\
+  & = (\frac{\gamma_S}{c}) \frac{a^2-b^2}{a+b} \\
+  & = (\frac{\gamma_S}{c}) \frac{-2LZ\gamma_S}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \\
+  & = \frac{L\gamma_S}{c} \left[ \frac{-2Z\gamma_S}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \right] \\
+\end{align*}
+
+When $Z$ approaches $+\infty$ or $-\infty$,
+both $(D/Z_{-})^2$ and $(D/Z_{+})^2$ approach 0,
+and the radical expressions approach $\gamma_S$.
+$|Z_{-} \gamma_S + |Z_{+}| \gamma_S = 2|Z|\gamma_S$ when
+$|Z| > \frac{L}{2 \gamma_S}$.
+Thus the entire expression in square brackets
+approaches $+1$ when $Z$ approaches $-\infty$,
+and approaches $-1$ when $Z$ approaches $+\infty$.
+\begin{align*}
+F & \rightarrow \frac{L\gamma_S}{c} & & \text{as $Z \rightarrow -\infty$} \\
+F & \rightarrow -\frac{L\gamma_S}{c} & & \text{as $Z \rightarrow +\infty$} \\
+F & = 0 & & \text{when $Z=0$}
 \end{align*}
 
 
