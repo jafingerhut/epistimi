@@ -2683,7 +2683,7 @@ e_{3,B} & = \frac{L}{\gamma_R(v_S - v_R)} + \frac{\gamma_S^2}{c^2} \left[ -\frac
 \end{align*}
 
 
-\paragraph{Find difference in times that event 2 and event 3 pulses reach $B$, on $B$'s clock}
+\paragraph{Find difference in times that event 2 and event 3 pulses reach $B$, on $A$'s clock}
 
 The expressions under the radicals are equal, and cancel out:
 \begin{align}
@@ -2696,6 +2696,109 @@ e_{3,B}-e_{2,B}
 \end{align}
 For the same reasons that were explained above why $e_{3,A}-e_{2,A}$
 is positive, we know that $e_{3,B}-e_{2,B}$ must be negative.
+
+
+\paragraph{Details of observer $E$}
+
+Introduce a new observer $E$ that is at rest relative to rod $S$, and
+always at $y$ coordinate $D$, like $B$ is, but $E$ begins at a
+different $x$ position than $B$ does.  $E$'s initial $x$ coordinate is
+$x_{S,0} + Z$, where $Z$ is any real number.
+
+\begin{align}
+\vect{v} & = \vect{v}_S \\
+\vect{t_1} & = 0 & & \text{lemma lets us pick any time $t_1$ convenient for us} \\
+\vect{s} + \vect{r}_1 & = (x_{S,0} + Z, D) & & \text{$E$ starts at offset $Z$ from $B$'s starting position}
+\end{align}
+
+
+\paragraph{Event 2, Observer $E$:}
+
+The expression $Z + \frac{L}{2\gamma_S}$ appears often enough that we
+will use the symbol $Z_{+}$ to denote it.
+
+\begin{align}
+\vect{r}_1 & = (Z - q_2v_S + \frac{L}{2\gamma_S}, D) \nonumber \\
+\vect{r}_0 & = \vect{r}_1 + \vect{v}_S (t_0 - t_1) = (Z_{+}, D) & & \text{$t_0=q_2, t_1=0$} \nonumber \\
+\vect{r}_0 \cdot \vect{v}_S & = Z_{+}v_S \\
+r_0^2 & = Z_{+}^2 + D^2 \nonumber \\
+e_{2,E} & = q_2 + \frac{\gamma_S^2}{c^2} \left[ Z_{+}v_S + \sqrt{ Z_{+}^2v_S^2 + (1-\beta_S^2)c^2(Z_{+}^2 + D^2) } \right] \nonumber
+\end{align}
+
+
+\paragraph{Event 3, Observer $E$:}
+
+The expression $Z - \frac{L}{2\gamma_S}$ appears often enough that we
+will use the symbol $Z_{-}$ to denote it.
+
+\begin{align}
+\vect{r}_1 & = (Z - q_3v_S - \frac{L}{2\gamma_S}, D) \nonumber \\
+\vect{r}_0 & = \vect{r}_1 + \vect{v}_S (t_0 - t_1) = (Z_{-}, D) & & \text{$t_0=q_3, t_1=0$} \nonumber \\
+\vect{r}_0 \cdot \vect{v}_S & = Z_{-}v_S \\
+r_0^2 & = Z_{-}^2 + D^2 \nonumber \\
+e_{3,E} & = q_3 + \frac{\gamma_S^2}{c^2} \left[ Z_{-}v_S + \sqrt{ Z_{-}^2v_S^2 + (1-\beta_S^2)c^2(Z_{-}^2 + D^2) } \right] \nonumber
+\end{align}
+
+
+\paragraph{Find difference in times that event 2 and event 3 pulses reach $E$, on $A$'s clock}
+
+Note that this time the expressions on the radicals are not equal, and
+do not cancel.  We will use $F$ to denote the difference of those
+radicals for the moment.
+\begin{align}
+e_{3,E}-e_{2,E}
+  & = q_3 - q_2 + \frac{\gamma_S^2}{c^2} ( Z_{-}v_S - Z_{+}v_S ) + \frac{\gamma_S^2}{c^2} F \nonumber \\
+  & = q_3 - q_2 - \frac{\gamma_S^2}{c^2} ( \frac{Lv_S}{\gamma_S} ) + \frac{\gamma_S^2}{c^2} F \nonumber \\
+  & = (e_{3,B}-e_{2,B}) + \frac{\gamma_S^2}{c^2} F \nonumber
+\end{align}
+Notice that except for the term containing $F$, everything else is
+equal to $(e_{3,B}-e_{2,B})$, so we will spend the rest of our effort
+focusing only on $F$.
+\begin{align*}
+  &   \sqrt{ Z_{-}^2v_S^2 + (1-\beta_S^2)c^2(Z_{-}^2 + D^2) } \\
+  & = |Z_{-}| \sqrt{ v_S^2 + (1-\beta_S^2)c^2(1 + (D/Z_{-})^2) } & & \text{factor out $|Z_{-}|$} \\
+  & = c|Z_{-}| \sqrt{ \beta_S^2 + (1-\beta_S^2)(1 + (D/Z_{-})^2) } & & \text{$v_S=\beta_S c$, factor out $c$} \\
+  & = c|Z_{-}| \sqrt{ \beta_S^2 + 1-\beta_S^2 + (1-\beta_S^2)(D/Z_{-})^2) } & & \text{algebra} \\
+  & = c|Z_{-}| \sqrt{ 1 + (D/Z_{-})^2/\gamma_S^2 } & & \text{algebra, $(1-\beta_S^2) = 1/\gamma_S^2$} \\
+  & = \frac{c|Z_{-}|}{\gamma_S} \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } & & \text{factor out $1/\gamma_S^2$}
+\end{align*}
+The exact same sequence of steps shows the following for the other
+radical expression:
+\begin{align*}
+  &   \sqrt{ Z_{+}^2v_S^2 + (1-\beta_S^2)c^2(Z_{+}^2 + D^2) } \\
+  & = \frac{c|Z_{+}|}{\gamma_S} \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }
+\end{align*}
+Thus $F$ can be written as:
+\begin{align*}
+F
+  & = \frac{c}{\gamma_S} \left[ |Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } - |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 } \right]
+\end{align*}
+Temporarily using $a$ and $b$ to denote these expressions:
+\begin{align*}
+a & = |Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } \\
+b & = |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }
+\end{align*}
+then $F = \frac{c}{\gamma_S} (a-b)$.  Focusing on the $a-b$ part, we
+can multiply it by $(a+b)/(a+b)$, resulting in $(a^2-b^2)/(a+b)$.  The
+numerator of this can be simplified quite a bit:
+\begin{align*}
+a^2 - b^2
+  & = Z_{-}^2 ( \gamma_S^2 + (D/Z_{-})^2 ) - Z_{+}^2 ( \gamma_S^2 + (D/Z_{+})^2 ) \\
+  & = ( Z_{-}^2 \gamma_S^2 + D^2 ) - (Z_{+}^2 \gamma_S^2 + D^2 ) & & \text{algebra} \\
+  & = \gamma_S^2 (Z_{-}^2 - Z_{+}^2) & & \text{algebra} \\
+  & = \gamma_S^2 \left[ (Z-\frac{L}{2\gamma_S})^2 - (Z+\frac{L}{2\gamma_S})^2 \right] & & \text{substitute definitinos of $Z_{-}$, $Z_{+}$} \\
+  & = \gamma_S^2 \left[ (Z^2-2Z\frac{L}{2\gamma_S} + \frac{L^2}{4\gamma_S^2}) - (Z^2+2Z\frac{L}{2\gamma_S} + \frac{L^2}{4\gamma_S^2}) \right] & & \text{algebra} \\
+  & = \gamma_S^2 \left[ -\frac{2LZ}{\gamma_S} \right] & & \text{algebra} \\
+  & = -2LZ\gamma_S & & \text{algebra}
+\end{align*}
+Plugging all of this back into the equation for $F$:
+\begin{align*}
+F
+  & = (\frac{c}{\gamma_S}) \frac{a^2-b^2}{a+b} \\
+  & = (\frac{c}{\gamma_S}) \frac{-2LZ\gamma_S}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \\
+  & = \frac{-2LZc}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \\
+\end{align*}
+
 
 
 \section{Details of Scenario 1c calculations}
