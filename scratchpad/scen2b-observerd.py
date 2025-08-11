@@ -29,11 +29,34 @@ def A_time_diff_fn(L, gamma_R, beta_half):
     A_time_diff = L * beta_half
     return A_time_diff
 
-# e2B
+def eA_radical_expr(half_L_over_gamma, beta_R, D):
+    radical_expr = (half_L_over_gamma**2) * (beta_R**2) + (1-(beta_R**2)) * ((half_L_over_gamma**2) + (D**2))
+    return radical_expr
+
+# calculate e_{2,A}
+def e2A_fn(L, beta_S, beta_R, D):
+    gamma_S = gamma_fn(beta_S)
+    gamma_R = gamma_fn(beta_R)
+    half_L_over_gamma = L / (2.0 * gamma_R)
+    q_2 = L / (gamma_S * (beta_S - beta_R))
+    radical_expr = eA_radical_expr(half_L_over_gamma, beta_R, D)
+    e2A = q_2 + (gamma_R**2) * ((half_L_over_gamma * beta_R) + np.sqrt(radical_expr))
+    return e2A
+
+# calculate e_{3,A}
+def e3A_fn(L, beta_S, beta_R, D):
+    gamma_R = gamma_fn(beta_R)
+    half_L_over_gamma = L / (2.0 * gamma_R)
+    q_3 = L / (gamma_R * (beta_S - beta_R))
+    radical_expr = eA_radical_expr(half_L_over_gamma, beta_R, D)
+    e3A = q_3 + (gamma_R**2) * ((-half_L_over_gamma * beta_R) + np.sqrt(radical_expr))
+    return e3A
+
 def eB_radical_expr(half_L_over_gamma, beta_S, D):
     radical_expr = (half_L_over_gamma**2) * (beta_S**2) + (1-(beta_S**2)) * ((half_L_over_gamma**2) + (D**2))
     return radical_expr
 
+# calculate e_{2,B}
 def e2B_fn(L, beta_S, beta_R, D):
     gamma_S = gamma_fn(beta_S)
     half_L_over_gamma = L / (2.0 * gamma_S)
@@ -119,10 +142,30 @@ def E_time_diff_fn(L, beta_S, D, Z, beta_half):
     E_time_diff = B_time_diff + (F / gamma_S)
     return E_time_diff
 
+# Return value of Z such that observer E will reach A's position
+# exactly when A receives the light pulse for Event 3 (and thus E will
+# also receive the light pulse for Event 3 at that same time).
+def Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S, beta_R):
+    # First find time e_{3,A} that pulse reaches A
+    e3A = e3A_fn(L, beta_S, beta_R, D)
+    # Now find Z value such that E reaches A's position at time e3A.
+    # Equation for position of E at A's time t is:
+    # (x_{R,0} - (L/2)((1/gamma_R)+(1/gamma_S)) + Z + v_S t, D)
+    # Equation for position of A at A's time t is:
+    # (x_{R,0} + v_R t, D)
+    #
+    # Those positions are equal at time e3A if:
+    # Z = (L/2)((1/gamma_R)+(1/gamma_S)) + (v_R - v_S) * e3A
+    gamma_R = gamma_fn(beta_R)
+    gamma_S = gamma_fn(beta_S)
+    Z = (L/2)*((1/gamma_R) + (1/gamma_S)) + (beta_R - beta_S) * e3A
+    return Z
+
 
 # L, D, Z and all lengths in units of light-sec
 L = 1
 D = 1000
+#D = 3
 beta_S = 0.5
 #beta_S = 0.7
 #beta_S = 0.8
@@ -166,10 +209,6 @@ print("James question: What value of Z leads to e_{3,E} = e_{3,A}?  Is there alw
 
 print("James question (maybe same answer as previous question): What value of Z leads to E being at A's position at e_{3,A} when A receives the event 3 pulse?  Is there always exactly one such value of Z for any given value of the other parameters?  Sometimes no solution?  Sometimes more than one?")
 
-#x_values = np.linspace(-100*D, 100*D, 200) # 200 points between the limits
-#x_values = np.linspace(-3*D, 3*D, 100) # 100 points between the limits
-x_values = np.linspace(-2*D, 2*D, 100) # 100 points between the limits
-
 ##for x in [-2*D, 0, 2*D]:
 #for x in [-100*D, -2*D]:
 #    tmp = specialized_F_over_gamma_S_fn(x, verbose=True)
@@ -191,37 +230,95 @@ def specialized_B_time_diff_fn(Z):
         ret = val
     return ret
 
-
-#y_values = specialized_F_over_gamma_S_fn(x_values)
-#plt.plot(x_values, y_values, label='F / gamma_S')
-
-y_values = specialized_E_time_diff_fn(x_values)
-plt.plot(x_values, y_values, label='E_time_diff / gamma_S')
-
-y_values2 = specialized_A_time_diff_fn(x_values)
-plt.plot(x_values, y_values2, label='A_time_diff / gamma_R')
-
-#y_values2x2 = 2 * specialized_A_time_diff_fn(x_values)
-#plt.plot(x_values, y_values2x2, label='2*(A_time_diff / gamma_R)')
-
-y_values3 = specialized_B_time_diff_fn(x_values)
-plt.plot(x_values, y_values3, label='B_time_diff / gamma_S')
-
 def specialized_e2E_fn(Z):
     return e2E_fn(L, beta_S, beta_R, D, Z)
-
-#e2E_values = specialized_e2E_fn(x_values)
-#plt.plot(x_values, e2E_values, label='e_{2,E}')
 
 def specialized_e3E_fn(Z):
     return e3E_fn(L, beta_S, beta_R, D, Z)
 
-#e3E_values = specialized_e3E_fn(x_values)
-#plt.plot(x_values, e3E_values, label='e_{3,E}')
 
-plt.title("L=%.1f beta_R=%.3f beta_S=%.3f" % (L, beta_R, beta_S))
-plt.xlabel("Z (light-sec)")
-plt.ylabel("t (sec)")
-plt.legend()
+make_plot1 = True
+#make_plot1 = False
+if make_plot1:
+    #x_values = np.linspace(-100*D, 100*D, 200) # 200 points between the limits
+    #x_values = np.linspace(-3*D, 3*D, 100) # 100 points between the limits
+    x_values = np.linspace(-2*D, 2*D, 100) # 100 points between the limits
 
-plt.show()
+    #y_values = specialized_F_over_gamma_S_fn(x_values)
+    #plt.plot(x_values, y_values, label='F / gamma_S')
+
+    y_values = specialized_E_time_diff_fn(x_values)
+    plt.plot(x_values, y_values, label='E_time_diff / gamma_S')
+
+    y_values2 = specialized_A_time_diff_fn(x_values)
+    plt.plot(x_values, y_values2, label='A_time_diff / gamma_R')
+
+    #y_values2x2 = 2 * specialized_A_time_diff_fn(x_values)
+    #plt.plot(x_values, y_values2x2, label='2*(A_time_diff / gamma_R)')
+
+    y_values3 = specialized_B_time_diff_fn(x_values)
+    plt.plot(x_values, y_values3, label='B_time_diff / gamma_S')
+
+    #e2E_values = specialized_e2E_fn(x_values)
+    #plt.plot(x_values, e2E_values, label='e_{2,E}')
+
+    #e3E_values = specialized_e3E_fn(x_values)
+    #plt.plot(x_values, e3E_values, label='e_{3,E}')
+
+    plt.title("L=%.1f beta_R=%.3f beta_S=%.3f" % (L, beta_R, beta_S))
+    plt.xlabel("Z (light-sec)")
+    plt.ylabel("t (sec)")
+    plt.legend()
+
+    plt.show()
+
+
+def specialized_Z_for_pulse_reaching_A_at_same_time_as_E(my_beta_S):
+    return Z_for_pulse_reaching_A_at_same_time_as_E(L, D, my_beta_S, beta_R)
+
+def specialized_e3E_minus_e2E_fn(Z):
+    return e3E_fn(L, beta_S, beta_R, D, Z) - e2E_fn(L, beta_S, beta_R, D, Z)
+
+def specialized_e3A_minus_e2A_fn(Z):
+    val = e3A_fn(L, beta_S, beta_R, D) - e2A_fn(L, beta_S, beta_R, D)
+    if type(Z) is np.ndarray:
+        ret = np.full(len(Z), val)
+    else:
+        ret = val
+    return ret
+
+
+make_plot2 = True
+if make_plot2:
+    x_values = np.linspace(0.001, 0.999, 100) # 100 points between the limits
+
+    Z_values = specialized_Z_for_pulse_reaching_A_at_same_time_as_E(x_values)
+    #plt.plot(x_values, Z_values, label='(e_{3,E}-e_{2,E})')
+
+    Z_over_D_values = Z_values / D
+    plt.plot(x_values, Z_over_D_values, label='Z/D')
+
+    # I multiply by 100, because otherwise this curve just looks like
+    # it is always 0.  It is not always 0, but it takes some
+    # "magnification" to see it.
+    Z_over_D_plus_beta_values = 100 * ((Z_values / D) + x_values)
+    plt.plot(x_values, Z_over_D_plus_beta_values, label='100*((Z/D)+beta)')
+
+    Z_plus_beta_D_values = Z_values + (x_values * D)
+    plt.plot(x_values, Z_plus_beta_D_values, label='Z + (beta*D)')
+
+    e3E_minus_e2E_values = specialized_e3E_minus_e2E_fn(Z_values)
+    plt.plot(x_values, e3E_minus_e2E_values, label='(e_{3,E}-e_{2,E})')
+
+    e3A_minus_e2A_values = specialized_e3A_minus_e2A_fn(Z_values)
+    plt.plot(x_values, e3A_minus_e2A_values, label='(e_{3,A}-e_{2,A})')
+
+    plt.title("L=%.1f D=%.1f beta_R=%.3f beta_S=%.3f" % (L, D, beta_R, beta_S))
+    plt.xlabel("beta_S (v_S/c)")
+    plt.ylabel("time (sec)")
+    plt.legend()
+    #plt.show()
+
+    plt.tight_layout()
+    fname = "scen2b-where-E-starts-to-receive-pulse-3-at-A-location-D-%.1f-beta_R-%.1f-beta_S-%.1f.pdf" % (D, beta_R, beta_S)
+    plt.savefig(fname, format='pdf')
