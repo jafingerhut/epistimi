@@ -2582,7 +2582,7 @@ t_1 & = 0 \\
 Plug those into the equation for $t_r$ from
 Lemma~\ref{lem:IntersectingSpreadingPulse} to get $e_{2,A}$:
 \begin{align*}
-e_{2,A} & = \frac{L}{\gamma_S(v_S - v_R)} + \frac{\gamma_R^2}{c^2} \left[ \frac{Lv_R}{2\gamma_R} + \sqrt{\frac{L^2v_R^2}{4\gamma_R^2} + (1-\beta_R)^2c^2 (\frac{L^2}{4\gamma_R^2} + D^2)} \right]
+e_{2,A} & = \frac{L}{\gamma_S(v_S - v_R)} + \frac{\gamma_R^2}{c^2} \left[ \frac{Lv_R}{2\gamma_R} + \sqrt{\frac{L^2v_R^2}{4\gamma_R^2} + (1-\beta_R^2)c^2 (\frac{L^2}{4\gamma_R^2} + D^2)} \right]
 \end{align*}
 
 
@@ -2606,7 +2606,7 @@ t_1 & = 0 \\
 Plug those into the equation for $t_r$ from
 Lemma~\ref{lem:IntersectingSpreadingPulse} to get $e_{3,A}$:
 \begin{align*}
-e_{3,A} & = \frac{L}{\gamma_R(v_S - v_R)} + \frac{\gamma_R^2}{c^2} \left[ -\frac{Lv_R}{2\gamma_R} + \sqrt{\frac{L^2v_R^2}{4\gamma_R^2} + (1-\beta_R)^2c^2 (\frac{L^2}{4\gamma_R^2} + D^2)} \right]
+e_{3,A} & = \frac{L}{\gamma_R(v_S - v_R)} + \frac{\gamma_R^2}{c^2} \left[ -\frac{Lv_R}{2\gamma_R} + \sqrt{\frac{L^2v_R^2}{4\gamma_R^2} + (1-\beta_R^2)c^2 (\frac{L^2}{4\gamma_R^2} + D^2)} \right]
 \end{align*}
 
 
@@ -2656,7 +2656,7 @@ t_1 & = 0 \\
 Plug those into the equation for $t_r$ from
 Lemma~\ref{lem:IntersectingSpreadingPulse} to get $e_{2,B}$:
 \begin{align*}
-e_{2,B} & = \frac{L}{\gamma_S(v_S - v_R)} + \frac{\gamma_S^2}{c^2} \left[ \frac{Lv_S}{2\gamma_S} + \sqrt{\frac{L^2v_S^2}{4\gamma_S^2} + (1-\beta_S)^2c^2 (\frac{L^2}{4\gamma_S^2} + D^2)} \right]
+e_{2,B} & = \frac{L}{\gamma_S(v_S - v_R)} + \frac{\gamma_S^2}{c^2} \left[ \frac{Lv_S}{2\gamma_S} + \sqrt{\frac{L^2v_S^2}{4\gamma_S^2} + (1-\beta_S^2)c^2 (\frac{L^2}{4\gamma_S^2} + D^2)} \right]
 \end{align*}
 
 
@@ -2679,7 +2679,7 @@ t_1 & = 0 \\
 Plug those into the equation for $t_r$ from
 Lemma~\ref{lem:IntersectingSpreadingPulse} to get $e_{3,B}$:
 \begin{align*}
-e_{3,B} & = \frac{L}{\gamma_R(v_S - v_R)} + \frac{\gamma_S^2}{c^2} \left[ -\frac{Lv_S}{2\gamma_S} + \sqrt{\frac{L^2v_S^2}{4\gamma_S^2} + (1-\beta_S)^2c^2 (\frac{L^2}{4\gamma_S^2} + D^2)} \right]
+e_{3,B} & = \frac{L}{\gamma_R(v_S - v_R)} + \frac{\gamma_S^2}{c^2} \left[ -\frac{Lv_S}{2\gamma_S} + \sqrt{\frac{L^2v_S^2}{4\gamma_S^2} + (1-\beta_S^2)c^2 (\frac{L^2}{4\gamma_S^2} + D^2)} \right]
 \end{align*}
 
 
@@ -2800,12 +2800,10 @@ F
   & = (\frac{\gamma_S}{c}) \frac{-2LZ\gamma_S}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \\
   & = \frac{L\gamma_S}{c} \left[ \frac{-2Z\gamma_S}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \right] \\
 \end{align*}
-
 When $Z$ approaches $+\infty$ or $-\infty$,
 both $(D/Z_{-})^2$ and $(D/Z_{+})^2$ approach 0,
 and the radical expressions approach $\gamma_S$.
-$|Z_{-} \gamma_S + |Z_{+}| \gamma_S = 2|Z|\gamma_S$ when
-$|Z| > \frac{L}{2 \gamma_S}$.
+$|Z_{-}| + |Z_{+}| = 2|Z|$ when $|Z| > \frac{L}{2 \gamma_S}$.
 Thus the entire expression in square brackets
 approaches $+1$ when $Z$ approaches $-\infty$,
 and approaches $-1$ when $Z$ approaches $+\infty$.
