@@ -1417,6 +1417,12 @@ length-contracted to a shorter length than $R$, to make it similar to
 Scenario 2a and reduce the number of cases to consider, so we only
 consider $|v_S| > |v_R|$.
 
+We also add another observer $E$ that is at rest relative to $S$, but
+unlike $B$ it remains at an $x$ coordinate (as measured in rest frame)
+that is at an offset $Z$ away from $B$, i.e. $E$ is at the same
+position as $B$ if $Z=0$, it is further to the left of $B$ if $Z < 0$,
+and it is to the right of $B$ if $Z > 0$.
+
 All calculations are done in the rest frame, except for conversion of
 time intervals to/from $A$ and $B$'s frame as near to the beginning or
 end of the calculation as possible.  This keeps all calculations
@@ -1427,8 +1433,9 @@ $R$ is contracted to length $L/\gamma_{R}$,
 and $S$ is contracted to length $L/\gamma_{S}$.
 Events 1, 2, and 3 are the same as in Scenario 2a.
 \begin{align}
-x_R(t) & = x_{R,0} + v_R t & & \text{$x_R(t)$ is $x$ coordinate of $R$'s center at time $t$} \\
-x_S(t) & = x_{S,0} + v_S t & & \text{$x_S(t)$ is $x$ coordinate of $S$'s center at time $t$}
+x_R(t) & = x_{R,0} + v_R t & & \text{$x_R(t)$ is $x$ coordinate of $R$'s center, and $A$, at time $t$} \label{eqn:scen2b-R-xcoord} \\
+x_S(t) & = x_{S,0} + v_S t & & \text{$x_S(t)$ is $x$ coordinate of $S$'s center, and $B$, at time $t$} \label{eqn:scen2b-S-xcoord} \\
+x_E(t) & = x_{S,0} + Z + v_S t & & \text{$x_E(t)$ is $x$ coordinate of $E$ at time $t$} \label{eqn:scen2b-E-xcoord}
 \end{align}
 
 The details of the calculations are in Appendix~\ref{app:scen2b}.
@@ -1439,7 +1446,8 @@ the pulses from event 2 and 3, as measured in the rest frame, differ
 by the following (a positive value, since $A$ receives the pulse for
 event 2 before the pulse for event 3):
 \begin{equation}
-e_{3,A}-e_{2,A}
+d_A
+  = e_{3,A}-e_{2,A}
   = \frac{\gamma_R L}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] \label{eqn:scen2b-pulseReceiveDiffForA}
 \end{equation}
 
@@ -1448,7 +1456,8 @@ measured in the rest frame, differ by the following (a negative value,
 since $B$ receives the pulse for event 3 before the pulse for event
 2):
 \begin{equation}
-e_{3,B}-e_{2,B}
+d_B
+  = e_{3,B}-e_{2,B}
   = -\frac{\gamma_S L}{c} \left[ \frac{\beta_S\gamma_S - \beta_R\gamma_R}{\gamma_S + \gamma_R} \right] \label{eqn:scen2b-pulseReceiveDiffForB}
 \end{equation}
 
@@ -1464,12 +1473,12 @@ from the equations above that:
 \end{equation}
 
 Similar to what was described at the end of
-Section~\ref{sec:scen1b-BtoCLETfriendly} for Scenario 1b, where $B$ and
-$C$, both in motion relative to $A$, get measurements consistent with
-$B$ being at rest and $C$ having relative velocity equal to $v_C
-\ominus v_B$ relative to $B$ (or $C$ at rest and $B$ having relative
-velocity $v_B \ominus v_C$ relative to $C$), there is a similar result
-here.
+Section~\ref{sec:scen1b-BtoCLETfriendly} for Scenario 1b, where $B$
+and $C$, both in motion relative to $A$, get measurements consistent
+with $B$ being at rest and $C$ having relative velocity equal to
+$v_C \ominus v_B$ relative to $B$ (or $C$ at rest and $B$ having
+relative velocity $v_B \ominus v_C$ relative to $C$), there is a
+similar result here.
 
 The difference in time measured by $A$ on its local clock of the two
 pulses is:
@@ -1498,6 +1507,79 @@ then:
 $B$ measures exactly the negative of the time difference, and
 following the same kinds of calculations can calculate the negative of
 $\beta_{\Delta}$ that $A$ does.
+
+Also from Appendix~\ref{app:scen2b} we have this somewhat more complex
+expression for the difference in time when the two pulses reach
+observer $E$, which like $B$ is also at rest relative to rod $S$, but
+is always at an $x$ coordinate that is an offset $Z$ away from $B$,
+measured in the rest frame.
+\begin{equation}
+d_E
+  = e_{3,E}-e_{2,E}
+  = (e_{3,B}-e_{2,B}) +
+  \frac{L\gamma_S}{c} \left[ \frac{-2Z\gamma_S}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \right] \label{eqn:scen2b-observerE-finalstep}
+\end{equation}
+where:
+\begin{align*}
+Z_{-} & = Z - \frac{L}{2\gamma_S} \\
+Z_{+} & = Z + \frac{L}{2\gamma_S}
+\end{align*}
+
+Now we will find the answers to these questions, and create some
+charts with example values:
+\begin{itemize}
+\item Where must $E$ start in order for $E$ to be exactly at $A$'s
+  position at the time that $A$ receives the pulse from Event 3?
+  (Note that since $E$ and $A$ will be at the same position, $E$ will
+  also receive the pulse from Event 3 at the same time.)
+\item How does $d_E$ compare to $d_A$ when $E$ and $A$ receive Event
+  3's pulse at the same time and place?
+\end{itemize}
+
+To answer the first question, note that we are asking for the value of
+$Z$ that makes $x_E(e_{3,A}) = x_R(e_{3,A})$ true.
+\begin{align}
+x_E(e_{3,A}) & = x_R(e_{3,A}) \nonumber \\
+x_{S,0} + Z + v_S e_{3,A} & = x_{R,0} + v_R e_{3,A} & & \text{Eqns.~\eqref{eqn:scen2b-R-xcoord} and~\eqref{eqn:scen2b-E-xcoord}} \nonumber \\
+Z & = (x_{R,0} - x_{S,0}) + (v_R - v_S) e_{3,A} & & \text{algebra} \nonumber \\
+Z & = \frac{L}{2} ( \frac{1}{\gamma_R} + \frac{1}{\gamma_S} ) + (v_R - v_S) e_{3,A} & & \text{Eqn.~\eqref{eqn:scen2b-xR0} from Appendix~\ref{app:scen2b}} \label{eqn:scen2b-Z-where-E-A-rcv-pulse-simultaneously}
+\end{align}
+Now to calculate $d_E$ and compare it to $d_A$, we plug in that value
+of $Z$ into Equation~\eqref{eqn:scen2b-observerE-finalstep}.
+
+Figure~\ref{fig:compare-d_E-to-d_A} compares the values of $d_E$ and
+$d_A$ when $E$ and $A$ receive pulse 3 at the same time and place, for
+$\beta_R = 0$, and all values of $\beta_S$ from 0.001 up to 0.999.
+$L=1$ light-second, and $D=1000$ light-seconds.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{scen2b-where-E-starts-to-receive-pulse-3-at-A-location-D-1000.0-beta_R-0.000.pdf}
+	\caption{Comparing $d_E$ to $d_A$ when $E$ and $A$ receive pulse 3 at the same time and place}
+	\label{fig:compare-d_E-to-d_A}
+\end{figure}
+
+Let us examine the curves one at a time.  The curve labeled $Z/D$
+shows that value of $Z$ that, for the given value of $\beta_S$, leads
+to $E$ and $A$ being at the same place when they both receive the
+pulse for Event 3.  It appears to be a straight line, suggesting that
+either $Z = -\beta_S D$, or quite close to it.
+
+It is not exactly that, as can be seen by examining the curve labeled
+$Z+(beta*D)$, which shows that $Z$ is always lower than $-\beta_SD$,
+but never by more than 0.5.
+
+The top curve with the stars labeling it are two curves that are so
+close that one overlaps the other at this scale: the curves labeled
+\textbf{d\_E\_restclock} and \textbf{d\_A\_restclock}.  The curve with
+label beginning \textbf{1000} shows that $d_E$ and $d_A$ are not equal,
+but they never differ by more than one about 1 in 4000.
+
+The curve labeled \textbf{d\_E\_Bclock} shows the value of
+$d_E / \gamma_S$, i.e. the difference between receiving the pulses
+from Event 3, minus the time that the pulse from Event 2 is received,
+by $E$, measured on its own clock that is running slower than the rest
+clock by a factor of $1/\gamma_S$.
 
 
 \section{Special Relativity Scenario 3b: Angled rods length-contracted diagonally}
@@ -2749,7 +2831,7 @@ $\frac{\gamma_S^2}{c^2}$ times the difference of those radicals.
 e_{3,E}-e_{2,E}
   & = q_3 - q_2 + \frac{\gamma_S^2}{c^2} ( Z_{-}v_S - Z_{+}v_S ) + F \nonumber \\
   & = q_3 - q_2 - \frac{\gamma_S^2}{c^2} ( \frac{Lv_S}{\gamma_S} ) + F \nonumber \\
-  & = (e_{3,B}-e_{2,B}) + F \nonumber
+  & = (e_{3,B}-e_{2,B}) + F \label{eqn:scen2b-observerE-intermediatestep}
 \end{align}
 Notice that except for the term containing $F$, everything else is
 equal to $(e_{3,B}-e_{2,B})$, so we will spend the rest of our effort
@@ -2794,12 +2876,12 @@ a^2 - b^2
   & = -2LZ\gamma_S & & \text{algebra}
 \end{align*}
 Plugging all of this back into the equation for $F$:
-\begin{align*}
+\begin{align}
 F
-  & = (\frac{\gamma_S}{c}) \frac{a^2-b^2}{a+b} \\
-  & = (\frac{\gamma_S}{c}) \frac{-2LZ\gamma_S}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \\
-  & = \frac{L\gamma_S}{c} \left[ \frac{-2Z\gamma_S}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \right] \\
-\end{align*}
+  & = (\frac{\gamma_S}{c}) \frac{a^2-b^2}{a+b} \nonumber \\
+  & = (\frac{\gamma_S}{c}) \frac{-2LZ\gamma_S}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \nonumber \\
+  & = \frac{L\gamma_S}{c} \left[ \frac{-2Z\gamma_S}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \right] \label{eqn:scen2b-F-final}
+\end{align}
 When $Z$ approaches $+\infty$ or $-\infty$,
 both $(D/Z_{-})^2$ and $(D/Z_{+})^2$ approach 0,
 and the radical expressions approach $\gamma_S$.
@@ -2812,7 +2894,13 @@ F & \rightarrow \frac{L\gamma_S}{c} & & \text{as $Z \rightarrow -\infty$} \\
 F & \rightarrow -\frac{L\gamma_S}{c} & & \text{as $Z \rightarrow +\infty$} \\
 F & = 0 & & \text{when $Z=0$}
 \end{align*}
-
+Combining Equations~\eqref{eqn:scen2b-observerE-intermediatestep}
+and~\eqref{eqn:scen2b-F-final}, we get:
+\begin{equation}
+e_{3,E}-e_{2,E}
+  = (e_{3,B}-e_{2,B}) +
+  \frac{L\gamma_S}{c} \left[ \frac{-2Z\gamma_S}{|Z_{-}| \sqrt{ \gamma_S^2 + (D/Z_{-})^2 } + |Z_{+}| \sqrt{ \gamma_S^2 + (D/Z_{+})^2 }} \right] \label{eqn:scen2b-observerE-finalstep}
+\end{equation}
 
 
 \section{Details of Scenario 1c calculations}

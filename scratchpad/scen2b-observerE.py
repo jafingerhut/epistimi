@@ -210,10 +210,7 @@ def make_plot2(L, beta_R, D):
     plt.figure()
     gamma_R = gamma_fn(beta_R)
     beta_S_values = np.linspace(0.001, 0.999, 100) # 100 points between the limits
-
     Z_values = Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S_values, beta_R)
-
-    #plt.plot(beta_S_values, Z_values, label='(e_{3,E}-e_{2,E})')
 
     Z_over_D_values = Z_values / D
     plt.plot(beta_S_values, Z_over_D_values, label='Z/D')
@@ -289,7 +286,7 @@ for beta_S in [0.5, 0.7, 0.8, 0.866, 0.99]:
 enable_plot2 = True
 if enable_plot2:
     L = 1
-    D = 1000
+    D = 1000 * 1000
     beta_R = 0
     make_plot2(L, beta_R, D)
 
