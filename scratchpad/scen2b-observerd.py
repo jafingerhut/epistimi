@@ -24,16 +24,16 @@ def beta_half_fn(beta_S, gamma_S, beta_R, gamma_R):
 # Also called (e_{3,A} - e{2,A}) / gamma_R in my scratchpad doc.
 # Note that the return value is measured on A's clock, which is why
 # there is a division by gamma_R in the formula above.
-def A_time_diff_fn(L, gamma_R, beta_half):
-    #A_time_diff = gamma_R * L * beta_half
-    A_time_diff = L * beta_half
-    return A_time_diff
+def A_time_diff_Aclock_fn(L, gamma_R, beta_half):
+    #A_time_diff_restclock = gamma_R * L * beta_half
+    A_time_diff_Aclock = L * beta_half
+    return A_time_diff_Aclock
 
 def eA_radical_expr(half_L_over_gamma, beta_R, D):
     radical_expr = (half_L_over_gamma**2) * (beta_R**2) + (1-(beta_R**2)) * ((half_L_over_gamma**2) + (D**2))
     return radical_expr
 
-# calculate e_{2,A}
+# calculate e_{2,A} on rest clock
 def e2A_fn(L, beta_S, beta_R, D):
     gamma_S = gamma_fn(beta_S)
     gamma_R = gamma_fn(beta_R)
@@ -43,7 +43,7 @@ def e2A_fn(L, beta_S, beta_R, D):
     e2A = q2 + (gamma_R**2) * ((half_L_over_gamma * beta_R) + np.sqrt(radical_expr))
     return e2A
 
-# calculate e_{3,A}
+# calculate e_{3,A} on rest clock
 def e3A_fn(L, beta_S, beta_R, D):
     gamma_R = gamma_fn(beta_R)
     half_L_over_gamma = L / (2.0 * gamma_R)
@@ -56,7 +56,7 @@ def eB_radical_expr(half_L_over_gamma, beta_S, D):
     radical_expr = (half_L_over_gamma**2) * (beta_S**2) + (1-(beta_S**2)) * ((half_L_over_gamma**2) + (D**2))
     return radical_expr
 
-# calculate e_{2,B}
+# calculate e_{2,B} on rest clock
 def e2B_fn(L, beta_S, beta_R, D):
     gamma_S = gamma_fn(beta_S)
     half_L_over_gamma = L / (2.0 * gamma_S)
@@ -65,6 +65,7 @@ def e2B_fn(L, beta_S, beta_R, D):
     e2B = q2 + (gamma_S**2) * ((half_L_over_gamma * beta_S) + np.sqrt(radical_expr))
     return e2B
 
+# calculate e_{3,B} on rest clock
 def e3B_fn(L, beta_S, beta_R, D):
     gamma_S = gamma_fn(beta_S)
     gamma_R = gamma_fn(beta_R)
@@ -78,6 +79,7 @@ def e2E_radical_expr(Z_plus, beta_S, D):
     radical_expr = (Z_plus**2) * (beta_S**2) + (1-(beta_S**2)) * ((Z_plus**2) + (D**2))
     return radical_expr
 
+# calculate e_{2,E} on rest clock
 def e2E_fn(L, beta_S, beta_R, D, Z):
     gamma_S = gamma_fn(beta_S)
     half_L_over_gamma = L / (2.0 * gamma_S)
@@ -91,6 +93,7 @@ def e3E_radical_expr(Z_minus, beta_S, D):
     radical_expr = (Z_minus**2) * (beta_S**2) + (1-(beta_S**2)) * ((Z_minus**2) + (D**2))
     return radical_expr
 
+# calculate e_{3,E} on rest clock
 def e3E_fn(L, beta_S, beta_R, D, Z):
     gamma_S = gamma_fn(beta_S)
     gamma_R = gamma_fn(beta_R)
@@ -105,11 +108,12 @@ def e3E_fn(L, beta_S, beta_R, D, Z):
 # Also called (e_{3,B} - e{2,B}) / gamma_S in my scratchpad doc.
 # Note that the return value is measured on B's clock, which is why
 # there is a division by gamma_S in the formula above.
-def B_time_diff_fn(L, gamma_S, beta_half):
-    #B_time_diff = - gamma_S * L * beta_half
-    B_time_diff = - L * beta_half
-    return B_time_diff
+def B_time_diff_Bclock_fn(L, gamma_S, beta_half):
+    #B_time_diff_restclock = - gamma_S * L * beta_half
+    B_time_diff_Bclock = - L * beta_half
+    return B_time_diff_Bclock
 
+# calculate value of F for Observer E
 def F_fn(L, beta_S, D, Z, verbose=False):
     gamma_S = gamma_fn(beta_S)
     half_L_over_gamma = L / (2.0 * gamma_S)
@@ -138,11 +142,11 @@ def F_fn(L, beta_S, D, Z, verbose=False):
     return F
 
 # Also called (e_{3,E}-e_{2,E}) / gamma_S in my scratchpad doc.
-def E_time_diff_fn(L, beta_S, gamma_S, D, Z, beta_half):
-    B_time_diff = B_time_diff_fn(L, gamma_S, beta_half)
+def E_time_diff_Bclock_fn(L, beta_S, gamma_S, D, Z, beta_half):
+    B_time_diff_Bclock = B_time_diff_Bclock_fn(L, gamma_S, beta_half)
     F = F_fn(L, beta_S, D, Z)
-    E_time_diff = B_time_diff + (F / gamma_S)
-    return E_time_diff
+    E_time_diff_Bclock = B_time_diff_Bclock + (F / gamma_S)
+    return E_time_diff_Bclock
 
 # Return value of Z such that observer E will reach A's position
 # exactly when A receives the light pulse for Event 3 (and thus E will
@@ -174,25 +178,22 @@ def make_plot1(L, beta_R, beta_S, D):
     #Z_values = np.linspace(-3*D, 3*D, 100) # 100 points between the limits
     Z_values = np.linspace(-2*D, 2*D, 100) # 100 points between the limits
 
-    y_values = (lambda Z: E_time_diff_fn(L, beta_S, gamma_S, D, Z, beta_half))(Z_values)
-    plt.plot(Z_values, y_values, label='E_time_diff / gamma_S')
-
-    #A_time_diff_values = specialized_A_time_diff_fn(Z_values)
-    A_time_diff_values = np.zeros(len(Z_values))
-    val = A_time_diff_fn(L, gamma_R, beta_half)
+    E_time_diff_Bclock_values = np.zeros(len(Z_values))
     for j in range(len(Z_values)):
-        A_time_diff_values[j] = val
-    plt.plot(Z_values, A_time_diff_values, label='A_time_diff / gamma_R')
+        E_time_diff_Bclock_values[j] = E_time_diff_Bclock_fn(L, beta_S, gamma_S, D, Z_values[j], beta_half)
+    plt.plot(Z_values, E_time_diff_Bclock_values, label='E_time_diff (B clock)')
 
-    #y_values2x2 = 2 * specialized_A_time_diff_fn(Z_values)
-    #plt.plot(Z_values, y_values2x2, label='2*(A_time_diff / gamma_R)')
-
-    #B_time_diff_values = specialized_B_time_diff_fn(Z_values)
-    B_time_diff_values = np.zeros(len(Z_values))
-    val = B_time_diff_fn(L, gamma_S, beta_half)
+    A_time_diff_Aclock_values = np.zeros(len(Z_values))
+    val = A_time_diff_Aclock_fn(L, gamma_R, beta_half)
     for j in range(len(Z_values)):
-        B_time_diff_values[j] = val
-    plt.plot(Z_values, B_time_diff_values, label='B_time_diff / gamma_S')
+        A_time_diff_Aclock_values[j] = val
+    plt.plot(Z_values, A_time_diff_Aclock_values, label='A_time_diff (A clock)')
+
+    B_time_diff_Bclock_values = np.zeros(len(Z_values))
+    val = B_time_diff_Bclock_fn(L, gamma_S, beta_half)
+    for j in range(len(Z_values)):
+        B_time_diff_Bclock_values[j] = val
+    plt.plot(Z_values, B_time_diff_Bclock_values, label='B_time_diff (B clock)')
 
     plt.title("L=%.1f beta_R=%.3f beta_S=%.3f" % (L, beta_R, beta_S))
     plt.xlabel("Z (light-sec)")
@@ -207,6 +208,7 @@ def make_plot1(L, beta_R, beta_S, D):
 
 def make_plot2(L, beta_R, D):
     plt.figure()
+    gamma_R = gamma_fn(beta_R)
     beta_S_values = np.linspace(0.001, 0.999, 100) # 100 points between the limits
 
     Z_values = Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S_values, beta_R)
@@ -219,31 +221,51 @@ def make_plot2(L, beta_R, D):
     # I multiply by 100, because otherwise this curve just looks like
     # it is always 0.  It is not always 0, but it takes some
     # "magnification" to see it.
-    Z_over_D_plus_beta_values = 100 * ((Z_values / D) + beta_S_values)
-    plt.plot(beta_S_values, Z_over_D_plus_beta_values, label='100*((Z/D)+beta)')
+    #Z_over_D_plus_beta_values = 100 * ((Z_values / D) + beta_S_values)
+    #plt.plot(beta_S_values, Z_over_D_plus_beta_values, label='100*((Z/D)+beta)')
 
     Z_plus_beta_D_values = Z_values + (beta_S_values * D)
     plt.plot(beta_S_values, Z_plus_beta_D_values, label='Z + (beta*D)')
 
-    e3E_minus_e2E_values = np.zeros(len(Z_values))
+    d_E_values = np.zeros(len(Z_values))
     for j in range(len(Z_values)):
-        e3E_minus_e2E_values[j] = (e3E_fn(L, beta_S_values[j], beta_R, D, Z_values[j]) -
-                                   e2E_fn(L, beta_S_values[j], beta_R, D, Z_values[j]))
-    plt.plot(beta_S_values, e3E_minus_e2E_values, label='d_E=(e_{3,E}-e_{2,E})')
+        d_E_values[j] = (e3E_fn(L, beta_S_values[j], beta_R, D, Z_values[j]) -
+                         e2E_fn(L, beta_S_values[j], beta_R, D, Z_values[j]))
+    plt.plot(beta_S_values, d_E_values, label='d_E_restclock=(e_{3,E}-e_{2,E}) (rest clock)')
     for j in range(len(Z_values)):
         if j % 5 == 0:
-            plt.plot(beta_S_values[j], e3E_minus_e2E_values[j], marker='*', markersize=10, color='red')
+            plt.plot(beta_S_values[j], d_E_values[j], marker='*', markersize=10, color='red')
 
-    e3A_minus_e2A_values = np.zeros(len(Z_values))
+    d_E_Bclock_values = np.zeros(len(Z_values))
     for j in range(len(Z_values)):
-        e3A_minus_e2A_values[j] = (e3A_fn(L, beta_S_values[j], beta_R, D) -
-                                   e2A_fn(L, beta_S_values[j], beta_R, D))
-    plt.plot(beta_S_values, e3A_minus_e2A_values, label='d_A=(e_{3,A}-e_{2,A})')
+        d_E_Bclock_values[j] = d_E_values[j] / gamma_fn(beta_S_values[j])
+    plt.plot(beta_S_values, d_E_Bclock_values, label='d_E_Bclock=(e_{3,E}-e_{2,E}) (B clock)')
+
+    Aclock_same_as_restclock = False
+    if beta_R == 0.0:
+        Aclock_same_as_restclock = True
+        print("Skipping the plot of separate curve for d_A on A clock, because it is same as the one for rest clock")
+
+    d_A_values = np.zeros(len(Z_values))
+    for j in range(len(Z_values)):
+        d_A_values[j] = (e3A_fn(L, beta_S_values[j], beta_R, D) -
+                         e2A_fn(L, beta_S_values[j], beta_R, D))
+    if Aclock_same_as_restclock:
+        curve_label = 'd_A_restclock=(e_{3,A}-e_{2,A}) (A and rest clock same)'
+    else:
+        curve_label = 'd_A_restclock=(e_{3,A}-e_{2,A}) (rest clock)'
+    plt.plot(beta_S_values, d_A_values, label=curve_label)
+
+    if not Aclock_same_as_restclock:
+        d_A_Aclock_values = np.zeros(len(Z_values))
+        for j in range(len(Z_values)):
+            d_A_Aclock_values[j] = d_A_values[j] / gamma_R
+        plt.plot(beta_S_values, d_A_Aclock_values, label='d_A_Aclock=(e_{3,A}-e_{2,A}) (A clock)')
 
     # I multiply this by 1000, because the values are otherwise so
     # small as to be indistinguishable from 0.
-    E_diff_over_A_diff_values = 1000.0 * ((e3E_minus_e2E_values / e3A_minus_e2A_values) - 1.0)
-    plt.plot(beta_S_values, E_diff_over_A_diff_values, label='1000*((d_E/d_A)-1)')
+    E_diff_over_A_diff_values = 1000.0 * ((d_E_values / d_A_values) - 1.0)
+    plt.plot(beta_S_values, E_diff_over_A_diff_values, label='1000*((d_E_restclock/d_A_restclock)-1)')
 
     plt.title("L=%.1f D=%.1f beta_R=%.3f" % (L, D, beta_R))
     plt.grid(True)
@@ -281,8 +303,8 @@ def debug_printing(L, beta_R, beta_S, D):
     gamma_R = gamma_fn(beta_R)
 
     beta_half = beta_half_fn(beta_S, gamma_S, beta_R, gamma_R)
-    A_time_diff = A_time_diff_fn(L, gamma_R, beta_half)
-    B_time_diff = B_time_diff_fn(L, gamma_S, beta_half)
+    A_time_diff_Aclock = A_time_diff_Aclock_fn(L, gamma_R, beta_half)
+    B_time_diff_Bclock = B_time_diff_Bclock_fn(L, gamma_S, beta_half)
 
     x_S0 = (-L/2) * ((1/gamma_R) - (1/gamma_S))
     e2B = e2B_fn(L, beta_S, beta_R, D)
@@ -295,14 +317,14 @@ def debug_printing(L, beta_R, beta_S, D):
     print("beta_R=%.3f" % (beta_R))
     print("gamma_R=%.3f" % (gamma_R))
     print("beta_half=%.3f" % (beta_half))
-    print("A_time_diff (on A's clock)=%.3f" % (A_time_diff))
+    print("A_time_diff (on A's clock)=%.3f" % (A_time_diff_Aclock))
     print("e3B (in rest frame clock)=%.3f" % (e3B))
     print("e2B (in rest frame clock)=%.3f" % (e2B))
     print("e3B - e2B (in rest frame clock)=%.3f" % (e3B - e2B))
     print("x coord of B at time e3B=%.3f" % (x_S0 + beta_S * e3B))
     print("x coord of B at time e2B=%.3f" % (x_S0 + beta_S * e2B))
-    print("B_time_diff (on B's clock)=%.3f" % (B_time_diff))
-    print("Question: Is there a value of Z such that F/gamma_S = 2*(A_time_diff / gamma_R)=%.3f ?" % (2*(A_time_diff / gamma_R)))
+    print("B_time_diff (on B's clock)=%.3f" % (B_time_diff_Bclock))
+    print("Question: Is there a value of Z such that F/gamma_S = 2*(A_time_diff_Aclock)=%.3f ?" % (2*(A_time_diff_Aclock / gamma_R)))
     print("James question: What value of Z leads to e_{3,E} = e_{3,A}?  Is there always exactly one such value of Z for any given value of the other parameters?  Sometimes no solution?  Sometimes more than one?  What position is E at that time, in A's frame?")
     print("James question (maybe same answer as previous question): What value of Z leads to E being at A's position at e_{3,A} when A receives the event 3 pulse?  Is there always exactly one such value of Z for any given value of the other parameters?  Sometimes no solution?  Sometimes more than one?")
 
