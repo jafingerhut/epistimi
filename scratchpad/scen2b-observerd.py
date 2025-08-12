@@ -38,18 +38,18 @@ def e2A_fn(L, beta_S, beta_R, D):
     gamma_S = gamma_fn(beta_S)
     gamma_R = gamma_fn(beta_R)
     half_L_over_gamma = L / (2.0 * gamma_R)
-    q_2 = L / (gamma_S * (beta_S - beta_R))
+    q2 = q2_fn(L, gamma_S, beta_S, beta_R)
     radical_expr = eA_radical_expr(half_L_over_gamma, beta_R, D)
-    e2A = q_2 + (gamma_R**2) * ((half_L_over_gamma * beta_R) + np.sqrt(radical_expr))
+    e2A = q2 + (gamma_R**2) * ((half_L_over_gamma * beta_R) + np.sqrt(radical_expr))
     return e2A
 
 # calculate e_{3,A}
 def e3A_fn(L, beta_S, beta_R, D):
     gamma_R = gamma_fn(beta_R)
     half_L_over_gamma = L / (2.0 * gamma_R)
-    q_3 = L / (gamma_R * (beta_S - beta_R))
+    q3 = q3_fn(L, gamma_R, beta_S, beta_R)
     radical_expr = eA_radical_expr(half_L_over_gamma, beta_R, D)
-    e3A = q_3 + (gamma_R**2) * ((-half_L_over_gamma * beta_R) + np.sqrt(radical_expr))
+    e3A = q3 + (gamma_R**2) * ((-half_L_over_gamma * beta_R) + np.sqrt(radical_expr))
     return e3A
 
 def eB_radical_expr(half_L_over_gamma, beta_S, D):
@@ -60,17 +60,18 @@ def eB_radical_expr(half_L_over_gamma, beta_S, D):
 def e2B_fn(L, beta_S, beta_R, D):
     gamma_S = gamma_fn(beta_S)
     half_L_over_gamma = L / (2.0 * gamma_S)
-    q_2 = L / (gamma_S * (beta_S - beta_R))
+    q2 = q2_fn(L, gamma_S, beta_S, beta_R)
     radical_expr = eB_radical_expr(half_L_over_gamma, beta_S, D)
-    e2B = q_2 + (gamma_S**2) * ((half_L_over_gamma * beta_S) + np.sqrt(radical_expr))
+    e2B = q2 + (gamma_S**2) * ((half_L_over_gamma * beta_S) + np.sqrt(radical_expr))
     return e2B
 
 def e3B_fn(L, beta_S, beta_R, D):
     gamma_S = gamma_fn(beta_S)
+    gamma_R = gamma_fn(beta_R)
     half_L_over_gamma = L / (2.0 * gamma_S)
-    q_3 = L / (gamma_R * (beta_S - beta_R))
+    q3 = q3_fn(L, gamma_R, beta_S, beta_R)
     radical_expr = eB_radical_expr(half_L_over_gamma, beta_S, D)
-    e3B = q_3 + (gamma_S**2) * ((-half_L_over_gamma * beta_S) + np.sqrt(radical_expr))
+    e3B = q3 + (gamma_S**2) * ((-half_L_over_gamma * beta_S) + np.sqrt(radical_expr))
     return e3B
 
 def e2E_radical_expr(Z_plus, beta_S, D):
@@ -81,9 +82,9 @@ def e2E_fn(L, beta_S, beta_R, D, Z):
     gamma_S = gamma_fn(beta_S)
     half_L_over_gamma = L / (2.0 * gamma_S)
     Z_plus = Z + half_L_over_gamma
-    q_2 = L / (gamma_S * (beta_S - beta_R))
+    q2 = q2_fn(L, gamma_S, beta_S, beta_R)
     radical_expr = e2E_radical_expr(Z_plus, beta_S, D)
-    e2B = q_2 + (gamma_S**2) * ((Z_plus * beta_S) + np.sqrt(radical_expr))
+    e2B = q2 + (gamma_S**2) * ((Z_plus * beta_S) + np.sqrt(radical_expr))
     return e2B
 
 def e3E_radical_expr(Z_minus, beta_S, D):
@@ -92,11 +93,12 @@ def e3E_radical_expr(Z_minus, beta_S, D):
 
 def e3E_fn(L, beta_S, beta_R, D, Z):
     gamma_S = gamma_fn(beta_S)
+    gamma_R = gamma_fn(beta_R)
     half_L_over_gamma = L / (2.0 * gamma_S)
     Z_minus = Z - half_L_over_gamma
-    q_3 = L / (gamma_R * (beta_S - beta_R))
+    q3 = q3_fn(L, gamma_R, beta_S, beta_R)
     radical_expr = e3E_radical_expr(Z_minus, beta_S, D)
-    e3B = q_3 + (gamma_S**2) * ((Z_minus * beta_S) + np.sqrt(radical_expr))
+    e3B = q3 + (gamma_S**2) * ((Z_minus * beta_S) + np.sqrt(radical_expr))
     return e3B
 
 
@@ -136,7 +138,7 @@ def F_fn(L, beta_S, D, Z, verbose=False):
     return F
 
 # Also called (e_{3,E}-e_{2,E}) / gamma_S in my scratchpad doc.
-def E_time_diff_fn(L, beta_S, D, Z, beta_half):
+def E_time_diff_fn(L, beta_S, gamma_S, D, Z, beta_half):
     B_time_diff = B_time_diff_fn(L, gamma_S, beta_half)
     F = F_fn(L, beta_S, D, Z)
     E_time_diff = B_time_diff + (F / gamma_S)
@@ -162,84 +164,35 @@ def Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S, beta_R):
     return Z
 
 
-# L, D, Z and all lengths in units of light-sec
-L = 1
-D = 1000
-#D = 3
-beta_S = 0.5
-#beta_S = 0.7
-#beta_S = 0.8
-#beta_S = 0.866
-beta_R = 0
+def make_plot1(L, beta_R, beta_S, D):
+    gamma_S = gamma_fn(beta_S)
+    gamma_R = gamma_fn(beta_R)
+    beta_half = beta_half_fn(beta_S, gamma_S, beta_R, gamma_R)
 
-gamma_S = gamma_fn(beta_S)
-gamma_R = gamma_fn(beta_R)
-
-beta_half = beta_half_fn(beta_S, gamma_S, beta_R, gamma_R)
-A_time_diff = A_time_diff_fn(L, gamma_R, beta_half)
-B_time_diff = B_time_diff_fn(L, gamma_S, beta_half)
-
-x_S0 = (-L/2) * ((1/gamma_R) - (1/gamma_S))
-e2B = e2B_fn(L, beta_S, beta_R, D)
-e3B = e3B_fn(L, beta_S, beta_R, D)
-
-print("L=%.1f" % (L))
-print("D=%.1f" % (D))
-print("beta_S=%.3f" % (beta_S))
-print("gamma_S=%.3f" % (gamma_S))
-print("beta_R=%.3f" % (beta_R))
-print("gamma_R=%.3f" % (gamma_R))
-print("beta_half=%.3f" % (beta_half))
-print("A_time_diff (on A's clock)=%.3f" % (A_time_diff))
-print("e3B (in rest frame clock)=%.3f" % (e3B))
-print("e2B (in rest frame clock)=%.3f" % (e2B))
-print("e3B - e2B (in rest frame clock)=%.3f" % (e3B - e2B))
-print("x coord of B at time e3B=%.3f" % (x_S0 + beta_S * e3B))
-print("x coord of B at time e2B=%.3f" % (x_S0 + beta_S * e2B))
-print("B_time_diff (on B's clock)=%.3f" % (B_time_diff))
-print("Question: Is there a value of Z such that F/gamma_S = 2*(A_time_diff / gamma_R)=%.3f ?" % (2*(A_time_diff / gamma_R)))
-
-print("James question: What value of Z leads to e_{3,E} = e_{3,A}?  Is there always exactly one such value of Z for any given value of the other parameters?  Sometimes no solution?  Sometimes more than one?  What position is E at that time, in A's frame?")
-
-print("James question (maybe same answer as previous question): What value of Z leads to E being at A's position at e_{3,A} when A receives the event 3 pulse?  Is there always exactly one such value of Z for any given value of the other parameters?  Sometimes no solution?  Sometimes more than one?")
-
-
-def specialized_A_time_diff_fn(Z):
-    val = A_time_diff_fn(L, gamma_R, beta_half)
-    if type(Z) is np.ndarray:
-        ret = np.full(len(Z), val)
-    else:
-        ret = val
-    return ret
-
-def specialized_B_time_diff_fn(Z):
-    val = B_time_diff_fn(L, gamma_S, beta_half)
-    if type(Z) is np.ndarray:
-        ret = np.full(len(Z), val)
-    else:
-        ret = val
-    return ret
-
-
-make_plot1 = True
-#make_plot1 = False
-if make_plot1:
     plt.figure()
-    #x_values = np.linspace(-100*D, 100*D, 200) # 200 points between the limits
-    #x_values = np.linspace(-3*D, 3*D, 100) # 100 points between the limits
-    x_values = np.linspace(-2*D, 2*D, 100) # 100 points between the limits
+    #Z_values = np.linspace(-100*D, 100*D, 200) # 200 points between the limits
+    #Z_values = np.linspace(-3*D, 3*D, 100) # 100 points between the limits
+    Z_values = np.linspace(-2*D, 2*D, 100) # 100 points between the limits
 
-    y_values = (lambda Z: E_time_diff_fn(L, beta_S, D, Z, beta_half))(x_values)
-    plt.plot(x_values, y_values, label='E_time_diff / gamma_S')
+    y_values = (lambda Z: E_time_diff_fn(L, beta_S, gamma_S, D, Z, beta_half))(Z_values)
+    plt.plot(Z_values, y_values, label='E_time_diff / gamma_S')
 
-    y_values2 = specialized_A_time_diff_fn(x_values)
-    plt.plot(x_values, y_values2, label='A_time_diff / gamma_R')
+    #A_time_diff_values = specialized_A_time_diff_fn(Z_values)
+    A_time_diff_values = np.zeros(len(Z_values))
+    val = A_time_diff_fn(L, gamma_R, beta_half)
+    for j in range(len(Z_values)):
+        A_time_diff_values[j] = val
+    plt.plot(Z_values, A_time_diff_values, label='A_time_diff / gamma_R')
 
-    #y_values2x2 = 2 * specialized_A_time_diff_fn(x_values)
-    #plt.plot(x_values, y_values2x2, label='2*(A_time_diff / gamma_R)')
+    #y_values2x2 = 2 * specialized_A_time_diff_fn(Z_values)
+    #plt.plot(Z_values, y_values2x2, label='2*(A_time_diff / gamma_R)')
 
-    y_values3 = specialized_B_time_diff_fn(x_values)
-    plt.plot(x_values, y_values3, label='B_time_diff / gamma_S')
+    #B_time_diff_values = specialized_B_time_diff_fn(Z_values)
+    B_time_diff_values = np.zeros(len(Z_values))
+    val = B_time_diff_fn(L, gamma_S, beta_half)
+    for j in range(len(Z_values)):
+        B_time_diff_values[j] = val
+    plt.plot(Z_values, B_time_diff_values, label='B_time_diff / gamma_S')
 
     plt.title("L=%.1f beta_R=%.3f beta_S=%.3f" % (L, beta_R, beta_S))
     plt.xlabel("Z (light-sec)")
@@ -252,12 +205,11 @@ if make_plot1:
     plt.savefig(fname, format='pdf')
 
 
-make_plot2 = True
-if make_plot2:
+def make_plot2(L, beta_R, D):
     plt.figure()
     beta_S_values = np.linspace(0.001, 0.999, 100) # 100 points between the limits
 
-    Z_values = Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S_values, beta_R) / Z_values
+    Z_values = Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S_values, beta_R)
 
     #plt.plot(beta_S_values, Z_values, label='(e_{3,E}-e_{2,E})')
 
@@ -303,3 +255,55 @@ if make_plot2:
     plt.tight_layout()
     fname = "scen2b-where-E-starts-to-receive-pulse-3-at-A-location-D-%.1f-beta_R-%.3f.pdf" % (D, beta_R)
     plt.savefig(fname, format='pdf')
+
+
+for beta_S in [0.5, 0.7, 0.8, 0.866, 0.99]:
+    # L, D, Z and all lengths in units of light-sec
+    L = 1
+    D = 1000
+    beta_R = 0
+    make_plot1(L, beta_R, beta_S, D)
+
+enable_plot2 = True
+if enable_plot2:
+    L = 1
+    D = 1000
+    beta_R = 0
+    make_plot2(L, beta_R, D)
+
+
+# Avoid doing these assignments until the end, to avoid accidentally
+# "contaminating" any of the earlier function definitions with reading
+# global variables.
+
+def debug_printing(L, beta_R, beta_S, D):
+    gamma_S = gamma_fn(beta_S)
+    gamma_R = gamma_fn(beta_R)
+
+    beta_half = beta_half_fn(beta_S, gamma_S, beta_R, gamma_R)
+    A_time_diff = A_time_diff_fn(L, gamma_R, beta_half)
+    B_time_diff = B_time_diff_fn(L, gamma_S, beta_half)
+
+    x_S0 = (-L/2) * ((1/gamma_R) - (1/gamma_S))
+    e2B = e2B_fn(L, beta_S, beta_R, D)
+    e3B = e3B_fn(L, beta_S, beta_R, D)
+
+    print("L=%.1f" % (L))
+    print("D=%.1f" % (D))
+    print("beta_S=%.3f" % (beta_S))
+    print("gamma_S=%.3f" % (gamma_S))
+    print("beta_R=%.3f" % (beta_R))
+    print("gamma_R=%.3f" % (gamma_R))
+    print("beta_half=%.3f" % (beta_half))
+    print("A_time_diff (on A's clock)=%.3f" % (A_time_diff))
+    print("e3B (in rest frame clock)=%.3f" % (e3B))
+    print("e2B (in rest frame clock)=%.3f" % (e2B))
+    print("e3B - e2B (in rest frame clock)=%.3f" % (e3B - e2B))
+    print("x coord of B at time e3B=%.3f" % (x_S0 + beta_S * e3B))
+    print("x coord of B at time e2B=%.3f" % (x_S0 + beta_S * e2B))
+    print("B_time_diff (on B's clock)=%.3f" % (B_time_diff))
+    print("Question: Is there a value of Z such that F/gamma_S = 2*(A_time_diff / gamma_R)=%.3f ?" % (2*(A_time_diff / gamma_R)))
+    print("James question: What value of Z leads to e_{3,E} = e_{3,A}?  Is there always exactly one such value of Z for any given value of the other parameters?  Sometimes no solution?  Sometimes more than one?  What position is E at that time, in A's frame?")
+    print("James question (maybe same answer as previous question): What value of Z leads to E being at A's position at e_{3,A} when A receives the event 3 pulse?  Is there always exactly one such value of Z for any given value of the other parameters?  Sometimes no solution?  Sometimes more than one?")
+
+debug_printing(L, beta_R, beta_S, D)
