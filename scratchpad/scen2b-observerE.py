@@ -2,6 +2,15 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+def rod_R_center_x_fn(beta_R, t):
+    return 0 + beta_R * t
+
+def rod_S_center_x_fn(L, gamma_R, gamma_S, beta_S, t):
+    x_S0 = (-L/2) * ((1/gamma_R) + (1/gamma_S))
+    print("x_S0=%.3f" % (x_S0))
+    return x_S0 + beta_S * t
 
 def gamma_fn(beta):
     gamma = 1.0 / np.sqrt(1.0 - beta**2)
@@ -206,7 +215,7 @@ def make_plot1(L, beta_R, beta_S, D):
     plt.savefig(fname, format='pdf')
 
 
-def make_plot2(L, beta_R, D):
+def make_plot2(L, beta_R, D, d_E_A_draw_factor):
     plt.figure()
     gamma_R = gamma_fn(beta_R)
     beta_S_values = np.linspace(0.001, 0.999, 100) # 100 points between the limits
@@ -262,10 +271,12 @@ def make_plot2(L, beta_R, D):
         plt.plot(beta_S_values, d_A_Aclock_values, label='d_A_Aclock',
                  marker='-', markevery=10)
 
-    # I multiply this by 1000, because the values are otherwise so
-    # small as to be indistinguishable from 0.
-    E_diff_over_A_diff_values = 1000.0 * ((d_E_values / d_A_values) - 1.0)
-    plt.plot(beta_S_values, E_diff_over_A_diff_values, label='1000*((d_E_restclock/d_A_restclock)-1)',
+    # I multiply this by a factor, because for large values of D, the
+    # values of d_E/d_A are otherwise so small as to be
+    # indistinguishable from 0.
+    E_diff_over_A_diff_values = d_E_A_draw_factor * ((d_E_values / d_A_values) - 1.0)
+    plt.plot(beta_S_values, E_diff_over_A_diff_values,
+             label='%.0f*((d_E_restclock/d_A_restclock)-1)' % (d_E_A_draw_factor),
              marker='v', markevery=10)
 
     plt.title("L=%.1f D=%.1f beta_R=%.3f" % (L, D, beta_R))
@@ -290,9 +301,14 @@ for beta_S in [0.5, 0.7, 0.8, 0.866, 0.99]:
 enable_plot2 = True
 if enable_plot2:
     L = 1
-    D = 1000
     beta_R = 0
-    make_plot2(L, beta_R, D)
+    plot_lst = []
+    plot_lst.append({'D': 3, 'draw_factor': 1})
+    plot_lst.append({'D': 1000, 'draw_factor': 1000})
+    for plot_info in plot_lst:
+        D = plot_info['D']
+        d_E_A_draw_factor = plot_info['draw_factor']
+        make_plot2(L, beta_R, D, d_E_A_draw_factor)
 
 
 # Avoid doing these assignments until the end, to avoid accidentally
@@ -307,9 +323,13 @@ def debug_printing(L, beta_R, beta_S, D):
     A_time_diff_Aclock = A_time_diff_Aclock_fn(L, gamma_R, beta_half)
     B_time_diff_Bclock = B_time_diff_Bclock_fn(L, gamma_S, beta_half)
 
-    x_S0 = (-L/2) * ((1/gamma_R) - (1/gamma_S))
+    x_S0 = (-L/2) * ((1/gamma_R) + (1/gamma_S))
     e2B = e2B_fn(L, beta_S, beta_R, D)
     e3B = e3B_fn(L, beta_S, beta_R, D)
+    e2A = e2A_fn(L, beta_S, beta_R, D)
+    e3A = e3A_fn(L, beta_S, beta_R, D)
+
+    Z = Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S, beta_R)
 
     print("L=%.1f" % (L))
     print("D=%.1f" % (D))
@@ -317,16 +337,243 @@ def debug_printing(L, beta_R, beta_S, D):
     print("gamma_S=%.3f" % (gamma_S))
     print("beta_R=%.3f" % (beta_R))
     print("gamma_R=%.3f" % (gamma_R))
+    print("Z=%.3f" % (Z))
+    print("Z+(beta_S*D)=%.3f" % (Z + (beta_S*D)))
+    d_E_restclock = (e3E_fn(L, beta_S, beta_R, D, Z) -
+                     e2E_fn(L, beta_S, beta_R, D, Z))
+    d_E_Bclock = d_E_restclock / gamma_S
+    print("d_E_restclock=%.3f" % (d_E_restclock))
+    print("d_E_Bclock=%.3f" % (d_E_Bclock))
+    print("q2 (rest clock)=%.3f" % (q2_fn(L, gamma_S, beta_S, beta_R)))
+    print("q3 (rest clock)=%.3f" % (q3_fn(L, gamma_R, beta_S, beta_R)))
+    print("e2A (rest clock)=%.3f" % (e2A))
+    print("e3A (rest clock)=%.3f" % (e3A))
+    print("e2E (rest clock)=%.3f" % (e2E_fn(L, beta_S, beta_R, D, Z)))
+    print("e3E (rest clock)=%.3f" % (e3E_fn(L, beta_S, beta_R, D, Z)))
     print("beta_half=%.3f" % (beta_half))
-    print("A_time_diff (on A's clock)=%.3f" % (A_time_diff_Aclock))
-    print("e3B (in rest frame clock)=%.3f" % (e3B))
-    print("e2B (in rest frame clock)=%.3f" % (e2B))
-    print("e3B - e2B (in rest frame clock)=%.3f" % (e3B - e2B))
+    print("A_time_diff (A clock)=%.3f" % (A_time_diff_Aclock))
+    print("e3B (rest clock)=%.3f" % (e3B))
+    print("e2B (rest clock)=%.3f" % (e2B))
+    print("e3B - e2B (rest clock)=%.3f" % (e3B - e2B))
     print("x coord of B at time e3B=%.3f" % (x_S0 + beta_S * e3B))
     print("x coord of B at time e2B=%.3f" % (x_S0 + beta_S * e2B))
-    print("B_time_diff (on B's clock)=%.3f" % (B_time_diff_Bclock))
-    print("Question: Is there a value of Z such that F/gamma_S = 2*(A_time_diff_Aclock)=%.3f ?" % (2*(A_time_diff_Aclock / gamma_R)))
-    print("James question: What value of Z leads to e_{3,E} = e_{3,A}?  Is there always exactly one such value of Z for any given value of the other parameters?  Sometimes no solution?  Sometimes more than one?  What position is E at that time, in A's frame?")
-    print("James question (maybe same answer as previous question): What value of Z leads to E being at A's position at e_{3,A} when A receives the event 3 pulse?  Is there always exactly one such value of Z for any given value of the other parameters?  Sometimes no solution?  Sometimes more than one?")
+    print("B_time_diff (B clock)=%.3f" % (B_time_diff_Bclock))
+    #print("Question: Is there a value of Z such that F/gamma_S = 2*(A_time_diff_Aclock)=%.3f ?" % (2*(A_time_diff_Aclock / gamma_R)))
+    #print("James question: What value of Z leads to e_{3,E} = e_{3,A}?  Is there always exactly one such value of Z for any given value of the other parameters?  Sometimes no solution?  Sometimes more than one?  What position is E at that time, in A's frame?")
+    #print("James question (maybe same answer as previous question): What value of Z leads to E being at A's position at e_{3,A} when A receives the event 3 pulse?  Is there always exactly one such value of Z for any given value of the other parameters?  Sometimes no solution?  Sometimes more than one?")
 
+# Calculate beta_S such that gamma_S will be 2.0
+desired_gamma_S = 2.0
+beta_S = np.sqrt(1-1/(desired_gamma_S**2))
 debug_printing(L, beta_R, beta_S, D)
+
+# Make plots that are drawings of the physical positions of all
+# relevant objects at interesting times, all times and distances
+# measured in the rest frame.
+
+# t=0 Event 1
+# q2 Event 2
+# q3 Event 3
+# e_{2,E} E receives pulse 2
+# e_{2,A} A receives pulse 2
+
+def make_position_plot_of_one_time(ax, L, beta_R, beta_S, D, t, Xmax,
+                                   desc_str, verbose=False):
+    if verbose:
+        print("--------------------")
+    gamma_S = gamma_fn(beta_S)
+    gamma_R = gamma_fn(beta_R)
+    Z = Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S, beta_R)
+    q2 = q2_fn(L, gamma_S, beta_S, beta_R)
+    q3 = q3_fn(L, gamma_R, beta_S, beta_R)
+
+    #plt.title("L=%.1f D=%.1f beta_S=%.3f t=%.3f" % (L, D, beta_S, t))
+    A_x = rod_R_center_x_fn(beta_R, t)
+    A_y = D
+    A_width = L/20
+    A_height = L/20
+    if verbose:
+        print("beta_R=%.3f gamma_R=%.3f" % (beta_R, gamma_R))
+        print("beta_S=%.3f gamma_S=%.3f" % (beta_S, gamma_S))
+
+    B_x = rod_S_center_x_fn(L, gamma_R, gamma_S, beta_S, t)
+    B_y = D
+    B_width = L/20
+    B_height = L/20
+
+    E_x = B_x + Z
+    E_y = D
+    E_width = L/20
+    E_height = L/20
+
+    R_left_x = A_x - (L/2)
+    R_right_x = A_x + (L/2)
+    R_width = L
+    R_height = L/10
+    R_y = 0
+    S_left_x = B_x - (L/(2*gamma_S))
+    #S_right_x = B_x + (L/(2*gamma_S))
+    S_width = (L/gamma_S)
+    # Draw S slightly above R
+    S_y = L/10
+    S_height = L/10
+    pulse_2_center_x = R_left_x
+    pulse_2_center_y = 0
+    draw_pulse_2 = False
+    if verbose:
+        print("t=%.3f q2=%.3f q3=%.3f" % (t, q2, q3))
+    if t >= q2:
+        draw_pulse_2 = True
+        pulse_2_radius = (t - q2)
+    pulse_3_center_x = R_right_x
+    pulse_3_center_y = 0
+    draw_pulse_3 = False
+    if t >= q3:
+        draw_pulse_3 = True
+        pulse_3_radius = (t - q3)
+
+    # Draw rod R
+    rect = patches.Rectangle((R_left_x, R_y-(R_height/2)),
+                             R_width, R_height, fill=False,
+                             edgecolor='black', linewidth=2)
+    ax.add_patch(rect)
+
+    # Draw observer A
+    rect = patches.Rectangle((A_x-(A_width/2), A_y-(A_height/2)),
+                             A_width, A_height, fill=False,
+                             edgecolor='black', linewidth=2)
+    ax.add_patch(rect)
+
+    # Draw rod S
+    if verbose:
+        print("A_x=%.3f B_x=%.3f" % (A_x, B_x))
+        print("S_left_x=%.3f S_width=%.3f" % (S_left_x, S_width))
+    rect = patches.Rectangle((S_left_x, L/20), S_width, L/10, fill=False,
+                             edgecolor='red', linewidth=2)
+    ax.add_patch(rect)
+
+    # Draw observer B
+    rect = patches.Rectangle((B_x-(B_width/2), B_y-(B_height/2)),
+                             B_width, B_height, fill=False,
+                             edgecolor='red', linewidth=2)
+    ax.add_patch(rect)
+
+    # Draw observer E
+    rect = patches.Rectangle((E_x-(E_width/2), E_y-(E_height/2)),
+                             E_width, E_height, fill=False,
+                             edgecolor='green', linewidth=2)
+    ax.add_patch(rect)
+
+    # Draw wavefront of pulse 2, if it has been emitted
+    if draw_pulse_2:
+        circle = patches.Circle((pulse_2_center_x, pulse_2_center_y),
+                                pulse_2_radius, color='blue', fill=False,
+                                linewidth=2)
+        ax.add_patch(circle)
+    # Draw wavefront of pulse 3, if it has been emitted
+    if draw_pulse_3:
+        circle = patches.Circle((pulse_3_center_x, pulse_3_center_y),
+                                pulse_3_radius, color='red', fill=False,
+                                linewidth=2)
+        ax.add_patch(circle)
+    ax.set_aspect('equal', adjustable='box')
+    #ax.set_aspect('equal', adjustable='datalim')
+
+    ax.set_xlim(Z-L, Xmax)
+    ax.set_ylim(-1, D+1)
+    ax.set_title("t=%.3f %s" % (t, desc_str))
+
+
+def make_plots_of_interesting_times(L, beta_R, beta_S, D):
+    print("--------------------")
+    gamma_S = gamma_fn(beta_S)
+    gamma_R = gamma_fn(beta_R)
+    Z = Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S, beta_R)
+    e2E = e2E_fn(L, beta_S, beta_R, D, Z)
+    e3E = e3E_fn(L, beta_S, beta_R, D, Z)
+    e2A = e2A_fn(L, beta_S, beta_R, D)
+    e3A = e3A_fn(L, beta_S, beta_R, D)
+    e2B = e2B_fn(L, beta_S, beta_R, D)
+    e3B = e3B_fn(L, beta_S, beta_R, D)
+
+    q2 = q2_fn(L, gamma_S, beta_S, beta_R)
+    q3 = q3_fn(L, gamma_R, beta_S, beta_R)
+
+    event_lst = []
+    event_lst.append({'t': 0, 'title': 'Event 1 - Rods first meet'})
+    event_lst.append({'t': q2, 'title': 'Event 2 - Left end of rods meet'})
+    event_lst.append({'t': q3, 'title': 'Event 3 - Right end of rods meet'})
+    event_lst.append({'t': e2E, 'title': 'Pulse from event 2 reaches E'})
+    event_lst.append({'t': e2A, 'title': 'Pulse from event 2 reaches A'})
+    event_lst.append({'t': e3A, 'title': 'Pulse from event 3 reaches A and E'})
+    event_lst.append({'t': e3B, 'title': 'Pulse from event 3 reaches B'})
+    event_lst.append({'t': e2B, 'title': 'Pulse from event 2 reaches B'})
+
+    # Calculate the max X coordinate of interest among all plots, to
+    # make it common for all of them.  It is the right edge of rod S
+    # at the maximum time.
+    max_t = event_lst[0]['t']
+    for event in event_lst:
+        if max_t < event['t']:
+            max_t = event['t']
+    B_x = rod_S_center_x_fn(L, gamma_R, gamma_S, beta_S, max_t)
+    S_right_x = B_x + (L/(2*gamma_S))
+    Xmax = S_right_x
+
+    num_plots = len(event_lst)
+    nplots_per_row = 2
+    nplots_per_column = (num_plots + (nplots_per_row - 1)) // nplots_per_row
+    print("num_plots=%d nplots_per_row=%d nplots_per_column=%d"
+          "" % (num_plots, nplots_per_row, nplots_per_column))
+    #fig, ax = plt.subplots(ncols=nplots_per_row, nrows=nplots_per_column)
+    fig, ax = plt.subplots(ncols=nplots_per_row,
+                           nrows=nplots_per_column,
+                           # units are inches?
+                           figsize=(10, 8),
+                           sharex='all',
+                           sharey='all')
+
+    # A failed attempt to make the subplots have less space between
+    # them.
+    plt.subplots_adjust(wspace=0.01, hspace=0.01)
+
+    #plt.title("L=%.1f D=%.1f beta_S=%.3f" % (L, D, beta_S))
+
+    row = 0
+    col = 0
+    #time_order = 'left-right-then-down'
+    time_order = 'top-down-then-right'
+    for event in event_lst:
+        t = event['t']
+        desc_str = event['title']
+        print("t=%.3f row=%d col=%d" % (t, row, col))
+        make_position_plot_of_one_time(ax[row][col], L, beta_R, beta_S, D, t,
+                                       Xmax, desc_str)
+        if time_order == 'left-right-then-down':
+            col += 1
+            if col == nplots_per_row:
+                col = 0
+                row += 1
+        elif time_order == 'top-down-then-right':
+            row += 1
+            if row == nplots_per_column:
+                row = 0
+                col += 1
+    fig.tight_layout()
+
+    #plt.grid(True)
+    #plt.xlabel("x (light-sec)")
+    #plt.ylabel("y (light-sec)")
+    #plt.legend()
+    #plt.tight_layout()
+    #fname = "scen2b-L-%.1f-D-%.1f-beta_S-%.3f-t-%.3f.pdf" % (L, D, beta_S, t)
+    fname = "scen2b-L-%.1f-D-%.1f-beta_S-%.3f.pdf" % (L, D, beta_S)
+    plt.savefig(fname, format='pdf')
+
+L = 1
+D = 3
+beta_R = 0.0
+# Calculate beta_S such that gamma_S will be 2.0
+desired_gamma_S = 2.0
+beta_S = np.sqrt(1-1/(desired_gamma_S**2))
+make_plots_of_interesting_times(L, beta_R, beta_S, D)
