@@ -1681,10 +1681,7 @@ velocity addition and subtraction formulas.  This appendix makes no
 claims about the physical meaning of these operations.
 
 I have read that relativistic velocity addition in 3 dimensions is not
-associative.  TODO: If I add any discussion of 3-dimensional
-relativity examples to this document, it would be nice to give an
-example, perhaps in a separate appendix.
-
+associative (see Appendix~\ref{app:3drelvelocityaddsub}).
 In one dimension, though, all velocities of subliminal entities can be
 represented by $v$ such that $-c < v < c$, where negative velocities
 are in the opposite direction along the line than positive velocities.
@@ -1969,7 +1966,7 @@ Divide both sides of that equation by $v^2$ and rearrange a bit to get:
 \end{align}
 
 
-\subsubsection{Relativistic velocity addition in 3 dimensions}
+\subsubsection{Relativistic velocity addition and subtraction in 3 dimensions}
 \label{app:3drelvelocityadd}
 
 Let:
@@ -2027,6 +2024,32 @@ Similarly for all vectors $\vect{v}_A$, $\vect{v}_B$:
 \begin{equation}
 \vect{v}_B \oplus (\vect{v}_A \ominus \vect{v}_B) = \vect{v}_A
 \end{equation}
+
+
+\subsubsection{Identities about 3-d relativistic velocity addition and subtraction}
+\label{app:3drelvelocityadd-identities}
+
+\begin{tabularx}{1.0\textwidth}{|p{4cm}|p{2cm}|p{3cm}|}
+\cline{1-3} \\
+Identity & True in 1-d? & True in 3-d?
+\\ \cline{1-3}
+$a \oplus b = b \oplus a$ & yes & no
+\\ \cline{1-3}
+$(a \oplus b) \oplus c = a \oplus (b \oplus c)$ & yes & no (TODO: counterexample)
+\\ \cline{1-3}
+$a \oplus 0 = 0 \oplus a = a$ & yes & yes
+\\ \cline{1-3}
+$a \oplus (-b) = a \ominus b$ & yes & TODO
+\\ \cline{1-3}
+$a \ominus (-b) = a \oplus b$ & yes & TODO
+\\ \cline{1-3}
+$a \ominus (-b) = a \oplus b$ & yes & TODO
+\\ \cline{1-3}
+$0 \ominus b = -b$ & yes & yes
+\\ \cline{1-3}
+$a \ominus b = - (b \ominus a)$ & yes & TODO
+\\ \cline{1-3}
+\end{tabularx}
 
 
 \subsection{Math facts about the Doppler factor and Lorentz factor}

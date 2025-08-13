@@ -3,15 +3,12 @@
 import numpy as np
 import random
 
+import relvel3 as rv3
+
 c=299792458.0
 
 
-def lorentz_gamma(v):
-    v2 = np.dot(v, v)
-    return 1.0 / np.sqrt(1.0 - v2 / c**2)
-
-
-def compute_delta_tau_C_n(v_B, v_C, n, c=299792458.0):
+def compute_delta_tau_C_n(v_B, v_C, n, c=rv3.c):
     """
     Compute the proper time interval on C's clock between receiving
     the n-th and (n+1)-th light pulses emitted from B at 1-second intervals
@@ -28,7 +25,7 @@ def compute_delta_tau_C_n(v_B, v_C, n, c=299792458.0):
     """
 
     def compute_reception_time(n_emit, v_B, v_C, c):
-        gamma_B = lorentz_gamma(v_B)
+        gamma_B = rv3.lorentz_gamma(v_B)
         tau = n_emit * gamma_B
 
         a = v_C
@@ -52,7 +49,7 @@ def compute_delta_tau_C_n(v_B, v_C, n, c=299792458.0):
     if n < 1:
         raise ValueError("Pulse index n must be at least 1")
 
-    gamma_C = lorentz_gamma(v_C)
+    gamma_C = rv3.lorentz_gamma(v_C)
     t_n = compute_reception_time(n, v_B, v_C, c)
     t_np1 = compute_reception_time(n + 1, v_B, v_C, c)
 
@@ -64,49 +61,14 @@ def compute_delta_tau_C_n(v_B, v_C, n, c=299792458.0):
 # using method in Appendix D.1 with intermediate value G.
 def reception_time2(v_B, v_C, T_B):
     v_B_dot_v_C = np.dot(v_B, v_C)
-    normvC = np.dot(v_C, v_C)
-    gamma_B = lorentz_gamma(v_B)
-    gamma_C = lorentz_gamma(v_C)
-    norm_v_C_minus_v_B = np.dot(v_C - v_B, v_C - v_B)
-    norm_vC_minus_v_B_dot_v_C = normvC - v_B_dot_v_C
-    G = (norm_vC_minus_v_B_dot_v_C**2) + (c**2 - normvC) * norm_v_C_minus_v_B
+    normvC2 = np.dot(v_C, v_C)
+    gamma_B = rv3.lorentz_gamma(v_B)
+    gamma_C = rv3.lorentz_gamma(v_C)
+    norm_v_C_minus_v_B2 = np.dot(v_C - v_B, v_C - v_B)
+    norm_vC_minus_v_B_dot_v_C = normvC2 - v_B_dot_v_C
+    G = (norm_vC_minus_v_B_dot_v_C**2) + (c**2 - normvC2) * norm_v_C_minus_v_B2
     delta = (gamma_B * T_B / gamma_C) * (1 + ((gamma_C / c)**2) * (norm_vC_minus_v_B_dot_v_C + np.sqrt(G)))
     return delta
-
-
-# Calculate and return v_B \oplus u
-def relativistic_velocity_add(v_B, u):
-    normvB = np.dot(v_B, v_B)
-    v_B_dot_u = np.dot(v_B, u)
-    gamma_B = lorentz_gamma(v_B)
-    factor = 1.0 / (gamma_B * (1.0 + v_B_dot_u / (c**2)))
-    return factor * (u + (((gamma_B-1) * v_B_dot_u / normvB) + gamma_B) * v_B)
-
-
-# Calculate and return v_A \ominus v_B
-def relativistic_velocity_subtract(v_A, v_B):
-    v_A_dot_V_B = np.dot(v_A, v_B)
-    normvB = np.dot(v_B, v_B)
-    gamma_B = lorentz_gamma(v_B)
-    v_A_parallel = (v_A_dot_V_B / normvB) * v_B
-    v_A_perp = v_A - v_A_parallel
-    denom = 1 - (v_A_dot_V_B / (c**2))
-    u_prime_parallel = (v_A_parallel - v_B) / denom
-    u_prime_perp = (v_A_perp / gamma_B) / denom
-    return u_prime_parallel + u_prime_perp
-
-def random_rescale_if_faster_than_c(v):
-    mag1 = np.sqrt(np.dot(v, v))
-    if mag1 < c:
-        return v
-    new_beta = random.random()
-    v = (v / mag1) * c * new_beta
-    mag2 = np.sqrt(np.dot(v, v))
-    print(f"|v|={mag1} >= c, rescaling it so its direction is same, but its magnitude is a uniform random value in the range [0,c) mag2={mag2}")
-    if mag2 >= c:
-        print(f"BUG in program.  New magnitude after rescaling is > c.  v={v} mag2={mag2}")
-        sys.exit(1)
-    return v
 
 # Velocities in m/s (e.g., B and C move in opposite directions along x-axis)
 #v_B = np.array([0.4 * 299792458, 0.0, 0.0])   # B at 0.4c
@@ -135,15 +97,15 @@ for test_case in test_cases:
     print("----------------------------------------")
     print(f"Test case #{count}")
     print("----------------------------------------")
-    v_B = random_rescale_if_faster_than_c(v_B)
-    v_C = random_rescale_if_faster_than_c(v_C)
+    v_B = rv3.random_rescale_if_faster_than_c(v_B)
+    v_C = rv3.random_rescale_if_faster_than_c(v_C)
     v_C_minus_v_B = v_B - v_C
     print(f"v_B x={v_B[0]} y={v_B[1]} z={v_B[2]}")
     print(f"v_C x={v_C[0]} y={v_C[1]} z={v_C[2]}")
     print(f"v_C_minus_v_B x={v_C_minus_v_B[0]} y={v_C_minus_v_B[1]} z={v_C_minus_v_B[2]}")
 
     beta_B = np.sqrt(np.dot(v_B, v_B)) / c
-    gamma_B = lorentz_gamma(v_B)
+    gamma_B = rv3.lorentz_gamma(v_B)
     print(f"beta_B={beta_B}")
     print(f"gamma_B={gamma_B}")
     if beta_B >= 1.0:
@@ -151,7 +113,7 @@ for test_case in test_cases:
         continue
 
     beta_C = np.sqrt(np.dot(v_C, v_C)) / c
-    gamma_C = lorentz_gamma(v_C)
+    gamma_C = rv3.lorentz_gamma(v_C)
     print(f"beta_C={beta_C}")
     print(f"gamma_C={gamma_C}")
     if beta_C >= 1.0:
@@ -167,7 +129,7 @@ for test_case in test_cases:
     delta2 = reception_time2(v_B, v_C, T_B)
     print(f"delta2={delta2:.9f} s")
 
-    diff = relativistic_velocity_subtract(v_C, v_B)
+    diff = rv3.subtract(v_C, v_B)
     diff_mag = np.sqrt(np.dot(diff, diff))
     beta_diff = diff_mag / c
     print(f"beta_diff={beta_diff}")
@@ -175,7 +137,7 @@ for test_case in test_cases:
     delta3 = D * T_B
     print(f"delta3={delta3:.9f} s")
 
-    vecsum = relativistic_velocity_add(v_B, diff)
+    vecsum = rv3.add(v_B, diff)
     print(f"v_C={v_C}")
     print(f"vecsum={vecsum}")
 
