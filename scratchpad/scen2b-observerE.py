@@ -213,7 +213,8 @@ def make_plot2(L, beta_R, D):
     Z_values = Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S_values, beta_R)
 
     Z_over_D_values = Z_values / D
-    plt.plot(beta_S_values, Z_over_D_values, label='Z/D')
+    plt.plot(beta_S_values, Z_over_D_values, label='Z/D',
+             marker='+', markevery=10)
 
     # I multiply by 100, because otherwise this curve just looks like
     # it is always 0.  It is not always 0, but it takes some
@@ -222,21 +223,21 @@ def make_plot2(L, beta_R, D):
     #plt.plot(beta_S_values, Z_over_D_plus_beta_values, label='100*((Z/D)+beta)')
 
     Z_plus_beta_D_values = Z_values + (beta_S_values * D)
-    plt.plot(beta_S_values, Z_plus_beta_D_values, label='Z + (beta*D)')
+    plt.plot(beta_S_values, Z_plus_beta_D_values, label='Z + (beta*D)',
+             marker='o', markevery=10)
 
     d_E_values = np.zeros(len(Z_values))
     for j in range(len(Z_values)):
         d_E_values[j] = (e3E_fn(L, beta_S_values[j], beta_R, D, Z_values[j]) -
                          e2E_fn(L, beta_S_values[j], beta_R, D, Z_values[j]))
-    plt.plot(beta_S_values, d_E_values, label='d_E_restclock=(e_{3,E}-e_{2,E}) (rest clock)')
-    for j in range(len(Z_values)):
-        if j % 5 == 0:
-            plt.plot(beta_S_values[j], d_E_values[j], marker='*', markersize=10, color='red')
+    plt.plot(beta_S_values, d_E_values, label='d_E_restclock',
+             marker='*', markevery=10)
 
     d_E_Bclock_values = np.zeros(len(Z_values))
     for j in range(len(Z_values)):
         d_E_Bclock_values[j] = d_E_values[j] / gamma_fn(beta_S_values[j])
-    plt.plot(beta_S_values, d_E_Bclock_values, label='d_E_Bclock=(e_{3,E}-e_{2,E}) (B clock)')
+    plt.plot(beta_S_values, d_E_Bclock_values, label='d_E_Bclock',
+             marker='s', markevery=10)
 
     Aclock_same_as_restclock = False
     if beta_R == 0.0:
@@ -248,21 +249,24 @@ def make_plot2(L, beta_R, D):
         d_A_values[j] = (e3A_fn(L, beta_S_values[j], beta_R, D) -
                          e2A_fn(L, beta_S_values[j], beta_R, D))
     if Aclock_same_as_restclock:
-        curve_label = 'd_A_restclock=(e_{3,A}-e_{2,A}) (A and rest clock same)'
+        curve_label = 'd_A_restclock (A and rest clock same)'
     else:
-        curve_label = 'd_A_restclock=(e_{3,A}-e_{2,A}) (rest clock)'
-    plt.plot(beta_S_values, d_A_values, label=curve_label)
+        curve_label = 'd_A_restclock'
+    plt.plot(beta_S_values, d_A_values, label=curve_label,
+             marker='x', markevery=12)
 
     if not Aclock_same_as_restclock:
         d_A_Aclock_values = np.zeros(len(Z_values))
         for j in range(len(Z_values)):
             d_A_Aclock_values[j] = d_A_values[j] / gamma_R
-        plt.plot(beta_S_values, d_A_Aclock_values, label='d_A_Aclock=(e_{3,A}-e_{2,A}) (A clock)')
+        plt.plot(beta_S_values, d_A_Aclock_values, label='d_A_Aclock',
+                 marker='-', markevery=10)
 
     # I multiply this by 1000, because the values are otherwise so
     # small as to be indistinguishable from 0.
     E_diff_over_A_diff_values = 1000.0 * ((d_E_values / d_A_values) - 1.0)
-    plt.plot(beta_S_values, E_diff_over_A_diff_values, label='1000*((d_E_restclock/d_A_restclock)-1)')
+    plt.plot(beta_S_values, E_diff_over_A_diff_values, label='1000*((d_E_restclock/d_A_restclock)-1)',
+             marker='v', markevery=10)
 
     plt.title("L=%.1f D=%.1f beta_R=%.3f" % (L, D, beta_R))
     plt.grid(True)
@@ -286,7 +290,7 @@ for beta_S in [0.5, 0.7, 0.8, 0.866, 0.99]:
 enable_plot2 = True
 if enable_plot2:
     L = 1
-    D = 1000 * 1000
+    D = 1000
     beta_R = 0
     make_plot2(L, beta_R, D)
 
