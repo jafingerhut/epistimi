@@ -89,11 +89,11 @@ def main():
         err = abs_diff(sum1, sum2)
         print("--------------------")
         if err > 0.0001:
-            print("v_A=%s v_B=%s add is NOT commutative, err=%s" % (v_A, v_B, err))
-            print("v_A oplus v_B=%s" % (sum1))
-            print("v_B oplus v_A=%s" % (sum2))
+            print("v_A=%s v_B=%s add is NOT commutative, err=%s" % (v_A/c, v_B/c, err))
+            print("v_A oplus v_B=%s" % (sum1/c))
+            print("v_B oplus v_A=%s" % (sum2/c))
         else:
-            print("v_A=%s v_B=%s add is commutative, err=%s v_A oplus v_B=%s" % (v_A, v_B, err, sum1))
+            print("v_A=%s v_B=%s add is commutative, err=%s v_A oplus v_B=%s" % (v_A/c, v_B/c, err, sum1/c))
 
 
 if __name__ == "__main__":
