@@ -1547,38 +1547,77 @@ Z & = \frac{L}{2} ( \frac{1}{\gamma_R} + \frac{1}{\gamma_S} ) + (v_R - v_S) e_{3
 Now to calculate $d_E$ and compare it to $d_A$, we plug in that value
 of $Z$ into Equation~\eqref{eqn:scen2b-observerE-finalstep}.
 
-Figure~\ref{fig:compare-d_E-to-d_A} compares the values of $d_E$ and
-$d_A$ when $E$ and $A$ receive pulse 3 at the same time and place, for
-$\beta_R = 0$, and all values of $\beta_S$ from 0.001 up to 0.999.
-$L=1$ light-second, and $D=1000$ light-seconds.
-
+Figure~\ref{fig:eight-times-of-interest-in-scenario-2b} shows a series
+of similar drawings representing 8 different times of interest in a
+scenario where:
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.8\textwidth]{scen2b-where-E-starts-to-receive-pulse-3-at-A-location-D-1000.0-beta_R-0.000.pdf}
-	\caption{Comparing $d_E$ to $d_A$ when $E$ and $A$ receive pulse 3 at the same time and place}
-	\label{fig:compare-d_E-to-d_A}
+	\includegraphics[width=1.0\textwidth]{scen2b-L-1.0-D-3.0-beta_S-0.866-cropped.pdf}
+	\caption{8 times of interest in Scenario 2b: $R$, $A$ black, $S$, $B$ red, $E$ green, circles show expanding wavefronts of pulses from Event 2 and 3}
+	\label{fig:eight-times-of-interest-in-scenario-2b}
 \end{figure}
+\begin{itemize}
+\item The rod lengths are $L=1$ light-second in rest length.
+\item observers $A$, $B$, and $E$ are all $D=3$ light-seconds above
+  the line of the rods.
+\item $A$ and rod $R$ at rest so $\beta_R=0$.
+\item $B$, $E$, and rod $S$ are moving from left to right with speed
+  $\beta_S=0.866$, so $\gamma_S=2$, and rod $S$ is length-contracted
+  by a factor of 2.
+\item The value of $Z=-2.884$ light-seconds was chosen so that $E$ and
+  $A$ receive the pulse for event 3 at the same time and place.
+\end{itemize}
+Each sub-figure is labeled with its time in seconds, as measured on
+$A$'s clock (at rest relative to the ether frame), and has a brief
+description of the event of interest that occurs at that time.
+
+Figure~\ref{fig:compare-d_E-to-d_A-D-3} compares the values of $d_E$ and
+$d_A$ when $E$ and $A$ receive pulse 3 at the same time and place, for
+$\beta_R = 0$, and all values of $\beta_S$ from 0.001 up to 0.999.
+$L=1$ light-second, and $D=3$ light-seconds.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{scen2b-where-E-starts-to-receive-pulse-3-at-A-location-D-3.0-beta_R-0.000.pdf}
+	\caption{Comparing $d_E$ to $d_A$ when $E$ and $A$ receive pulse 3 at the same time and place, $D=3$}
+	\label{fig:compare-d_E-to-d_A-D-3}
+\end{figure}
+The previous series of 8 figures has the measurements from this figure
+for $\beta_S=0.866$.
 
 Let us examine the curves one at a time.  The curve labeled $Z/D$
 shows the value of $Z$ that leads to $E$ and $A$ being at the same
-place when they both receive the pulse for Event 3.  It appears to be
-a straight line, suggesting that either $Z = -\beta_S D$, or quite
+place when they both receive the pulse for Event 3.  It appears close
+to a straight line, suggesting that either $Z = -\beta_S D$, or quite
 close to it.  As can be seen by examining the curve labeled
 $Z+(beta*D)$, we see that $Z$ is always lower than $-\beta_SD$, but
 never by more than 0.5.
 
-The top curve with both stars and X's labeling it are two curves that
-are so close that one overlaps the other at this scale: the curves
-labeled \textbf{d\_E\_restclock} and \textbf{d\_A\_restclock}.  The
-curve with label beginning \textbf{1000} shows that $d_E$ and $d_A$
-are not equal, but they never differ by more than about 1 part in
-4000.
+The top two curves with stars and X's labeling them
+\textbf{d\_E\_restclock} and \textbf{d\_A\_restclock}.  The curve with
+label beginning \textbf{1} shows that $d_E$ is always larger than
+$d_A$, but never by more than about 5\%.
 
 The curve labeled \textbf{d\_E\_Bclock} shows the value of
 $d_E / \gamma_S$, i.e. the difference between receiving the pulses
 from Event 3, minus the time that the pulse from Event 2 is received,
 by $E$, measured on its own clock that is running slower than the rest
 clock by a factor of $1/\gamma_S$.
+
+Figure~\ref{fig:compare-d_E-to-d_A-D-1000} is the same as
+Figure~\ref{fig:compare-d_E-to-d_A-D-3}, except it is for $D=1000$, so
+all of the observers are much further away from the rods.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{scen2b-where-E-starts-to-receive-pulse-3-at-A-location-D-1000.0-beta_R-0.000.pdf}
+	\caption{Comparing $d_E$ to $d_A$ when $E$ and $A$ receive pulse 3 at the same time and place, $D=1000$}
+	\label{fig:compare-d_E-to-d_A-D-1000}
+\end{figure}
+Here the top two curves with stars and X's labeling them are so close
+that one overlaps the other at this scale: the curves labeled
+\textbf{d\_E\_restclock} and \textbf{d\_A\_restclock}.
+The curve with label beginning \textbf{1000} shows that $d_E$ and
+$d_A$ are not equal, but they never differ by more than about 1 part
+in 4000.
 
 
 \section{Special Relativity Scenario 3b: Angled rods length-contracted diagonally}
