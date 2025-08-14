@@ -365,6 +365,7 @@ def debug_printing(L, beta_R, beta_S, D):
 # Calculate beta_S such that gamma_S will be 2.0
 desired_gamma_S = 2.0
 beta_S = np.sqrt(1-1/(desired_gamma_S**2))
+D = 3
 debug_printing(L, beta_R, beta_S, D)
 
 # Make plots that are drawings of the physical positions of all
