@@ -8,6 +8,12 @@ import matplotlib.animation as anim
 import scen2b as scen
 
 
+global_artists_dict = {}
+global_artists_lst = []
+global_ax = None
+global_params = {}
+
+
 def update_artist_objects_for_time_t(L, beta_R, beta_S, D, t, Xmax,
                                      verbose=False):
     if verbose:
@@ -70,40 +76,24 @@ def update_artist_objects_for_time_t(L, beta_R, beta_S, D, t, Xmax,
 
 
 
-global_artists_dict = {}
-global_artists_lst = []
-global_ax = None
-global_L = None
-global_beta_R = None
-global_beta_S = None
-global_D = None
-global_Xmax = None
-global_min_t = None
+def init_global_params(L, beta_R, beta_S, D, Xmax, min_t):
+    global global_params
+    params = global_params
+    params['L'] = L
+    params['beta_R'] = beta_R
+    params['beta_S'] = beta_S
+    params['D'] = D
+    params['Xmax'] = Xmax
+    params['min_t'] = min_t
 
-def init_globals(L, beta_R, beta_S, D, Xmax, min_t):
-    global global_L
-    global global_beta_R
-    global global_beta_S
-    global global_D
-    global global_Xmax
-    global global_min_t
-    global_L = L
-    global_beta_R = beta_R
-    global_beta_S = beta_S
-    global_D = D
-    global_Xmax = Xmax
-    global_min_t = min_t
 
 def init_animation():
-    global global_ax
-    global global_L
-    global global_beta_R
-    global global_beta_S
-    global global_D
-    global global_Xmax
     global global_artists_dict
     global global_artists_lst
+    global global_ax
+    global global_params
 
+    params = global_params
     rect = patches.Rectangle((0, 0), 0, 0, fill=False,
                              edgecolor='black', linewidth=2)
     global_artists_dict['rod_R'] = rect
@@ -134,9 +124,9 @@ def init_animation():
     global_ax.add_patch(rect)
     global_artists_lst.append(rect)
 
-    beta_R = global_beta_R
-    t = global_min_t
-    L = global_L
+    beta_R = params['beta_R']
+    t = params['min_t']
+    L = params['L']
 
     A_x = scen.rod_R_center_x_fn(beta_R, t)
     R_left_x = A_x - (L/2)
@@ -163,21 +153,18 @@ def init_animation():
     global_ax.add_patch(circle)
     global_artists_lst.append(circle)
 
-    update_artist_objects_for_time_t(global_L, global_beta_R,
-                                     global_beta_S, global_D,
-                                     global_min_t, global_Xmax)
+    update_artist_objects_for_time_t(params['L'], params['beta_R'],
+                                     params['beta_S'], params['D'],
+                                     params['min_t'], params['Xmax'])
     return global_artists_lst
 
 
 def animate(t):
-    global global_L
-    global global_beta_R
-    global global_beta_S
-    global global_D
-    global global_Xmax
-    update_artist_objects_for_time_t(global_L, global_beta_R,
-                                     global_beta_S, global_D,
-                                     t, global_Xmax)
+    global global_params
+    params = global_params
+    update_artist_objects_for_time_t(params['L'], params['beta_R'],
+                                     params['beta_S'], params['D'],
+                                     t, params['Xmax'])
     return global_artists_lst
 
 
@@ -222,7 +209,7 @@ def make_plots_of_interesting_times(L, beta_R, beta_S, D):
         frame_lst.append(t)
         t += delta_t
 
-    init_globals(L, beta_R, beta_S, D, Xmax, min_t)
+    init_global_params(L, beta_R, beta_S, D, Xmax, min_t)
 
     # Create the animation
     ani = anim.FuncAnimation(fig, animate, frames=frame_lst, interval=50,
