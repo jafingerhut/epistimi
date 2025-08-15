@@ -175,3 +175,57 @@ beta_R = 0.0
 desired_gamma_S = 2.0
 beta_S = np.sqrt(1-1/(desired_gamma_S**2))
 make_plots_of_interesting_times(L, beta_R, beta_S, D)
+
+# Consider light pulse emitted at Event 2 from left end of R.
+# It reaches B at time e_{2,B} (in A's frame).
+# Calculate direction of the pulse that arrives at B at that time.
+
+gamma_R = scen.gamma_fn(beta_R)
+gamma_S = scen.gamma_fn(beta_S)
+event_2_source = np.array([-L/2, 0])
+e2B = scen.e2B_fn(L, beta_S, beta_R, D)
+B_receiving_ev2_pulse = np.array([scen.rod_S_center_x_fn(L, gamma_R, gamma_S, beta_S, e2B), D])
+
+ev2_direction_at_B = B_receiving_ev2_pulse - event_2_source
+print("ev2_direction_at_B=%s" % (ev2_direction_at_B))
+mag = np.sqrt(np.dot(ev2_direction_at_B, ev2_direction_at_B))
+ev2_direction_at_B = ev2_direction_at_B / mag
+
+print("ev2_direction_at_B=%s" % (ev2_direction_at_B))
+
+# Now calculate the direction using from B's frame and aberration of
+# light from a moving source (rod R) to the receiver at rest (B).
+# Hopefully this direction will match what we found above.
+
+# Note; In B's frame, the source location is also (-L/2, 0), because
+# that is where the left end of rod R is when event 2 occurs, and
+# while B sees R as length-contracted, it sees S as its full rest
+# length.
+
+event_2_source = np.array([-L/2, 0])
+B_receiving_ev2_pulse = np.array([0,D])
+dir_before_boost_notunit = B_receiving_ev2_pulse - event_2_source
+print("dir_before_boost_notunit=%s" % (dir_before_boost_notunit))
+dir_before_boost = scen.normalize_to_unit_vector(dir_before_boost_notunit)
+print("dir_before_boost=%s" % (dir_before_boost))
+
+# parallel and perpendicular (perp) here refer to parallel and perpendicular
+# parts of the light direction vector, relative to the velocity vector
+# of the source rod R, which is moving to the left in the x direction,
+# relative to B at speed v_S.
+
+print("Try boost in -x direction")
+dir_after_boost_parallel = (dir_before_boost[0] - beta_S) / (1 - (beta_S*dir_before_boost[0]))
+dir_after_boost_perp = dir_before_boost[1] / (gamma_S * (1 - beta_S * dir_before_boost[0]))
+dir_after_boost_notunit = np.array([dir_after_boost_parallel, dir_after_boost_perp])
+#print("dir_after_boost_notunit=%s" % (dir_after_boost_notunit))
+dir_after_boost = scen.normalize_to_unit_vector(dir_after_boost_notunit)
+print("dir_after_boost=%s" % (dir_after_boost))
+
+print("Try boost in +x direction")
+dir_after_boost_parallel = (dir_before_boost[0] + beta_S) / (1 + (beta_S*dir_before_boost[0]))
+dir_after_boost_perp = dir_before_boost[1] / (gamma_S * (1 + beta_S * dir_before_boost[0]))
+dir_after_boost_notunit = np.array([dir_after_boost_parallel, dir_after_boost_perp])
+#print("dir_after_boost_notunit=%s" % (dir_after_boost_notunit))
+dir_after_boost = scen.normalize_to_unit_vector(dir_after_boost_notunit)
+print("dir_after_boost=%s" % (dir_after_boost))

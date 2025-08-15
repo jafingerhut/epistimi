@@ -6,6 +6,10 @@ import matplotlib.patches as patches
 import matplotlib.animation as anim
 
 
+def normalize_to_unit_vector(v):
+    mag = np.sqrt(np.dot(v, v))
+    return v / mag
+
 def rod_R_center_x_fn(beta_R, t):
     return 0 + beta_R * t
 
