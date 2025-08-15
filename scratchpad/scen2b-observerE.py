@@ -37,123 +37,70 @@ beta_S = np.sqrt(1-1/(desired_gamma_S**2))
 D = 3
 scen.debug_printing(L, beta_R, beta_S, D)
 
-# Make plots that are drawings of the physical positions of all
-# relevant objects at interesting times, all times and distances
-# measured in the rest frame.
-
-# t=0 Event 1
-# q2 Event 2
-# q3 Event 3
-# e_{2,E} E receives pulse 2
-# e_{2,A} A receives pulse 2
 
 def make_position_plot_of_one_time(ax, L, beta_R, beta_S, D, t, Xmax,
                                    desc_str, verbose=False):
     if verbose:
         print("--------------------")
-    gamma_S = scen.gamma_fn(beta_S)
-    gamma_R = scen.gamma_fn(beta_R)
-    Z = scen.Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S, beta_R)
-    q2 = scen.q2_fn(L, gamma_S, beta_S, beta_R)
-    q3 = scen.q3_fn(L, gamma_R, beta_S, beta_R)
-
-    #plt.title("L=%.1f D=%.1f beta_S=%.3f t=%.3f" % (L, D, beta_S, t))
-    A_x = scen.rod_R_center_x_fn(beta_R, t)
-    A_y = D
-    A_width = L/20
-    A_height = L/20
-    if verbose:
-        print("beta_R=%.3f gamma_R=%.3f" % (beta_R, gamma_R))
-        print("beta_S=%.3f gamma_S=%.3f" % (beta_S, gamma_S))
-
-    B_x = scen.rod_S_center_x_fn(L, gamma_R, gamma_S, beta_S, t)
-    B_y = D
-    B_width = L/20
-    B_height = L/20
-
-    E_x = B_x + Z
-    E_y = D
-    E_width = L/20
-    E_height = L/20
-
-    R_left_x = A_x - (L/2)
-    R_right_x = A_x + (L/2)
-    R_width = L
-    R_height = L/10
-    R_y = 0
-    S_left_x = B_x - (L/(2*gamma_S))
-    #S_right_x = B_x + (L/(2*gamma_S))
-    S_width = (L/gamma_S)
-    # Draw S slightly above R
-    S_y = L/10
-    S_height = L/10
-    pulse_2_center_x = R_left_x
-    pulse_2_center_y = 0
-    draw_pulse_2 = False
-    if verbose:
-        print("t=%.3f q2=%.3f q3=%.3f" % (t, q2, q3))
-    if t >= q2:
-        draw_pulse_2 = True
-        pulse_2_radius = (t - q2)
-    pulse_3_center_x = R_right_x
-    pulse_3_center_y = 0
-    draw_pulse_3 = False
-    if t >= q3:
-        draw_pulse_3 = True
-        pulse_3_radius = (t - q3)
+    d = scen.calc_draw_state(L, beta_R, beta_S, D, t, verbose)
 
     # Draw rod R
-    rect = patches.Rectangle((R_left_x, R_y-(R_height/2)),
-                             R_width, R_height, fill=False,
+    rect = patches.Rectangle((d['R_left_x'], d['R_y'] - (d['R_height']/2)),
+                             d['R_width'], d['R_height'], fill=False,
                              edgecolor='black', linewidth=2)
     ax.add_patch(rect)
 
     # Draw observer A
-    rect = patches.Rectangle((A_x-(A_width/2), A_y-(A_height/2)),
-                             A_width, A_height, fill=False,
+    rect = patches.Rectangle((d['A_x'] - (d['A_width']/2), d['A_y'] - (d['A_height']/2)),
+                             d['A_width'], d['A_height'], fill=False,
                              edgecolor='black', linewidth=2)
     ax.add_patch(rect)
 
     # Draw rod S
     if verbose:
-        print("A_x=%.3f B_x=%.3f" % (A_x, B_x))
-        print("S_left_x=%.3f S_width=%.3f" % (S_left_x, S_width))
-    rect = patches.Rectangle((S_left_x, L/20), S_width, L/10, fill=False,
+        print("A_x=%.3f B_x=%.3f" % (d['A_x'], d['B_x']))
+        print("S_left_x=%.3f S_width=%.3f" % (d['S_left_x'], d['S_width']))
+    rect = patches.Rectangle((d['S_left_x'], d['S_y'] - (d['S_height']/2)),
+                             d['S_width'], d['S_height'], fill=False,
                              edgecolor='red', linewidth=2)
     ax.add_patch(rect)
 
     # Draw observer B
-    rect = patches.Rectangle((B_x-(B_width/2), B_y-(B_height/2)),
-                             B_width, B_height, fill=False,
+    rect = patches.Rectangle((d['B_x'] - (d['B_width']/2), d['B_y'] - (d['B_height']/2)),
+                             d['B_width'], d['B_height'], fill=False,
                              edgecolor='red', linewidth=2)
     ax.add_patch(rect)
 
     # Draw observer E
-    rect = patches.Rectangle((E_x-(E_width/2), E_y-(E_height/2)),
-                             E_width, E_height, fill=False,
+    rect = patches.Rectangle((d['E_x'] - (d['E_width']/2), d['E_y'] - (d['E_height']/2)),
+                             d['E_width'], d['E_height'], fill=False,
                              edgecolor='green', linewidth=2)
     ax.add_patch(rect)
 
     # Draw wavefront of pulse 2, if it has been emitted
-    if draw_pulse_2:
-        circle = patches.Circle((pulse_2_center_x, pulse_2_center_y),
-                                pulse_2_radius, color='blue', fill=False,
+    if d['draw_pulse_2']:
+        circle = patches.Circle((d['pulse_2_center_x'], d['pulse_2_center_y']),
+                                d['pulse_2_radius'], color='blue', fill=False,
                                 linewidth=2)
         ax.add_patch(circle)
     # Draw wavefront of pulse 3, if it has been emitted
-    if draw_pulse_3:
-        circle = patches.Circle((pulse_3_center_x, pulse_3_center_y),
-                                pulse_3_radius, color='red', fill=False,
+    if d['draw_pulse_3']:
+        circle = patches.Circle((d['pulse_3_center_x'], d['pulse_3_center_y']),
+                                d['pulse_3_radius'], color='red', fill=False,
                                 linewidth=2)
         ax.add_patch(circle)
     ax.set_aspect('equal', adjustable='box')
     #ax.set_aspect('equal', adjustable='datalim')
 
+    Z = scen.Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S, beta_R)
     ax.set_xlim(Z-L, Xmax)
     ax.set_ylim(-1, D+1)
     ax.set_title("t=%.3f %s" % (t, desc_str))
 
 
+# Make plots that are drawings of the physical positions of all
+# relevant objects at interesting times, all times and distances
+# measured in the rest frame.
 def make_plots_of_interesting_times(L, beta_R, beta_S, D):
     print("--------------------")
     gamma_S = scen.gamma_fn(beta_S)

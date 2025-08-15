@@ -12,107 +12,58 @@ def update_artist_objects_for_time_t(L, beta_R, beta_S, D, t, Xmax,
                                      verbose=False):
     if verbose:
         print("--------------------")
-    gamma_S = scen.gamma_fn(beta_S)
-    gamma_R = scen.gamma_fn(beta_R)
-    Z = scen.Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S, beta_R)
-    q2 = scen.q2_fn(L, gamma_S, beta_S, beta_R)
-    q3 = scen.q3_fn(L, gamma_R, beta_S, beta_R)
-
-    #plt.title("L=%.1f D=%.1f beta_S=%.3f t=%.3f" % (L, D, beta_S, t))
-    A_x = scen.rod_R_center_x_fn(beta_R, t)
-    A_y = D
-    A_width = L/20
-    A_height = L/20
-    if verbose:
-        print("beta_R=%.3f gamma_R=%.3f" % (beta_R, gamma_R))
-        print("beta_S=%.3f gamma_S=%.3f" % (beta_S, gamma_S))
-
-    B_x = scen.rod_S_center_x_fn(L, gamma_R, gamma_S, beta_S, t)
-    B_y = D
-    B_width = L/20
-    B_height = L/20
-
-    E_x = B_x + Z
-    E_y = D
-    E_width = L/20
-    E_height = L/20
-
-    R_left_x = A_x - (L/2)
-    R_right_x = A_x + (L/2)
-    R_width = L
-    R_height = L/10
-    R_y = 0
-    S_left_x = B_x - (L/(2*gamma_S))
-    #S_right_x = B_x + (L/(2*gamma_S))
-    S_width = (L/gamma_S)
-    # Draw S slightly above R
-    S_y = L/10
-    S_height = L/10
-    pulse_2_center_x = R_left_x
-    pulse_2_center_y = 0
-    draw_pulse_2 = False
-    if verbose:
-        print("t=%.3f q2=%.3f q3=%.3f" % (t, q2, q3))
-    if t >= q2:
-        draw_pulse_2 = True
-        pulse_2_radius = (t - q2)
-    pulse_3_center_x = R_right_x
-    pulse_3_center_y = 0
-    draw_pulse_3 = False
-    if t >= q3:
-        draw_pulse_3 = True
-        pulse_3_radius = (t - q3)
+    d = scen.calc_draw_state(L, beta_R, beta_S, D, t, verbose)
 
     # Update rod R
     rect = global_artists_dict['rod_R']
-    rect.set_x(R_left_x)
-    rect.set_y(R_y-(R_height/2))
-    rect.set_width(R_width)
-    rect.set_height(R_height)
+    rect.set_x(d['R_left_x'])
+    rect.set_y(d['R_y'] - (d['R_height']/2))
+    rect.set_width(d['R_width'])
+    rect.set_height(d['R_height'])
 
     # Update observer A
     rect = global_artists_dict['observer_A']
-    rect.set_x(A_x-(A_width/2))
-    rect.set_y(A_y-(A_height/2))
-    rect.set_width(A_width)
-    rect.set_height(A_height)
+    rect.set_x(d['A_x'] - (d['A_width']/2))
+    rect.set_y(d['A_y'] - (d['A_height']/2))
+    rect.set_width(d['A_width'])
+    rect.set_height(d['A_height'])
 
     # Update rod S
     if verbose:
         print("A_x=%.3f B_x=%.3f" % (A_x, B_x))
         print("S_left_x=%.3f S_width=%.3f" % (S_left_x, S_width))
     rect = global_artists_dict['rod_S']
-    rect.set_x(S_left_x)
-    rect.set_y(S_y-(S_height/2))
-    rect.set_width(S_width)
-    rect.set_height(S_height)
+    rect.set_x(d['S_left_x'])
+    rect.set_y(d['S_y'] - (d['S_height']/2))
+    rect.set_width(d['S_width'])
+    rect.set_height(d['S_height'])
 
     # Update observer B
     rect = global_artists_dict['observer_B']
-    rect.set_x(B_x-(B_width/2))
-    rect.set_y(B_y-(B_height/2))
-    rect.set_width(B_width)
-    rect.set_height(B_height)
+    rect.set_x(d['B_x'] - (d['B_width']/2))
+    rect.set_y(d['B_y'] - (d['B_height']/2))
+    rect.set_width(d['B_width'])
+    rect.set_height(d['B_height'])
 
     # Update observer E
     rect = global_artists_dict['observer_E']
-    rect.set_x(E_x-(E_width/2))
-    rect.set_y(E_y-(E_height/2))
-    rect.set_width(E_width)
-    rect.set_height(E_height)
+    rect.set_x(d['E_x'] - (d['E_width']/2))
+    rect.set_y(d['E_y'] - (d['E_height']/2))
+    rect.set_width(d['E_width'])
+    rect.set_height(d['E_height'])
 
     # Update wavefront of pulse 2
     circle = global_artists_dict['pulse_2_wavefront']
-    if draw_pulse_2:
-        tmp_radius = pulse_2_radius
+    if d['draw_pulse_2']:
+        tmp_radius = d['pulse_2_radius']
     else:
         tmp_radius = 0
     circle.set_radius(tmp_radius)
 
     # Update wavefront of pulse 3
     circle = global_artists_dict['pulse_3_wavefront']
-    if draw_pulse_3:
-        tmp_radius = pulse_3_radius
+    if d['draw_pulse_3']:
+        tmp_radius = d['pulse_3_radius']
     else:
         tmp_radius = 0
     circle.set_radius(tmp_radius)

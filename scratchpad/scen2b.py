@@ -363,3 +363,61 @@ def interesting_event_list(L, beta_R, beta_S, D):
     event_lst.append({'t': e3B, 'title': 'Pulse from event 3 reaches B'})
     event_lst.append({'t': e2B, 'title': 'Pulse from event 2 reaches B'})
     return event_lst
+
+
+def calc_draw_state(L, beta_R, beta_S, D, t, verbose=False):
+    d = {}
+    gamma_S = gamma_fn(beta_S)
+    gamma_R = gamma_fn(beta_R)
+    Z = Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S, beta_R)
+    q2 = q2_fn(L, gamma_S, beta_S, beta_R)
+    q3 = q3_fn(L, gamma_R, beta_S, beta_R)
+
+    d['A_x'] = rod_R_center_x_fn(beta_R, t)
+    d['A_y'] = D
+    d['A_width'] = L/20
+    d['A_height'] = L/20
+    if verbose:
+        print("beta_R=%.3f gamma_R=%.3f" % (beta_R, gamma_R))
+        print("beta_S=%.3f gamma_S=%.3f" % (beta_S, gamma_S))
+
+    d['B_x'] = rod_S_center_x_fn(L, gamma_R, gamma_S, beta_S, t)
+    d['B_y'] = D
+    d['B_width'] = L/20
+    d['B_height'] = L/20
+
+    d['E_x'] = d['B_x'] + Z
+    d['E_y'] = D
+    d['E_width'] = L/20
+    d['E_height'] = L/20
+
+    d['R_left_x'] = d['A_x'] - (L/2)
+    d['R_right_x'] = d['A_x'] + (L/2)
+    d['R_width'] = L
+    d['R_height'] = L/10
+    d['R_y'] = 0
+
+    d['S_left_x'] = d['B_x'] - (L/(2*gamma_S))
+    #S_right_x = B_x + (L/(2*gamma_S))
+    d['S_width'] = (L/gamma_S)
+    d['S_height'] = L/10
+    # Draw S slightly above R
+    d['S_y'] = L/10
+
+    d['pulse_2_center_x'] = d['R_left_x']
+    d['pulse_2_center_y'] = d['R_y']
+    d['draw_pulse_2'] = False
+    if verbose:
+        print("t=%.3f q2=%.3f q3=%.3f" % (t, q2, q3))
+    if t >= q2:
+        d['draw_pulse_2'] = True
+        d['pulse_2_radius'] = (t - q2)
+
+    d['pulse_3_center_x'] = d['R_right_x']
+    d['pulse_3_center_y'] = d['R_y']
+    d['draw_pulse_3'] = False
+    if t >= q3:
+        d['draw_pulse_3'] = True
+        d['pulse_3_radius'] = (t - q3)
+
+    return d
