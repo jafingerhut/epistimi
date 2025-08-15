@@ -375,34 +375,34 @@ def calc_draw_state(L, beta_R, beta_S, D, t, verbose=False):
 
     d['A_x'] = rod_R_center_x_fn(beta_R, t)
     d['A_y'] = D
-    d['A_width'] = L/20
-    d['A_height'] = L/20
+    d['A_width'] = D/60
+    d['A_height'] = D/60
     if verbose:
         print("beta_R=%.3f gamma_R=%.3f" % (beta_R, gamma_R))
         print("beta_S=%.3f gamma_S=%.3f" % (beta_S, gamma_S))
 
     d['B_x'] = rod_S_center_x_fn(L, gamma_R, gamma_S, beta_S, t)
     d['B_y'] = D
-    d['B_width'] = L/20
-    d['B_height'] = L/20
+    d['B_width'] = D/60
+    d['B_height'] = D/60
 
     d['E_x'] = d['B_x'] + Z
     d['E_y'] = D
-    d['E_width'] = L/20
-    d['E_height'] = L/20
+    d['E_width'] = D/60
+    d['E_height'] = D/60
 
     d['R_left_x'] = d['A_x'] - (L/2)
     d['R_right_x'] = d['A_x'] + (L/2)
     d['R_width'] = L
-    d['R_height'] = L/10
+    d['R_height'] = D/30
     d['R_y'] = 0
 
     d['S_left_x'] = d['B_x'] - (L/(2*gamma_S))
     #S_right_x = B_x + (L/(2*gamma_S))
     d['S_width'] = (L/gamma_S)
-    d['S_height'] = L/10
+    d['S_height'] = D/30
     # Draw S slightly above R
-    d['S_y'] = L/10
+    d['S_y'] = D/30
 
     d['pulse_2_center_x'] = d['R_left_x']
     d['pulse_2_center_y'] = d['R_y']
