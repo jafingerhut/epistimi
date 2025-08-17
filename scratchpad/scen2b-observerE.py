@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 import scen2b as scen
+import aberration as abr
 
 
 for beta_S in [0.5, 0.7, 0.8, 0.866, 0.99]:
@@ -176,22 +177,68 @@ desired_gamma_S = 2.0
 beta_S = np.sqrt(1-1/(desired_gamma_S**2))
 make_plots_of_interesting_times(L, beta_R, beta_S, D)
 
+print("--------------------------------------------------")
+print("Calculations of directions, including aberration")
+print("--------------------------------------------------")
+event_2_source = np.array([-L/2, 0])
+event_3_source = np.array([L/2, 0])
+
+gamma_R = scen.gamma_fn(beta_R)
+gamma_S = scen.gamma_fn(beta_S)
+
+plus_x_direction = np.array([1, 0])
+
+# First calculate directions from which A will receive event 2 and 3
+# pulses.  Here the source and receiver are all at rest relative to
+# one another, so aberration is 0.
+
+A_location = np.array([0,D])
+direction_A_to_ev2 = event_2_source - A_location
+direction_A_to_ev3 = event_3_source - A_location
+print("direction_A_to_ev2=%s angle with +x axis (deg)=%.3f"
+      "" % (direction_A_to_ev2,
+            abr.rad2deg(abr.angle_between_vectors_rad(plus_x_direction,
+                                                      direction_A_to_ev2))))
+print("direction_A_to_ev3=%s angle with +x axis (deg)=%.3f"
+      "" % (direction_A_to_ev3,
+            abr.rad2deg(abr.angle_between_vectors_rad(plus_x_direction,
+                                                      direction_A_to_ev3))))
+
 # Consider light pulse emitted at Event 2 from left end of R.
 # It reaches B at time e_{2,B} (in A's frame).
 # Calculate direction of the pulse that arrives at B at that time.
 
-gamma_R = scen.gamma_fn(beta_R)
-gamma_S = scen.gamma_fn(beta_S)
-event_2_source = np.array([-L/2, 0])
+print("")
 e2B = scen.e2B_fn(L, beta_S, beta_R, D)
 B_receiving_ev2_pulse = np.array([scen.rod_S_center_x_fn(L, gamma_R, gamma_S, beta_S, e2B), D])
+direction_B_to_ev2 = event_2_source - B_receiving_ev2_pulse
+print("direction_B_to_ev2=%s" % (direction_B_to_ev2))
+direction_B_to_ev2 = scen.normalize_to_unit_vector(direction_B_to_ev2)
+print("direction_B_to_ev2 (unit vec)=%s" % (direction_B_to_ev2))
+angle_rad = abr.angle_between_vectors_rad(plus_x_direction, direction_B_to_ev2)
+print("angle between +x axis and direction_B_to_ev2 (deg): %.3f"
+      "" % (abr.rad2deg(angle_rad)))
 
-ev2_direction_at_B = B_receiving_ev2_pulse - event_2_source
-print("ev2_direction_at_B=%s" % (ev2_direction_at_B))
-mag = np.sqrt(np.dot(ev2_direction_at_B, ev2_direction_at_B))
-ev2_direction_at_B = ev2_direction_at_B / mag
+print("")
+print("Try using relativistic formula for aberration to calculate direction at which observer at B sees light pulse from event 2 arriving")
+adjusted_angle_rad = abr.relativistic_aberration(beta_S, angle_rad)
+print("aberration-adjusted angle between +x axis and direction_B_to_ev2 (deg): %.3f"
+      "" % (abr.rad2deg(adjusted_angle_rad)))
 
-print("ev2_direction_at_B=%s" % (ev2_direction_at_B))
+
+print("")
+e3B = scen.e3B_fn(L, beta_S, beta_R, D)
+B_receiving_ev3_pulse = np.array([scen.rod_S_center_x_fn(L, gamma_R, gamma_S, beta_S, e3B), D])
+direction_B_to_ev3 = event_3_source - B_receiving_ev3_pulse
+print("direction_B_to_ev3=%s" % (direction_B_to_ev3))
+direction_B_to_ev3 = scen.normalize_to_unit_vector(direction_B_to_ev3)
+print("direction_B_to_ev3 (unit vec)=%s" % (direction_B_to_ev3))
+angle_rad = abr.angle_between_vectors_rad(plus_x_direction, direction_B_to_ev3)
+print("angle between +x axis and direction_B_to_ev3 (deg): %.3f"
+      "" % (abr.rad2deg(angle_rad)))
+adjusted_angle_rad = abr.relativistic_aberration(beta_S, angle_rad)
+print("aberration-adjusted angle between +x axis and direction_B_to_ev3 (deg): %.3f"
+      "" % (abr.rad2deg(adjusted_angle_rad)))
 
 # Now calculate the direction using from B's frame and aberration of
 # light from a moving source (rod R) to the receiver at rest (B).
@@ -202,12 +249,18 @@ print("ev2_direction_at_B=%s" % (ev2_direction_at_B))
 # while B sees R as length-contracted, it sees S as its full rest
 # length.
 
+print("")
 event_2_source = np.array([-L/2, 0])
 B_receiving_ev2_pulse = np.array([0,D])
 dir_before_boost_notunit = B_receiving_ev2_pulse - event_2_source
 print("dir_before_boost_notunit=%s" % (dir_before_boost_notunit))
 dir_before_boost = scen.normalize_to_unit_vector(dir_before_boost_notunit)
 print("dir_before_boost=%s" % (dir_before_boost))
+
+angle_deg = abr.rad2deg(abr.angle_between_vectors_rad(plus_x_direction,
+                                                      -dir_before_boost))
+print("angle between +x axis and -dir_before_boost (deg): %.3f"
+      "" % (angle_deg))
 
 # parallel and perpendicular (perp) here refer to parallel and perpendicular
 # parts of the light direction vector, relative to the velocity vector
