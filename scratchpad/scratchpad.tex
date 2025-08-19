@@ -1581,7 +1581,9 @@ indicate that $B$ receives the pulses from nearly straight down, but
 $A$ would receive them from a diagonal direction down and to the
 right?  Does it make a difference whether the light pulses are emitted
 from rod $R$ or $S$, as to which direction $A$, $B$ see them come
-from?  If so, why?
+from?  If so, why?  I believe the answer is that $A$ sees the direction of
+the pulses from nearly straight down.  $B$ sees them from the same direction
+that $A$ does, because of aberration due to $B$'s motion.
 
 Figure~\ref{fig:compare-d_E-to-d_A-D-3} compares the values of $d_E$ and
 $d_A$ when $E$ and $A$ receive pulse 3 at the same time and place, for
@@ -2526,27 +2528,30 @@ correct.
 
 \begin{lemma}
 \label{lem:aberrationByRelVelAdd}
-Let $\vect{v}$ be the relativistic velocity of an observer relative to
-the sender of a light beam/pulse, i.e. the velocity as a fraction of
-light speed $c$, so $0 < |\vect{v}| < 1$.
-Let the unit vector $\vect{u}$ be the direction the light beam/pulse
-travels from the source to the observer.
+Let $\vect{v}$ be the velocity of an observer relative to
+the sender of a light beam.
+Let the vector $\vect{u}$ be the direction the light beam
+travels from the source to the observer, with $|\vect{u}|=c$.
 Then after aberration is taken into account, the direction which the
-light beam/pulse appears to the observer to arrive is
-$\vect{v} \oplus \vect{u}$.
+light beam appears to the observer to arrive is
+$\vect{v} \oplus \vect{u}$,
+and $|\vect{v} \oplus \vect{u}| = c$.
 \end{lemma}
 
 \begin{proof}
 According to Lemma~\ref{lem:angleBetweenVplusUandV}, the angle $\phi$
 between $\vect{v} \oplus \vect{u}$ and $\vect{v}$ satisfies:
 \begin{equation}
-\tan \phi = \frac{\sin \theta}{\gamma(v + \cos \theta)}
+\tan \phi = \frac{\sin \theta}{\gamma(v/c + \cos \theta)}
 \end{equation}
 where $\theta$ is the angle between $\vect{v}$ and $\vect{u}$.
 Furthermore, $\vect{v} \oplus \vect{u}$ lies in the same plane as
 vectors $\vect{v}$ and $\vect{u}$, and so does the apparent direction
-from which the light beam/pulse arrives according to earlier in this
+from which the light beam arrives according to earlier in this
 section.
+
+By Corollary~\ref{cor:magVplusC}, the magnitude of $\vect{v} \oplus
+\vect{u}$ is equal to $c$.
 \end{proof}
 
 
@@ -2558,13 +2563,12 @@ Equation~\eqref{eqn:aberration-angle}.
 
 \begin{lemma}
 \label{lem:angleBetweenVplusUandV}
-Given a non-0 vector $\vect{v}$ with magnitude in the range $(0,c)$,
-and a vector $\vect{u}$ with magnitude $c$,
-with an angle $\theta$ between $\vect{v}$ and $\vect{u}$,
+Given non-0 vectors $\vect{v}$ and $\vect{u}$
+with angle $\theta$ between them,
 the following equation is true for the angle $\phi$ between
 $\vect{v} \oplus \vect{u}$ and $\vect{v}$:
 \begin{equation}
-\tan \phi = \frac{\sin \theta}{\gamma(v/c + \cos \theta)}
+\tan \phi = \frac{\sin \theta}{\gamma(v/u + \cos \theta)}
 \end{equation}
 \end{lemma}
 
@@ -2590,30 +2594,52 @@ First we will derive an equation equal to $|\vect{v} \oplus \vect{u}|$:
   & = (\frac{ \vect{v} + \vect{u}_{\parallel} }{K} + \frac{\vect{u}_{\perp}}{\gamma K}) \cdot (\frac{ \vect{v} + \vect{u}_{\parallel} }{K} + \frac{\vect{u}_{\perp}}{\gamma K}) & & \text{defn. of $\vect{v} \oplus \vect{u}$} \nonumber \\
   & = \frac{1}{K^2} \left[ (\vect{v} + \vect{u}_{\parallel}) \cdot (\vect{v} + \vect{u}_{\parallel}) + \frac{1}{\gamma^2} (\vect{u}_{\perp} \cdot \vect{u}_{\perp}) \right] & & \text{other partial products are 0} \nonumber \\
   & = \frac{1}{K^2} \left[ |\vect{v} + \vect{u}_{\parallel}|^2 + \frac{u_{\perp}^2}{\gamma^2} \right] & & \text{algebra} \nonumber \\
-  & = \frac{1}{K^2} \left[ (v + c \cos \theta)^2 + \frac{c^2 \sin^2 \theta}{\gamma^2} \right] & & \text{$|\vect{u}_{\parallel}| = c \cos \theta$, $|\vect{u}_{\perp}| = c \sin \theta$} \label{eqn:lemmavplusupart1}
+  & = \frac{1}{K^2} \left[ (v + u \cos \theta)^2 + \frac{u^2 \sin^2 \theta}{\gamma^2} \right] & & \text{$|\vect{u}_{\parallel}| = u \cos \theta$, $|\vect{u}_{\perp}| = u \sin \theta$} \label{eqn:lemmavplusupart1}
 \end{align}
 Then an equation equal to $(\vect{v} \oplus \vect{u}) \cdot \vect{v}$:
 \begin{align}
 (\vect{v} \oplus \vect{u}) \cdot \vect{v}
   & = \frac{1}{K} \left[ (\vect{v} + \vect{u}_{\parallel}) \cdot \vect{v} + \frac{1}{\gamma} (\vect{u}_{\perp} \cdot \vect{v}) \right] & & \text{defn. of $\vect{v} \oplus \vect{u}$, algebra} \nonumber \\
   & = \frac{1}{K} |\vect{v} + \vect{u}_{\parallel}| |\vect{v}| & & \text{$\vect{v}$ and $\vect{u}_{\parallel}$ are parallel} \nonumber \\
-  & = \frac{v}{K} (v + c \cos \theta) \label{eqn:lemmavplusupart2}
+  & = \frac{v}{K} (v + u \cos \theta) \label{eqn:lemmavplusupart2}
 \end{align}
 Plugging those equations into Equation~\eqref{eqn:lemmavplusupart0}
 gives:
 \begin{align*}
 \cos \phi
-  & = \frac{ \frac{v}{K} (v + c \cos \theta) }{ v \sqrt{ \frac{1}{K^2} \left[ (v + c \cos \theta)^2 + \frac{c^2 \sin^2 \theta}{\gamma^2} \right] } } \\
-  & = \frac{ v + c \cos \theta }{ \sqrt{ (v + c \cos \theta)^2 + \frac{c^2 \sin^2 \theta}{\gamma^2} } } & & \text{algebra}
+  & = \frac{ \frac{v}{K} (v + u \cos \theta) }{ v \sqrt{ \frac{1}{K^2} \left[ (v + u \cos \theta)^2 + \frac{u^2 \sin^2 \theta}{\gamma^2} \right] } } \\
+  & = \frac{ v + u \cos \theta }{ \sqrt{ (v + u \cos \theta)^2 + \frac{u^2 \sin^2 \theta}{\gamma^2} } } & & \text{algebra}
 \end{align*}
 Note that $\cos \phi$ is of the form $a / \sqrt{a^2 + b^2}$.
 Thus $\sin \phi$ is equal to $b/ \sqrt{a^2 + b^2}$,
-and $\tan \phi = a/b$:
+and $\tan \phi = b/a$:
 \begin{align}
 \tan \phi
-  & = \frac{ \frac{c \sin \theta}{\gamma} }{ v + c \cos \theta } \nonumber \\
-  & = \frac{ \sin \theta }{ \gamma (v/c + \cos \theta) }
+  & = \frac{ \frac{u \sin \theta}{\gamma} }{ v + u \cos \theta } \nonumber \\
+  & = \frac{ \sin \theta }{ \gamma (v/u + \cos \theta) }
 \end{align}
+\end{proof}
+
+
+\begin{corollary}
+\label{cor:magVplusC}
+Given non-0 vectors $\vect{v}$ and $\vect{u}$ with $|\vect{u}|=c$,
+$|\vect{v} \oplus \vect{u}|=c$.
+\end{corollary}
+
+\begin{proof}
+\begin{align*}
+|\vect{v} \oplus \vect{u}|^2
+  & = \frac{1}{K^2} \left[ (v + u \cos \theta)^2 + \frac{u^2 \sin^2 \theta}{\gamma^2} \right] & & \text{Eqn.\eqref{eqn:lemmavplusupart1}} \\
+  & = \frac{1}{K^2} \left[ (v + c \cos \theta)^2 + c^2 \sin^2 \theta (1 - v^2/c^2) \right] & & \text{defn. of $\gamma$, $|\vect{u}|=c$} \\
+  & = \frac{c^2}{K^2} \left[ (\beta + \cos \theta)^2 + \sin^2 \theta (1 - \beta^2) \right] & & \text{algebra, $\beta = v/c$} \\
+  & = \frac{c^2}{K^2} \left[ \beta^2 + 2 \beta \cos \theta + \cos^2 \theta + \sin^2 \theta - \beta^2 \sin^2 \theta \right] & & \text{algebra} \\
+  & = \frac{c^2}{K^2} \left[ \beta^2 \cos^2 \theta + 2 \beta \cos \theta + 1 \right] & & \text{algebra} \\
+  & = \frac{c^2}{K^2} \left[ \beta \cos \theta + 1 \right]^2 & & \text{algebra} \\
+  & = \frac{c^2}{(1+\frac{vc \cos \theta}{c^2})^2} \left[ \beta \cos \theta + 1 \right]^2 & & \text{defn. of $K$} \\
+  & = \frac{c^2}{(1+\beta \cos \theta)^2} \left[ \beta \cos \theta + 1 \right]^2 & & \text{defn. of $K$} \\
+  & = c^2
+\end{align*}
 \end{proof}
 
 
