@@ -2449,6 +2449,174 @@ change.
 \end{figure}
 
 
+\section{Aberration}
+\label{app:aberration}
+
+The Wikipedia article on aberration in
+astronomy~\cite{AberrationAstronomy} is quite detailed, and I will not
+attempt to repeat it here.
+
+TODO: It would be good to add some more details here about the history
+of the physical theories explaining aberration, or at least the most
+modern understanding of the physical explanation of aberration
+according to Special Relativity and Lorentz Ether Theory.
+
+For now, I will simply give the most basic classical explanation of
+aberration, while warning the reader that this explanation does not
+help explain aberration for a telescope filled with a material like
+water with a refractive index significantly different than 1.
+
+See Figure~\ref{fig:classical-aberration} for a picture that helps
+visualize an early classical explanation of aberration.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{classical-aberration-cropped.pdf}
+	\caption{An early classical explanation of aberration}
+	\label{fig:classical-aberration}
+\end{figure}
+
+An outline of a telescope is shown moving from left to right with
+velocity $\vect{v}$.  A light beam arrives from a source at position
+1, from a direction that makes an angle $\theta$ with $\vect{v}$.  In
+this explanation, we consider that the light is moving with velocity
+$c$ relative to an ether that is at rest relative to the source, and
+the telescope is moving with velocity $\vect{v}$ relative to the
+ether.
+
+In the leftmost image of the telescope, earliest in time, the light
+beam enters the top of the telescope.  The middle image of the
+telescope shows a short time later, after the light beam has traveled
+about halfway down the length of the telescope, while the telescope is
+moving.  The right image of the telescope shows the light beam leaving
+the bottom end of the telescope.  The angle of the telescope has been
+chosen such that the light beam travels a path down the length of the
+telescope.  The circle labeled 2 shows the apparent position of the
+light from the source, at an angle $\phi$ away from the velocity
+vector $\vect{v}$.
+
+Figure~\ref{fig:classical-aberration-analysis} has all of the same
+angles between $\vect{v}$, the light beam, and the telescope.  The
+sides have been labeled with their lengths.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{classical-aberration-analysis.pdf}
+	\caption{Mathematical analysis of classical explanation of aberration}
+	\label{fig:classical-aberration-analysis}
+\end{figure}
+The side of the right triangle adjacent to angle $\theta$ has not been
+labeled in the figure.  It has length $c \cos \theta$.
+The side adjacent to angle $\phi$ thus has a total length equal to
+both sides of this equation:
+\begin{equation}
+s \cos \phi = v + c \cos \theta \nonumber
+\end{equation}
+That plus the identity $s \sin \phi = c \sin \theta$ gives:
+\begin{align}
+\frac{s \sin \phi}{s \cos \phi} & = \frac{c \sin \theta}{v + c \cos \theta} \nonumber \\
+\tan \phi & = \frac{\sin \theta}{v/c + \cos \theta} \label{eqn:classical-aberration-angle}
+\end{align}
+The correct equation for Special Relativity and Lorentz Ether Theory
+is given below.  Note: Currently we are giving this with no
+explanation of how it was derived or validated.  It would be best to
+include proof, or at least some evidence, for why this equation is
+correct.
+\begin{align}
+\tan \phi & = \frac{\sin \theta}{\gamma(v/c + \cos \theta)} \label{eqn:aberration-angle}
+\end{align}
+
+\begin{lemma}
+\label{lem:aberrationByRelVelAdd}
+Let $\vect{v}$ be the relativistic velocity of an observer relative to
+the sender of a light beam/pulse, i.e. the velocity as a fraction of
+light speed $c$, so $0 < |\vect{v}| < 1$.
+Let the unit vector $\vect{u}$ be the direction the light beam/pulse
+travels from the source to the observer.
+Then after aberration is taken into account, the direction which the
+light beam/pulse appears to the observer to arrive is
+$\vect{v} \oplus \vect{u}$.
+\end{lemma}
+
+\begin{proof}
+According to Lemma~\ref{lem:angleBetweenVplusUandV}, the angle $\phi$
+between $\vect{v} \oplus \vect{u}$ and $\vect{v}$ satisfies:
+\begin{equation}
+\tan \phi = \frac{\sin \theta}{\gamma(v + \cos \theta)}
+\end{equation}
+where $\theta$ is the angle between $\vect{v}$ and $\vect{u}$.
+Furthermore, $\vect{v} \oplus \vect{u}$ lies in the same plane as
+vectors $\vect{v}$ and $\vect{u}$, and so does the apparent direction
+from which the light beam/pulse arrives according to earlier in this
+section.
+\end{proof}
+
+
+\subsection{Relationship between relativistic velocity addition and aberration}
+
+First we will prove a mathematical relationship, then show how it is
+related to aberration, in particular
+Equation~\eqref{eqn:aberration-angle}.
+
+\begin{lemma}
+\label{lem:angleBetweenVplusUandV}
+Given a non-0 vector $\vect{v}$ with magnitude in the range $(0,c)$,
+and a vector $\vect{u}$ with magnitude $c$,
+with an angle $\theta$ between $\vect{v}$ and $\vect{u}$,
+the following equation is true for the angle $\phi$ between
+$\vect{v} \oplus \vect{u}$ and $\vect{v}$:
+\begin{equation}
+\tan \phi = \frac{\sin \theta}{\gamma(v/c + \cos \theta)}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+\begin{align*}
+\vect{v} \oplus \vect{u}
+  & = \frac{ \vect{v} + \vect{u}_{\parallel} }{K} + \frac{\vect{u}_{\perp}}{\gamma K} & & \text{Eqn.~\eqref{eqn:relVelocityAddComponents}}
+\end{align*}
+where:
+\begin{align*}
+\gamma & = \frac{1}{\sqrt{1 - v^2/c^2}} \\
+K & = 1 + \frac{\vect{v} \cdot \vect{u}}{c^2}
+\end{align*}
+The angle $\phi$ between $\vect{v} \oplus \vect{u}$ and $\vect{v}$
+satisfies:
+\begin{equation}
+\cos \phi = \frac{(\vect{v} \oplus \vect{u}) \cdot \vect{v}}{|\vect{v} \oplus \vect{u}| |\vect{v}|} \label{eqn:lemmavplusupart0}
+\end{equation}
+First we will derive an equation equal to $|\vect{v} \oplus \vect{u}|$:
+\begin{align}
+|\vect{v} \oplus \vect{u}|^2
+  & = (\vect{v} \oplus \vect{u}) \cdot (\vect{v} \oplus \vect{u}) \nonumber \\
+  & = (\frac{ \vect{v} + \vect{u}_{\parallel} }{K} + \frac{\vect{u}_{\perp}}{\gamma K}) \cdot (\frac{ \vect{v} + \vect{u}_{\parallel} }{K} + \frac{\vect{u}_{\perp}}{\gamma K}) & & \text{defn. of $\vect{v} \oplus \vect{u}$} \nonumber \\
+  & = \frac{1}{K^2} \left[ (\vect{v} + \vect{u}_{\parallel}) \cdot (\vect{v} + \vect{u}_{\parallel}) + \frac{1}{\gamma^2} (\vect{u}_{\perp} \cdot \vect{u}_{\perp}) \right] & & \text{other partial products are 0} \nonumber \\
+  & = \frac{1}{K^2} \left[ |\vect{v} + \vect{u}_{\parallel}|^2 + \frac{u_{\perp}^2}{\gamma^2} \right] & & \text{algebra} \nonumber \\
+  & = \frac{1}{K^2} \left[ (v + c \cos \theta)^2 + \frac{c^2 \sin^2 \theta}{\gamma^2} \right] & & \text{$|\vect{u}_{\parallel}| = c \cos \theta$, $|\vect{u}_{\perp}| = c \sin \theta$} \label{eqn:lemmavplusupart1}
+\end{align}
+Then an equation equal to $(\vect{v} \oplus \vect{u}) \cdot \vect{v}$:
+\begin{align}
+(\vect{v} \oplus \vect{u}) \cdot \vect{v}
+  & = \frac{1}{K} \left[ (\vect{v} + \vect{u}_{\parallel}) \cdot \vect{v} + \frac{1}{\gamma} (\vect{u}_{\perp} \cdot \vect{v}) \right] & & \text{defn. of $\vect{v} \oplus \vect{u}$, algebra} \nonumber \\
+  & = \frac{1}{K} |\vect{v} + \vect{u}_{\parallel}| |\vect{v}| & & \text{$\vect{v}$ and $\vect{u}_{\parallel}$ are parallel} \nonumber \\
+  & = \frac{v}{K} (v + c \cos \theta) \label{eqn:lemmavplusupart2}
+\end{align}
+Plugging those equations into Equation~\eqref{eqn:lemmavplusupart0}
+gives:
+\begin{align*}
+\cos \phi
+  & = \frac{ \frac{v}{K} (v + c \cos \theta) }{ v \sqrt{ \frac{1}{K^2} \left[ (v + c \cos \theta)^2 + \frac{c^2 \sin^2 \theta}{\gamma^2} \right] } } \\
+  & = \frac{ v + c \cos \theta }{ \sqrt{ (v + c \cos \theta)^2 + \frac{c^2 \sin^2 \theta}{\gamma^2} } } & & \text{algebra}
+\end{align*}
+Note that $\cos \phi$ is of the form $a / \sqrt{a^2 + b^2}$.
+Thus $\sin \phi$ is equal to $b/ \sqrt{a^2 + b^2}$,
+and $\tan \phi = a/b$:
+\begin{align}
+\tan \phi
+  & = \frac{ \frac{c \sin \theta}{\gamma} }{ v + c \cos \theta } \nonumber \\
+  & = \frac{ \sin \theta }{ \gamma (v/c + \cos \theta) }
+\end{align}
+\end{proof}
+
+
 \section{Double-check results from ChatGPT}
 
 
