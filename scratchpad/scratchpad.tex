@@ -89,7 +89,7 @@
 \author{J. Andrew Fingerhut (\texttt{andy.fingerhut@gmail.com})}
 
 \date{
-        July 18, 2025
+        August 19, 2025
 %	\today
 }
 
@@ -2557,10 +2557,6 @@ By Corollary~\ref{cor:magVplusC}, the magnitude of $\vect{v} \oplus
 
 \subsection{Relationship between relativistic velocity addition and aberration}
 
-First we will prove a mathematical relationship, then show how it is
-related to aberration, in particular
-Equation~\eqref{eqn:aberration-angle}.
-
 \begin{lemma}
 \label{lem:angleBetweenVplusUandV}
 Given non-0 vectors $\vect{v}$ and $\vect{u}$
@@ -2583,7 +2579,8 @@ where:
 K & = 1 + \frac{\vect{v} \cdot \vect{u}}{c^2}
 \end{align*}
 The angle $\phi$ between $\vect{v} \oplus \vect{u}$ and $\vect{v}$
-satisfies:
+satisfies the following equation, because this relationship is true
+for the dot product and angle between any two vectors:
 \begin{equation}
 \cos \phi = \frac{(\vect{v} \oplus \vect{u}) \cdot \vect{v}}{|\vect{v} \oplus \vect{u}| |\vect{v}|} \label{eqn:lemmavplusupart0}
 \end{equation}
@@ -2637,7 +2634,7 @@ $|\vect{v} \oplus \vect{u}|=c$.
   & = \frac{c^2}{K^2} \left[ \beta^2 \cos^2 \theta + 2 \beta \cos \theta + 1 \right] & & \text{algebra} \\
   & = \frac{c^2}{K^2} \left[ \beta \cos \theta + 1 \right]^2 & & \text{algebra} \\
   & = \frac{c^2}{(1+\frac{vc \cos \theta}{c^2})^2} \left[ \beta \cos \theta + 1 \right]^2 & & \text{defn. of $K$} \\
-  & = \frac{c^2}{(1+\beta \cos \theta)^2} \left[ \beta \cos \theta + 1 \right]^2 & & \text{defn. of $K$} \\
+  & = \frac{c^2}{(1+\beta \cos \theta)^2} \left[ \beta \cos \theta + 1 \right]^2 & & \text{algebra, $\beta = v/c$} \\
   & = c^2
 \end{align*}
 \end{proof}
