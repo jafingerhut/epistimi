@@ -5,12 +5,14 @@
 %	\tt This work is shared under a \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC BY-SA 4.0 license} unless otherwise noted
 %}      % copyright
 
+\usepackage{physics}
 \usepackage[margin=1in]{geometry} % full-width
 
 % AMS Packages
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
+\usepackage{bm}
 
 % Unicode
 \usepackage[utf8]{inputenc}
@@ -106,6 +108,8 @@
 \newcommand{\rhat}{\hat{\mathbf{r}}}
 \newcommand{\vect}[1]{\mathbf{#1}}
 \newcommand{\hatvec}[1]{\hat{\mathbf{#1}}}
+
+\newcommand{\del}{\bm{\nabla}}
 
 \begin{document}
 \maketitle
@@ -3542,6 +3546,382 @@ e_{2,D} - e_{1,D}
   & = \frac{C}{\gamma_R+\gamma_S} \left[ \gamma_S^2(1-\beta_S^2) - \gamma_R^2(1 - \beta_R^2) \right] & & \text{algebra} \\
   & = 0 & & \text{$\gamma_i^2(1-\beta_i^2) = 1$}
 \end{align*}
+
+
+\section{ChatGPT conversation about Reichenbach $\epsilon$ convention and relationship to one-way speed of light}
+\label{app:reichenback-epsilon}
+
+
+\paragraph{I asked ChatGPT this question:}
+
+If the Richenbach epsilon clock synchronization convention is used,
+would that imply a particular function for the one-way speed of light
+in all 3-d directions?
+
+
+\paragraph{ChaptGPT's reponse:}
+
+Short answer: Yes -- choosing a Reichenbach synchronization convention
+(possibly allowing the $\epsilon$ parameter to depend on direction) is
+exactly equivalent to choosing a function for the one-way speed of
+light in every direction.  The convention determines the one-way
+speeds; conversely, specifying a physically allowed one-way speed
+field determines the corresponding $\epsilon$-function.
+
+Below I give the precise relations, simple parametrizations you can
+use in 3-D, the constraints they must satisfy, and some useful
+examples (including the Einstein choice as a special case).
+
+1) One-way speed $\leftrightarrow$ Reichenbach $\epsilon$ for a given direction
+
+Fix a spatial direction given by a unit vector $\hatvec{n}$.
+Let a light pulse travel a distance $L$
+along $\hatvec{n}$
+from A to B and then back from B to A.
+Denote the forward one-way speed along $\hatvec{n}$ by
+$c_{+}(\hatvec{n})$
+and the backward one by 
+$c_{-}(\hatvec{n})$
+The round-trip time for distance $L$ is
+\begin{equation}
+T = \frac{L}{c_{+}(\hatvec{n})} + \frac{L}{c_{-}(\hatvec{n})}
+\end{equation}
+Reichenbach synchronizes the forward arrival event at B at the time
+\begin{equation}
+t_B = t_A + \epsilon(\hatvec{n}) T
+\end{equation}
+where $0 < \epsilon(\hatvec{n}) < 1$.
+From this one gets the direct algebraic relations
+\begin{equation}
+c_{+}(\hatvec{n}) = \frac{c}{2 \epsilon(\hatvec{n})}, c_{-}(\hatvec{n}) = \frac{c}{2(1-\epsilon(\hatvec{n}))}
+\end{equation}
+provided the two-way (round-trip) speed is defined to be $c$
+(i.e. $T = 2L/c$; this is the usual empirical input).
+These formulae follow by noting $T = 2L/c \rightarrow L/(\epsilon T) =
+c/(2 \epsilon)$, etc.  (Andy: I have confirmed all of this with
+only a small amount of algebra required.)
+
+So the one-way speed in direction $\hatvec{n}$
+is determined by the $\epsilon$ assigned to that direction.
+
+2) Consistency / symmetry constraint
+
+If $\epsilon(\hatvec{n})$
+is taken to parametrize the forward leg in direction $\hatvec{n}$,
+then for the same spatial line but opposite direction one must have
+\begin{equation}
+\epsilon(-\hatvec{n}) = 1 - \epsilon(\hatvec{n})
+\end{equation}
+because the forward leg in $-\hatvec{n}$
+is the backward leg in $\hatvec{n}$.
+Equivalently, one may define an odd function $s(\hatvec{n})$ by
+\begin{equation}
+\epsilon(\hatvec{n}) = \frac{1}{2}(1 + s(\hatvec{n}), s(-\hatvec{n}) = -s(\hatvec{n})
+\end{equation}
+and then
+\begin{equation}
+c_{one-way}(\hatvec{n}) = \frac{c}{1 + s(\hatvec{n})}
+\end{equation}
+
+The constraint $0 < \epsilon < 1$ becomes $|s(\hatvec{n})| < 1$
+for all $\hatvec{n}$, so the denominator never vanishes
+and speeds are positive.
+
+3) Useful parametrizations
+
+(a) Isotropic (Einstein) choice. $\epsilon(\hatvec{n}) = \frac{1}{2}$
+(so $s(\hatvec{n})=0$ for all $\hatvec{n}$).  Then
+\begin{equation}
+c_{one-way}(\hatvec{n}) = c
+\end{equation}
+i.e. isotropic one-way speed.
+
+(b) Linear/first-order anisotropy.  Pick a constant vector $\vect{k}$
+with $|\vect{k}| < 1$ and set
+\begin{equation}
+s(\hatvec{n}) = \vect{k} \cdot \hatvec{n}, \epsilon(\hatvec{n}) = \frac{1}{2} (1 + \vect{k} \cdot \hatvec{n})
+\end{equation}
+Then
+\begin{equation}
+c_{one-way}(\hatvec{n}) = \frac{c}{1 + \vect{k} \cdot \hatvec{n}}
+\end{equation}
+and automatically
+$c_{one-way}(-\hatvec{n}) = c / (1 - \vect{k} \cdot \hatvec{n})$.
+This is a simple, commonly used model for anisotropic synchronization.
+
+(c) Arbitrary direction dependence. Any odd function $s(\hatvec{n})$
+with $|\vect{s}| < 1$ gives a valid synchronization
+and thus a well-defined one-way speed field $c/(1+s(\hatvec{n}))$.
+
+4) Relation to Lorentz/LET pictures
+
+\begin{itemize}
+\item Einstein synchronization is the special case $\vect{s} \equiv
+  0$.
+\item In LET (or any preferred-frame theory) one can choose the
+  synchronization tied to the preferred frame; that choice corresponds
+  to a particular $s(\hatvec{n})$ that reproduces the one-way speed
+  field of that ether frame.  Conversely, choosing a non-Einstein
+  $\epsilon$ in an SR formalism simply amounts to adopting coordinates
+  in which light's coordinate one-way speed is anisotropic -- it does
+  not change measurable round-trip results.
+\end{itemize}
+
+5) Constraints, interpretational remarks
+
+\begin{itemize}
+\item Empirical indistinguishability: All choices of
+  $\epsilon(\hatvec{n})$ (equivalently $s(\hatvec{n})$) that respect
+  the round-trip speed $c$ are empirically indistinguishable in
+  standard experiments, because those experiments measure round-trip
+  quantities or are otherwise insensitive to the simultaneity
+  convention.
+\item Mathematical constraint: $|s(\hatvec{n})| < 1$ for positivity;
+  also enforce $s(-\hatvec{n}) = -s(\hatvec{n})$.
+\item Coordinate vs physical statement: Specifying
+  $\epsilon(\hatvec{n})$ is choosing coordinates (a foliation of
+  spacetime into ``simultaneity slices'').  Different choices change
+  coordinate one-way speeds but not invariant physics (unless you
+  posit a physically detectable preferred frame).
+\end{itemize}
+
+6) Mathematica-ready formulae
+
+Define a unit vector \textbf{n} and an odd scalar function
+\verb|s[n_]| satisfying \verb|Abs[s[n]] < 1|.  Then one-way
+speed in Mathematica:
+\begin{verbatim}
+cOneWay[n_] := c/(1 + s[n])
+(* require s[-n] == -s[n] *)
+\end{verbatim}
+For the linear model with vector $k$:
+\begin{verbatim}
+s[n_] := k . n
+cOneWay[n_] := c/(1 + k . n)
+\end{verbatim}
+Einstein choice: \verb|k -> {0,0,0}| gives \verb|cOneWay[n_] == c|.
+
+7) Short worked example
+
+If you pick $\vect{k} = \alpha \hatvec{e}_x$ with small $|\alpha|$, then
+\begin{equation}
+c_{one-way}(\hatvec{n}) = \frac{c}{1 + \alpha \cos \theta} \approx c(1 - \alpha \cos \theta + ...)
+\end{equation}
+where $\theta$ is the angle between $\hatvec{n}$ and the $x$-axis.
+For small $\alpha$ this is a small dipole anisotropy.
+
+Bottom line
+
+\begin{itemize}
+\item Yes: Reichenbach synchronization determines a (possibly
+  direction-dependent) one-way speed field.
+\item The precise mapping is
+\begin{equation}
+c_{one-way}(\hatvec{n}) = \frac{c}{2\epsilon(\hatvec{n})} = \frac{c}{1+s(\hatvec{n})}
+\end{equation}
+with
+\begin{equation}
+\epsilon(\hatvec{n}) = \frac{1}{2}(1+s(\hatvec{n})), s(-\hatvec{n}) = -s(\hatvec{n})
+\end{equation}
+\item Einstein's convention is the special isotropic choice
+  $\epsilon = \frac{1}{2}$ (or $s \equiv 0$); other choices produce
+  anisotropic one-way speeds but leave all empirical two-way
+  measurements unchanged.
+\end{itemize}
+
+
+\paragraph{I followed up with this question:}
+
+Are there any constraints on the magnitude of s(n) in different
+directions, other than that it is an odd function?  For example, could
+there be a 5-degree arc of directions for n where s(n) oscillated
+between 0 and almost 1 multiple times?
+
+
+\paragraph{ChaptGPT's reponse:}
+
+Good question -- and you're right to suspect there's more to it than
+just oddness.  Short answer:
+
+No, an arbitrary wild oscillation of $s(\hatvec{n})$
+(subject only to $s(-\hatvec{n}) = -s(\hatvec{n})$
+and $|s| < 1$
+is not generally admissible as a global, physically sensible
+one-way-speed / synchronization convention.  Beyond oddness and
+positivity, there are additional mathematical and physical constraints
+(continuity/integrability, and compatibility with a global
+simultaneity foliation) that rule out pathological direction-dependent
+oscillations in general.
+
+Below I explain why, give the precise restrictions, and show when
+simple models (like the linear
+$s(\hatvec{n}) = \vect{k} \cdot \hatvec{n}$)
+are the only globally consistent position-independent choices.
+
+1) Minimal obvious requirement
+
+At every direction $\hatvec{n}$,
+\begin{equation}
+|s(\hatvec{n})| < 1, s(-\hatvec{n}) = -s(\hatvec{n})
+\end{equation}
+so one-way speeds $c/(1+s)$ are positive and finite, and opposite
+directions transform correctly.  That alone does not guarantee global
+consistency.
+
+2) Why arbitrary angular oscillation can fail: the integrability /
+global-time condition
+
+Choosing a synchronization convention on all of space is equivalent to
+choosing a global time function $T(x)$ (a foliation of spacetime by
+simultaneity slices).  The one-way speed in direction $\hatvec{n}$
+must be consistent with propagation of light between nearby spatial
+points using that same time function.
+
+Heuristically, for a small spatial step $dx = dl \hatvec{n}$ the light
+travel time (one-way) according to your chosen simultaneity must be
+\begin{equation}
+dt_{light}(\hatvec{n})
+  = \frac{dl}{c_{one-way}(\hatvec{n})}
+  = \frac{dl[1+s(\hatvec{n})]}{c}
+\end{equation}
+If your time coordinate is $T(x) = t-\Phi(x)$ (where $t$ is some
+background inertial time and $\Phi$ is the spatial desynchronization
+function), then the difference in $T$ between the two ends equals the
+coordinate travel time minus the difference $\Phi(x+dx) - \Phi(x)$.
+For consistency (i.e. for this differential relation to hold for every
+infinitesimal displacement and every path), the angular dependence of
+$s(\hatvec{n})$ must be derivable from a scalar field $\Phi(x)$.
+
+Concretely, to first order in small $dl$ one gets a relation of the
+schematic form
+\begin{equation}
+\frac{dl[1+s(\hatvec{n})]}{c}
+  = \frac{dl}{c} + \frac{1}{c} \vect{n} \cdot (\del \Phi(x)) dl
+\end{equation}
+so (dropping the trivial 1)
+\begin{equation}
+s(\hatvec{n}) \approx \vect{n} \cdot (\del \Phi (x))
+\end{equation}
+Thus locally the directional dependence of $s$ must equal the
+directional projection of a spatial gradient.  That implies:
+\begin{itemize}
+\item For a position-independent (homogeneous) synchronization (same
+  everywhere), $s(\hatvec{n})$ must be the projection of a constant
+  vector $\vect{k}$:
+\begin{equation}
+s(\hatvec{n}) = \vect{k} \cdot \hatvec{n}, |\vect{k}| < 1
+\end{equation}
+  This is the familiar linear model giving
+  $c_{one-way}(\hatvec{n}) = c/(1 + \vect{k} \cdot \hatvec{n})$.
+\item If $s(\hatvec{n})$ cannot be written (locally) as $\vect{n}
+  \cdot (\text{some gradient})$, then there is no single-valued global
+  scalar $\Phi(x)$ producing that directional dependence.  The
+  would-be time coordinate would become {\em path-dependent}, i.e. the
+  time assigned to a distant event would depend on how you integrate
+  across space -- which destroys the notion of a single global
+  simultaneity.
+\end{itemize}
+
+So arbitrary angular oscillations (e.g. a $5^{\circ}$ arc in which $s$
+flips between 0 and nearly 1 many times) cannot arise from any smooth,
+single-valued $\Phi(x)$ and therefore do not define a consistent
+global synchronization.
+
+3) Consequences of violating integrability
+
+If you attempted to impose such a pathological $s(\hatvec{n})$:
+\begin{itemize}
+\item The assigned time difference between two spatial points would
+  depend on the path chosen between them (non-integrability).  That is
+  not acceptable for a global clock synchronization.
+\item You could get contradictory statements of simultaneity (A
+  simultaneous with B via one route but not via another).
+\item Such constructions can even produce coordinate pathologies that
+  make the ``time function'' multi-valued or discontinuous, and
+  prevent defining a well-behaved inertial coordinate chart.
+\item Physical invariants (round-trip speed $c$) might still hold
+  locally, but you lose the global coordinate consistency that
+  underlies conventional descriptions of dynamics.
+\end{itemize}
+
+4) Smoothness and physical reasonableness
+
+Even if you restrict to integrable $s$ coming from $\del \Phi$, you
+usually want $\Phi$ (hence $s$) to be at least continuous (and
+typically differentiable) to avoid pathological coordinate systems.
+Physically:
+\begin{itemize}
+\item Discontinuous or wildly oscillatory $s$ would imply highly
+  nonphysical, non-smooth time slices.
+\item Practical clock synchronization presumes smooth, slowly varying
+  desynchronization fields -- abrupt high-frequency angular
+  oscillations make no operational sense.
+\end{itemize}
+So besides integrability, continuity / smoothness is a practical
+constraint.
+
+5) Examples and special cases
+
+\begin{itemize}
+\item Allowed homogeneous family: $s(\hatvec{n}) = \vect{k} \cdot
+  \hatvec{n}$.  This is globally consistent: choose
+  $\Phi(x) = \vect{k} \cdot \vect{x}$, then $T = t - \Phi(x)$ yields
+  the desired one-way speeds everywhere.  This is the standard
+  Reichenbach/Lorentz-style anisotropy with constant vector $\vect{k}$
+  (e.g. an ``ether wind'' model).
+\item Position-dependent but integrable:
+  $s(\hatvec{n}, \vect{x}) = \vect{K}(\vect{x}) \cdot \hatvec{n}$
+  with $\vect{K}(\vect{x}) = \del \Phi(\vect{x})$.  Works if
+  $\vect{K}$ is curl-free (i.e. a gradient) and smooth.
+\item Forbidden pathological case: $s(\hatvec{n})$ that oscillates
+  rapidly within a small angular patch and cannot be represented as
+  $\vect{k} \cdot \hatvec{n}$ (or as $\del \Phi \cdot \hatvec{n}$
+  locally).  This cannot come from any scalar desynchronization and so
+  is not a valid global synchronization.
+\end{itemize}
+
+6) Intuition: why only 'projection-of-a-vector' patterns survive
+
+A synchronization choice is really a choice of how much one shifts
+clocks as a function of spatial position: $\Phi(\vect{x})$.  The
+directional asymmetry seen in one-way light speed must be the
+directional derivative of that shift -- i.e. a projection of $\del
+\Phi$ onto the direction $\hatvec{n}$.  That's why the simplest and
+physically meaningful anisotropies are linear in direction (a dot
+product with a vector field). Any more exotic angular dependence that
+cannot be represented as such a projection is incompatible with a
+single-valued $\Phi$.
+
+7) Final compact answer
+
+\begin{itemize}
+\item Necessary conditions: $s(-\hatvec{n}) = -s(\hatvec{n})$ and
+  $|s(\hatvec{n})| < 1$.
+\item Additional (crucial) condition for a global,
+  position-independent synchronization: there must exist a constant
+  vector $\vect{k}$ with $|\vect{k}| < 1$ such that
+  $s(\hatvec{n}) = \vect{k} \cdot \hatvec{n}$.  For position-dependent
+  but globally consistent synchrony,
+  $s(\hatvec{n}, \vect{x}) = \vect{K}(\vect{x}) \cdot \hatvec{n}$
+  with $\vect{K} = \del \Phi$.
+\item Therefore: a wildly oscillatory $s(\hatvec{n})$ on a small
+  angular arc is not allowed unless it can be produced as the
+  directional projection of some scalar field's gradient; generic
+  oscillations cannot.
+\end{itemize}
+
+If you like, I can:
+\begin{itemize}
+\item Show a short derivation relating $s(\hatvec{n})$ to $\del \Phi$
+  for the infinitesimal displacement argument,
+\item Give an explicit counterexample demonstrating path-dependence
+  when $s(\hatvec{n})$ is chosen non-integrably, or
+\item Produce a visualization comparing the allowed linear model
+  $s = \vect{k} \cdot \hatvec{n}$ with a pathological oscillatory
+  $s(\hatvec{n})$.
+\end{itemize}
+
+Which would help you most?
 
 
 \end{document}
