@@ -2072,14 +2072,50 @@ where:
 \end{align}
 
 I was able to get Mathematica to confirm that
-for all vectors $\vect{v}_B$, $\vect{u}'$:
-\begin{equation}
-(\vect{v}_B \oplus \vect{u}') \ominus \vect{v}_B = \vect{u}'
-\end{equation}
-Similarly for all vectors $\vect{v}_A$, $\vect{v}_B$:
-\begin{equation}
-\vect{v}_B \oplus (\vect{v}_A \ominus \vect{v}_B) = \vect{v}_A
-\end{equation}
+for all vectors $\vect{u}$, $\vect{v}$:
+\begin{align}
+(\vect{u} \oplus \vect{v}) \ominus \vect{u} & = \vect{v} \label{eqn:relplusminus1} \\
+\vect{u} \oplus (\vect{v} \ominus \vect{u}) & = \vect{v} \label{eqn:relplusminus2}
+\end{align}
+We will prove Equation~\eqref{eqn:relplusminus1} below.
+We will not prove Equation~\eqref{eqn:relplusminus2} here --
+its proof is nearly identical to the one below.
+
+Let $K_{-} = 1 - \frac{(\vect{u} \oplus \vect{v}) \cdot \vect{u}}{c^2}$
+and $K_{+} = 1 + \frac{\vect{u} \cdot \vect{v}}{c^2}$.
+Then:
+\begin{align}
+(\vect{u} \oplus \vect{v}) \ominus \vect{u}
+  & = \frac{(\vect{u} \oplus \vect{v})_{\parallel} - \vect{u}}{K_{-}} + \frac{(\vect{u} \oplus \vect{v})_{\perp}}{\gamma_u K_{-}} & & \text{Eqns.~\eqref{eqn:relVelocitySubComponents},~\eqref{eqn:relVelocitySubParallelComponent}, and~\eqref{eqn:relVelocitySubPerpendicularComponent} } \nonumber \\
+  & = \frac{\frac{\vect{u} + \vect{v}_{\parallel}}{K_{+}} - \vect{u}}{K_{-}} + \frac{\frac{\vect{v}_{\perp}}{\gamma_u K_{+}}}{\gamma_u K_{-}} & & \text{Eqns.~\eqref{eqn:relVelocityAddParallelComponent} and~\eqref{eqn:relVelocityAddPerpendicularComponent} } \nonumber \\
+  & = \frac{1}{K_{+}K_{-}} \left[ \vect{u} + \vect{v}_{\parallel} - K_{+} \vect{u} + \frac{\vect{v}_{\perp}}{\gamma_u^2} \right] & & \text{algebra} \nonumber \\
+  & = \frac{1}{K_{+}K_{-}} \left[ \vect{u} + \vect{v}_{\parallel} - (1 + \frac{\vect{u} \cdot \vect{v}}{c^2}) \vect{u} + \frac{\vect{v}_{\perp}}{\gamma_u^2} \right] & & \text{substitute $K_{+}$ with its value in one place} \nonumber \\
+  & = \frac{1}{K_{+}K_{-}} \left[ \vect{v}_{\parallel} - \frac{\vect{u} \cdot \vect{v}}{c^2} \vect{u} + \frac{\vect{v}_{\perp}}{\gamma_u^2} \right] & & \text{algebra} \nonumber
+\end{align}
+Recall that
+$\vect{v}_{\parallel} = \frac{\vect{u} \cdot \vect{v}}{u^2} \vect{u}$
+(Equation~\eqref{eqn:uParallel}), so
+$(\vect{u} \cdot \vect{v}) \vect{u} = u^2 \vect{v}_{\parallel}$.
+Substituting the right hand side for the left where it appears
+in the equation above:
+\begin{align}
+  & = \frac{1}{K_{+}K_{-}} \left[ \vect{v}_{\parallel} - \frac{u^2}{c^2} \vect{v}_{\parallel} + \frac{\vect{v}_{\perp}}{\gamma_u^2} \right] & & \text{substitution} \nonumber \\
+  & = \frac{1}{K_{+}K_{-}} \left[ (1-\beta_u^2) \vect{v}_{\parallel} + (1-\beta_u^2)\vect{v}_{\perp} \right] & & \text{algebra, $\beta_u = u/c$, $1/\gamma_u^2 = (1-\beta_u^2)$} \nonumber \\
+  & = \frac{1}{K_{+}K_{-}} (1-\beta_u^2) \vect{v} & & \text{algebra, $\vect{v}_{\parallel} + \vect{v}_{\perp} = \vect{v}$} \label{eqn:penultimateResult}
+\end{align}
+Now to simplify $K_{+}K_{-}$:
+\begin{align*}
+K_{+}K_{-}
+  & = K_{+} \left( 1 - \frac{(\vect{u} \oplus \vect{v}) \cdot \vect{u}}{c^2} \right) & & \text{defn of $K_{-}$} \\
+  & = K_{+} \left( 1 - \frac{ (\frac{\vect{u} + \vect{v}_{\parallel}}{K_{+}}) \cdot \vect{u}}{c^2} \right) & & \text{only need parallel part of $(\vect{u} \oplus \vect{v})$ because of dot product with $\vect{u}$} \\
+  & = K_{+} \left( 1 - \frac{ u^2 + \vect{u} \cdot \vect{v}_{\parallel}}{c^2 K_{+}}) \right) & & \text{algebra} \\
+  & = K_{+} - \frac{u^2}{c^2} + \frac{\vect{u} \cdot \vect{v}_{\parallel}}{c^2} & & \text{algebra} \\
+  & = 1 + \frac{\vect{u} \cdot \vect{v}}{c^2} - \beta_u^2 + \frac{\vect{u} \cdot \vect{v}_{\parallel}}{c^2} & & \text{defn. of $K_{+}$, $\beta_u=u/c$} \\
+  & = 1 - \beta_u^2 & & \text{defn. of $\vect{v}_{\parallel}$ means $\vect{u} \cdot \vect{v}_{\parallel} = \vect{u} \cdot \vect{v}$}
+\end{align*}
+Substituting this result for $K_{+}K_{-}$ into
+Equation~\eqref{eqn:penultimateResult} we have shown that
+$(\vect{u} \oplus \vect{v}) \ominus \vect{u} = \vect{v}$.
 
 
 \subsubsection{Identities about 3-d relativistic velocity addition and subtraction}
@@ -2090,17 +2126,21 @@ Similarly for all vectors $\vect{v}_A$, $\vect{v}_B$:
 \cline{1-3} \\
 Identity & True in 1-d? & True in 3-d?
 \\ \cline{1-3}
+$a \oplus 0 = 0 \oplus a = a$ & yes & yes
+\\ \cline{1-3}
+$0 \ominus b = -b$ & yes & yes
+\\ \cline{1-3}
+$(a \oplus b) \ominus a = b$ & yes & yes
+\\ \cline{1-3}
+$a \oplus (b \ominus a) = b$ & yes & yes
+\\ \cline{1-3}
 $a \oplus b = b \oplus a$ & yes & no
 \\ \cline{1-3}
 $(a \oplus b) \oplus c = a \oplus (b \oplus c)$ & yes & no
 \\ \cline{1-3}
-$a \oplus 0 = 0 \oplus a = a$ & yes & yes
-\\ \cline{1-3}
 $a \oplus (-b) = a \ominus b$ & yes & no
 \\ \cline{1-3}
 $a \ominus (-b) = a \oplus b$ & yes & no
-\\ \cline{1-3}
-$0 \ominus b = -b$ & yes & yes
 \\ \cline{1-3}
 $a \ominus b = - (b \ominus a)$ & yes & no
 \\ \cline{1-3}
