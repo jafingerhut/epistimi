@@ -3,6 +3,8 @@
 import numpy as np
 import random
 
+import aberration as abr
+
 c=299792458.0
 
 
@@ -167,6 +169,96 @@ def check_a_plus_b_minus_a_right_assoc(test_case):
     return ret
 
 
+def check_alternate_method_to_calculate_u_ominus_v(test_case):
+    u = test_case['vA']
+    v = test_case['vB']
+
+    # Method 1: straightforward way
+    diff_vec = subtract(u, v)
+    diff_beta_method1 = np.sqrt(np.dot(diff_vec, diff_vec)) / c
+
+    # Method 2: A way I found with a lot of by-hand algebraic
+    # manipulation, that I am suspicious whether I made any mistakes.
+    beta_vec_u = u / c
+    beta_vec_v = v / c
+    beta_u2 = np.dot(beta_vec_u, beta_vec_u)
+    beta_v2 = np.dot(beta_vec_v, beta_vec_v)
+    theta_rad = abr.angle_between_vectors_rad(u, v)
+    sin_theta2 = np.sin(theta_rad)**2
+    K = 1.0 - (np.dot(u, v) / (c**2))
+    beta_diff_vec = beta_vec_u - beta_vec_v
+    beta_diff_mag2 = np.dot(beta_diff_vec, beta_diff_vec)
+    F2 = beta_diff_mag2 - (beta_u2 * beta_v2 * sin_theta2)
+    diff_beta_method2 = np.sqrt(F2 / (K**2))
+
+    err = abs_diff(diff_beta_method1, diff_beta_method2)
+    results = ["diff_beta_method1=%.5f" % (diff_beta_method1),
+               "diff_beta_method2=%.5f" % (diff_beta_method2)]
+    if err > 0.0001:
+        ret = {'pass': False,
+               'msg': ("u=%s v=%s alternate method does NOT match |u ominus v|, err=%s"
+                       "" % (u/c, v/c, err)),
+               'results': results}
+    else:
+        ret = {'pass': True,
+               'msg': ("u=%s v=%s alternate method matches |u ominus v|, err=%s"
+                       "" % (u/c, v/c, err)),
+               'results': results}
+    return ret
+
+
+def check_u_ominus_v_equals_v_ominus_u(test_case):
+    u = test_case['vA']
+    v = test_case['vB']
+
+    diff1_vec = subtract(u, v)
+    diff1_mag = np.sqrt(np.dot(diff1_vec, diff1_vec))
+
+    diff2_vec = subtract(v, u)
+    diff2_mag = np.sqrt(np.dot(diff2_vec, diff2_vec))
+
+    err = abs_diff(diff1_mag, diff2_mag)
+    results = ["|u ominus v|=%.5f" % (diff1_mag),
+               "|v ominus u|=%.5f" % (diff2_mag)]
+    if err > 0.0001:
+        ret = {'pass': False,
+               'msg': ("u=%s v=%s |u ominus v| != |v ominus u|, err=%s"
+                       "" % (u/c, v/c, err)),
+               'results': results}
+    else:
+        ret = {'pass': True,
+               'msg': ("u=%s v=%s |u ominus v| == |v ominus u|, err=%s"
+                       "" % (u/c, v/c, err)),
+               'results': results}
+    return ret
+
+
+def check_u_oplus_v_equals_v_oplus_u(test_case):
+    u = test_case['vA']
+    v = test_case['vB']
+
+    sum1_vec = add(u, v)
+    sum1_mag = np.sqrt(np.dot(sum1_vec, sum1_vec))
+
+    sum2_vec = add(v, u)
+    sum2_mag = np.sqrt(np.dot(sum2_vec, sum2_vec))
+
+    err = abs_diff(sum1_mag, sum2_mag)
+    results = ["|u oplus v|=%.5f" % (sum1_mag),
+               "|v oplus u|=%.5f" % (sum2_mag)]
+    if err > 0.0001:
+        ret = {'pass': False,
+               'msg': ("u=%s v=%s |u oplus v| != |v oplus u|, err=%s"
+                       "" % (u/c, v/c, err)),
+               'results': results}
+    else:
+        ret = {'pass': True,
+               'msg': ("u=%s v=%s |u oplus v| == |v oplus u|, err=%s"
+                       "" % (u/c, v/c, err)),
+               'results': results}
+    return ret
+
+
 def run_test_cases(test_cases, desc_str, check_fn):
     print("")
     good = 0
@@ -194,6 +286,9 @@ def main():
         {'vA': np.array([0.1 * c, 0.0, 0.0]),
          'vB': np.array([0.0, 0.1 * c, 0.0])
          },
+        {'vA': np.array([0.6 * c, 0.0, 0.0]),
+         'vB': np.array([0.5 * c, 0.2 * c, 0.0])
+         },
         {'vA': np.array([0.5 * c, 0.0, 0.0]),
          'vB': np.array([0.0, 0.5 * c, 0.0])
          },
@@ -204,16 +299,22 @@ def main():
          'vB': np.array([-0.4 * c, 0.7 * c, 0.2 * c])
          },
     ]
-    run_test_cases(test_cases, "a \oplus b = b \oplus a",
+    run_test_cases(test_cases, "a \\oplus b = b \\oplus a",
                    check_add_commutative)
-    run_test_cases(test_cases, "a \ominus b = -(b \ominus a)",
+    run_test_cases(test_cases, "a \\ominus b = -(b \\ominus a)",
                    check_subtract_sort_of_commutative)
-    run_test_cases(test_cases, "0 \ominus a = -a",
+    run_test_cases(test_cases, "0 \\ominus a = -a",
                    check_0_minus_a_negates)
-    run_test_cases(test_cases, "(a \oplus b) \ominus a = b",
+    run_test_cases(test_cases, "(a \\oplus b) \\ominus a = b",
                    check_a_plus_b_minus_a_left_assoc)
-    run_test_cases(test_cases, "a \oplus (b \ominus a) = b",
+    run_test_cases(test_cases, "a \\oplus (b \\ominus a) = b",
                    check_a_plus_b_minus_a_right_assoc)
+    run_test_cases(test_cases, "alternate method for calculate magnitude of u ominus v",
+                   check_alternate_method_to_calculate_u_ominus_v)
+    run_test_cases(test_cases, "|u ominus v| = |v ominus u|",
+                   check_u_ominus_v_equals_v_ominus_u)
+    run_test_cases(test_cases, "|u oplus v| = |v oplus u|",
+                   check_u_oplus_v_equals_v_oplus_u)
 
 
 if __name__ == "__main__":
