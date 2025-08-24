@@ -2122,7 +2122,7 @@ $(\vect{u} \oplus \vect{v}) \ominus \vect{u} = \vect{v}$.
 \label{app:3drelvelocityadd-identities}
 
 \begin{center}
-\begin{tabularx}{1.0\textwidth}{|p{4cm}|p{2cm}|p{2cm}|}
+\begin{tabularx}{1.0\textwidth}{|p{4cm}|p{2cm}|p{3cm}|}
 \cline{1-3} \\
 Identity & True in 1-d? & True in 3-d?
 \\ \cline{1-3}
@@ -2134,9 +2134,15 @@ $(a \oplus b) \ominus a = b$ & yes & yes
 \\ \cline{1-3}
 $a \oplus (b \ominus a) = b$ & yes & yes
 \\ \cline{1-3}
+$|a \oplus b|=|b \oplus a|$ & yes & yes (Lemma~\ref{lem:magnitudeRelVecPlus2})
+\\ \cline{1-3}
+$|a \ominus b|=|b \ominus a|$ & yes & yes (Lemma~\ref{lem:magnitudeRelVecMinus})
+\\ \cline{1-3}
+$|a \oplus b| = c$ if $|a|=c$ or $|b|=c$ & yes & yes (Lemma~\ref{lem:magVplusC})
+\\ \cline{1-3}
 $a \oplus b = b \oplus a$ & yes & no
 \\ \cline{1-3}
-$(a \oplus b) \oplus c = a \oplus (b \oplus c)$ & yes & no
+$(a \oplus b) \oplus d = a \oplus (b \oplus d)$ & yes & no
 \\ \cline{1-3}
 $a \oplus (-b) = a \ominus b$ & yes & no
 \\ \cline{1-3}
@@ -2160,7 +2166,7 @@ above apply to that subset of 3-d velocity vectors.
   b \oplus a & = (0.433c, 0.5c, 0)
 \end{align*}
 
-\paragraph{3-d counterexample where $(a \oplus b) \oplus c \neq a \oplus (b \oplus c)$}
+\paragraph{3-d counterexample where $(a \oplus b) \oplus d \neq a \oplus (b \oplus d)$}
 \begin{align*}
   a & = (0.5c, 0, 0) \\
   b & = (0, 0.5c, 0) \\
@@ -2594,12 +2600,83 @@ vectors $\vect{v}$ and $\vect{u}$, and so does the apparent direction
 from which the light beam arrives according to earlier in this
 section.
 
-By Corollary~\ref{cor:magVplusC}, the magnitude of $\vect{v} \oplus
+By Lemma~\ref{lem:magVplusC}, the magnitude of $\vect{v} \oplus
 \vect{u}$ is equal to $c$.
 \end{proof}
 
 
 \subsection{Relationship between relativistic velocity addition and aberration}
+
+\begin{lemma}
+\label{lem:magnitudeRelVecPlus1}
+Given vectors $\vect{v}$ and $\vect{u}$
+with angle $\theta$ between them,
+the following equations are true:
+\begin{align}
+|\vect{v} \oplus \vect{u}|
+  & = \frac{1}{K} \sqrt{(v + u \cos \theta)^2 + \frac{u^2 \sin^2 \theta}{\gamma_v^2}} \label{eqn:lemmavplusupart1} \\
+|\vect{v} \oplus \vect{u}|
+  & = \frac{1}{K} \sqrt{|\vect{v} + \vect{u}|^2 - \frac{v^2 u^2 \sin^2 \theta}{c^2}} \label{eqn:lemmavplusupart3}
+\end{align}
+where:
+\begin{align*}
+\beta_v & = v/c \\
+\beta_u & = u/c \\
+\gamma_v & = \frac{1}{\sqrt{1-\beta_v^2}} \\
+K & = 1 + \frac{\vect{v} \cdot \vect{u}}{c^2}
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+\begin{align*}
+|\vect{v} \oplus \vect{u}|^2
+  & = (\vect{v} \oplus \vect{u}) \cdot (\vect{v} \oplus \vect{u}) \\
+  & = (\frac{ \vect{v} + \vect{u}_{\parallel} }{K} + \frac{\vect{u}_{\perp}}{\gamma_v K}) \cdot (\frac{ \vect{v} + \vect{u}_{\parallel} }{K} + \frac{\vect{u}_{\perp}}{\gamma_v K}) & & \text{defn. of $\vect{v} \oplus \vect{u}$} \\
+  & = \frac{1}{K^2} \left[ (\vect{v} + \vect{u}_{\parallel}) \cdot (\vect{v} + \vect{u}_{\parallel}) + \frac{1}{\gamma_v^2} (\vect{u}_{\perp} \cdot \vect{u}_{\perp}) \right] & & \text{other partial products are 0} \\
+  & = \frac{1}{K^2} \left[ |\vect{v} + \vect{u}_{\parallel}|^2 + \frac{u_{\perp}^2}{\gamma_v^2} \right] & & \text{algebra} \\
+  & = \frac{1}{K^2} \left[ (v + u \cos \theta)^2 + \frac{u^2 \sin^2 \theta}{\gamma_v^2} \right] & & \text{$|\vect{u}_{\parallel}| = u \cos \theta$, $|\vect{u}_{\perp}| = u \sin \theta$}
+\end{align*}
+Taking the square root of both sides proves
+Equation~\eqref{eqn:lemmavplusupart1}.
+Continuing with our derivation we get:
+\begin{align*}
+  & = \frac{1}{K^2} \left[ v^2 + 2vu \cos \theta + u^2 \cos^2 \theta + u^2 \sin^2 \theta - \beta_v^2 u^2 \sin^2 \theta \right] & & \text{algebra, $1/\gamma_v^2 = (1-\beta_v^2)$} \\
+  & = \frac{1}{K^2} \left[ v^2 + 2vu \cos \theta + u^2 - \beta_v^2 u^2 \sin^2 \theta \right] & & \text{$\sin^2 \theta + \cos^2 \theta = 1$} \\
+  & = \frac{1}{K^2} \left[ |\vect{v} + \vect{u}|^2 - \beta_v^2 u^2 \sin^2 \theta \right] & & \text{algebra} \\
+  & = \frac{1}{K^2} \left[ |\vect{v} + \vect{u}|^2 - \frac{v^2 u^2 \sin^2 \theta}{c^2} \right] & & \text{$\beta_v = v/c$}
+\end{align*}
+Taking the square root of both sides proves
+Equation~\eqref{eqn:lemmavplusupart3}.
+\end{proof}
+
+\begin{lemma}
+\label{lem:magnitudeRelVecPlus2}
+Given vectors $\vect{u}$ and $\vect{v}$:
+\begin{equation}
+|\vect{u} \oplus \vect{v}| = |\vect{v} \oplus \vect{u}|
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Examining Equation~\eqref{eqn:lemmavplusupart3} from
+Lemma~\ref{lem:magnitudeRelVecPlus1}, we see that it is symmetric in
+$\vect{u}$ and $|vect{v}$, giving the same result when they are
+swapped.
+\end{proof}
+
+\begin{lemma}
+\label{lem:magnitudeRelVecMinus}
+Given vectors $\vect{u}$ and $\vect{v}$:
+\begin{equation}
+|\vect{u} \ominus \vect{v}| = |\vect{v} \ominus \vect{u}|
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+We omit the details of the proof, as they are nearly identical
+to the ones proving Equation~\eqref{eqn:lemmavplusupart3} in
+Lemma~\ref{lem:magnitudeRelVecPlus1}.
+\end{proof}
 
 \begin{lemma}
 \label{lem:angleBetweenVplusUandV}
@@ -2628,15 +2705,6 @@ for the dot product and angle between any two vectors:
 \begin{equation}
 \cos \phi = \frac{(\vect{v} \oplus \vect{u}) \cdot \vect{v}}{|\vect{v} \oplus \vect{u}| |\vect{v}|} \label{eqn:lemmavplusupart0}
 \end{equation}
-First we will derive an equation equal to $|\vect{v} \oplus \vect{u}|$:
-\begin{align}
-|\vect{v} \oplus \vect{u}|^2
-  & = (\vect{v} \oplus \vect{u}) \cdot (\vect{v} \oplus \vect{u}) \nonumber \\
-  & = (\frac{ \vect{v} + \vect{u}_{\parallel} }{K} + \frac{\vect{u}_{\perp}}{\gamma K}) \cdot (\frac{ \vect{v} + \vect{u}_{\parallel} }{K} + \frac{\vect{u}_{\perp}}{\gamma K}) & & \text{defn. of $\vect{v} \oplus \vect{u}$} \nonumber \\
-  & = \frac{1}{K^2} \left[ (\vect{v} + \vect{u}_{\parallel}) \cdot (\vect{v} + \vect{u}_{\parallel}) + \frac{1}{\gamma^2} (\vect{u}_{\perp} \cdot \vect{u}_{\perp}) \right] & & \text{other partial products are 0} \nonumber \\
-  & = \frac{1}{K^2} \left[ |\vect{v} + \vect{u}_{\parallel}|^2 + \frac{u_{\perp}^2}{\gamma^2} \right] & & \text{algebra} \nonumber \\
-  & = \frac{1}{K^2} \left[ (v + u \cos \theta)^2 + \frac{u^2 \sin^2 \theta}{\gamma^2} \right] & & \text{$|\vect{u}_{\parallel}| = u \cos \theta$, $|\vect{u}_{\perp}| = u \sin \theta$} \label{eqn:lemmavplusupart1}
-\end{align}
 Then an equation equal to $(\vect{v} \oplus \vect{u}) \cdot \vect{v}$:
 \begin{align}
 (\vect{v} \oplus \vect{u}) \cdot \vect{v}
@@ -2644,11 +2712,12 @@ Then an equation equal to $(\vect{v} \oplus \vect{u}) \cdot \vect{v}$:
   & = \frac{1}{K} |\vect{v} + \vect{u}_{\parallel}| |\vect{v}| & & \text{$\vect{v}$ and $\vect{u}_{\parallel}$ are parallel} \nonumber \\
   & = \frac{v}{K} (v + u \cos \theta) \label{eqn:lemmavplusupart2}
 \end{align}
-Plugging those equations into Equation~\eqref{eqn:lemmavplusupart0}
-gives:
+Plugging Equations~\eqref{eqn:lemmavplusupart1}
+and~\eqref{eqn:lemmavplusupart2}
+into Equation~\eqref{eqn:lemmavplusupart0} gives:
 \begin{align*}
 \cos \phi
-  & = \frac{ \frac{v}{K} (v + u \cos \theta) }{ v \sqrt{ \frac{1}{K^2} \left[ (v + u \cos \theta)^2 + \frac{u^2 \sin^2 \theta}{\gamma^2} \right] } } \\
+  & = \frac{ \frac{v}{K} (v + u \cos \theta) }{ \frac{v}{K} \sqrt{ (v + u \cos \theta)^2 + \frac{u^2 \sin^2 \theta}{\gamma^2} } } \\
   & = \frac{ v + u \cos \theta }{ \sqrt{ (v + u \cos \theta)^2 + \frac{u^2 \sin^2 \theta}{\gamma^2} } } & & \text{algebra}
 \end{align*}
 Note that $\cos \phi$ is of the form $a / \sqrt{a^2 + b^2}$.
@@ -2662,25 +2731,28 @@ and $\tan \phi = b/a$:
 \end{proof}
 
 
-\begin{corollary}
-\label{cor:magVplusC}
-Given non-0 vectors $\vect{v}$ and $\vect{u}$ with $|\vect{u}|=c$,
-$|\vect{v} \oplus \vect{u}|=c$.
-\end{corollary}
+\begin{lemma}
+\label{lem:magVplusC}
+Given vectors $\vect{v}$ and $\vect{u}$,
+if either $|\vect{v}|=c$ or $|\vect{u}|=c$,
+then $|\vect{v} \oplus \vect{u}|=c$.
+\end{lemma}
 
 \begin{proof}
+Start by proving the case when $|\vect{u}|=c$.
+By Equation~\eqref{eqn:lemmavplusupart1}
+of Lemma~\ref{lem:magnitudeRelVecPlus1}
 \begin{align*}
-|\vect{v} \oplus \vect{u}|^2
-  & = \frac{1}{K^2} \left[ (v + u \cos \theta)^2 + \frac{u^2 \sin^2 \theta}{\gamma^2} \right] & & \text{Eqn.\eqref{eqn:lemmavplusupart1}} \\
-  & = \frac{1}{K^2} \left[ (v + c \cos \theta)^2 + c^2 \sin^2 \theta (1 - v^2/c^2) \right] & & \text{defn. of $\gamma$, $|\vect{u}|=c$} \\
-  & = \frac{c^2}{K^2} \left[ (\beta + \cos \theta)^2 + \sin^2 \theta (1 - \beta^2) \right] & & \text{algebra, $\beta = v/c$} \\
-  & = \frac{c^2}{K^2} \left[ \beta^2 + 2 \beta \cos \theta + \cos^2 \theta + \sin^2 \theta - \beta^2 \sin^2 \theta \right] & & \text{algebra} \\
-  & = \frac{c^2}{K^2} \left[ \beta^2 \cos^2 \theta + 2 \beta \cos \theta + 1 \right] & & \text{algebra} \\
-  & = \frac{c^2}{K^2} \left[ \beta \cos \theta + 1 \right]^2 & & \text{algebra} \\
-  & = \frac{c^2}{(1+\frac{vc \cos \theta}{c^2})^2} \left[ \beta \cos \theta + 1 \right]^2 & & \text{defn. of $K$} \\
-  & = \frac{c^2}{(1+\beta \cos \theta)^2} \left[ \beta \cos \theta + 1 \right]^2 & & \text{algebra, $\beta = v/c$} \\
-  & = c^2
+|\vect{v} \oplus \vect{u}|
+  & = \frac{1}{K} \sqrt{(v + u \cos \theta)^2 + \frac{u^2 \sin^2 \theta}{\gamma_v^2}} \\
+  & = \frac{1}{1+\frac{\vect{v} \cdot \vect{u}}{c^2}} \sqrt{(v + u \cos \theta)^2 + (1-\beta_v^2) u^2 \sin^2 \theta} & & \text{substitute values of $K$ and $1/\gamma_v^2$} \\
+  & = \frac{1}{1+\frac{u \cos \theta}{c}} \sqrt{(c + u \cos \theta)^2} & & \text{$1-\beta_v^2 = 0$ when $v=c$} \\
+  & = \frac{c}{c + u \cos \theta} (c + u \cos \theta) & & \text{algebra} \\
+  & = c
 \end{align*}
+By Lemma~\ref{lem:magnitudeRelVecPlus2}, we must also get the same
+magnitude if we swap the order of arguments to $\oplus$, so
+$|\vect{v}+\vect{u}|=c$ if $|\vect{u}|=c$.
 \end{proof}
 
 
