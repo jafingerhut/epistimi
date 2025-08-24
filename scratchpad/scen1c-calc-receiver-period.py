@@ -101,10 +101,8 @@ for test_case in test_cases:
     print("----------------------------------------")
     print(f"Test case #{count}")
     print("----------------------------------------")
-    v_C_minus_v_B = v_B - v_C
-    print(f"v_B x={v_B[0]} y={v_B[1]} z={v_B[2]}")
-    print(f"v_C x={v_C[0]} y={v_C[1]} z={v_C[2]}")
-    print(f"v_C_minus_v_B x={v_C_minus_v_B[0]} y={v_C_minus_v_B[1]} z={v_C_minus_v_B[2]}")
+    print("v_B/c=%s" % (v_B/c))
+    print("v_C/c=%s" % (v_C/c))
 
     beta_B = np.sqrt(np.dot(v_B, v_B)) / c
     gamma_B = rv3.lorentz_gamma(v_B)
