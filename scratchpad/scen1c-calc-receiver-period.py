@@ -5,8 +5,6 @@ import random
 
 import relvel3 as rv3
 
-c=299792458.0
-
 
 def compute_delta_tau_C_n(v_B, v_C, n, c=rv3.c):
     """
@@ -57,23 +55,25 @@ def compute_delta_tau_C_n(v_B, v_C, n, c=rv3.c):
     return delta_tau_C
 
 
-# Compute time interval measured by receiver between pulses,
-# using method in Appendix D.1 with intermediate value G.
+# Compute time interval measured by receiver between pulses, using
+# method in Appendix E.1 "Details of Scenario 1c calculations" with
+# intermediate value G.
 def reception_time2(v_B, v_C, T_B):
     v_B_dot_v_C = np.dot(v_B, v_C)
     normvC2 = np.dot(v_C, v_C)
     gamma_B = rv3.lorentz_gamma(v_B)
     gamma_C = rv3.lorentz_gamma(v_C)
     norm_v_C_minus_v_B2 = np.dot(v_C - v_B, v_C - v_B)
-    norm_vC_minus_v_B_dot_v_C = normvC2 - v_B_dot_v_C
-    G = (norm_vC_minus_v_B_dot_v_C**2) + (c**2 - normvC2) * norm_v_C_minus_v_B2
-    delta = (gamma_B * T_B / gamma_C) * (1 + ((gamma_C / c)**2) * (norm_vC_minus_v_B_dot_v_C + np.sqrt(G)))
+    normvC2_minus_v_B_dot_v_C = normvC2 - v_B_dot_v_C
+    G = (normvC2_minus_v_B_dot_v_C**2) + (c**2 - normvC2) * norm_v_C_minus_v_B2
+    delta = (gamma_B * T_B / gamma_C) * (1 + ((gamma_C / c)**2) * (normvC2_minus_v_B_dot_v_C + np.sqrt(G)))
     return delta
 
 # Velocities in m/s (e.g., B and C move in opposite directions along x-axis)
 #v_B = np.array([0.4 * 299792458, 0.0, 0.0])   # B at 0.4c
 #v_C = np.array([-0.1 * 299792458, 0.0, 0.0])  # C at -0.1c
 
+c = rv3.c
 test_cases = [
     {'v_B': np.array([0.4 * c, 0.2 * c, 0.0]),   # B at 0.4c
      'v_C': np.array([-0.1 * c, -0.3 * c, 0.0])  # C at -0.1c
@@ -84,11 +84,15 @@ test_cases = [
     ]
 
 for n in range(10):
-    test_case = {'v_B': np.array([random.random() * c, random.random() * c, random.random() * c]),
-                 'v_C': np.array([random.random() * c, random.random() * c, random.random() * c])}
+    v_B = np.array([random.random() * c, random.random() * c, random.random() * c])
+    v_B = rv3.random_rescale_if_faster_than_c(v_B)
+    v_C = np.array([random.random() * c, random.random() * c, random.random() * c])
+    v_C = rv3.random_rescale_if_faster_than_c(v_C)
+    test_case = {'v_B': v_B, 'v_C': v_C}
     test_cases.append(test_case)
 
 count = 0
+good = 0
 for test_case in test_cases:
     count += 1
     v_B = test_case['v_B']
@@ -97,8 +101,6 @@ for test_case in test_cases:
     print("----------------------------------------")
     print(f"Test case #{count}")
     print("----------------------------------------")
-    v_B = rv3.random_rescale_if_faster_than_c(v_B)
-    v_C = rv3.random_rescale_if_faster_than_c(v_C)
     v_C_minus_v_B = v_B - v_C
     print(f"v_B x={v_B[0]} y={v_B[1]} z={v_B[2]}")
     print(f"v_C x={v_C[0]} y={v_C[1]} z={v_C[2]}")
@@ -136,12 +138,18 @@ for test_case in test_cases:
     D = np.sqrt((1+beta_diff) / (1-beta_diff))
     delta3 = D * T_B
     print(f"delta3={delta3:.9f} s")
-
-    vecsum = rv3.add(v_B, diff)
-    print(f"v_C={v_C}")
-    print(f"vecsum={vecsum}")
-
     ratio = delta2 / delta3
     print(f"ratio=delta2 / delta3={delta2/delta3}")
     if abs(ratio - 1.0) > 0.0001:
         print(f"PROBLEM?  delta2 / delta3 significantly different than 1")
+    else:
+        good += 1
+
+print("")
+print("----------------------------------------")
+result = "YES"
+if good < count:
+    result = "NO"
+stats = " (%d good out of %d)" % (good, count)
+print("Test: Two ways in Scenario 1c of calculating period between C receiving B's pulses are the same?")
+print("Result: %s%s" % (result, stats))
