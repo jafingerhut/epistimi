@@ -129,6 +129,8 @@ for test_case in test_cases:
     delta2 = reception_time2(v_B, v_C, T_B)
     print(f"delta2={delta2:.9f} s")
 
+    # Use 3-d relativistic velocity difference (v_C ominus v_B) to
+    # calculate Doppler factor D.
     diff = rv3.subtract(v_C, v_B)
     diff_mag = np.sqrt(np.dot(diff, diff))
     beta_diff = diff_mag / c
@@ -136,6 +138,8 @@ for test_case in test_cases:
     D = np.sqrt((1+beta_diff) / (1-beta_diff))
     delta3 = D * T_B
     print(f"delta3={delta3:.9f} s")
+
+    # Compare the results between the two methods above
     ratio = delta2 / delta3
     print(f"ratio=delta2 / delta3={delta2/delta3}")
     if abs(ratio - 1.0) > 0.0001:
