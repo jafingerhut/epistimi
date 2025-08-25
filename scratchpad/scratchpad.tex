@@ -952,11 +952,16 @@ Appendix~\ref{app:scen1c}.
 When $B$ sends pulses with period $T_B$ measured on $B$'s clock, $C$
 receives pulses with period $T_C$ measured on $C$'s clock, where:
 \begin{align}
-T_C
-  & = \frac{\gamma_B}{\gamma_C} T_B \left[ 1 + \frac{\gamma_C^2}{c^2} \left( (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{(v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2  + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2} \right) \right] \label{eqn:scen1c-TC}
+\frac{T_C}{T_B}
+  & = \gamma_B \gamma_C \left[ (1 - \frac{\vect{v}_B \cdot \vect{v}_C}{c^2}) + \frac{\sqrt{ |\vect{v}_C - \vect{v}_B|^2 - \frac{v_C^2 v_B^2 \sin^2 \theta}{c^2} }}{c} \right] \nonumber \\
+  & = D_{rel} \nonumber \\
+  & = \sqrt{ \frac{1+\beta_{rel}}{1-\beta_{rel}} } \nonumber
 \end{align}
+where $\theta$ is the angle between $\vect{v}_B$ and $\vect{v}_C$,
+and $\beta_{rel} = v_{rel}/c = |\vect{v}_C \ominus \vect{v}_B|/c$.
 
-TODO: Add equation for $C$ sending pulses to $B$.
+The equation for $B$ sending pulses to $C$ gives
+exactly the same results for $T_B/T_C$ as for $T_C/T_B$ above.
 
 
 \subsection{Summary of results in this section}
