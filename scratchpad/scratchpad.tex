@@ -3092,8 +3092,8 @@ e_{C}(n+1) - e_{C}(n)
 On $C$'s clock, the period is $1/\gamma_C$ times the period on $A$'s
 clock, thus:
 \begin{align}
-T_C
-  & = \frac{\gamma_B}{\gamma_C} T_B \left[ 1 + \frac{\gamma_C^2}{c^2} \left( (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{(v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2  + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2} \right) \right] \label{eqn:scen1c-TC}
+\frac{T_C}{T_B}
+  & = \frac{\gamma_B}{\gamma_C} \left[ 1 + \frac{\gamma_C^2}{c^2} \left( (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{(v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2  + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2} \right) \right] \label{eqn:scen1c-TC}
 \end{align}
 
 
@@ -3118,14 +3118,14 @@ radical from Equation~\eqref{eqn:scen1c-TC}:
 \end{align}
 In this section we will define:
 \begin{equation}
-F = \sqrt{ |\vect{v}_C - \vect{v}_B|^2 - \frac{v_C^2 v_B^2 \sin^2 \theta}{c^2} }
+F = \sqrt{ |\vect{v}_C - \vect{v}_B|^2 - \frac{v_C^2 v_B^2 \sin^2 \theta}{c^2} } \label{eqn:scen1c-F}
 \end{equation}
 So the above expression under the radical becomes $c^2 F^2$,
 and the entire Equation~\eqref{eqn:scen1c-TC} can be written:
 \begin{align}
-T_C
-  & = \frac{\gamma_B}{\gamma_C} T_B \left[ 1 + \frac{\gamma_C^2}{c^2} \left( (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + cF \right) \right] \nonumber \\
 \frac{T_C}{T_B}
+  & = \frac{\gamma_B}{\gamma_C} \left[ 1 + \frac{\gamma_C^2}{c^2} \left( (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{(v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2  + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2} \right) \right] \nonumber \\
+  & = \frac{\gamma_B}{\gamma_C} \left[ 1 + \frac{\gamma_C^2}{c^2} \left( (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + cF \right) \right] & & \text{substitute $F$} \nonumber \\
   & = \frac{\gamma_B}{\gamma_C} \left[ 1 + \gamma_C^2 \left( \frac{v_C^2}{c^2} - \frac{\vect{v}_B \cdot \vect{v}_C}{c^2} + \frac{F}{c} \right) \right] & & \text{algebra} \nonumber \\
   & = \frac{\gamma_B}{\gamma_C} \left[ 1 + \gamma_C^2 \left( (\beta_C^2 - 1) + (1 - \frac{\vect{v}_B \cdot \vect{v}_C}{c^2}) + \frac{F}{c} \right) \right] & & \text{algebra, $\beta_C=v_C/c$} \nonumber \\
   & = \frac{\gamma_B}{\gamma_C} \left[ 1 + \gamma_C^2 (\beta_C^2 - 1) + \gamma_C^2 \left( (1 - \frac{\vect{v}_B \cdot \vect{v}_C}{c^2}) + \frac{F}{c} \right) \right] & & \text{algebra} \nonumber \\
@@ -3188,8 +3188,61 @@ evidence that there are no mistakes in the proof.
 \subsection{$C$ sends periodic pulses to $B$}
 \label{app:scen1c-Csending}
 
-TODO: Do these calculations, which should be very similar to those in
-the previous section.
+The calculations are nearly the same as in
+Appendix~\ref{app:scen1c-Bsending}, so we will omit most details and
+give only the results of a few of the steps.
+
+$C$ sends its $n$-th pulse at the following times, on $C$'s and $A$'s
+clock:
+\begin{align}
+q_C(n) & = t_{0,C} + nT_C \\
+q_A(n) & = t_{0,A} + \gamma_C nT_C
+\end{align}
+
+$B$'s time when it receives the $n$-th pulse from $C$, as measured on
+$A$'s clock, is:
+\begin{align*}
+e_{B}(n)
+  & = t_{0,A} + \gamma_C nT_C + \frac{\gamma_B^2}{c^2} (\gamma_C nT_C + t_{0,A}) \left[ (v_B^2 - \vect{v}_C \cdot \vect{v}_B) + \sqrt{ (v_B^2 - \vect{v}_C \cdot \vect{v}_B)^2  + (1-\beta_B^2)c^2 |\vect{v}_B - \vect{v}_C|^2 } \right]
+\end{align*}
+The period (measured on $A$'s clock) between $B$ receiving consecutive
+pulses is:
+\begin{align*}
+e_{B}(n+1) - e_{B}(n)
+  & = \gamma_C T_C \left[ 1 + \frac{\gamma_B^2}{c^2} \left( (v_B^2 - \vect{v}_C \cdot \vect{v}_B) + \sqrt{ (v_B^2 - \vect{v}_C \cdot \vect{v}_B)^2  + (1-\beta_B^2)c^2 |\vect{v}_B - \vect{v}_C|^2 } \right) \right]
+\end{align*}
+Then we divide by $\gamma_B$ to calculate the period between $B$
+receiving pulses, as measured on $B$'s slower-running clock:
+\begin{align*}
+\frac{T_B}{T_C}
+  & = \frac{\gamma_C}{\gamma_B} \left[ 1 + \frac{\gamma_B^2}{c^2} \left( (v_B^2 - \vect{v}_C \cdot \vect{v}_B) + \sqrt{ (v_B^2 - \vect{v}_C \cdot \vect{v}_B)^2  + (1-\beta_B^2)c^2 |\vect{v}_B - \vect{v}_C|^2 } \right) \right]
+\end{align*}
+By the same set of steps at the beginning of
+Appendix~\ref{app:scen1c-Bsending-relvel} that led to finding $F$ of
+Equation~\eqref{eqn:scen1c-F}, the expression under the radical above
+will give exactly the same formula for $F$.  Note that expression is
+symmetric in $\vect{v}_B, \vect{v}_C$, i.e. swapping the values of
+$\vect{v}_B$ and $\vect{v}_C$ will give the same value for $F$.
+Continuing, a similar sequence of steps as in
+Appendix~\ref{app:scen1c-Bsending-relvel} leads to:
+\begin{equation}
+\frac{T_B}{T_C}
+  = \gamma_B \gamma_C \left( K + \frac{F}{c} \right) \label{eqn:scen1c-TC4}
+\end{equation}
+where $K$ and $F$ are exactly the same as in that appendix.
+$K$ is also symmetric in $\vect{v}_B, \vect{v}_C$, as $F$ is.
+
+By Lemma~\ref{lem:magnitudeRelVecPlusMinus},
+$|\vect{v}_B \ominus \vect{v}_C|$ is also symmetric in
+$\vect{v}_B, \vect{v}_C$.
+So we get the same result for the period of pulses sent from $C$ to
+$B$ as we got for pulses from $B$ to $C$:
+\begin{equation}
+\frac{T_B}{T_C}
+  = D_{rel}
+  = \sqrt{ \frac{1+\beta_{rel}}{1-\beta_{rel}} }
+\end{equation}
+where $\beta_{rel} = v_{rel}/c = |\vect{v}_B \ominus \vect{v}_C|/c$.
 
 
 \section{Details of Scenario 2b calculations}
