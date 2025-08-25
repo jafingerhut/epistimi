@@ -3096,18 +3096,93 @@ T_C
   & = \frac{\gamma_B}{\gamma_C} T_B \left[ 1 + \frac{\gamma_C^2}{c^2} \left( (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + \sqrt{(v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2  + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2} \right) \right] \label{eqn:scen1c-TC}
 \end{align}
 
-Let $r$ be the 3-d relativistic velocity difference
-$\vect{v}_C \ominus \vect{v}_B$ given by
-Equation~\eqref{eqn:relVelocitySubComponents} in
 
-Appendix~\ref{app:3drelvelocityadd}.  I have not yet proved
-mathematically that $T_C = D_r T_B$ is equal to
-Equation~\eqref{eqn:scen1c-TC} for all $\vect{v}_A$, $\vect{v}_B$.
-However, I have written a simple
+\subsection{Relationship with relativistic velocity subtraction}
+\label{app:scen1c-Bsending-relvel}
+
+Starting from Equation~\eqref{eqn:scen1c-TC}, let us derive another
+expression that is more similar to
+Equation~\eqref{eqn:lemmavminusupart3}, to help us see their
+relationship to one another.
+
+First we will find a different way to write the expression under the
+radical from Equation~\eqref{eqn:scen1c-TC}:
+\begin{align}
+  & (v_C^2 - \vect{v}_B \cdot \vect{v}_C)^2  + (1-\beta_C^2)c^2 |\vect{v}_C - \vect{v}_B|^2 \nonumber \\
+  & = v_C^2 (v_C - \frac{\vect{v}_B \cdot \vect{v}_C}{v_C})^2  - v_C^2 |\vect{v}_C - \vect{v}_B|^2 + c^2 |\vect{v}_C - \vect{v}_B|^2 & & \text{algebra, $c \beta_C = v_C$} \nonumber \\
+  & = v_C^2 \left[ (v_C - \frac{\vect{v}_B \cdot \vect{v}_C}{v_C})^2  - |\vect{v}_C - \vect{v}_B|^2 \right] + c^2 |\vect{v}_C - \vect{v}_B|^2 & & \text{algebra} \nonumber \\
+  & = v_C^2 \left[ (v_C^2 - 2 v_B v_C \cos \theta + v_B^2 \cos^2 \theta)  - (v_C^2 - 2 v_C v_B \cos \theta + v_B^2) \right] + c^2 |\vect{v}_C - \vect{v}_B|^2 & & \text{algebra} \nonumber \\
+  & = v_C^2 \left[ v_B^2 \cos^2 \theta  - v_B^2 \right] + c^2 |\vect{v}_C - \vect{v}_B|^2 & & \text{cancel like terms} \nonumber \\
+  & = c^2 |\vect{v}_C - \vect{v}_B|^2 - v_C^2 v_B^2 \sin^2 \theta & & \text{$1-\sin^2 \theta = \cos^2 \theta$} \nonumber \\
+  & = c^2 \left[ |\vect{v}_C - \vect{v}_B|^2 - \frac{v_C^2 v_B^2 \sin^2 \theta}{c^2} \right] & & \text{algebra} \nonumber
+\end{align}
+In this section we will define:
+\begin{equation}
+F = \sqrt{ |\vect{v}_C - \vect{v}_B|^2 - \frac{v_C^2 v_B^2 \sin^2 \theta}{c^2} }
+\end{equation}
+So the above expression under the radical becomes $c^2 F^2$,
+and the entire Equation~\eqref{eqn:scen1c-TC} can be written:
+\begin{align}
+T_C
+  & = \frac{\gamma_B}{\gamma_C} T_B \left[ 1 + \frac{\gamma_C^2}{c^2} \left( (v_C^2 - \vect{v}_B \cdot \vect{v}_C) + cF \right) \right] \nonumber \\
+\frac{T_C}{T_B}
+  & = \frac{\gamma_B}{\gamma_C} \left[ 1 + \gamma_C^2 \left( \frac{v_C^2}{c^2} - \frac{\vect{v}_B \cdot \vect{v}_C}{c^2} + \frac{F}{c} \right) \right] & & \text{algebra} \nonumber \\
+  & = \frac{\gamma_B}{\gamma_C} \left[ 1 + \gamma_C^2 \left( (\beta_C^2 - 1) + (1 - \frac{\vect{v}_B \cdot \vect{v}_C}{c^2}) + \frac{F}{c} \right) \right] & & \text{algebra, $\beta_C=v_C/c$} \nonumber \\
+  & = \frac{\gamma_B}{\gamma_C} \left[ 1 + \gamma_C^2 (\beta_C^2 - 1) + \gamma_C^2 \left( (1 - \frac{\vect{v}_B \cdot \vect{v}_C}{c^2}) + \frac{F}{c} \right) \right] & & \text{algebra} \nonumber \\
+  & = \frac{\gamma_B}{\gamma_C} \left[ \gamma_C^2 \left( (1 - \frac{\vect{v}_B \cdot \vect{v}_C}{c^2}) + \frac{F}{c} \right) \right] & & \text{$\gamma_C^2 (1-\beta_C^2) = 1$} \nonumber \\
+  & = \gamma_B \gamma_C \left[ (1 - \frac{\vect{v}_B \cdot \vect{v}_C}{c^2}) + \frac{F}{c} \right] & & \text{algebra} \label{eqn:scen1c-TC2}
+\end{align}
+Define $K$ like that given in Lemma~\ref{lem:magnitudeRelVecMinus1}:
+\begin{equation}
+K = 1 - \frac{\vect{v}_B \cdot \vect{v}_C}{c^2} \nonumber
+\end{equation}
+and we see that we can write Equation~\eqref{eqn:scen1c-TC2} as:
+\begin{equation}
+\frac{T_C}{T_B}
+  = \gamma_B \gamma_C \left( K + \frac{F}{c} \right) \label{eqn:scen1c-TC3}
+\end{equation}
+Also, we can write Equation~\eqref{eqn:lemmavminusupart3} as:
+\begin{equation}
+|\vect{v}_{rel}| = |\vect{v}_C \ominus \vect{v}_B| = \frac{F}{K} \label{eqn:scen1c-vreldefn}
+\end{equation}
+Let $\beta_{rel} = v_{rel}/c$.  Then the Doppler factor for this
+relative velocity $\vect{v}_{rel}$ is:
+\begin{align}
+D_{rel}
+  & = \sqrt{ \frac{1+\beta_{rel}}{1-\beta_{rel}} } \nonumber \\
+  & = \sqrt{ \frac{1+v_{rel}/c}{1-v_{rel}/c} } & & \text{$\beta_{rel}=v_{rel}/c$} \nonumber \\
+  & = \sqrt{ \frac{1+\frac{F}{cK}}{1-\frac{F}{cK}} } & & \text{Eqn.~\eqref{eqn:scen1c-vreldefn}} \nonumber \\
+  & = \sqrt{ \frac{cK+F}{cK-F} } & & \text{multiply num. and denom. by $cK$} \nonumber \\
+  & = \frac{cK+F}{\sqrt{ (cK)^2 - F^2 }} & & \text{multiply num. and denom. by $\sqrt{cK+F}$} \label{scen1c:dopplerfactor1}
+\end{align}
+Find a way to rewrite $(cK)^2-F^2$:
+\begin{align}
+(cK)^2 - F^2
+  & = \left( c (1 - \frac{\vect{v}_B \cdot \vect{v}_C}{c^2}) \right)^2 - \left( |\vect{v}_C - \vect{v}_B|^2 - \frac{v_C^2 v_B^2 \sin^2 \theta}{c^2} \right) & & \text{defn. of $K,F$} \nonumber \\
+  & = \left( c^2 - 2 v_B v_C \cos \theta + \frac{v_B^2 v_C^2 \cos^2 \theta}{c^2} \right) - (v_C^2 - 2 v_B v_C \cos \theta + v_B^2) + \frac{v_C^2 v_B^2 \sin^2 \theta}{c^2} & & \text{algebra} \nonumber \\
+  & = c^2 + \frac{v_B^2 v_C^2}{c^2} - (v_B^2 + v_C^2) & & \text{algebra} \nonumber \\
+  & = c^2 \left( 1 - \frac{v_B^2}{c^2} - \frac{v_C^2}{c^2} + \frac{v_B^2}{c^2} \frac{v_C^2}{c^2} \right) & & \text{algebra} \nonumber \\
+  & = c^2 \left( 1 - \frac{v_B^2}{c^2} \right) \left( 1 - \frac{v_C^2}{c^2} \right) & & \text{algebra} \nonumber \\
+  & = \frac{c^2}{\gamma_B^2 \gamma_C^2} & & \text{defn. of $\gamma$}
+\end{align}
+Substituting this into Equation~\eqref{scen1c:dopplerfactor1}
+we find:
+\begin{align}
+D_{rel}
+  & = \frac{cK+F}{\frac{c}{\gamma_B \gamma_C}} \nonumber \\
+  & = \gamma_B \gamma_C \left( K+\frac{F}{c} \right) \label{eqn:scen1c-TC4}
+\end{align}
+Thus we have shown that $T_C/T_B$ from
+Equation~\eqref{eqn:scen1c-TC3}, which was derived with no knowledge
+of the equation for 3-d relativistic velocity difference, nor of the
+relativistic Doppler factor, is equal to $D_{rel}$ from
+Equation~\eqref{eqn:scen1c-TC4}.
+
+In addition to the proof above, I have written a simple
 program~\cite{FingerhutScenario1c-program} that demonstrates those
 equations give the same result for many randomly selected pairs of
-values for $\vect{v}_A$, $\vect{v}_B$, so it is highly likely those
-two equations always give the same result.
+values for $\vect{v}_B$, $\vect{v}_C$, which is strong
+evidence that there are no mistakes in the proof.
 
 
 \subsection{$C$ sends periodic pulses to $B$}
