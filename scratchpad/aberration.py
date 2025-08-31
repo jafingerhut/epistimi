@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sys
 
+import relvel3 as rv3
+
 
 PI = 3.1415926535897932384
 
@@ -19,14 +21,6 @@ def rad2deg(angle_rad):
 
 def deg2rad(angle_deg):
     return angle_deg * (PI/180.0)
-
-
-def angle_between_vectors_rad(v1, v2):
-    mag1 = np.sqrt(np.dot(v1, v1))
-    mag2 = np.sqrt(np.dot(v2, v2))
-    dotp = np.dot(v1, v2)
-    angle_rad = np.arccos(dotp/(mag1 * mag2))
-    return angle_rad
 
 
 def pos_angle_rad(angle_rad):
@@ -93,4 +87,4 @@ if __name__ == "__main__":
     v1 = np.array([1, 1, 0])
     v2 = np.array([-1, -1, 0])
     print("v1=%s v2=%s angle_between_deg=%.3f"
-          "" % (v1, v2, rad2deg(angle_between_vectors_rad(v1, v2))))
+          "" % (v1, v2, rad2deg(rv3.angle_between_vectors_rad(v1, v2))))

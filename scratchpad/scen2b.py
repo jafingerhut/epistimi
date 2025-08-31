@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import matplotlib.animation as anim
 
+import relvel3 as rv3
+
 
 def normalize_to_unit_vector(v):
     mag = np.sqrt(np.dot(v, v))

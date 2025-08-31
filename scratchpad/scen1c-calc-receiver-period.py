@@ -104,7 +104,7 @@ for test_case in test_cases:
     print("v_B/c=%s" % (v_B/c))
     print("v_C/c=%s" % (v_C/c))
 
-    beta_B = np.sqrt(np.dot(v_B, v_B)) / c
+    beta_B = rv3.magnitude(v_B) / c
     gamma_B = rv3.lorentz_gamma(v_B)
     print(f"beta_B={beta_B}")
     print(f"gamma_B={gamma_B}")
@@ -112,7 +112,7 @@ for test_case in test_cases:
         print("beta_B >= 1.0, so skipping this test case")
         continue
 
-    beta_C = np.sqrt(np.dot(v_C, v_C)) / c
+    beta_C = rv3.magnitude(v_C) / c
     gamma_C = rv3.lorentz_gamma(v_C)
     print(f"beta_C={beta_C}")
     print(f"gamma_C={gamma_C}")
@@ -132,7 +132,7 @@ for test_case in test_cases:
     # Use 3-d relativistic velocity difference (v_C ominus v_B) to
     # calculate Doppler factor D.
     diff = rv3.subtract(v_C, v_B)
-    diff_mag = np.sqrt(np.dot(diff, diff))
+    diff_mag = rv3.magnitude(diff)
     beta_diff = diff_mag / c
     print(f"beta_diff={beta_diff}")
     D = np.sqrt((1+beta_diff) / (1-beta_diff))

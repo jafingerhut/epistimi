@@ -3,14 +3,24 @@
 import numpy as np
 import random
 
-import aberration as abr
-
 c=299792458.0
 
 
 def lorentz_gamma(v):
     v2 = np.dot(v, v)
     return 1.0 / np.sqrt(1.0 - v2 / c**2)
+
+
+def magnitude(v):
+    return np.sqrt(np.dot(v, v))
+
+
+def angle_between_vectors_rad(v1, v2):
+    mag1 = magnitude(v1)
+    mag2 = magnitude(v2)
+    dotp = np.dot(v1, v2)
+    angle_rad = np.arccos(dotp/(mag1 * mag2))
+    return angle_rad
 
 
 # Calculate and return vB \oplus u
@@ -52,12 +62,12 @@ def subtract(vA, vB):
 
 
 def random_rescale_if_faster_than_c(v):
-    mag1 = np.sqrt(np.dot(v, v))
+    mag1 = magnitude(v)
     if mag1 < c:
         return v
     new_beta = random.random()
     v = (v / mag1) * c * new_beta
-    mag2 = np.sqrt(np.dot(v, v))
+    mag2 = magnitude(v)
     print(f"|v|={mag1} >= c, rescaling it so its direction is same, but its magnitude is a uniform random value in the range [0,c) mag2={mag2}")
     if mag2 >= c:
         print(f"BUG in program.  New magnitude after rescaling is > c.  v={v} mag2={mag2}")
@@ -175,7 +185,7 @@ def check_alternate_method_to_calculate_u_ominus_v(test_case):
 
     # Method 1: straightforward way
     diff_vec = subtract(u, v)
-    diff_beta_method1 = np.sqrt(np.dot(diff_vec, diff_vec)) / c
+    diff_beta_method1 = magnitude(diff_vec) / c
 
     # Method 2: A way I found with a lot of by-hand algebraic
     # manipulation, that I am suspicious whether I made any mistakes.
@@ -183,7 +193,7 @@ def check_alternate_method_to_calculate_u_ominus_v(test_case):
     beta_vec_v = v / c
     beta_u2 = np.dot(beta_vec_u, beta_vec_u)
     beta_v2 = np.dot(beta_vec_v, beta_vec_v)
-    theta_rad = abr.angle_between_vectors_rad(u, v)
+    theta_rad = angle_between_vectors_rad(u, v)
     sin_theta2 = np.sin(theta_rad)**2
     K = 1.0 - (np.dot(u, v) / (c**2))
     beta_diff_vec = beta_vec_u - beta_vec_v
@@ -212,10 +222,10 @@ def check_u_ominus_v_equals_v_ominus_u(test_case):
     v = test_case['vB']
 
     diff1_vec = subtract(u, v)
-    diff1_mag = np.sqrt(np.dot(diff1_vec, diff1_vec))
+    diff1_mag = magnitude(diff1_vec)
 
     diff2_vec = subtract(v, u)
-    diff2_mag = np.sqrt(np.dot(diff2_vec, diff2_vec))
+    diff2_mag = magnitude(diff2_vec)
 
     err = abs_diff(diff1_mag, diff2_mag)
     results = ["|u ominus v|=%.5f" % (diff1_mag),
@@ -238,10 +248,10 @@ def check_u_oplus_v_equals_v_oplus_u(test_case):
     v = test_case['vB']
 
     sum1_vec = add(u, v)
-    sum1_mag = np.sqrt(np.dot(sum1_vec, sum1_vec))
+    sum1_mag = magnitude(sum1_vec)
 
     sum2_vec = add(v, u)
-    sum2_mag = np.sqrt(np.dot(sum2_vec, sum2_vec))
+    sum2_mag = magnitude(sum2_vec)
 
     err = abs_diff(sum1_mag, sum2_mag)
     results = ["|u oplus v|=%.5f" % (sum1_mag),
