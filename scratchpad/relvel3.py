@@ -2,6 +2,7 @@
 
 import numpy as np
 import random
+import warnings
 
 c=299792458.0
 
@@ -29,11 +30,36 @@ def magnitude(v):
     return np.sqrt(np.dot(v, v))
 
 
+global_made_RuntimeWarning_an_exception = False
+global_num_arccos_fixups = 0
+global_num_RuntimeWarnings = 0
+
 def angle_between_vectors_rad(v1, v2):
+    global global_made_RuntimeWarning_an_exception
+    if not global_made_RuntimeWarning_an_exception:
+        warnings.simplefilter('error', category=RuntimeWarning)
+        global_made_RuntimeWarning_an_exception = True
     mag1 = magnitude(v1)
     mag2 = magnitude(v2)
     dotp = np.dot(v1, v2)
-    angle_rad = np.arccos(dotp/(mag1 * mag2))
+    cos = dotp/(mag1 * mag2)
+    if cos > 1.0:
+        # Occasionally the calculations above give a number just
+        # slightly larger than 1.0 for parallel vectors.  Allow for
+        # this, with a very small error tolerance.
+        if cos < 1.000000001:
+            global global_num_arccos_fixups
+            global_num_arccos_fixups += 1
+            cos = 1.0
+    try:
+        angle_rad = np.arccos(cos)
+    except RuntimeWarning as e:
+        global global_num_RuntimeWarnings
+        global_num_RuntimeWarnings += 1
+        print("angle_between_vectors_rad arccos RuntimeWarning v1=%s v2=%s"
+              " dotp=%s mag1=%s mag2=%s cos=%s angle_rad=%s"
+              "" % (v1, v2, dotp, mag1, mag2, cos, angle_rad))
+        raise
     return angle_rad
 
 

@@ -123,7 +123,7 @@ def generate_random_scen3_instance(verbose=False):
 
 # Functions that call check_constraints are only written to return
 # correct answers when this function returns True.
-def check_constrants(v_R_msec, v_S_msec, R_lightsec, S_lightsec):
+def check_constraints(v_R_msec, v_S_msec, R_lightsec, S_lightsec):
     diff_R_S = R_lightsec - S_lightsec
     diff_v_S_v_R = v_S_msec - v_R_msec
     angle_rad = rv3.angle_between_vectors_rad(diff_R_S, diff_v_S_v_R)
@@ -139,6 +139,7 @@ def calc_q_2(v_R_msec, v_S_msec, R_lightsec, S_lightsec, k):
 
 
 # d_A = e_{2,A} - e_{1,A}
+# Note: d_A time is in the rest frame, not A's local clock.
 def calc_d_A(v_R_msec, v_S_msec, R_lightsec, S_lightsec, q_2_sec):
     assert check_constraints(v_R_msec, v_S_msec, R_lightsec, S_lightsec)
     gamma_R = rv3.gamma_msec(v_R_msec)
@@ -147,6 +148,7 @@ def calc_d_A(v_R_msec, v_S_msec, R_lightsec, S_lightsec, q_2_sec):
 
 
 # d_B = e_{2,B} - e_{1,B}
+# Note: d_A time is in the rest frame, not B's local clock.
 def calc_d_A(v_R_msec, v_S_msec, R_lightsec, S_lightsec, q_2_sec):
     assert check_constraints(v_R_msec, v_S_msec, R_lightsec, S_lightsec)
     gamma_S = rv3.gamma_msec(v_S_msec)
@@ -155,12 +157,24 @@ def calc_d_A(v_R_msec, v_S_msec, R_lightsec, S_lightsec, q_2_sec):
 
 
 def main():
-    for i in range(300):
+    num_times_doubling_required = 0
+    for i in range(10 * 1000):
         x = generate_random_scen3_instance(verbose=False)
         #print("i=%d x=%s" % (i, x))
         if x['doublings_required'] > 0:
-            print("Got one!  i=%d x=%s" % (i, x))
-            sys.exit(0)
+            num_times_doubling_required += 1
+#            print("Got one!  i=%d x=%s" % (i, x))
+#            #sys.exit(0)
+        satisfies_constraints = \
+            check_constraints(x['v_R_fracofc'] * rv3.c,
+                              x['v_S_fracofc'] * rv3.c,
+                              x['R_lightsec'], x['S_lightsec'])
+        if not satisfies_constraints:
+            print("FAILS check_constraints: i=%d x=%s" % (i, x))
+            sys.exit(1)
+    print("rv3.global_num_RuntimeWarnings=%d" % (rv3.global_num_RuntimeWarnings))
+    print("num_times_doubling_required=%d" % (num_times_doubling_required))
+    print("global_num_arccos_fixups=%d" % (rv3.global_num_arccos_fixups))
 
 
 if __name__ == "__main__":
