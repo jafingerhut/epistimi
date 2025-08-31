@@ -9,8 +9,7 @@ import relvel3 as rv3
 
 
 def normalize_to_unit_vector(v):
-    mag = np.sqrt(np.dot(v, v))
-    return v / mag
+    return v / rv3.magnitude(v)
 
 def rod_R_center_x_fn(beta_R, t):
     return 0 + beta_R * t
