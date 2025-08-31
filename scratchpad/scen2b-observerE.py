@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
+import relvel3 as rv3
 import scen2b as scen
 import aberration as abr
 
@@ -104,8 +105,8 @@ def make_position_plot_of_one_time(ax, L, beta_R, beta_S, D, t, Xmax,
 # measured in the rest frame.
 def make_plots_of_interesting_times(L, beta_R, beta_S, D):
     print("--------------------")
-    gamma_S = scen.gamma_fn(beta_S)
-    gamma_R = scen.gamma_fn(beta_R)
+    gamma_S = rv3.gamma_ofbeta(beta_S)
+    gamma_R = rv3.gamma_ofbeta(beta_R)
     event_lst = scen.interesting_event_list(L, beta_R, beta_S, D)
 
     # Calculate the max X coordinate of interest among all plots, to
@@ -183,8 +184,8 @@ print("--------------------------------------------------")
 event_2_source = np.array([-L/2, 0])
 event_3_source = np.array([L/2, 0])
 
-gamma_R = scen.gamma_fn(beta_R)
-gamma_S = scen.gamma_fn(beta_S)
+gamma_R = rv3.gamma_ofbeta(beta_R)
+gamma_S = rv3.gamma_ofbeta(beta_S)
 
 plus_x_direction = np.array([1, 0])
 
@@ -197,11 +198,11 @@ direction_A_to_ev2 = event_2_source - A_location
 direction_A_to_ev3 = event_3_source - A_location
 print("direction_A_to_ev2=%s angle with +x axis (deg)=%.3f"
       "" % (direction_A_to_ev2,
-            abr.rad2deg(abr.angle_between_vectors_rad(plus_x_direction,
+            abr.rad2deg(rv3.angle_between_vectors_rad(plus_x_direction,
                                                       direction_A_to_ev2))))
 print("direction_A_to_ev3=%s angle with +x axis (deg)=%.3f"
       "" % (direction_A_to_ev3,
-            abr.rad2deg(abr.angle_between_vectors_rad(plus_x_direction,
+            abr.rad2deg(rv3.angle_between_vectors_rad(plus_x_direction,
                                                       direction_A_to_ev3))))
 
 # Consider light pulse emitted at Event 2 from left end of R.
@@ -215,7 +216,7 @@ direction_B_to_ev2 = event_2_source - B_receiving_ev2_pulse
 print("direction_B_to_ev2=%s" % (direction_B_to_ev2))
 direction_B_to_ev2 = scen.normalize_to_unit_vector(direction_B_to_ev2)
 print("direction_B_to_ev2 (unit vec)=%s" % (direction_B_to_ev2))
-angle_rad = abr.angle_between_vectors_rad(plus_x_direction, direction_B_to_ev2)
+angle_rad = rv3.angle_between_vectors_rad(plus_x_direction, direction_B_to_ev2)
 print("angle between +x axis and direction_B_to_ev2 (deg): %.3f"
       "" % (abr.rad2deg(angle_rad)))
 
@@ -233,7 +234,7 @@ direction_B_to_ev3 = event_3_source - B_receiving_ev3_pulse
 print("direction_B_to_ev3=%s" % (direction_B_to_ev3))
 direction_B_to_ev3 = scen.normalize_to_unit_vector(direction_B_to_ev3)
 print("direction_B_to_ev3 (unit vec)=%s" % (direction_B_to_ev3))
-angle_rad = abr.angle_between_vectors_rad(plus_x_direction, direction_B_to_ev3)
+angle_rad = rv3.angle_between_vectors_rad(plus_x_direction, direction_B_to_ev3)
 print("angle between +x axis and direction_B_to_ev3 (deg): %.3f"
       "" % (abr.rad2deg(angle_rad)))
 adjusted_angle_rad = abr.relativistic_aberration(beta_S, angle_rad)
@@ -257,7 +258,7 @@ print("dir_before_boost_notunit=%s" % (dir_before_boost_notunit))
 dir_before_boost = scen.normalize_to_unit_vector(dir_before_boost_notunit)
 print("dir_before_boost=%s" % (dir_before_boost))
 
-angle_deg = abr.rad2deg(abr.angle_between_vectors_rad(plus_x_direction,
+angle_deg = abr.rad2deg(rv3.angle_between_vectors_rad(plus_x_direction,
                                                       -dir_before_boost))
 print("angle between +x axis and -dir_before_boost (deg): %.3f"
       "" % (angle_deg))

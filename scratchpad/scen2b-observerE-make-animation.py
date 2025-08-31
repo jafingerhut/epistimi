@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import matplotlib.animation as anim
 
+import relvel3 as rv3
 import scen2b as scen
 
 
@@ -169,8 +170,8 @@ def animate(t):
 
 
 def make_plots_of_interesting_times(L, beta_R, beta_S, D):
-    gamma_R = scen.gamma_fn(beta_R)
-    gamma_S = scen.gamma_fn(beta_S)
+    gamma_R = rv3.gamma_ofbeta(beta_R)
+    gamma_S = rv3.gamma_ofbeta(beta_S)
     Z = scen.Z_for_pulse_reaching_A_at_same_time_as_E(L, D, beta_S, beta_R)
     event_lst = scen.interesting_event_list(L, beta_R, beta_S, D)
 

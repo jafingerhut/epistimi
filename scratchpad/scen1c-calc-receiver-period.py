@@ -23,7 +23,7 @@ def compute_delta_tau_C_n(v_B, v_C, n, c=rv3.c):
     """
 
     def compute_reception_time(n_emit, v_B, v_C, c):
-        gamma_B = rv3.lorentz_gamma(v_B)
+        gamma_B = rv3.gamma_msec(v_B)
         tau = n_emit * gamma_B
 
         a = v_C
@@ -47,7 +47,7 @@ def compute_delta_tau_C_n(v_B, v_C, n, c=rv3.c):
     if n < 1:
         raise ValueError("Pulse index n must be at least 1")
 
-    gamma_C = rv3.lorentz_gamma(v_C)
+    gamma_C = rv3.gamma_msec(v_C)
     t_n = compute_reception_time(n, v_B, v_C, c)
     t_np1 = compute_reception_time(n + 1, v_B, v_C, c)
 
@@ -61,8 +61,8 @@ def compute_delta_tau_C_n(v_B, v_C, n, c=rv3.c):
 def reception_time2(v_B, v_C, T_B):
     v_B_dot_v_C = np.dot(v_B, v_C)
     normvC2 = np.dot(v_C, v_C)
-    gamma_B = rv3.lorentz_gamma(v_B)
-    gamma_C = rv3.lorentz_gamma(v_C)
+    gamma_B = rv3.gamma_msec(v_B)
+    gamma_C = rv3.gamma_msec(v_C)
     norm_v_C_minus_v_B2 = np.dot(v_C - v_B, v_C - v_B)
     normvC2_minus_v_B_dot_v_C = normvC2 - v_B_dot_v_C
     G = (normvC2_minus_v_B_dot_v_C**2) + (c**2 - normvC2) * norm_v_C_minus_v_B2
@@ -105,7 +105,7 @@ for test_case in test_cases:
     print("v_C/c=%s" % (v_C/c))
 
     beta_B = rv3.magnitude(v_B) / c
-    gamma_B = rv3.lorentz_gamma(v_B)
+    gamma_B = rv3.gamma_msec(v_B)
     print(f"beta_B={beta_B}")
     print(f"gamma_B={gamma_B}")
     if beta_B >= 1.0:
@@ -113,7 +113,7 @@ for test_case in test_cases:
         continue
 
     beta_C = rv3.magnitude(v_C) / c
-    gamma_C = rv3.lorentz_gamma(v_C)
+    gamma_C = rv3.gamma_msec(v_C)
     print(f"beta_C={beta_C}")
     print(f"gamma_C={gamma_C}")
     if beta_C >= 1.0:

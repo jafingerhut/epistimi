@@ -6,9 +6,23 @@ import random
 c=299792458.0
 
 
-def lorentz_gamma(v):
-    v2 = np.dot(v, v)
+# v_msec must be a vector with magnitude in units of meters/sec
+def gamma_msec(v_msec):
+    v2 = np.dot(v_msec, v_msec)
     return 1.0 / np.sqrt(1.0 - v2 / c**2)
+
+
+# v_fracofc must be a vector with magnitude that is a fraction of
+# speed of light c
+def gamma_fracofc(v_fracofc):
+    v2 = np.dot(v_fracofc, v_fracofc)
+    return 1.0 / np.sqrt(1.0 - v2)
+
+
+# beta must be a real number, not a vector, in units of a fraction of
+# the speed of light c
+def gamma_ofbeta(beta):
+    return 1.0 / np.sqrt(1.0 - beta**2)
 
 
 def magnitude(v):
@@ -34,7 +48,7 @@ def angle_between_vectors_rad(v1, v2):
 def add(vB, u):
     normvB2 = np.dot(vB, vB)
     vB_dot_u = np.dot(vB, u)
-    gamma_B = lorentz_gamma(vB)
+    gamma_B = gamma_msec(vB)
     factor = 1.0 / (gamma_B * (1.0 + vB_dot_u / (c**2)))
     return factor * (u + (((gamma_B-1) * vB_dot_u / normvB2) + gamma_B) * vB)
 
@@ -51,7 +65,7 @@ def add(vB, u):
 def subtract(vA, vB):
     vA_dot_vB = np.dot(vA, vB)
     normvB2 = np.dot(vB, vB)
-    gamma_B = lorentz_gamma(vB)
+    gamma_B = gamma_msec(vB)
     vA_parallel = (vA_dot_vB / normvB2) * vB
     vA_perp = vA - vA_parallel
     denom = 1 - (vA_dot_vB / (c**2))
@@ -61,14 +75,15 @@ def subtract(vA, vB):
 
 
 
-def random_rescale_if_faster_than_c(v):
+def random_rescale_if_faster_than_c(v, verbose=False):
     mag1 = magnitude(v)
     if mag1 < c:
         return v
     new_beta = random.random()
     v = (v / mag1) * c * new_beta
     mag2 = magnitude(v)
-    print(f"|v|={mag1} >= c, rescaling it so its direction is same, but its magnitude is a uniform random value in the range [0,c) mag2={mag2}")
+    if verbose:
+        print(f"|v|={mag1} >= c, rescaling it so its direction is same, but its magnitude is a uniform random value in the range [0,c) mag2={mag2}")
     if mag2 >= c:
         print(f"BUG in program.  New magnitude after rescaling is > c.  v={v} mag2={mag2}")
         sys.exit(1)

@@ -10,11 +10,6 @@ import relvel3 as rv3
 PI = 3.1415926535897932384
 
 
-def gamma_fn(beta):
-    gamma = 1.0 / np.sqrt(1.0 - beta**2)
-    return gamma
-
-
 def rad2deg(angle_rad):
     return angle_rad * (180.0/PI)
 
@@ -41,7 +36,7 @@ def classical_aberration(beta, theta_rad):
 
 
 def relativistic_aberration(beta, theta_rad):
-    gamma = gamma_fn(beta)
+    gamma = rv3.gamma_ofbeta(beta)
     slope = np.sin(theta_rad) / (gamma * (np.cos(theta_rad) + beta))
     phi_rad = pos_angle_rad(np.arctan(slope))
     return phi_rad
