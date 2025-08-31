@@ -75,6 +75,10 @@ def subtract(vA, vB):
 
 
 
+# Given a vector v with magnitude in units of meters/sec, check if its
+# magnitude is less than c.  If so, return it.  Otherwise, return a
+# vector in the same direction with a random magnitude in the range
+# [0, c).
 def random_rescale_if_faster_than_c(v, verbose=False):
     mag1 = magnitude(v)
     if mag1 < c:
