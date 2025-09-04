@@ -134,6 +134,7 @@ There are many methods to synchronize clocks that are {\em not}
 precise enough to measure the one way speed of light, e.g. methods
 used in computer networks like the Network Time Protocol
 (NTP)~\cite{NetworkTimeProtocol} and {\sc Huygens}~\cite{GLYN2018}.
+%(NTP)~\cite{NetworkTimeProtocol} and {\sc Huygens}~\cite{SVSW1998}.
 These involve measuring the time on a local clock, sending it in
 messages to other computer systems, and sometimes performing extensive
 calculations on the contents of sequences of these messages, in order
@@ -306,7 +307,7 @@ Let me know if you'd like this expressed with spacetime diagrams or
 coordinate transformations to make it clearer.
 
 There are some follow up questions and answers in
-Appendix~\cite{app:chatgpt-on-clock-sync-and-one-way-speed-of-light}
+Appendix~\ref{app:chatgpt-on-clock-sync-and-one-way-speed-of-light}
 that I found interesting, but are relevant for other methods besides
 this one, hence putting them in an appendix.
 
@@ -435,7 +436,7 @@ Let me know if you'd like examples or spacetime diagrams to visualize
 this.
 
 
-\subsection{If we reject Einstein's clock synchronizatino postulate, does it become possible to measure one way speed of light?}
+\subsection{If we reject Einstein's clock synchronization postulate, does it become possible to measure one way speed of light?}
 
 \paragraph{I followed up a bit further about rejecting Einstein's postulate:}
 
@@ -802,6 +803,11 @@ x' = \gamma(x-vt), t' = \gamma(t-vx/c^2)
 \frac{dx'}{dt'} = \frac{c-v}{1-(vc)/c^2} = \text{anisotropic}
 \end{equation}
 \end{enumerate}
+
+[Editor's note, not written by ChatGPT: Note that the last equation
+above is algebraically equal to $c$.  This error is corrected in the
+answer to the next prompt below.]
+
 This calculation shows how even though light moves at speed $c$ in the
 ether frame, the transformed coordinates show direction-dependent
 speeds in the moving frame.
@@ -1272,7 +1278,7 @@ Synchronization Convention & Time Transformation & One-way speed of light
 \\ \cline{1-3}
 Einstein ($\epsilon = 1/2$) & $t' = \gamma (t - \frac{vx}{c^2})$ & Isotropic (same both ways)
 \\ \cline{1-3}
-Reichenbach $\epsilon$ & $t' = \gamma (t - \frac{vx}{c^2} (1 - 2\epsilon)$ & Anisotropic (depends on direction)
+Reichenbach $\epsilon$ & $t' = \gamma (t - \frac{vx}{c^2} (1 - 2\epsilon))$ & Anisotropic (depends on direction)
 \\ \cline{1-3}
 \end{tabularx}
 
