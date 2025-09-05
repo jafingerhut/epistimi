@@ -3836,24 +3836,122 @@ transformation equations for other scenarios, e.g. it is possible to
 derive similar equations for a situation where you are instead using
 Reichenbach's $\epsilon$ clock synchronization convention.
 
+\newcommand{\erp}{\textbf{EP1}}
+\newcommand{\esol}{\textbf{EP2}}
+\newcommand{\homogeneity}{\textbf{Homogeneity}}
+\newcommand{\linearity}{\textbf{Linearity}}
+
 Einstein's postulates:
-
-EP1: {\em Relativity principle}: The laws of physics are the same in
-all inertial frames.
-
-EP2: {\em Constancy of the speed of light}: Light in a vacuum
-propagates with speed $c$ in all inertial frames, independent of the
-source.
-
+\begin{itemize}
+\item \erp: {\em Relativity principle}: The laws of physics are the
+  same in all inertial frames.
+\item \esol: {\em Constancy of the speed of light}: Light in a vacuum
+  propagates with speed $c$ in all inertial frames, independent of the
+  source.
+\end{itemize}
 Other postulates used:
+\begin{itemize}
+\item \homogeneity: {\em Homogeneity}: Space is homogenous, i.e. there
+  are no places where things behave differently than they do in other
+  places, because of the place alone.  Similarly, time is homogenous.
+\item \linearity: {\em Linearity}: If an entity is in constant
+  velocity motion in one inertial frame, the transformation equations
+  must map those to constant velocity motion in all other inertial
+  frames.
+\end{itemize}
 
-H: {\em Homogeneity}: Space is homogenous, i.e. there are no places
-where things behave differently than they do in other places, because
-of the place alone.  Similarly, time is homogenous.
+\begin{lemma}
+  If a transformation from intertial frame $S$ to frame $S'$,
+  specified as a function from events $(t, x)$ to $(t', x')$, must
+  satisfy the constraints of \erp, \esol, \homogeneity, \linearity,
+  and it must take all points $x = \pm ct$ and transform them to
+  points $x' = \pm ct'$, then we must have:
+\begin{equation}
+c^2 t'^2 - x'^2 = \lambda(v) (c^2 t^2 - x^2)
+\end{equation}
+where $\lambda(v)$ is a function only of $v$.
+\end{lemma}
 
-L: {\em Linearity}: If an entity is moving with constant velocity in
-one inertial frame, the transformation equations must map those to
-constant velocity in all other inertial frames.
+\begin{proof}
+Define $Q(x,t) = c^2 t^2 - x^2$ and $Q'(x,t) = c^2 t'^2 - x'^2$.
+$Q(x,t)=0$ if and only if $x = \pm ct$, and
+$Q'(x,t)=0$ if and only if $x' = \pm ct'$.
+Thus the constraint that the transformation must take all points
+satisfying $x = \pm ct$ and transform them to points satisfying $x' =
+\pm ct'$ is equivalent to the constraint that it must take all points
+satisfying $Q(x,t)=$ and transform them to points satisfying
+$Q'(x,t)=0$.
+
+By \linearity, we want equations that relate events $(t, x, y, z)$ in
+frame $S$ to events $(t', x', y', z')$ in $S'$ that are linear,
+i.e. of the following form:
+\begin{align}
+x' & = Ax + Bt \\
+t' & = Dx + Et
+\end{align}
+where $A$, $B$, $D$, and $E$ may depend on $v$ and other constants.
+They must not depend upon $x$ and $t$, because that would violate
+\homogeneity.
+
+Plug equations for $x'$, $t'$ into $Q'(x,t)$ to get:
+\begin{align}
+Q'(x,t)
+  & = c^2 (Dx + Et)^2 - (Ax+Bt)^2 \nonumber \\
+  & = c^2 (D^2x^2 + 2DExt + E^2t^2) - (A^2x^2 + 2ABxt + B^2t^2) \nonumber \\
+  & = ax^2 + 2bxt + dt^2 \label{eqn:lt0}
+\end{align}
+where:
+\begin{align*}
+  a & = c^2 D^2 - A^2 \\
+  b & = c^2 DE - AB \\
+  c & = c^2 E^2 - B^2
+\end{align*}
+For all $x$, $t$ satisfying $x=ct$, we know that $Q(x,t)=0$,
+and we want $Q'(x,t)=0$ also.
+So for all $t$:
+\begin{align*}
+Q'(ct,t) & = 0 & & \text{$x=ct$} \\
+a(ct)^2 + 2b(ct)t + dt^2 & = 0 & & \text{Eqn.~\eqref{eqn:lt0}} \\
+(ac^2 + 2bc + d) t^2 & = 0 & & \text{algebra}
+\end{align*}
+The only way that can be true for all $t$ is if
+\begin{equation}
+ac^2 + 2bc + d = 0 \label{eqn:lt1}
+\end{equation}
+Similarly, for all $x$, $t$ satisfying $x=-ct$, we know that $Q(x,t)=0$,
+and we want $Q'(x,t)=0$ also.
+So for all $t$:
+\begin{align*}
+Q'(-ct,t) & = 0 & & \text{$x=-ct$} \\
+a(-ct)^2 + 2b(-ct)t + dt^2 & = 0 & & \text{Eqn.~\eqref{eqn:lt0}} \\
+(ac^2 - 2bc + d) t^2 & = 0 & & \text{algebra}
+\end{align*}
+The only way that can be true for all $t$ is if
+\begin{equation}
+ac^2 - 2bc + d = 0 \label{eqn:lt2}
+\end{equation}
+Subtract Equation~\eqref{eqn:lt2} from~\eqref{eqn:lt1} to get:
+\begin{align*}
+2bc - (-2bc) & = 0 \\
+4bc & = 0 \\
+b & = 0
+\end{align*}
+Substituting $b=0$ into Equation~\eqref{eqn:lt1} gives:
+\begin{align*}
+ac^2 + 0 + d & = 0 \\
+d & = -ac^2
+\end{align*}
+Substituting these values of $b$ and $d$ into Equation~\eqref{eqn:lt0}
+gives:
+\begin{align*}
+Q'(x,t)
+  & = ax^2 + 2bxt + dt^2 & & \text{Eqn.~\eqref{eqn:lt0}} \\
+  & = ax^2 + 0 - ac^2t^2 & & \text{$b=0$, $d=-ac^2$} \\
+  & = -a(c^2t^2 - x^2) & & \text{algebra} \\
+  & = -a Q(x,t) & & \text{defn. of $Q(x,t)$}
+\end{align*}
+That proves the Lemma with $\lambda(v) = -a$.
+\end{proof}
 
 
 \section{ChatGPT conversation about Reichenbach $\epsilon$ convention and relationship to one-way speed of light}
