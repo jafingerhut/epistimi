@@ -2070,6 +2070,10 @@ to~\eqref{eqn:relVelocityAdd1}, so we will not do so here.
 Similarly, it is not many steps to show that
 Equations~\eqref{eqn:relVelocityAdd1} and~\eqref{eqn:relVelocityAdd2}
 are equal, using~\eqref{eqn:uPerpendicular}.
+Equations~\eqref{eqn:relVelocityAddParallelComponent}
+and~\eqref{eqn:relVelocityAddPerpendicularComponent}
+are derived from the Lorentz transformation equations
+in Appendix~\ref{app:3d-derive-relativistic-velocity-addition-eqns}.
 
 Relativistic velocity subtraction:
 \begin{align}
@@ -2085,6 +2089,10 @@ where:
 \vect{u}'_{\perp}
   & = \frac{ \vect{u}_{\perp} }{\gamma (1 - \frac{ \vect{u} \cdot \vect{v}}{c^2} )} \label{eqn:relVelocitySubPerpendicularComponent}
 \end{align}
+Equations~\eqref{eqn:relVelocitySubParallelComponent}
+and~\eqref{eqn:relVelocitySubPerpendicularComponent}
+are derived from the Lorentz transformation equations
+in Appendix~\ref{app:3d-derive-relativistic-velocity-subtraction-eqns}.
 
 I was able to get Mathematica to confirm that
 for all vectors $\vect{u}$, $\vect{v}$:
@@ -4211,6 +4219,88 @@ t' & = \gamma (t - \frac{\vect{v} \cdot \vect{x}}{c^2}) & & \text{3-D generaliza
 where equations for $\vect{x}_{\parallel}$ and $\vect{x}_{\perp}$ can
 be found in
 Appendix~\ref{app:decomposeVectorIntoParallelPlusPerpendicular}.
+
+
+\subsection{Derive relativistic velocity addition formulas from Lorentz transformations}
+\label{app:3d-derive-relativistic-velocity-addition-eqns}
+
+The previous section shows the transformation equations from frame $S$
+to $S'$.  By reciprocity, the transformation equations from frame $S'$
+back to $S$ are the same, except with velocity $-\vect{v}$ instead of
+$\vect{v}$.  We show them explicitly here for ease of reference:
+\begin{align*}
+t & = \gamma (t' + \frac{\vect{v} \cdot \vect{x}'}{c^2}) \\
+\vect{x}_{\parallel} & = \gamma (\vect{x}'_{\parallel} + \vect{v}t') \\
+\vect{x}_{\perp} & = \vect{x}'_{\perp}
+\end{align*}
+
+Frame $S'$ is moving at velocity $\vect{v}$ relative to frame $S$.
+In frame $S'$ an object moves at constant velocity $\vect{u}'$.
+What velocity $\vect{u}$ does the object move relative to
+an observer at rest in $S$?
+
+In $S'$, the objects equation of motion is $\vect{x}' = \vect{u}' t'$.
+Use transformation equations above to find $t$ and $x$ for the object:
+\begin{align*}
+t
+  & = \gamma (t' + \frac{\vect{v} \cdot \vect{x}'}{c^2}) \\
+  & = \gamma (t' + \frac{\vect{v} \cdot (\vect{u}' t')}{c^2}) & & \text{substitute $\vect{x}' = \vect{u}' t'$} \\
+  & = \gamma t' (1 + \frac{\vect{v} \cdot \vect{u}'}{c^2}) & & \text{algebra}
+\end{align*}
+\begin{align*}
+\vect{u}_{\parallel}
+  & = \frac{\vect{x}_{\parallel}}{t} \\
+  & = \frac{\gamma}{t} (\vect{x}'_{\parallel} + \vect{v}t') \\
+  & = \frac{\gamma}{t} ((\vect{u}'_{\parallel} t') + \vect{v}t') & & \text{substitute $\vect{x}'_{\parallel} = \vect{u}'_{\parallel} t'$} \\
+  & = \frac{\gamma t'}{t} (\vect{u}'_{\parallel} + \vect{v}) & & \text{algebra} \\
+  & = \left( \frac{\gamma t'}{\gamma t'} \right) \frac{\vect{u}'_{\parallel} + \vect{v}}{1 + \frac{\vect{v} \cdot \vect{u}'}{c^2}} & & \text{substitute $t$, derived above} \\
+  & = \frac{\vect{u}'_{\parallel} + \vect{v}}{1 + \frac{\vect{v} \cdot \vect{u}'}{c^2}} & & \text{algebra}
+\end{align*}
+\begin{align*}
+\vect{u}_{\perp}
+  & = \frac{\vect{x}_{\perp}}{t} \\
+  & = \frac{1}{t} \vect{x}'_{\perp} \\
+  & = \frac{1}{t} \vect{u}'_{\perp} t' & & \text{substitute $\vect{x}'_{\perp} = \vect{u}'_{\perp} t'$} \\
+  & = \frac{\vect{u}'_{\perp} t'}{\gamma t' (1 + \frac{\vect{v} \cdot \vect{u}'}{c^2})} & & \text{substitute $t$, derived above} \\
+  & = \frac{\vect{u}'_{\perp}}{\gamma (1 + \frac{\vect{v} \cdot \vect{u}'}{c^2})} & & \text{cancel $t'$}
+\end{align*}
+
+
+\subsection{Derive relativistic velocity subtraction formulas from Lorentz transformations}
+\label{app:3d-derive-relativistic-velocity-subtraction-eqns}
+
+Frame $S'$ is moving at velocity $\vect{v}$ relative to frame $S$.
+In frame $S$ an object moves at constant velocity $\vect{u}$.
+What velocity $\vect{u}'$ does the object move relative to
+an observer at rest in $S'$?
+
+In $S$, the objects equation of motion is $\vect{x} = \vect{u} t$.
+Use transformation equations
+in Appendix~\ref{app:3d-lorentz-transformations}
+to find $t'$ and $x'$ for the object:
+\begin{align*}
+t'
+  & = \gamma (t - \frac{\vect{v} \cdot \vect{x}}{c^2}) & & \text{Eqn.~\eqref{eqn:3d-lorentz-transform-t-prime}} \\
+  & = \gamma (t - \frac{\vect{v} \cdot (\vect{u} t)}{c^2}) & & \text{substitute $\vect{x} = \vect{u} t$} \\
+  & = \gamma t (1 - \frac{\vect{v} \cdot \vect{u}}{c^2}) & & \text{algebra}
+\end{align*}
+\begin{align*}
+\vect{u}'_{\parallel}
+  & = \frac{\vect{x}'_{\parallel}}{t'} \\
+  & = \frac{\gamma}{t'} (\vect{x}_{\parallel} - \vect{v}t) & & \text{Eqn.~\eqref{eqn:3d-lorentz-transform-x-prime-parallel}} \\
+  & = \frac{\gamma}{t'} ((\vect{u}_{\parallel} t) - \vect{v}t) & & \text{substitute $\vect{x}_{\parallel} = \vect{u}_{\parallel} t$} \\
+  & = \frac{\gamma t}{t'} (\vect{u}_{\parallel} - \vect{v}) & & \text{algebra} \\
+  & = \left( \frac{\gamma t}{\gamma t} \right) \frac{\vect{u}_{\parallel} - \vect{v}}{1 - \frac{\vect{v} \cdot \vect{u}}{c^2}} & & \text{substitute $t'$, derived above} \\
+  & = \frac{\vect{u}_{\parallel} - \vect{v}}{1 - \frac{\vect{v} \cdot \vect{u}}{c^2}} & & \text{algebra}
+\end{align*}
+\begin{align*}
+\vect{u}'_{\perp}
+  & = \frac{\vect{x}'_{\perp}}{t'} \\
+  & = \frac{1}{t'} \vect{x}_{\perp} \\
+  & = \frac{1}{t'} \vect{u}_{\perp} t & & \text{substitute $\vect{x}_{\perp} = \vect{u}_{\perp} t$} \\
+  & = \frac{\vect{u}_{\perp} t}{\gamma t (1 - \frac{\vect{v} \cdot \vect{u}}{c^2})} & & \text{substitute $t'$, derived above} \\
+  & = \frac{\vect{u}_{\perp}}{\gamma (1 - \frac{\vect{v} \cdot \vect{u}}{c^2})} & & \text{cancel $t$}
+\end{align*}
 
 
 \section{ChatGPT conversation about Reichenbach $\epsilon$ convention and relationship to one-way speed of light}
