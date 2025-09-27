@@ -2035,6 +2035,11 @@ Divide both sides of that equation by $v^2$ and rearrange a bit to get:
 \subsubsection{Relativistic velocity addition and subtraction in 3 dimensions}
 \label{app:3drelvelocityadd}
 
+Note: These equations can be derived from the Lorentz transformation
+equations.  See
+Appendices~\ref{app:3d-derive-relativistic-velocity-addition-eqns}
+and~\ref{app:3d-derive-relativistic-velocity-subtraction-eqns}.
+
 Let:
 \begin{align*}
 % was \vect{v}_B, now \vect{v} -> done up to 'I stopped' comment
@@ -3854,11 +3859,13 @@ In this section we demonstrate one way to derive these equations from
 Einstein's postulates of Special Relativity, and a few other
 conditions.
 
-Note: This also demonstrates that these equations depend upon
-Einstein's postulates.  That is, if you wish to investigate theories
-that do not conform to Einstein's postulates, then you
-{\em should not} use these equations, since doing so could easily lead
-to incorrect results.
+Note: Unless one first demonstrates a {\em different} way to derive
+these transform equations (e.g. perhaps in the way that Voigt and
+Lorentz did), this section demonstrates that these equations depend
+upon Einstein's postulates.  That is, if you wish to investigate
+theories that do not conform to Einstein's postulates, then you
+{\em should not} use these equations without first deriving them in
+some other way, since doing so could easily lead to incorrect results.
 
 It is sometimes possible to derive similar, but {\em different},
 transformation equations for other scenarios, e.g. it is possible to
@@ -3880,21 +3887,25 @@ Einstein's postulates:
 \end{itemize}
 Other postulates used:
 \begin{itemize}
-\item \homogeneity: {\em Homogeneity}: Space is homogenous, i.e. there
-  are no places where things behave differently than they do in other
-  places, because of the place alone.  Similarly, time is homogenous.
-\item \linearity: {\em Linearity}: If an entity is in constant
-  velocity motion in one inertial frame, the transformation equations
-  must map those to constant velocity motion in all other inertial
-  frames.
+\item \homogeneity: Space is homogenous, i.e. there are no places
+  where things behave differently than they do in other places,
+  because of the place alone.  Similarly, time is homogenous.
+\item \linearity: If an entity is in constant velocity motion in one
+  inertial frame, the transformation equations must map those to
+  constant velocity motion in all other inertial frames.
 \end{itemize}
 
 \begin{lemma}
-  If a transformation from inertial frame $S$ to frame $S'$,
-  specified as a function from events $(t, x)$ to $(t', x')$, must
-  satisfy the constraints of \homogeneity, \linearity,
-  and it must take all points $x = \pm ct$ and transform them to
-  points $x' = \pm ct'$, then we must have:
+Let a transformation from inertial frame $S$ to frame $S'$ be
+specified as a function from events $(t, x)$ to $(t', x')$.
+If the transformation satisfies these constraints:
+\begin{itemize}
+\item \homogeneity
+\item \linearity
+\item It must take all points $x = \pm ct$ and transform them to
+  points $x' = \pm ct'$ (this is another way to write \esol).
+\end{itemize}
+then we must have:
 \begin{equation}
 c^2 t'^2 - x'^2 = \lambda(v) (c^2 t^2 - x^2)
 \end{equation}
@@ -3902,27 +3913,32 @@ where $\lambda(v)$ is a function only of $v$.
 \end{lemma}
 
 \begin{proof}
-Define $Q(x,t) = c^2 t^2 - x^2$ and $Q'(x,t) = c^2 t'^2 - x'^2$.
+Define $Q$ and $Q'$ as:
+\begin{align}
+Q(x,t) = c^2 t^2 - x^2 \label{eqn:defnq} \\
+Q'(x,t) = c^2 t'^2 - x'^2 \label{eqn:defnqprime}
+\end{align}
 $Q(x,t)=0$ if and only if $x = \pm ct$, and
 $Q'(x,t)=0$ if and only if $x' = \pm ct'$.
 Thus the constraint that the transformation must take all points
 satisfying $x = \pm ct$ and transform them to points satisfying $x' =
 \pm ct'$ is equivalent to the constraint that it must take all points
-satisfying $Q(x,t)=$ and transform them to points satisfying
+satisfying $Q(x,t)=0$ and transform them to points satisfying
 $Q'(x,t)=0$.
 
 By \linearity, we want equations that relate events $(t, x, y, z)$ in
 frame $S$ to events $(t', x', y', z')$ in $S'$ that are linear,
 i.e. of the following form:
-\begin{align*}
-x' & = Ax + Bt \\
-t' & = Dx + Et
-\end{align*}
+\begin{align}
+x' & = Ax + Bt \label{eqn:defnxprime} \\
+t' & = Dx + Et \label{eqn:defntprime}
+\end{align}
 where $A$, $B$, $D$, and $E$ may depend on $v$ and other constants.
 They must not depend upon $x$ and $t$, because that would violate
 \homogeneity.
 
-Substitute the equations for $x'$, $t'$ into $Q'(x,t)$ to get:
+Substitute Equations~\eqref{eqn:defnxprime} and~\eqref{eqn:defntprime}
+into Equation~\eqref{eqn:defnqprime} to get:
 \begin{align}
 Q'(x,t)
   & = c^2 (Dx + Et)^2 - (Ax+Bt)^2 \nonumber \\
@@ -3977,7 +3993,7 @@ Q'(x,t)
   & = ax^2 + 2bxt + dt^2 & & \text{Eqn.~\eqref{eqn:lt0}} \\
   & = ax^2 + 0 - ac^2t^2 & & \text{$b=0$, $d=-ac^2$} \\
   & = -a(c^2t^2 - x^2) & & \text{algebra} \\
-  & = -a Q(x,t) & & \text{defn. of $Q(x,t)$}
+  & = -a Q(x,t) & & \text{Eqn.~\eqref{eqn:defnq}}
 \end{align*}
 That proves the Lemma with $\lambda(v) = -a$.
 \end{proof}
@@ -4335,7 +4351,7 @@ along $\hatvec{n}$
 from A to B and then back from B to A.
 Denote the forward one-way speed along $\hatvec{n}$ by
 $c_{+}(\hatvec{n})$
-and the backward one by 
+and the backward one by
 $c_{-}(\hatvec{n})$
 The round-trip time for distance $L$ is
 \begin{equation}
