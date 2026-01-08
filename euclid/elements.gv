@@ -5,187 +5,284 @@ digraph {
 
     // Book I definitions
     //defn_15 [label="A circle is a plane figure contained by one line such that all straight lines falling upon it from one point among those lying within the figure are equal to one another;"];
-    defn_10 [label="Defn 10: right angle, perpendicular line"];
-    defn_15 [label="Defn 15: A circle"];
-    defn_20 [label="Defn 20: equilateral, isosceles,\nand scalene triangles."];
-    defn_23 [label="Defn 23: parallel straight lines."];
+    defn_10 [color="lightblue", style="filled", label="Defn 10: right angle, perpendicular line"];
+    defn_15 [color="lightblue", style="filled", label="Defn 15: A circle"];
+    defn_20 [color="lightblue", style="filled", label="Defn 20: equilateral, isosceles,\nand scalene triangles."];
+    defn_23 [color="lightblue", style="filled", label="Defn 23: parallel straight lines."];
     
     // Book I postulates
-    post_1 [label="Post. 1: To draw a straight line\nfrom any point to any point."];
-    post_2 [label="Post. 2: To produce a finite straight line\ncontinuously in a straight line."];
-    post_3 [label="Post. 3: To describe a circle\nwith any centre and distance."];
-    post_4 [label="Post. 4: That all right angles\nare equal to one another."];
-    post_5 [label="Post. 5: That, if a straight line falling on\ntwo straight lines make the interior angles\non the same side less than two right angles,\nthe two straight lines,\nif produced indefinitely,\nmeet on that side on which\nare the agnles less than\nthe two right angles."];
+    post_1 [color="green", style="filled", label="Post. 1: To draw a straight line\nfrom any point to any point."];
+    post_2 [color="green", style="filled", label="Post. 2: To produce a finite straight line\ncontinuously in a straight line."];
+    post_3 [color="green", style="filled", label="Post. 3: To describe a circle\nwith any centre and distance."];
+    post_4 [color="green", style="filled", label="Post. 4: That all right angles\nare equal to one another."];
+    post_5 [color="green", style="filled", label="Post. 5: That, if a straight line falling on\ntwo straight lines make the interior angles\non the same side less than two right angles,\nthe two straight lines,\nif produced indefinitely,\nmeet on that side on which\nare the agnles less than\nthe two right angles."];
 
     // Book I common notions
-    cn_1 [label="CN 1: Things which are equal to the same thing\nare also equal to one another."];
-    cn_2 [label="CN 2: If equals be added to equals,\nthe wholes are equal."];
-    cn_3 [label="CN 3: If equals be subtracted from equals,\nthe remainders are equal."];
-    cn_4 [label="CN 4: Things which coincide with one another\nare equal to one another."];
-    cn_5 [label="CN 5: The whole is greater than the part."];
+    cn_1 [color="gray", style="filled", label="CN 1: Things which are equal to the same thing\nare also equal to one another."];
+    cn_1_most_or_all_edges_omitted [color="gray", style="filled", label="There are so many propositions\nthat depend upon CN 1 that I usually omit\nits dependency edges, as\nthey clutter up the diagram."];
+    cn_1 -> cn_1_most_or_all_edges_omitted;
+    cn_2 [color="gray", style="filled", label="CN 2: If equals be added to equals,\nthe wholes are equal."];
+    cn_3 [color="gray", style="filled", label="CN 3: If equals be subtracted from equals,\nthe remainders are equal."];
+    cn_4 [color="gray", style="filled", label="CN 4: Things which coincide with one another\nare equal to one another."];
+    cn_5 [color="gray", style="filled", label="CN 5: The whole is greater than the part."];
 
     // Book I propositions
-    prop_1 [label="I.1. On a given finite straight line\nto construct an equilateral triangle."];
-    post_3 -> prop_1;
-    post_1 -> prop_1;
-    defn_15 -> prop_1;
-    //cn_1 -> prop_1;
-    defn_20 -> prop_1;
+    prop_I_1 [label="I.1. On a given finite straight line\nto construct an equilateral triangle."];
+    post_3 -> prop_I_1;
+    post_1 -> prop_I_1;
+    defn_15 -> prop_I_1;
+    //cn_1 -> prop_I_1;
+    defn_20 -> prop_I_1;
 
-    prop_2 [label="I.2. To place at a given point (as an extremity)\na straight line equal to a given straight line."];
-    post_1 -> prop_2;
-    prop_1 -> prop_2;
-    post_2 -> prop_2;
-    post_3 -> prop_2;
-    //cn_3 -> prop_2;
-    //cn_1 -> prop_2;
+    prop_I_2 [label="I.2. To place at a given point (as an extremity)\na straight line equal to a given straight line."];
+    post_1 -> prop_I_2;
+    prop_I_1 -> prop_I_2;
+    post_2 -> prop_I_2;
+    post_3 -> prop_I_2;
+    cn_3 -> prop_I_2;
+    //cn_1 -> prop_I_2;
 
-    prop_3 [label="I.3. Given two unequal straight lines,\nto cut off from the greater\na straight line equal to the less."];
-    prop_2 -> prop_3;
-    post_3 -> prop_3;
-    defn_15 -> prop_3;
-    //cn_1 -> prop_3;
+    prop_I_3 [label="I.3. Given two unequal straight lines,\nto cut off from the greater\na straight line equal to the less."];
+    prop_I_2 -> prop_I_3;
+    post_3 -> prop_I_3;
+    defn_15 -> prop_I_3;
+    //cn_1 -> prop_I_3;
 
-    prop_4 [label="I.4. If two triangles have the two sides equal\nto two sides respectively,\nand have the angles contained\nby the equal straight lines equal,\nthey will also have the base\nequal to the base,\nthe triangle will be equal to the triangle,\nand the remaining angles\nwill be equal to the remaining angles respectively,\nnamely those which the equal sides subtend."];
-    cn_4 -> prop_4;
+    prop_I_4 [label="I.4. If two triangles have the two sides equal\nto two sides respectively,\nand have the angles contained\nby the equal straight lines equal,\nthey will also have the base\nequal to the base,\nthe triangle will be equal to the triangle,\nand the remaining angles\nwill be equal to the remaining angles respectively,\nnamely those which the equal sides subtend."];
+    cn_4 -> prop_I_4;
 
-    prop_5 [label="I.5. In isosceles triangles the angles at the base\nare equal to one another,\nand, if the equal straight lines be produced further,\nthe angles under the base will be equal to one another."];
-    post_2 -> prop_5;
-    prop_3 -> prop_5;
-    post_1 -> prop_5;
-    prop_4 -> prop_5;
+    prop_I_5 [label="I.5. In isosceles triangles the angles at the base\nare equal to one another,\nand, if the equal straight lines be produced further,\nthe angles under the base will be equal to one another."];
+    post_2 -> prop_I_5;
+    prop_I_3 -> prop_I_5;
+    post_1 -> prop_I_5;
+    prop_I_4 -> prop_I_5;
 
-    prop_6 [label="I.6, If in a triangle two angles be equal\nto one another, the sides which subtend\nthe equal angles will also be equal to one another."];
-    prop_3 -> prop_6;
-    prop_4 -> prop_6;
+    prop_I_6 [label="I.6, If in a triangle two angles be equal\nto one another, the sides which subtend\nthe equal angles will also be equal to one another."];
+    prop_I_3 -> prop_I_6;
+    prop_I_4 -> prop_I_6;
 
-    prop_7 [label="I.7. Given two straight lines constructed\non a straight line (from its extremeties)\nand meeting in a point,\nthere cannot be constructed on the same\nstraight line (from its extremeties)\nand on the same side of it,\ntwo other straight lines meeting in\nanother point and equal to the former two respectively,\nnamely each to that which has the same extremity with it."];
-    prop_5 -> prop_7;
+    prop_I_7 [label="I.7. Given two straight lines constructed\non a straight line (from its extremeties)\nand meeting in a point,\nthere cannot be constructed on the same\nstraight line (from its extremeties)\nand on the same side of it,\ntwo other straight lines meeting in\nanother point and equal to the former two respectively,\nnamely each to that which has the same extremity with it."];
+    prop_I_5 -> prop_I_7;
 
-    prop_8 [label="I.8. If two triangles have the two sides\nequal to two sides respectively, and have also\nthe base equal to the base,\nthey will also have the angles equal\nwhich are contained by the equal straight lines."];
-    prop_7 -> prop_8;
+    prop_I_8 [label="I.8. If two triangles have the two sides\nequal to two sides respectively, and have also\nthe base equal to the base,\nthey will also have the angles equal\nwhich are contained by the equal straight lines."];
+    prop_I_7 -> prop_I_8;
 
-    prop_9 [label="I.9. To bisect a given rectilineal angle."];
-    prop_3 -> prop_9;
-    prop_8 -> prop_9;
+    prop_I_9 [label="I.9. To bisect a given rectilineal angle."];
+    prop_I_3 -> prop_I_9;
+    prop_I_8 -> prop_I_9;
 
-    prop_10 [label="I.10. To bisect a given finite straight line."];
-    prop_1 -> prop_10;
-    prop_9 -> prop_10;
-    prop_4 -> prop_10;
+    prop_I_10 [label="I.10. To bisect a given finite straight line."];
+    prop_I_1 -> prop_I_10;
+    prop_I_9 -> prop_I_10;
+    prop_I_4 -> prop_I_10;
 
-    prop_11 [label="I.11. To draw a straight line\nat right angles to a given\nstraight line from a given point on it."];
-    prop_3 -> prop_11;
-    prop_1 -> prop_11;
-    prop_8 -> prop_11;
-    defn_10 -> prop_11;
+    prop_I_11 [label="I.11. To draw a straight line\nat right angles to a given\nstraight line from a given point on it."];
+    prop_I_3 -> prop_I_11;
+    prop_I_1 -> prop_I_11;
+    prop_I_8 -> prop_I_11;
+    defn_10 -> prop_I_11;
 
-    prop_12 [label="I.12. To a given infinite straight line,\nfrom a given point which is not on it,\nto draw a perpendicular straight line."];
-    post_3 -> prop_12;
-    prop_10 -> prop_12;
-    post_1 -> prop_12;
-    prop_8 -> prop_12;
-    defn_10 -> prop_12;
+    prop_I_12 [label="I.12. To a given infinite straight line,\nfrom a given point which is not on it,\nto draw a perpendicular straight line."];
+    post_3 -> prop_I_12;
+    prop_I_10 -> prop_I_12;
+    post_1 -> prop_I_12;
+    prop_I_8 -> prop_I_12;
+    defn_10 -> prop_I_12;
 
-    prop_13 [label="I.13. If a straight line set up\non a straight line make angles,\nit will make either two right angles\nor angles equal to two right angles."];
-    defn_10 -> prop_13;
-    prop_11 -> prop_13;
-    //cn_2 -> prop_13;
-    //cn_1 -> prop_13;
+    prop_I_13 [label="I.13. If a straight line set up\non a straight line make angles,\nit will make either two right angles\nor angles equal to two right angles."];
+    defn_10 -> prop_I_13;
+    prop_I_11 -> prop_I_13;
+    cn_2 -> prop_I_13;
+    //cn_1 -> prop_I_13;
 
-    prop_14 [label="I.14. If with any straight line, and at\na point on it, two straight\nlines not lying on the same side\nmake the adjacent angles equal\nto two right angles,\nthe two straight lines\nwill be in a straight line with one another."];
-    prop_13 -> prop_14;
-    post_4 -> prop_14;
-    //cn_1 -> prop_14;
-    //cn_3 -> prop_14;
+    prop_I_14 [label="I.14. If with any straight line, and at\na point on it, two straight\nlines not lying on the same side\nmake the adjacent angles equal\nto two right angles,\nthe two straight lines\nwill be in a straight line with one another."];
+    prop_I_13 -> prop_I_14;
+    post_4 -> prop_I_14;
+    //cn_1 -> prop_I_14;
+    cn_3 -> prop_I_14;
 
-    prop_15 [label="I.15. If two straight lines cut one another,\nthey make the vertical angles equal to one another."];
-    prop_13 -> prop_15;
-    post_4 -> prop_15;
-    //cn_1 -> prop_15;
-    //cn_3 -> prop_15;
+    prop_I_15 [label="I.15. If two straight lines cut one another,\nthey make the vertical angles equal to one another."];
+    prop_I_13 -> prop_I_15;
+    post_4 -> prop_I_15;
+    //cn_1 -> prop_I_15;
+    cn_3 -> prop_I_15;
 
-    prop_16 [label="I.16. In any triangle, if one of the sides\nbe produced, the exterior angle is greater\nthan either of the interior and opposite angles."];
-    prop_10 -> prop_16;
-    prop_3 -> prop_16;
-    post_2 -> prop_16;
-    prop_15 -> prop_16;
-    prop_4 -> prop_16;
-    //cn_5 -> prop_16;
+    prop_I_16 [label="I.16. In any triangle, if one of the sides\nbe produced, the exterior angle is greater\nthan either of the interior and opposite angles."];
+    prop_I_10 -> prop_I_16;
+    prop_I_3 -> prop_I_16;
+    post_2 -> prop_I_16;
+    prop_I_15 -> prop_I_16;
+    prop_I_4 -> prop_I_16;
+    cn_5 -> prop_I_16;
 
-    prop_17 [label="I.17. In any triangle two angles\ntaken together in any manner are less than two right angles."];
-    post_2 -> prop_17;
-    prop_16 -> prop_17;
-    prop_13 -> prop_17;
+    prop_I_17 [label="I.17. In any triangle two angles\ntaken together in any manner are less than two right angles."];
+    post_2 -> prop_I_17;
+    prop_I_16 -> prop_I_17;
+    prop_I_13 -> prop_I_17;
 
-    prop_18 [label="I.18. In any triangle the greater side\nsubtends the greater angle."];
-    prop_3 -> prop_18;
-    prop_16 -> prop_18;
+    prop_I_18 [label="I.18. In any triangle the greater side\nsubtends the greater angle."];
+    prop_I_3 -> prop_I_18;
+    prop_I_16 -> prop_I_18;
 
-    prop_19 [label="I.19. In any triangle the greater angle\nis subtended by the greater side."];
-    prop_5 -> prop_19;
-    prop_18 -> prop_19;
+    prop_I_19 [label="I.19. In any triangle the greater angle\nis subtended by the greater side."];
+    prop_I_5 -> prop_I_19;
+    prop_I_18 -> prop_I_19;
 
-    prop_20 [label="I.20. In any triangle two sides\ntaken together in any manner\nare greater than the remaining one."];
-    prop_5 -> prop_20;
-    //cn_5 -> prop_20;
-    prop_19 -> prop_20;
+    prop_I_20 [label="I.20. In any triangle two sides\ntaken together in any manner\nare greater than the remaining one."];
+    prop_I_5 -> prop_I_20;
+    cn_5 -> prop_I_20;
+    prop_I_19 -> prop_I_20;
 
-    prop_21 [label="I.21. If on one side of the sides of a triangle,\nfrom its extremeties, there be constructed\ntwo straight lines meeting within\nthe triangle, the straight lines\nso constructed will be less than\nthe remaining two sides of the triangle,\nbut will contain a greater angle."];
-    prop_20 -> prop_21;
-    prop_16 -> prop_21;
+    prop_I_21 [label="I.21. If on one side of the sides of a triangle,\nfrom its extremeties, there be constructed\ntwo straight lines meeting within\nthe triangle, the straight lines\nso constructed will be less than\nthe remaining two sides of the triangle,\nbut will contain a greater angle."];
+    prop_I_20 -> prop_I_21;
+    prop_I_16 -> prop_I_21;
 
-    prop_22 [label="I.22. Out of three straight lines, which are equal\nto three given straight lines,\nto construct a triangle:\nthus it is necessary that two\nof the straight lines taken together in any manner\nshould be greater than the remaining one."];
+    prop_I_22 [label="I.22. Out of three straight lines, which are equal\nto three given straight lines,\nto construct a triangle:\nthus it is necessary that two\nof the straight lines taken together in any manner\nshould be greater than the remaining one."];
     // TODO: Is I.20 really used in the proof?
-    prop_20 -> prop_22;
-    prop_3 -> prop_22;
+    prop_I_20 -> prop_I_22;
+    prop_I_3 -> prop_I_22;
 
-    prop_23 [label="I.23. On a given straight line and at a point\non it to construct a rectilineal angle\nequal to a given rectilineal angle."];
-    prop_22 -> prop_23;
-    prop_8 -> prop_23;
+    prop_I_23 [label="I.23. On a given straight line and at a point\non it to construct a rectilineal angle\nequal to a given rectilineal angle."];
+    prop_I_22 -> prop_I_23;
+    prop_I_8 -> prop_I_23;
 
-    prop_24 [label="I.24. If two triangles have the two sides equal\nto two sides respectively, but have the one of the angles\ncontained by the equal straight lines\ngreater than the other,\nthey will also have the base greater than the base."];
-    prop_23 -> prop_24;
-    prop_4 -> prop_24;
-    prop_5 -> prop_24;
-    prop_19 -> prop_24;
+    prop_I_24 [label="I.24. If two triangles have the two sides equal\nto two sides respectively, but have the one of the angles\ncontained by the equal straight lines\ngreater than the other,\nthey will also have the base greater than the base."];
+    prop_I_23 -> prop_I_24;
+    prop_I_4 -> prop_I_24;
+    prop_I_5 -> prop_I_24;
+    prop_I_19 -> prop_I_24;
 
-    prop_25 [label="I.25. If two triangles have the two sides\nequal to two sides respectively, but have the base\ngreater than the base, they will\nalso have the one of the angles\ncontained by the equal straight lines\ngreater than the other."];
-    prop_4 -> prop_25;
-    prop_24 -> prop_25;
+    prop_I_25 [label="I.25. If two triangles have the two sides\nequal to two sides respectively, but have the base\ngreater than the base, they will\nalso have the one of the angles\ncontained by the equal straight lines\ngreater than the other."];
+    prop_I_4 -> prop_I_25;
+    prop_I_24 -> prop_I_25;
 
-    prop_26 [label="I.26. If two triangles have the two angles\nequal to two angles respectively, and one\nside equal to one side, namely, either\nthe sides adjoining the equal triangles,\nor that subtending one of the\nequal angles, they will also have the remaining sides\nequal to the remaining sides\nand the remaining angle to the remaining angle."];
-    prop_4 -> prop_26;
-    prop_16 -> prop_26;
+    prop_I_26 [label="I.26. If two triangles have the two angles\nequal to two angles respectively, and one\nside equal to one side, namely, either\nthe sides adjoining the equal triangles,\nor that subtending one of the\nequal angles, they will also have the remaining sides\nequal to the remaining sides\nand the remaining angle to the remaining angle."];
+    prop_I_4 -> prop_I_26;
+    prop_I_16 -> prop_I_26;
 
-    prop_27 [label="I.27. If a straight line falling on two\nstraight lines make the alternate angles equal to\none another, the straight lines\nwill be parallel to one another."];
-    prop_16 -> prop_27;
-    defn_23 -> prop_27;
+    prop_I_27 [label="I.27. If a straight line falling on two\nstraight lines make the alternate angles equal to\none another, the straight lines\nwill be parallel to one another."];
+    prop_I_16 -> prop_I_27;
+    defn_23 -> prop_I_27;
 
-    prop_28 [label="I.28. If a straight line falling on two\nstraight lines make the exterior angle equal\nto the interior and opposite angle on the same side,\nor the interior angles on the same side equal\nto two right angles,\nthe straight lines will be parallel to one another."];
-    prop_15 -> prop_28;
-    prop_27 -> prop_28;
-    prop_13 -> prop_28;
+    prop_I_28 [label="I.28. If a straight line falling on two\nstraight lines make the exterior angle equal\nto the interior and opposite angle on the same side,\nor the interior angles on the same side equal\nto two right angles,\nthe straight lines will be parallel to one another."];
+    prop_I_15 -> prop_I_28;
+    prop_I_27 -> prop_I_28;
+    prop_I_13 -> prop_I_28;
 
-    prop_29 [label="I.29. A straight line falling on parallel\nstraight lines makes the alternate angles equal to one another,\nthe exterior angle equal to the interior and opposite angle,\nand the interior angles on the same side\nequal to two right angles."];
-    prop_13 -> prop_29;
-    post_5 -> prop_29;
-    prop_15 -> prop_29;
-    //cn_1 -> prop_29;
-    //cn_2 -> prop_29;
+    prop_I_29 [label="I.29. A straight line falling on parallel\nstraight lines makes the alternate angles equal to one another,\nthe exterior angle equal to the interior and opposite angle,\nand the interior angles on the same side\nequal to two right angles."];
+    prop_I_13 -> prop_I_29;
+    post_5 -> prop_I_29;
+    prop_I_15 -> prop_I_29;
+    //cn_1 -> prop_I_29;
+    cn_2 -> prop_I_29;
 
-    prop_30 [label="I.30. Straight lines parallel to the same\nstraight line are also parallel to one another."];
-    prop_29 -> prop_30;
-    //cn_1 -> prop_30;
+    prop_I_30 [label="I.30. Straight lines parallel to the same\nstraight line are also parallel to one another."];
+    prop_I_29 -> prop_I_30;
+    //cn_1 -> prop_I_30;
 
-    prop_31 [label="I.31. Through a given point to draw a straight\nline parallel to a given straight line."];
-    prop_23 -> prop_31;
-    prop_27 -> prop_31;
+    prop_I_31 [label="I.31. Through a given point to draw a straight\nline parallel to a given straight line."];
+    prop_I_23 -> prop_I_31;
+    prop_I_27 -> prop_I_31;
 
-    prop_32 [label="I.32. In any triangle, if one of the sides\nbe produced, the exterior angle is equal\nto the two interior and opposite angles,\nand the three interior angles of\nthe triangle are equal to two right angles."];
-    prop_31 -> prop_32;
-    prop_29 -> prop_32;
-    prop_13 -> prop_32;
+    prop_I_32 [color="orange", style="filled", label="I.32. In any triangle, if one of the sides\nbe produced, the exterior angle is equal\nto the two interior and opposite angles,\nand the three interior angles of\nthe triangle are equal to two right angles."];
+    prop_I_31 -> prop_I_32;
+    prop_I_29 -> prop_I_32;
+    prop_I_13 -> prop_I_32;
 
-    //prop_1 [label=""];
+    prop_I_33 [label="I.33.The straight lines joining equal\nand parallel straight lines (at\nthe extremeties which are) in\nthe same directions (respectively)\nare themselves also equal and parallel."];
+    prop_I_29 -> prop_I_33;
+    prop_I_4 -> prop_I_33;
+    prop_I_27 -> prop_I_33;
+
+    prop_I_34 [label="I.34. In parallelogrammic areas the\nopposite sides and angles are\nequal to one another,\nand the diameter bisects the areas."];
+    prop_I_29 -> prop_I_34;
+    prop_I_26 -> prop_I_34;
+    cn_2 -> prop_I_34;
+    prop_I_4 -> prop_I_34;
+
+    prop_I_35 [label="I.35.Parallelograms which are on\nthe same base and in the same\nparallels are equal to one another."];
+    prop_I_34 -> prop_I_35;
+    //cn_1 -> prop_I_35;
+    cn_2 -> prop_I_35;
+    prop_I_29 -> prop_I_35;
+    prop_I_4 -> prop_I_35;
+    cn_3 -> prop_I_35;
+
+    prop_I_36 [label="I.36. Parallelograms which are on equals\nbases and in the same\nparallels are equal to one another."];
+    //cn_1 -> prop_I_36;
+    prop_I_33 -> prop_I_36;
+    prop_I_34 -> prop_I_36;
+    prop_I_35 -> prop_I_36;
+
+    prop_I_37 [label="I.37. Triangles which are on the\nsame base and in the same parallels\nare equal to one another."];
+    prop_I_31 -> prop_I_37;
+    prop_I_35 -> prop_I_37;
+    prop_I_34 -> prop_I_37;
+
+    prop_I_38 [label="I.38. Triangles which are on equal bases\nand in the same parallels\nare equal to one another."];
+    prop_I_31 -> prop_I_38;
+    prop_I_36 -> prop_I_38;
+    prop_I_34 -> prop_I_38;
+
+    prop_I_39 [label="I.39. Equal triangles which are on\nthe same base and on the same side\nare also in the same parallels."];
+    prop_I_31 -> prop_I_39;
+    prop_I_37 -> prop_I_39;
+    //cn_1 -> prop_I_39;
+
+    prop_I_40 [label="I.40. Equal triangles which are on\nequal bases and on\nthe same side are also\nin the same parallels."];
+    prop_I_31 -> prop_I_40;
+    prop_I_38 -> prop_I_40;
+    //cn_1 -> prop_I_40;
+
+    prop_I_41 [label="I.41. If a parallelogram have the same\nbase with a triangle and be\nin the same parallels,\nthe parallelogram is double of the triangle."];
+    prop_I_37 -> prop_I_41;
+    prop_I_34 -> prop_I_41;
+
+    prop_I_42 [label="I.42. To construct, in a given rectilineal\nangle, a parallelogram equal\nto a given triangle."];
+    prop_I_23 -> prop_I_42;
+    prop_I_31 -> prop_I_42;
+    prop_I_38 -> prop_I_42;
+    prop_I_41 -> prop_I_42;
+
+    prop_I_43 [label="I.43. In any parallelogram the\ncomplements of the parallelograms\nabout the diameter are equal to one another."];
+    prop_I_34 -> prop_I_43;
+    cn_2 -> prop_I_43;
+    cn_3 -> prop_I_43;
+
+    prop_I_44 [label="I.44. To a given straight line to apply,\nin a given rectilineal angle,\na parallelogram equal to a given triangle."];
+    prop_I_42 -> prop_I_44;
+    prop_I_31 -> prop_I_44;
+    prop_I_29 -> prop_I_44;
+    post_5 -> prop_I_44;
+    prop_I_43 -> prop_I_44;
+    prop_I_15 -> prop_I_44;
+
+    prop_I_45 [label="I.45. To construct, in a given rectilineal\nangle, a parallelogram equal to\na given rectilineal figure."];
+    prop_I_42 -> prop_I_45;
+    prop_I_44 -> prop_I_45;
+    //cn_1 -> prop_I_45;
+    prop_I_29 -> prop_I_45;
+    prop_I_14 -> prop_I_45;
+    cn_2 -> prop_I_45;
+    prop_I_30 -> prop_I_45;
+    prop_I_33 -> prop_I_45;
+
+    prop_I_46 [label="I.46. On a given straight line\nto describe a square."];
+    prop_I_11 -> prop_I_46;
+    prop_I_31 -> prop_I_46;
+    prop_I_34 -> prop_I_46;
+    prop_I_29 -> prop_I_46;
+
+    prop_I_47 [color="orange", style="filled", label="I.47. In right-angled triangles the square\non the side subtending the right angle\nis qual to the squares on the sides\ncontaining the right angle."];
+    prop_I_46 -> prop_I_47;
+    prop_I_14 -> prop_I_47;
+    cn_2 -> prop_I_47;
+    prop_I_4 -> prop_I_47;
+    prop_I_41 -> prop_I_47;
+
+    prop_I_48 [label="I.48. If in a triangle the square\non one of the sides be\nequal to the squares on the\nremaining two sides of the triangle,\nthe angle contained by the remaining two sides\nof the triangle is right."];
+    prop_I_47 -> prop_I_48;
+    prop_I_8 -> prop_I_48;
+
+    //prop_I_1 [label=""];
 }
