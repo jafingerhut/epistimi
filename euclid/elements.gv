@@ -1,5 +1,6 @@
 digraph {
     //rankdir="LR";
+    rankdir="BT";
     node  [shape=box];
 
     // Book I definitions
@@ -14,7 +15,7 @@ digraph {
     post_2 [label="Post. 2: To produce a finite straight line\ncontinuously in a straight line."];
     post_3 [label="Post. 3: To describe a circle\nwith any centre and distance."];
     post_4 [label="Post. 4: That all right angles\nare equal to one another."];
-    post_5 [label="Post. 5: That, if a straight line falling ona\ntwo straight lines make the interior angles\non the same side less than two right angles,\nthe two straight lines,\nif produced indefinitely,\nmeet on that side on which\nare the agnles less than\nthe two right angles."];
+    post_5 [label="Post. 5: That, if a straight line falling on\ntwo straight lines make the interior angles\non the same side less than two right angles,\nthe two straight lines,\nif produced indefinitely,\nmeet on that side on which\nare the agnles less than\nthe two right angles."];
 
     // Book I common notions
     cn_1 [label="CN 1: Things which are equal to the same thing\nare also equal to one another."];
@@ -118,6 +119,7 @@ digraph {
     prop_13 -> prop_17;
 
     prop_18 [label="I.18. In any triangle the greater side\nsubtends the greater angle."];
+    prop_3 -> prop_18;
     prop_16 -> prop_18;
 
     prop_19 [label="I.19. In any triangle the greater angle\nis subtended by the greater side."];
