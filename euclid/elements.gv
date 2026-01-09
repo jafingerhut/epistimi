@@ -123,6 +123,10 @@ digraph {
     prop_I_18 [label="I.18. In any triangle the greater side\nsubtends the greater angle."];
     prop_I_3 -> prop_I_18;
     prop_I_16 -> prop_I_18;
+    // The following is not in Heath's text as used by proof of
+    // prop_I_18, but it seems clear to me from reading the proof that
+    // it is used.
+    prop_I_5 -> prop_I_18;
 
     prop_I_19 [label="I.19. In any triangle the greater angle\nis subtended by the greater side."];
     prop_I_5 -> prop_I_19;
