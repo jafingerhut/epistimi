@@ -314,10 +314,199 @@ this one, hence putting them in an appendix.
 
 \subsection{Synchronize two clocks at $A$ and $B$ by observing them from $C$ on the perpendicular bisector of $AB$, far away}
 
-J{\'a}nossy
-\cite{Janossy1971}
-mentions this method in Chapter I,
+J{\'a}nossy~\cite{Janossy1971} mentions this method in Chapter I,
 Section B.1. in the last paragraph of numbered item 18.
+
+
+\subsection{Slow clock-transport synchronization, aka Eddington synchronization}
+
+\begin{itemize}
+
+\item
+  \url{https://plato.stanford.edu/archives/fall2018/entries/spacetime-convensimul/transport-clocks.html}~\cite{fall2018-transport-of-clocks}
+
+\item Eddington's book~\cite{Eddington1923} - TODO: find chapter,
+  page, or other more precise location within the book for discussion
+  of this topic.
+
+\end{itemize}
+
+
+\subsection{Roemer's observations of Jupiter's moons}
+
+\paragraph{A question I asked ChatGPT on this topic:}
+
+I have read that R\o{}mer's discovery of the changes in eclipse times
+of Jupiter's moons correlated with the position of the Earth is not a
+one-way measurement of the speed of light, but somehow includes a
+round-trip measurement of the speed of light.  Is that so?
+
+\paragraph{ChaptGPT's reponse:}
+
+R\o{}mer's 1676 observations of the eclipses of Jupiter's moon Io did
+not involve light physically making a round trip between Jupiter and
+Earth. The light traveled one way, from Jupiter's vicinity to Earth.
+
+Nevertheless, there is a valid argument that R\o{}mer's method does
+not constitute an independent measurement of the one-way speed of
+light in the sense relevant to Reichenbach's synchronization
+conventions.
+
+The distinction is between:
+
+\begin{enumerate}
+\item Light physically traveling along a round-trip path.
+\item An experiment whose observable results are invariant under
+  changes of distant-clock synchronization.
+\end{enumerate}
+
+R\o{}mer's experiment belongs to the second category, even though the
+observed light travels only one way.
+
+The reason is that R\o{}mer did not have a clock at Jupiter
+synchronized with a clock on Earth.  Instead, he inferred the timing
+of Io's eclipses from its periodic orbital motion.
+
+That difference is central to understanding what his observations
+establish.
+
+1. What R\o{}mer actually measured
+
+R\o{}mer observed that successive eclipses of Io appeared farther
+apart in time when Earth was moving away from Jupiter, and closer
+together when Earth was approaching Jupiter.
+
+Let two successive eclipses occur at Jupiter at times $t_1$ and $t_2$,
+separated by Io's orbital period $P$.
+
+Under ordinary Einstein synchronization, the reception times at Earth
+are approximately
+
+\begin{equation}
+T_1 = t_1 + \frac{R_1}{c}, \quad
+T_2 = t_2 + \frac{R_2}{c}
+\end{equation}
+
+where $R_1$ and $R_2$ are the respective distances between Jupiter and
+Earth.  Subtracting,
+
+\begin{equation}
+T_2 - T_1 = P + \frac{R_2 - R_1}{c}
+\end{equation}
+
+Thus, as Earth moves farther away, the observed interval increases.
+
+This is the conventional explanation of R\o{}mer's discovery, and it
+successfully accounts for the observations.
+
+\begin{itemize}
+\item \url{https://eaae-astronomy.org/workshops/roemer-and-the-velocity-of-light?utm_source=chatgpt.com}
+\item \url{https://www.optica-opn.org/home/articles/volume_20/issue_7/features/ole_r%C3%B8mer_and_the_speed_of_light/?utm_source=chatgpt.com}
+\end{itemize}
+
+2. Why this does not determine a unique one-way speed
+
+Consider a simplified model with Jupiter stationary at position
+$\vect{x}_J$, and Earth moving between positions $\vect{x}_1$ and
+$\vect{x}_2$.
+
+Start with Einstein-synchronized coordinates and change the
+synchronization to
+
+\begin{equation}
+t' = t + \frac{\vect{\boldsymbol{\kappa}} \cdot \vect{x}}{c}
+\end{equation}
+
+The light-travel time from Jupiter to Earth at position $\vect{x}_i$
+becomes
+
+\begin{equation}
+\Delta t'_i = \frac{R_i}{c} + \frac{\vect{\boldsymbol{\kappa}} \cdot (\vect{x}_i - \vect{x}_J)}{c}
+\end{equation}
+
+Therefore, the difference in assigned light-travel times is
+
+\begin{equation}
+\Delta t'_2 - \Delta t'_1 = \frac{R_2 - R_1}{c} + \frac{\vect{\boldsymbol{\kappa}} \cdot (\vect{x}_2 - \vect{x}_1)}{c}
+\end{equation}
+
+At first glance, the second term appears to produce an observable
+change in R\o{}mer's eclipse timings.
+
+But there is a compensating effect.
+
+The coordinate-time interval between the two reception events at Earth
+also changes:
+
+\begin{equation}
+T'_2 - T'_1 = T_2 - T_1 + \frac{\vect{\boldsymbol{\kappa}} \cdot (\vect{x_2} - \vect{x_1})}{c}
+\end{equation}
+
+Consequently, the additional terms cancel when we compare the observed
+interval with the assigned light-travel-time difference.
+
+The eclipse observations are unchanged.
+
+This is an example of a general principle: a change in synchronization
+alters both the assigned propagation times and the coordinate-time
+descriptions of the relevant events.  It cannot alter the actual clock
+readings and astronomical observations.
+
+3. In what sense is it a round-trip measurement?
+
+There is a particularly relevant published analysis:
+
+L. Karlov (1970), “Does R\o{}mer's Method Yield a Unidirectional Speed
+of Light?” Australian Journal of Physics, volume 23, pages 243–253.
+
+Read Karlov's complete paper
+\url{https://articles.adsabs.harvard.edu/pdf/1970AuJPh..23..243K}
+
+Karlov examines R\o{}mer's method using non-Einstein synchronization
+and concludes that the quantity it determines is a closed-path average
+light speed, rather than an independently determined one-way speed.
+
+That is likely the argument you encountered.
+
+However, it is important not to interpret this as claiming that
+photons actually travel from Earth to Jupiter and back.  They do not.
+
+Rather, Karlov shows that the synchronization-independent information
+extracted from the astronomical observations can be related to a
+closed-path propagation quantity.
+
+There is also a distinction between Karlov's interpretation and
+approaches based on slow clock transport; the precise classification
+of the measurement has been discussed in the literature.
+
+UC Research Repository
+\url{https://ir.canterbury.ac.nz/server/api/core/bitstreams/861f1b7f-07ec-4c3f-aa88-1659683d7d75/content}
+
+4. What R\o{}mer's observations establish
+
+They provide compelling evidence that light propagation has a finite
+speed, and they permit its numerical determination within a specified
+coordinate and orbital model.
+
+They do not independently distinguish Einstein synchronization from
+another consistent synchronization convention.
+
+For example, using the Earth-centered convention discussed earlier,
+inward-moving light could be assigned zero travel time from Jupiter to
+Earth. The observed variations in Io's eclipse timings would still
+occur, because the time coordinates assigned to the emission and
+reception events, and the descriptions of orbital motion, would change
+accordingly.
+
+So the answer is yes, with a qualification: Rømer's method does not
+measure the convention-independent one-way speed of light. But calling
+it a round-trip measurement is a mathematical interpretation of the
+information it supplies, not a description of the photons' actual
+paths.
+
+Karlov's 1970 paper is especially worth reading because it addresses
+exactly the question you asked, rather than merely invoking
+synchronization conventionality in general.
 
 
 %\newpage
