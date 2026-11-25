@@ -853,10 +853,13 @@ $(D_C / D_B)$ is greater than 1 if $v_C > v_B$, otherwise less than 1,
 and $(D_B / D_C)$ is greater than 1 if $v_C < v_B$.
 
 \begin{tabularx}{1.0\textwidth}{|p{4cm}|p{4cm}|p{4cm}|}
-\cline{1-3} \\
-       & $v_c < v_B$ & $v_c > v_B$ \\ \cline{1-3}
-$C$ is at greater $x$ coordinate than $B$ & $C$ and $B$ getting closer.  $(D_C / D_B) < 1$ & $C$ and $B$ getting further.  $(D_C / D_B) > 1$ \\ \cline{1-3}
-$C$ is at lesser $x$ coordinate than $B$ & $C$ and $B$ getting further.  $(D_B / D_C) > 1$ & $C$ and $B$ getting closer.  $(D_B / D_C) < 1$ \\ \cline{1-3}
+\cline{1-3}
+       & $v_c < v_B$ & $v_c > v_B$
+\\ \cline{1-3}
+$C$ is at greater $x$ coordinate than $B$ & $C$ and $B$ getting closer.  $(D_C / D_B) < 1$ & $C$ and $B$ getting further.  $(D_C / D_B) > 1$
+\\ \cline{1-3}
+$C$ is at lesser $x$ coordinate than $B$ & $C$ and $B$ getting further.  $(D_B / D_C) > 1$ & $C$ and $B$ getting closer.  $(D_B / D_C) < 1$
+\\ \cline{1-3}
 \end{tabularx}
 
 All of these cases are a bit annoying.  It is good to note that as
@@ -1041,10 +1044,13 @@ receiver.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{tabularx}{1.0\textwidth}{|Y|Y|Y|Y|Y|Y|}
-\cline{1-6} \\
-         & Period measured locally on $A$'s clock & multiply by factor & Period deduced by $A$, on $A$'s clock, at $B$'s location & multiply by factor & Period measured locally on $B$'s clock \\ \cline{1-6}
-$A \rightarrow B$ & $1$\tikzmark{ab1r}{} & \tikzmark{ab2l}{}$\frac{1}{1-\beta_B}$\tikzmark{ab2r}{} & \tikzmark{ab3l}{}$\frac{1}{1-\beta_B}$\tikzmark{ab3r}{} & \tikzmark{ab4l}{}$\frac{1}{\gamma_B}$\tikzmark{ab4r}{} & \tikzmark{ab5l}{}$D_B$ \\ \cline{1-6}
-$A \leftarrow B$ & $D_B$\tikzmark{ba1r}{} & \tikzmark{ba2l}{}$(1+\beta_B)$\tikzmark{ba2r}{} & \tikzmark{ba3l}{}$\gamma_B$\tikzmark{ba3r}{} & \tikzmark{ba4l}{}$\gamma_B$\tikzmark{ba4r}{} & \tikzmark{ba5l}{}$1$ \\ \cline{1-6}
+\cline{1-6}
+         & Period measured locally on $A$'s clock & multiply by factor & Period deduced by $A$, on $A$'s clock, at $B$'s location & multiply by factor & Period measured locally on $B$'s clock
+\\ \cline{1-6}
+$A \rightarrow B$ & $1$\tikzmark{ab1r}{} & \tikzmark{ab2l}{}$\frac{1}{1-\beta_B}$\tikzmark{ab2r}{} & \tikzmark{ab3l}{}$\frac{1}{1-\beta_B}$\tikzmark{ab3r}{} & \tikzmark{ab4l}{}$\frac{1}{\gamma_B}$\tikzmark{ab4r}{} & \tikzmark{ab5l}{}$D_B$
+\\ \cline{1-6}
+$A \leftarrow B$ & $D_B$\tikzmark{ba1r}{} & \tikzmark{ba2l}{}$(1+\beta_B)$\tikzmark{ba2r}{} & \tikzmark{ba3l}{}$\gamma_B$\tikzmark{ba3r}{} & \tikzmark{ba4l}{}$\gamma_B$\tikzmark{ba4r}{} & \tikzmark{ba5l}{}$1$
+\\ \cline{1-6}
 \end{tabularx}
 
 \link{ab1r}{ab2l}
@@ -1068,10 +1074,13 @@ Scenario 1b:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{tabularx}{1.0\textwidth}{|Y|Y|Y|Y|Y|Y|Y|Y|}
-\cline{1-8} \\
-         & Period measured locally on $B$'s clock & multiply by factor & Period deduced by $A$, on $A$'s clock, at $B$'s location & multiply by factor & Period deduced by $A$, on $A$'s clock, at $C$'s location & multiply by factor & Period measured locally on $C$'s clock \\ \cline{1-8}
-$B \rightarrow C$ & \tikzmark{bc1l}{} 1 \tikzmark{bc1r}{} & \tikzmark{bc2l}{}$\gamma_B$\tikzmark{bc2r}{} & \tikzmark{bc3l}{}$\gamma_B$\tikzmark{bc3r}{} & \tikzmark{bc4l}{}$\frac{1-\beta_B}{1-\beta_C}$\tikzmark{bc4r}{} & \tikzmark{bc5l}{}$\frac{1-\beta_B}{1-\beta_C}\gamma_B$\tikzmark{bc5r}{} & \tikzmark{bc6l}{}$\frac{1}{\gamma_C}$\tikzmark{bc6r}{} & \tikzmark{bc7l}{}$(D_C/D_B)$ \\ \cline{1-8}
-$B \leftarrow C$ & $(D_C/D_B)$\tikzmark{cb1r}{} & \tikzmark{cb2l}{}$\frac{1}{\gamma_B}$\tikzmark{cb2r}{} & \tikzmark{cb3l}{}$\frac{1+\beta_C}{1+\beta_B} \gamma_C$\tikzmark{cb3r}{} & \tikzmark{cb4l}{}$\frac{1+\beta_C}{1+\beta_B}$\tikzmark{cb4r}{} & \tikzmark{cb5l}{}$\gamma_C$\tikzmark{cb5r}{} & \tikzmark{cb6l}{}$\gamma_C$\tikzmark{cb6r}{} & \tikzmark{cb7l}{}$1$ \\ \cline{1-8}
+\cline{1-8}
+         & Period measured locally on $B$'s clock & multiply by factor & Period deduced by $A$, on $A$'s clock, at $B$'s location & multiply by factor & Period deduced by $A$, on $A$'s clock, at $C$'s location & multiply by factor & Period measured locally on $C$'s clock
+\\ \cline{1-8}
+$B \rightarrow C$ & \tikzmark{bc1l}{} 1 \tikzmark{bc1r}{} & \tikzmark{bc2l}{}$\gamma_B$\tikzmark{bc2r}{} & \tikzmark{bc3l}{}$\gamma_B$\tikzmark{bc3r}{} & \tikzmark{bc4l}{}$\frac{1-\beta_B}{1-\beta_C}$\tikzmark{bc4r}{} & \tikzmark{bc5l}{}$\frac{1-\beta_B}{1-\beta_C}\gamma_B$\tikzmark{bc5r}{} & \tikzmark{bc6l}{}$\frac{1}{\gamma_C}$\tikzmark{bc6r}{} & \tikzmark{bc7l}{}$(D_C/D_B)$
+\\ \cline{1-8}
+$B \leftarrow C$ & $(D_C/D_B)$\tikzmark{cb1r}{} & \tikzmark{cb2l}{}$\frac{1}{\gamma_B}$\tikzmark{cb2r}{} & \tikzmark{cb3l}{}$\frac{1+\beta_C}{1+\beta_B} \gamma_C$\tikzmark{cb3r}{} & \tikzmark{cb4l}{}$\frac{1+\beta_C}{1+\beta_B}$\tikzmark{cb4r}{} & \tikzmark{cb5l}{}$\gamma_C$\tikzmark{cb5r}{} & \tikzmark{cb6l}{}$\gamma_C$\tikzmark{cb6r}{} & \tikzmark{cb7l}{}$1$
+\\ \cline{1-8}
 \end{tabularx}
 
 \link{bc1r}{bc2l}
@@ -2187,8 +2196,8 @@ $(\vect{u} \oplus \vect{v}) \ominus \vect{u} = \vect{v}$.
 \label{app:3drelvelocityadd-identities}
 
 \begin{center}
-\begin{tabularx}{1.0\textwidth}{|p{4cm}|p{2cm}|p{3cm}|}
-\cline{1-3} \\
+\begin{tabularx}{1.0\textwidth}{|p{4cm}|p{2cm}|p{7cm}|}
+\cline{1-3}
 Identity & True in 1-d? & True in 3-d?
 \\ \cline{1-3}
 $a \oplus 0 = 0 \oplus a = a$ & yes & yes
@@ -2199,21 +2208,17 @@ $(a \oplus b) \ominus a = b$ & yes & yes (Lemma~\ref{lem:3d-relplusminus1-holds}
 \\ \cline{1-3}
 $a \oplus (b \ominus a) = b$ & yes & yes (nearly identical to Lemma~\ref{lem:3d-relplusminus1-holds})
 \\ \cline{1-3}
-$|a \oplus b|=|b \oplus a|$ & yes & yes (Lemma~\ref{lem:magnitudeRelVecPlusMinus})
-\\ \cline{1-3}
-$|a \ominus b|=|b \ominus a|$ & yes & yes (Lemma~\ref{lem:magnitudeRelVecPlusMinus})
-\\ \cline{1-3}
 $|a \oplus b| = c$ if $|a|=c$ or $|b|=c$ & yes & yes (Lemma~\ref{lem:magVplusC})
 \\ \cline{1-3}
-$a \oplus b = b \oplus a$ & yes & no
+$a \oplus b = b \oplus a$ & yes & no, but $|a \oplus b| = |b \oplus a|$ is true (Lemma~\ref{lem:magnitudeRelVecPlusMinus})
+\\ \cline{1-3}
+$a \ominus b = - (b \ominus a)$ & yes & no, but $|a \ominus b|=|b \ominus a|$ is true (Lemma~\ref{lem:magnitudeRelVecPlusMinus})
 \\ \cline{1-3}
 $(a \oplus b) \oplus d = a \oplus (b \oplus d)$ & yes & no
 \\ \cline{1-3}
 $a \oplus (-b) = a \ominus b$ & yes & no
 \\ \cline{1-3}
 $a \ominus (-b) = a \oplus b$ & yes & no
-\\ \cline{1-3}
-$a \ominus b = - (b \ominus a)$ & yes & no
 \\ \cline{1-3}
 \end{tabularx}
 \end{center}
@@ -2286,6 +2291,32 @@ The last fact is straightforward to confirm by taking the derivative
 of $D$ with respect to $\beta$, and confirming that it is positive
 for all $\beta$ in the range $(-1, +1)$.
 
+
+\begin{center}
+\begin{tabularx}{1.0\textwidth}{|p{4cm}|>{\centering\arraybackslash}p{5cm}|>{\centering\arraybackslash}p{5cm}|}
+\cline{1-3}
+Symbol & $\beta$ & $D$
+\\ \cline{1-3}
+Range of values & reals in range $(-1, +1)$ & reals in range $(0, +\infty)$
+\\ \cline{1-3}
+Operation & $\oplus$ relativistic velocity addition in 1 dimension (Defn.~\eqref{defn:reladd2}) & real number multiplication
+\\ \cline{1-3}
+Identity element & $0$ & $1$
+\\ \cline{1-3}
+Inverse & $-\beta$ & $1/D$
+\\ \cline{1-3}
+``Subtraction'' operator & $\beta_u \ominus \beta_v = \beta_u \oplus (-\beta_v)$ (Defn.~\eqref{defn:relsub2}) & $D_u / D_v = D_u (1 / D_v)$
+\\ \cline{1-3}
+Convert one to the other & $\beta = \frac{D^2 - 1}{D^2 + 1}$ (Cor.~\ref{cor:DdeterminesBeta}) & $D = \sqrt{ \frac{1+\beta}{1-\beta} }$ (Defn.~\eqref{defn:DopplerFactor})
+\\ \cline{1-3}
+Correspondence & \multicolumn{2}{c|}{$\beta_w = \beta_u \oplus \beta_v$ if and only if $D_w = D_u D_v$ (Theorem~\ref{thm:velAddLeadsToDopplerFProduct} and TODO)}
+\\ \cline{1-3}
+Unique solutions to simple equations & Given any two of the values in $\beta_w = \beta_u \oplus \beta_v$, there is a unique solution for the unknown (TODO-ref) & Same, but for $D_w = D_u D_v$
+\\ \cline{1-3}
+\end{tabularx}
+\end{center}
+
+
 \begin{corollary}
 \label{cor:DdeterminesBeta}
 For any value of $D > 0$ that satisfies
@@ -2327,19 +2358,19 @@ Let $\beta_w = \beta_u \oplus \beta_v$, using the one-dimensional
 relativistic velocity addition formula for $\beta$ values
 (Defn.~\eqref{defn:reladd2}).
 Let $D_u, D_v, D_w$ be calculated from $\beta_u, \beta_v, \beta_w$,
-respectively.
+respectively by Definition~\eqref{defn:DopplerFactor}.
 Then $D_w = D_u D_v$.
 \end{theorem}
 
 \begin{proof}
 \begin{align*}
-D_w & = \sqrt{ \frac{1+\beta_w}{1-\beta_w} } & & \text{defn. of $D_w$} \\
-    & = \sqrt{ \frac{1+(\beta_u \oplus \beta_v)}{1-(\beta_u \oplus \beta_v)} } & & \text{Defn. of $\beta_v$} \\
+D_w & = \sqrt{ \frac{1+\beta_w}{1-\beta_w} } & & \text{Defn.~\eqref{defn:DopplerFactor} for $D_w$} \\
+    & = \sqrt{ \frac{1+(\beta_u \oplus \beta_v)}{1-(\beta_u \oplus \beta_v)} } & & \text{substitute $\beta_w$ with $\beta_u \oplus \beta_v$} \\
     & = \sqrt{ \frac{1+\frac{\beta_u + \beta_v}{1 + \beta_u \beta_v}}{1-\frac{\beta_u + \beta_v}{1 + \beta_u \beta_v}} } & & \text{Defn.~\eqref{defn:reladd2} of Appendix~\ref{app:1drelvelocityadd}} \\
     & = \sqrt{ \frac{(1+\beta_u \beta_v)+(\beta_u + \beta_v)}{(1+\beta_u \beta_v)-(\beta_u + \beta_v)} } & & \text{multiply numerator and denominator by $(1+\beta_u \beta_v)$} \\
     & = \sqrt{ \frac{(1+\beta_u)(1+\beta_v)}{(1-\beta_u)(1-\beta_v)} } & & \text{algebra (factoring)} \\
     & = \sqrt{\frac{1+\beta_u}{1-\beta_u}} \sqrt{\frac{1+\beta_v}{1-\beta_v}} & & \text{algebra} \\
-    & = D_u D_v & & \text{defn. of $D_u, D_v$}
+    & = D_u D_v & & \text{Defn.~\eqref{defn:DopplerFactor} for $D_u, D_v$}
 \end{align*}
 \end{proof}
 
