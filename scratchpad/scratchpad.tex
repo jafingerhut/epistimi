@@ -406,7 +406,7 @@ Unfortunately there are no footnotes or citation to explain what he
 meant by this.
 
 
-\section{Simple time scenarios in special relativity and Lorentz Ether Theory}
+\section{Simple time scenarios in Special Relativity and Lorentz Ether Theory}
 \label{sec:simple-sr-time}
 
 Definitions of some terms:
@@ -429,6 +429,31 @@ Thus:
 \lim_{\beta \rightarrow -1} \gamma & = +\infty \nonumber \\
 D & = \gamma (1+\beta) > 0 & & \text{$D$ increases as $\beta$ does} \label{eqn:DaltFormula}
 \end{align}
+
+Below are some assumptions that are common to every scenario analyzed:
+\begin{itemize}
+\item All participants have access to clocks and measuring rods that,
+  when any two such clocks or rods are at rest relative to one
+  another, the clocks advance at the same rate as each other, and the
+  rods are the same length as each other.
+\item One participant $P$ is considered to be ``at rest''.  There are
+  typically other participants, e.g. $Q$, moving at a constant
+  velocity $v$ relative to $P$.  This velocity $v$ is as measured by
+  $P$'s rod and clock.
+\item In a scenario where we use the principles of special relativity
+  (SR), $P$ deduces that $Q$'s clock runs $\gamma$ times slower than
+  $P$'s clock, and if $P$ measures the length of a thing that is at
+  rest relative to $Q$ along a direction parallel to $v$, $P$ will
+  measure a length $1/\gamma$ times the length that $Q$ would measure.
+\item In a scenario where we use the principles of Lorentz Ether
+  Theory (LET), both $P$ and $Q$ know that $Q$'s clock (and all other
+  physical processes observed by $Q$) run at a rate $1/\gamma$ times
+  the rate that $P$'s clock runs.  Also, all physical things at rest
+  relative to $Q$ are length-contracted in the direction parallel to
+  their relative velocity $v$.  $Q$ cannot directly measure this,
+  because he himself and all his measuring devices are similarly
+  length-contracted.
+\end{itemize}
 
 
 \subsection{Special Relativity Scenario 1a: Two entities moving relative to each other at constant velocity}
@@ -460,9 +485,11 @@ also deduces:
 \begin{equation}
 q_A(n) = \gamma_B nT + \Delta  \label{eqn:scen1a-timeA}
 \end{equation}
-$\Delta$ is the time that $A$ reads on his clock
-when $B$ reads 0 on his clock.  The value of $\Delta$
-is irrelevant to the final result we seek.
+$\Delta$ is simply some value that could be thought of as: the time
+that $A$ reads on his clock when $B$ reads 0 on his clock.  However,
+the precise value of $\Delta$ does not affect our final result at all,
+so there is {\em no} assumption about any particular time
+synchronization convention introduced by $\Delta$.
 
 $B$'s distance from $A$ at $A$'s time $t_A$ is
 $x_B(t_A) = I_B + v_B t_A$.
@@ -586,7 +613,8 @@ then use that to calculate $\beta_B$ and $v_B$.
 
 Note in Sections~\ref{sec:scen1a-BtoA} and~\ref{sec:scen1a-AtoB}, that
 except for algebra and the definitions of symbols from
-Section~\ref{sec:simple-sr-time}, the only assumptions we used from special relativity were:
+Section~\ref{sec:simple-sr-time}, the only assumptions we used from
+special relativity were:
 \begin{itemize}
 \item The one-way speed of light is $c$ in all directions in $A$'s
   inertial frame.
@@ -610,9 +638,9 @@ I had heard from a not-yet-in-depth learning about special relativity
 that when $A$ and $B$ are moving at constant velocity towards or away
 from each other, that $A$ observed that $B$'s clock ran slower by a
 factor of $\gamma$, and $B$ observed that $A$'s clock ran slower by a
-factor of $\gamma$.  (Note: I do not claim that those are fully
-precise statements, but there is definitely a sense in which special
-relativity does say something similar to this.)
+factor of $\gamma$.  (Note: I do not claim that statement is fully
+precise, but there is definitely a sense in which at least some people
+explaining special relativity say something similar to this.)
 
 In $A$'s frame observing $B$'s clock run slower, that seems perfectly
 consistent with Lorentz Ether Theory's statement that if $A$ is at
@@ -702,7 +730,7 @@ $A$ is at rest.
 $B$ is moving at constant velocity $v_B$ relative to $A$,
 which is away from $A$ if $v_B > 0$, or towards $A$ if $v_B < 0$.
 $C$ is moving at constant velocity $v_C$ relative to $A$,
-with same sign conventions as $B$'s velocity.
+with the same sign conventions as $B$'s velocity.
 
 For $B$ sending periodic pulses to $A$ or vice versa, everything in
 Sections~\ref{sec:scen1a-BtoA} and~\ref{sec:scen1a-AtoB} applies without
@@ -755,20 +783,20 @@ x_C(t_A) & = I_C + v_C t_A & & \text{relationship of $C$'s position and time, in
 \end{align}
 Also by special relativity assumptions, $A$ considers the pulse to
 travel from $B$ to $C$ at constant speed $c$.
-The $n$-th pulse is emitted at time $q_A(n)$ in $A$'s frame,
-so its position as a function of $A$'s time $t_A$ is given by
+The $n$-th pulse is emitted at time $q_A(n)$ in $A$'s frame, so the
+pulse's position as a function of $A$'s time $t_A$ is given by
 $l_A(n, t_A)$ below.
 Note that $d$ is 1 if $C$'s $x$ coordinate is greater than $B$'s, and
 thus the pulse of interest is moving in the increasing $x$
 direction.  Otherwise $d$ is -1.
 \begin{align*}
 l_A(n, t_A)
-  & = \text{position of $B$ when emitted} \\
-  &   + \text{distance traveled after emission} \\
+  & = \text{(position of $B$ when emitted)} \\
+  &   + \text{(distance traveled after emission)} \\
   & = x_B(q_A(n)) + d (t_A - q_A(n)) c & & \text{for any time $t_A \geq q_A(n)$} \\
   & = I_B + v_B q_A(n) + d (t_A - q_A(n)) c & & \text{substitute Eqn.~\eqref{eqn:scen1b-posB}} \\
   & = (v_B - dc) q_A(n) + dc t_A + I_B & & \text{algebra} \\
-  & = (v_B - dc) \gamma_B nT + dc t_A + ((v_B-c)\Delta_B + I_B) & & \text{substitute Eqn.~\eqref{eqn:scen1b-timeArelB}} \\
+  & = (v_B - dc) \gamma_B nT + dc t_A + ((v_B-dc)\Delta_B + I_B) & & \text{substitute Eqn.~\eqref{eqn:scen1b-timeArelB}} \\
   & = (v_B - dc) \gamma_B nT + dc t_A + Z & & \text{$Z$ is constants, independent of $n$ and $t_A$}
 \end{align*}
 To find $A$'s time $r_A(n)$ when $C$ receives the pulse,
@@ -777,8 +805,8 @@ solve for the time that makes the pulse position the same as $C$'s position:
 x_C(r_A(n)) & = l_A(n, r_A(n)) \\
 I_C + v_C r_A(n) & = (v_B - dc) \gamma_B nT + dc r_A(n) + Z & & \text{substitute Eqn.~\eqref{eqn:scen1b-posC}} \\
 (v_C - dc) r_A(n) & = (v_B - dc) \gamma_B nT + (Z - I_C) & & \text{algebra} \\
-r_A(n) & = \frac{v_B - dc}{v_C - dc} \gamma_B nT + \frac{Z - I_C}{v_C - c} & & \text{divide by $v_C-dc$} \\
-r_A(n) & = \frac{d - \beta_B}{d -  \beta_C} \gamma_B nT + \frac{Z - I_C}{v_C - c} & & \text{defn. of $\beta_B, \beta_C$} \\
+r_A(n) & = \frac{v_B - dc}{v_C - dc} \gamma_B nT + \frac{Z - I_C}{v_C - dc} & & \text{divide by $v_C-dc$} \\
+r_A(n) & = \frac{d - \beta_B}{d -  \beta_C} \gamma_B nT + \frac{Z - I_C}{v_C - dc} & & \text{defn. of $\beta_B, \beta_C$} \\
 r_A(n) & = \frac{d - \beta_B}{d - \beta_C} \gamma_B nT + Y & & \text{$Y$ is a constant, independent of $n$}
 \end{align*}
 According to $A$ and its special relativity assumptions,
@@ -788,7 +816,7 @@ So $C$'s time $r_C(n)$ to receive the $n$-th pulse sent by $B$ is:
 r_C(n) & = \frac{1}{\gamma_C} r_A(n) - \Delta_C/\gamma_C & & \text{Eqn.~\eqref{eqn:scen1b-timeArelC}} \\
        & = \frac{\gamma_B}{\gamma_C} \left( \frac{d-\beta_B}{d-\beta_C} \right) nT + \frac{Y-\Delta_C}{\gamma_C}
 \end{align*}
-The time that $B$ measures on his clock between two consecutive received
+The time that $C$ measures on his clock between two consecutive received
 pulses is:
 \begin{align*}
 r_C(n+1) - r_C(n)
@@ -849,8 +877,8 @@ In the current scenario, the receiver $C$, if it knows $T$, can
 measure the time interval between pulses it receives, divide by $T$,
 and calculate $(D_C / D_B)$.
 
-Thus, with the measurement of the interval between received pulses,
-given any two of $T$, $v_A$, and $v_B$, $C$ can calculate the other
+With the measurement of the time interval between received pulses,
+given any two of $T$, $v_B$, and $v_B$, $C$ can calculate the other
 one of those (and given values for two of those quantities, there is
 only one value possible for the remaining one).
 But from the measurement of the interval between received pulses and
@@ -1201,7 +1229,7 @@ many details on this.
 \subsubsection{Where do observers at rest in $A$'s frame receive event 2 or 3 pulse first?}
 \label{sec:scen2a-restpulsefirst}
 
-For this section, assume either Special Relativity where rod $R$ and
+For this section, assume either special relativity where rod $R$ and
 observer $A$ are motionless with respect to us, or Lorentz Ether
 Theory where they are motionless with respect to the ether.  Thus in
 this section, light propagates in all directions with speed $c$.  For
@@ -2202,6 +2230,9 @@ above apply to that subset of 3-d velocity vectors.
   a \oplus b & = (0.5c, 0.433c, 0) \\
   b \oplus a & = (0.433c, 0.5c, 0)
 \end{align*}
+Note that it is still true that $|a \oplus b|=|b \oplus a|$ as
+mentioned earlier.
+
 
 \paragraph{3-d counterexample where $(a \oplus b) \oplus d \neq a \oplus (b \oplus d)$}
 \begin{align*}
@@ -2218,15 +2249,18 @@ above apply to that subset of 3-d velocity vectors.
   a \oplus (-b) & = (0.219c, -0.201c, 0) \\
   a \ominus b & = (0.207c, -0.213c, 0)
 \end{align*}
-The same counterexample deomnstrates that
+The same counterexample demonstrates that
 $a \ominus (-b) \neq a \oplus b$.
+This example also demonstrates that
+$|a \oplus (-b)| = |a \ominus b|$ is not true for arbitrary
+3-dimensional velocity vectors.
 
 \paragraph{3-d counterexample where $a \ominus b \neq - (b \ominus a)$}
 \begin{align*}
   a & = (0.4c, 0.1c, 0) \\
   b & = (0.2c, 0.3c, 0) \\
   a \ominus b & = (0.207c, -0.213c, 0) \\
-  -(b \ominus a) & = (0.212c, -0.201c, 0)
+  -(b \ominus a) & = (0.219c, -0.201c, 0)
 \end{align*}
 
 
@@ -2300,12 +2334,12 @@ Then $D_w = D_u D_v$.
 \begin{proof}
 \begin{align*}
 D_w & = \sqrt{ \frac{1+\beta_w}{1-\beta_w} } & & \text{defn. of $D_w$} \\
-    & = \sqrt{ \frac{1+(\beta_v \oplus \beta_w)}{1-(\beta_v \oplus \beta_w)} } & & \text{Defn. of $\beta_w$} \\
-    & = \sqrt{ \frac{1+\frac{\beta_v + \beta_w}{1 + \beta_v \beta_w}}{1-\frac{\beta_v + \beta_w}{1 + \beta_v \beta_w}} } & & \text{Defn.~\eqref{defn:reladd2} of Appendix~\ref{app:1drelvelocityadd}} \\
-    & = \sqrt{ \frac{(1+\beta_v \beta_w)+(\beta_v + \beta_w)}{(1+\beta_v \beta_w)-(\beta_v + \beta_w)} } & & \text{multiply numerator and denominator by $(1+\beta_v \beta_w)$} \\
-    & = \sqrt{ \frac{(1+\beta_v)(1+\beta_w)}{(1-\beta_v)(1-\beta_w)} } & & \text{algebra (factoring)} \\
-    & = \sqrt{\frac{1+\beta_v}{1-\beta_v}} \sqrt{\frac{1+\beta_w}{1-\beta_w}} & & \text{algebra} \\
-    & = D_v D_w & & \text{defn. of $D_v, D_w$}
+    & = \sqrt{ \frac{1+(\beta_u \oplus \beta_v)}{1-(\beta_u \oplus \beta_v)} } & & \text{Defn. of $\beta_v$} \\
+    & = \sqrt{ \frac{1+\frac{\beta_u + \beta_v}{1 + \beta_u \beta_v}}{1-\frac{\beta_u + \beta_v}{1 + \beta_u \beta_v}} } & & \text{Defn.~\eqref{defn:reladd2} of Appendix~\ref{app:1drelvelocityadd}} \\
+    & = \sqrt{ \frac{(1+\beta_u \beta_v)+(\beta_u + \beta_v)}{(1+\beta_u \beta_v)-(\beta_u + \beta_v)} } & & \text{multiply numerator and denominator by $(1+\beta_u \beta_v)$} \\
+    & = \sqrt{ \frac{(1+\beta_u)(1+\beta_v)}{(1-\beta_u)(1-\beta_v)} } & & \text{algebra (factoring)} \\
+    & = \sqrt{\frac{1+\beta_u}{1-\beta_u}} \sqrt{\frac{1+\beta_v}{1-\beta_v}} & & \text{algebra} \\
+    & = D_u D_v & & \text{defn. of $D_u, D_v$}
 \end{align*}
 \end{proof}
 
@@ -2965,7 +2999,7 @@ the sender's.
 \label{sec:DopplerFactorSignRulesChatGPT}
 
 In a fairly long interaction with ChatGPT that I had regarding
-questions related to Special Relativity, I asked:
+questions related to special relativity, I asked:
 \begin{quote}
 What are the rules for the beta value to use in the Doppler factor
 formula?
@@ -3856,7 +3890,7 @@ where $c$ is the speed of light, and
 $\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$.
 
 In this section we demonstrate one way to derive these equations from
-Einstein's postulates of Special Relativity, and a few other
+Einstein's postulates of special relativity, and a few other
 conditions.
 
 Note: Unless one first demonstrates a {\em different} way to derive
