@@ -525,7 +525,7 @@ Suppose that $A$ knows somehow the period $T$ that $B$ uses as its
 period for transmitting pulses, e.g. because they agreed and arranged
 this beforehand.  Then $A$ can measure the period between received
 pulses on his clock and divide it by $T$ to calculate $D_B$.
-By Corollary~\ref{cor:DdeterminesBeta} in
+By Lemma~\ref{lem:DdeterminesBeta} in
 Appendix~\ref{app:DopplerFactor}, $A$ can calculate from $D_B$ the one
 value of $\beta_B$ in the range $(-1, 1)$ that corresponds to it, and
 $v_B$ in the range $(-c, +c)$.
@@ -1830,7 +1830,8 @@ a \oplus b & > a \label{inequal:reladdposlarger1} \\
 a \oplus b & > b \label{inequal:reladdposlarger2} \\
 a \oplus b & < a+b \label{inequal:reladdpossmallerthansum}
 \end{align}
-The following inequality holds for all $-1 < a < 1$ and $-1 < b < 1$:
+The following inequality holds for all $-1 < a < 1$ and $-1 < b < 1$
+(see Lemma~\ref{lem:1dRelVelAddClosure}):
 \begin{align}
 -1 < a \oplus b & < 1 \label{inequal:reladdpossmallerthanc}
 \end{align}
@@ -1852,7 +1853,16 @@ Proving most of these is as simple as substituting the definition of
 $a \oplus b$ and $a \ominus b$, and a tiny amount of algebra.
 
 Proving associativity~\eqref{defn:1dreladdassociative} is only a
-little bit more algebra, but we will do the steps here:
+little bit more algebra, but we will do the steps here.
+
+\begin{lemma}
+\label{lem:1dRelVelAddAssociative}
+Relativistic velocity addition in 1 dimension is associative, i.e.
+for all $a, b, c \in (-1, +1)$,
+$(a \oplus b) \oplus c = a \oplus (b \oplus c)$.
+\end{lemma}
+
+\begin{proof}
 \begin{align*}
 (a \oplus b) \oplus c
   & = \frac{\frac{a+b}{1+ab}+c}{1+\left(\frac{a+b}{1+ab}\right)c} & & \text{use Defn.~\eqref{defn:reladd2} twice} \\
@@ -1867,6 +1877,7 @@ a \oplus (b \oplus c)
   & = \frac{a+abc+b+c}{1+bc+ab+ac} & & \text{multiply out the terms}
 \end{align*}
 The above two final results are easily seen to be equal.
+\end{proof}
 
 The inequalities are also not difficult to prove, but we will write
 out their short proofs.  Recall that these inequalities are true only
@@ -1899,27 +1910,34 @@ To prove $a \oplus b < a+b$
 \end{align*}
 The final inequality is true because both $a$ and $b$ are positive.
 
-Now to prove $a \oplus b < 1$ (part of
-inequality~\eqref{inequal:reladdpossmallerthanc}), but recall now we
-are doing so for the more general case of all values $-1 < a < 1$ and
-$-1 < b < 1$:
+Now we prove inequality~\eqref{inequal:reladdpossmallerthanc}.
+\begin{lemma}
+\label{lem:1dRelVelAddClosure}
+For all $a, b \in (-1, +1)$, $a \oplus b$ is in range $(-1, +1)$.
+\end{lemma}
+
+\begin{proof}
+Start with the part $a \oplus b < 1$:
 \begin{align*}
-\frac{a+b}{1+ab} < 1
+a \oplus b < 1
+  & \Leftrightarrow \frac{a+b}{1+ab} < 1 & & \text{Defn.~\eqref{defn:reladd2}} \\
   & \Leftrightarrow a+b < 1+ab & & \text{multiply both sides by $1+ab$, which is positive} \\
   & \Leftrightarrow b-ab < 1-a & & \text{subtract $a+ab$ from both sides} \\
   & \Leftrightarrow b(1-a) < 1-a & & \text{algebra} \\
   & \Leftrightarrow b < 1 & & \text{divide both sides by $1-a$, which is positive}
 \end{align*}
-And the last inequality is true.  Proving the part that
-
+And $ b < 1$ is true by the conditions of the Lemma.
+The part $-1 < a \oplus b$ is proved similarly:
 \begin{align*}
--1 < \frac{a+b}{1+ab}
+-1 < a \oplus b
+  & \Leftrightarrow -1 < \frac{a+b}{1+ab} & & \text{Defn.~\eqref{defn:reladd2}} \\
   & \Leftrightarrow -(1+ab) < a+b & & \text{multiply both sides by $1+ab$, which is positive} \\
   & \Leftrightarrow -(1+a) < b+ab & & \text{add $ab-a$ to both sides} \\
   & \Leftrightarrow -(1+a) < b(1+a) & & \text{algebra} \\
   & \Leftrightarrow -1 < b & & \text{divide both sides by $1+a$, which is positive}
 \end{align*}
-And the last inequality is true.
+And $-1 < b$ is true by the conditions of the Lemma.
+\end{proof}
 
 
 \subsection{Using hyperbolic functions for relativistic velocity arithmetic in one dimension}
@@ -2307,27 +2325,74 @@ Inverse & $-\beta$ & $1/D$
 \\ \cline{1-3}
 ``Subtraction'' operator & $\beta_u \ominus \beta_v = \beta_u \oplus (-\beta_v)$ (Defn.~\eqref{defn:relsub2}) & $D_u / D_v = D_u (1 / D_v)$
 \\ \cline{1-3}
-Convert one to the other & $\beta = \frac{D^2 - 1}{D^2 + 1}$ (Cor.~\ref{cor:DdeterminesBeta}) & $D = \sqrt{ \frac{1+\beta}{1-\beta} }$ (Defn.~\eqref{defn:DopplerFactor})
+Convert one to the other & $\beta = \frac{D^2 - 1}{D^2 + 1}$ (Lemma~\ref{lem:DdeterminesBeta}) & $D = \sqrt{ \frac{1+\beta}{1-\beta} }$ (Defn.~\eqref{defn:DopplerFactor})
 \\ \cline{1-3}
-Correspondence & \multicolumn{2}{c|}{$\beta_w = \beta_u \oplus \beta_v$ if and only if $D_w = D_u D_v$ (Theorem~\ref{thm:velAddLeadsToDopplerFProduct} and TODO)}
+Correspondence & \multicolumn{2}{c|}{$\beta_w = \beta_u \oplus \beta_v$ if and only if $D_w = D_u D_v$ (Theorem~\ref{thm:1dRelVelAddLeadsToDopplerFProduct} and~\ref{thm:DopplerProductLeadsTo1dRelVelAdd})}
 \\ \cline{1-3}
-Unique solutions to simple equations & Given any two of the values in $\beta_w = \beta_u \oplus \beta_v$, there is a unique solution for the unknown (TODO-ref) & Same, but for $D_w = D_u D_v$
+Unique solutions to simple equations & Given any two of the values in $\beta_w = \beta_u \oplus \beta_v$, there is a unique solution for the unknown (see the left/right cancellation property below) & Same, but for $D_w = D_u D_v$
 \\ \cline{1-3}
 \end{tabularx}
 \end{center}
 
+The set of $\beta$ values along with the operator $\oplus$ is a
+group~\cite{GroupMathematics}, because:
+\begin{itemize}
+\item Closure: $\oplus$ on any two $\beta$ values in range $(-1, +1)$
+  gives another value in that range
+  (see Lemma~\ref{lem:1dRelVelAddClosure}).
+\item $\oplus$ is associative for 1 dimension
+  (Lemma~\ref{lem:1dRelVelAddAssociative}).
+\item $0$ is the identity element, i.e. for all $\beta \in (-1, +1)$,
+  $0 \oplus \beta = \beta \oplus 0 = \beta$.
+\item Every value $\beta$ has an inverse $-\beta$ such that
+  $\beta \oplus (-\beta)=0$ and $(-\beta) \oplus \beta=0$.
+\end{itemize}
+For every group, the following facts have been proven about it:
+\begin{itemize}
+\item The identity element is unique, and for each $\beta$, its
+  inverse is unique.
+\item Left/right cancellation:
+  If $\beta_a \oplus \beta_b = \beta_a \oplus \beta_c$,
+  then $\beta_b = \beta_c$.
+  If $\beta_b \oplus \beta_a = \beta_c \oplus \beta_a$,
+  then $\beta_b = \beta_c$.
+\item Unique solutions to one-factor equations:
+  The equation $\beta_a \oplus \beta_x = \beta_b$
+  has the unique solution $\beta_x = (-\beta_a) \oplus \beta_b$.
+  The equation $\beta_x \oplus \beta_a = \beta_b$
+  has the unique solution $\beta_x = \beta_b \oplus (-\beta_a)$.
+\end{itemize}
 
-\begin{corollary}
-\label{cor:DdeterminesBeta}
+
+\begin{lemma}
+\label{lem:DdeterminesBeta}
 For any value of $D > 0$ that satisfies
 Definition~\eqref{defn:DopplerFactor}, there is exactly one value of
 $\beta$, $-1 < \beta < 1$,
 that corresponds to that value of $D$.
 That value is $\beta = \frac{D^2-1}{D^2+1}$.
-\end{corollary}
+\end{lemma}
+
+\begin{proof}
 Substituting the value $\frac{D^2-1}{D^2+1}$ for $\beta$ into
 Definition~\eqref{defn:DopplerFactor} takes only a little
 algebra to simplify and show it is equal to $D$.
+\end{proof}
+
+\begin{lemma}
+\label{lem:BetaDeterminesD}
+For any value of $-1 < \beta < 1$ that satisfies
+$\beta = \frac{D^2 - 1}{D^2 + 1}$,
+there is exactly one value of $D > 0$
+that corresponds to that value of $\beta$.
+That value is $D = \sqrt{ \frac{1 + \beta}{1 - \beta} }$.
+\end{lemma}
+
+\begin{proof}
+Substituting the value $\sqrt{ \frac{1 + \beta}{1 - \beta} }$ for $D$ into
+$\frac{D^2 - 1}{D^2 + 1}$ takes only a little
+algebra to simplify and show it is equal to $\beta$.
+\end{proof}
 
 These two equations pop up only occasionally:
 \begin{align}
@@ -2352,13 +2417,13 @@ And the second:
 \end{align*}
 
 \begin{theorem}
-\label{thm:velAddLeadsToDopplerFProduct}
+\label{thm:1dRelVelAddLeadsToDopplerFProduct}
 Let $\beta_u, \beta_v$ be any two values in the range $(-1, +1)$.
 Let $\beta_w = \beta_u \oplus \beta_v$, using the one-dimensional
 relativistic velocity addition formula for $\beta$ values
 (Defn.~\eqref{defn:reladd2}).
 Let $D_u, D_v, D_w$ be calculated from $\beta_u, \beta_v, \beta_w$,
-respectively by Definition~\eqref{defn:DopplerFactor}.
+respectively, by Definition~\eqref{defn:DopplerFactor}.
 Then $D_w = D_u D_v$.
 \end{theorem}
 
@@ -2376,7 +2441,7 @@ D_w & = \sqrt{ \frac{1+\beta_w}{1-\beta_w} } & & \text{Defn.~\eqref{defn:Doppler
 
 \begin{corollary}
 \label{thm:velSubLeadsToDopplerFQuotient}
-Under the same conditions as Theorem~\ref{thm:velAddLeadsToDopplerFProduct},
+Under the same conditions as Theorem~\ref{thm:1dRelVelAddLeadsToDopplerFProduct},
 except $\beta_w = \beta_u \ominus \beta_v$, using the one-dimensional
 relativistic velocity subtraction formula for $\beta$ values
 (Defn.~\eqref{defn:relsub2}),
@@ -2394,10 +2459,31 @@ $D_{-v} = 1/D_v$, so $D_w = D_u / D_v$.
 Apparently these facts are well-known among those working with
 relativistic Doppler factors.
 
+\begin{theorem}
+\label{thm:DopplerProductLeadsTo1dRelVelAdd}
+Let $D_u, D_v > 0$ be any two real values, and $D_w = D_u D_v$.
+Let $\beta_u, \beta_v, \beta_w$ be calculated from $D_u, D_v, D_w$,
+respectively, by $\beta = \frac{D^2 - 1}{D^2 + 1}$.
+Then $\beta_w = \beta_u \oplus \beta_v$, using the one-dimensional
+relativistic velocity addition formula for $\beta$ values
+(Defn.~\eqref{defn:reladd2}).
+\end{theorem}
+
+\begin{proof}
+\begin{align*}
+\beta_w & = \frac{D_w^2 - 1}{D_w^2 + 1} & & \text{conditions of Theorem} \\
+        & = \frac{(D_u D_v)^2 - 1}{(D_u D_v)^2 + 1} & & \text{substitute $D_w$ with $D_u D_v$} \\
+        & = \frac{\left( \frac{1+\beta_u}{1-\beta_u} \right) \left( \frac{1+\beta_v}{1-\beta_v} \right) - 1}{\left( \frac{1+\beta_u}{1-\beta_u} \right) \left( \frac{1+\beta_v}{1-\beta_v} \right) + 1} & & \text{by conditions of this Theorem, and Lemma~\ref{lem:BetaDeterminesD}} \\
+        & = \frac{(1+\beta_u)(1+\beta_v) - (1-\beta_u)(1-\beta_v)}{(1+\beta_u)(1+\beta_v) + (1-\beta_u)(1-\beta_v)} & & \text{multiply num. and denom. by $(1-\beta_u)(1-\beta_v)$} \\
+        & = \frac{2(\beta_u+\beta_v)}{2(1 + \beta_u\beta_v)} & & \text{algebra} \\
+        & = \beta_u \oplus \beta_v & & \text{Defn.~\eqref{defn:reladd2}}
+\end{align*}
+\end{proof}
+
 The following lemmas are occasionally useful.
 \begin{lemma}
 \label{lem:betaGammaIdentity1}
-Let $\beta$ be in range $0 < \beta < 1$,
+Let $\beta$ be in range $-1 < \beta < 1$,
 and let $\gamma = 1/\sqrt{1-\beta^2}$ be the Lorentz factor
 corresponding to it.
 Then:
@@ -2419,7 +2505,7 @@ Then:
 
 \begin{lemma}
 \label{lem:betaGammaIdentity2}
-Let $\beta_1, \beta_2$ be in range $0 < \beta_1, \beta_2 < 1$,
+Let $\beta_1, \beta_2$ be in range $\beta_1, \beta_2 \in (-1, +1)$,
 and let $\gamma_i = 1/\sqrt{1-\beta_i^2}$ be the Lorentz factors
 corresponding to them.
 Then:
