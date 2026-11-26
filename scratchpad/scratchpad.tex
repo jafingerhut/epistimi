@@ -2366,32 +2366,36 @@ For every group, the following facts have been proven about it:
 
 \begin{lemma}
 \label{lem:DdeterminesBeta}
-For any value of $D > 0$ that satisfies
-Definition~\eqref{defn:DopplerFactor}, there is exactly one value of
-$\beta$, $-1 < \beta < 1$,
-that corresponds to that value of $D$.
-That value is $\beta = \frac{D^2-1}{D^2+1}$.
+Let $D > 0$ be any real number such that
+$D = \sqrt{ \frac{1+\beta}{1-\beta} }$ for some real $\beta$.
+Then $\beta$ is unique, in the range $(-1, +1)$, and its value is
+given by $\beta = \frac{D^2-1}{D^2+1}$.
 \end{lemma}
 
 \begin{proof}
-Substituting the value $\frac{D^2-1}{D^2+1}$ for $\beta$ into
-Definition~\eqref{defn:DopplerFactor} takes only a little
-algebra to simplify and show it is equal to $D$.
+\begin{align*}
+D = \sqrt{ \frac{1+\beta}{1-\beta} }
+  & \Leftrightarrow D^2 = \frac{1+\beta}{1-\beta} & & \text{$\Leftrightarrow$ holds because of restriction $D > 0$} \\
+  & \Leftrightarrow (1-\beta) D^2 = 1+\beta & & \text{algebra, valid as long as $\beta \neq 1$} \\
+  & \Leftrightarrow D^2-1 = \beta + \beta D^2 & & \text{algebra, valid with no restrictions on real values} \\
+  & \Leftrightarrow \beta = \frac{D^2-1}{D^2+1} & & \text{$D$ is real so dividing by $D^2+1$ is defined}
+\end{align*}
+$\beta$ is unique because the expression $\frac{D^2-1}{D^2+1}$ has
+only one value for any given value of $D$.
 \end{proof}
 
 \begin{lemma}
 \label{lem:BetaDeterminesD}
-For any value of $-1 < \beta < 1$ that satisfies
-$\beta = \frac{D^2 - 1}{D^2 + 1}$,
-there is exactly one value of $D > 0$
-that corresponds to that value of $\beta$.
-That value is $D = \sqrt{ \frac{1 + \beta}{1 - \beta} }$.
+Let $\beta$ be any real number in range $(-1, +1)$ such that
+$\beta = \frac{D^2 - 1}{D^2 + 1}$ for some real $D > 0$.
+Then $D$ is unique and its value is given by
+$D = \sqrt{ \frac{1 + \beta}{1 - \beta} }$.
 \end{lemma}
 
 \begin{proof}
-Substituting the value $\sqrt{ \frac{1 + \beta}{1 - \beta} }$ for $D$ into
-$\frac{D^2 - 1}{D^2 + 1}$ takes only a little
-algebra to simplify and show it is equal to $\beta$.
+The proof is the same as the one given for
+Lemma~\ref{lem:DdeterminesBeta}, except the steps are reversed.  Each
+of those proof steps is ``if and only if'', so can be reversed.
 \end{proof}
 
 These two equations pop up only occasionally:
