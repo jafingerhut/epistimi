@@ -889,7 +889,7 @@ $T$, that is not enough information for $C$ to calculate either one of
 $v_B$ or $v_C$.
 
 However, it {\em can} do the following.  Define $D_r = (D_C / D_B)$.
-From Corollary~\ref{thm:velSubLeadsToDopplerFQuotient} in
+From Corollary~\ref{thm:1dRelVelSubLeadsToDopplerQuotient} in
 Appendix~\ref{app:DopplerFactor}, we know that if
 $\beta_r = \beta_C \ominus \beta_B$ for some $\beta_C, \beta_B$ values
 in the range $(-1, +1)$, then $D_r = D_C / D_B$.
@@ -1819,7 +1819,7 @@ the place.
 a \oplus b & = b \oplus a & & \text{addition is commutative (1-d only, not 3-d!)} \label{defn:1dreladdcommutative} \\
 (a \oplus b) \oplus c & = a \oplus (b \oplus c) & & \text{addition is associative (1-d only, not 3-d!)} \label{defn:1dreladdassociative} \\
 a \oplus 0 & = 0 \oplus a = a \\
-a \oplus (-b) & = a \ominus b \\
+a \oplus (-b) & = a \ominus b \label{cor:1dRelVelSubSameAsAddingInverse} \\
 a \ominus (-b) & = a \oplus b \\
 0 \ominus b & = -b \\
 a \ominus b & = - (b \ominus a)
@@ -2327,7 +2327,9 @@ Inverse & $-\beta$ & $1/D$
 \\ \cline{1-3}
 Convert one to the other & $\beta = \frac{D^2 - 1}{D^2 + 1}$ (Lemma~\ref{lem:DdeterminesBeta}) & $D = \sqrt{ \frac{1+\beta}{1-\beta} }$ (Defn.~\eqref{defn:DopplerFactor})
 \\ \cline{1-3}
-Correspondence & \multicolumn{2}{c|}{$\beta_w = \beta_u \oplus \beta_v$ if and only if $D_w = D_u D_v$ (Theorem~\ref{thm:1dRelVelAddLeadsToDopplerFProduct} and~\ref{thm:DopplerProductLeadsTo1dRelVelAdd})}
+Correspondence of $\oplus$ & \multicolumn{2}{c|}{$\beta_w = \beta_u \oplus \beta_v$ if and only if $D_w = D_u D_v$ (Theorem~\ref{thm:1dRelVelAddLeadsToDopplerFProduct} and~\ref{thm:DopplerProductLeadsTo1dRelVelAdd}) }
+\\ \cline{1-3}
+Correspondence of $\ominus$ & \multicolumn{2}{c|}{$\beta_w = \beta_u \ominus \beta_v$ if and only if $D_w = D_u / D_v$ (Cor.~\ref{cor:1dRelVelSubLeadsToDopplerQuotient} and~\ref{cor:DopplerQuotientLeadsTo1dRelVelSub}) }
 \\ \cline{1-3}
 Unique solutions to simple equations & Given any two of the values in $\beta_w = \beta_u \oplus \beta_v$, there is a unique solution for the unknown (see the left/right cancellation property below) & Same, but for $D_w = D_u D_v$
 \\ \cline{1-3}
@@ -2422,12 +2424,12 @@ And the second:
 
 \begin{theorem}
 \label{thm:1dRelVelAddLeadsToDopplerFProduct}
-Let $\beta_u, \beta_v$ be any two values in the range $(-1, +1)$.
-Let $\beta_w = \beta_u \oplus \beta_v$, using the one-dimensional
-relativistic velocity addition formula for $\beta$ values
-(Defn.~\eqref{defn:reladd2}).
+Let $\beta_u, \beta_v, \beta_w$ be any real values in the range
+$(-1, +1)$ such that $\beta_w = \beta_u \oplus \beta_v$
+where $\oplus$ is given by Definition~\eqref{defn:reladd2}.
 Let $D_u, D_v, D_w$ be calculated from $\beta_u, \beta_v, \beta_w$,
 respectively, by Definition~\eqref{defn:DopplerFactor}.
+
 Then $D_w = D_u D_v$.
 \end{theorem}
 
@@ -2443,34 +2445,14 @@ D_w & = \sqrt{ \frac{1+\beta_w}{1-\beta_w} } & & \text{Defn.~\eqref{defn:Doppler
 \end{align*}
 \end{proof}
 
-\begin{corollary}
-\label{thm:velSubLeadsToDopplerFQuotient}
-Under the same conditions as Theorem~\ref{thm:1dRelVelAddLeadsToDopplerFProduct},
-except $\beta_w = \beta_u \ominus \beta_v$, using the one-dimensional
-relativistic velocity subtraction formula for $\beta$ values
-(Defn.~\eqref{defn:relsub2}),
-$D_w = D_u / D_v$.
-\end{corollary}
-
-\begin{proof}
-$\beta_w = \beta_u \ominus \beta_v = \beta_u \oplus (-\beta_v)$.
-Thus by the previous theorem, $D_w = D_u D_{-v}$,
-where $D_{-v}$ is calculated from the definition for $D$ with $-\beta_v$.
-It is straightforward to see from the definition of $D$ that
-$D_{-v} = 1/D_v$, so $D_w = D_u / D_v$.
-\end{proof}
-
-Apparently these facts are well-known among those working with
-relativistic Doppler factors.
-
 \begin{theorem}
 \label{thm:DopplerProductLeadsTo1dRelVelAdd}
-Let $D_u, D_v > 0$ be any two real values, and $D_w = D_u D_v$.
+Let $D_u, D_v, D_w > 0$ be any real values such that $D_w = D_u D_v$.
 Let $\beta_u, \beta_v, \beta_w$ be calculated from $D_u, D_v, D_w$,
 respectively, by $\beta = \frac{D^2 - 1}{D^2 + 1}$.
-Then $\beta_w = \beta_u \oplus \beta_v$, using the one-dimensional
-relativistic velocity addition formula for $\beta$ values
-(Defn.~\eqref{defn:reladd2}).
+
+Then $\beta_w = \beta_u \oplus \beta_v$
+where $\oplus$ is given by Definition~\eqref{defn:reladd2}.
 \end{theorem}
 
 \begin{proof}
@@ -2483,6 +2465,51 @@ relativistic velocity addition formula for $\beta$ values
         & = \beta_u \oplus \beta_v & & \text{Defn.~\eqref{defn:reladd2}}
 \end{align*}
 \end{proof}
+
+\begin{corollary}
+\label{cor:1dRelVelSubLeadsToDopplerQuotient}
+Given: the same conditions as
+Theorem~\ref{thm:1dRelVelAddLeadsToDopplerFProduct},
+except $\beta_w = \beta_u \ominus \beta_v$ where $\ominus$ is given by
+Definition~\eqref{defn:relsub2}.
+
+Then $D_w = D_u / D_v$.
+\end{corollary}
+
+\begin{proof}
+$\beta_w = \beta_u \ominus \beta_v = \beta_u \oplus (-\beta_v)$
+(see~\eqref{cor:1dRelVelSubSameAsAddingInverse}).
+Thus by Theorem~\ref{thm:1dRelVelAddLeadsToDopplerFProduct},
+$D_w = D_u D_{-v}$, where $D_{-v}$ is calculated from
+Definition~\eqref{defn:DopplerFactor} with $-\beta_v$.
+It is straightforward to see from that definition that
+$D_{-v} = 1/D_v$, so $D_w = D_u / D_v$.
+\end{proof}
+
+\begin{corollary}
+\label{cor:DopplerQuotientLeadsTo1dRelVelSub}
+Given: the same conditions as
+Theorem~\ref{thm:DopplerProductLeadsTo1dRelVelAdd},
+except $D_w = D_u / D_v$.
+
+Then $\beta_w = \beta_u \ominus \beta_v$
+where $\ominus$ is given by Definition~\eqref{defn:relsub2}.
+\end{corollary}
+
+\begin{proof}
+By Definition~\eqref{defn:DopplerFactor}
+$1/D_v = \sqrt{ \frac{1-\beta_v}{1+\beta_v} } = \sqrt{ \frac{1+(-\beta_v)}{1-(-\beta_v)} } = D_{-v}$,
+where $D_{-v}$ corresponds to $\beta_{-v} = -\beta_v$.
+So $D_w = D_u / D_v = D_u D_{-v}$.
+By Theorem~\ref{thm:DopplerProductLeadsTo1dRelVelAdd}
+it follows that $\beta_w = \beta_u \oplus \beta_{-v}$,
+which equals $\beta_u \oplus (-\beta_v)$,
+and by~\eqref{cor:1dRelVelSubSameAsAddingInverse} this equals
+$\beta_u \ominus \beta_v$.
+\end{proof}
+
+Apparently these facts are well-known among those working with
+relativistic Doppler factors.
 
 The following lemmas are occasionally useful.
 \begin{lemma}
