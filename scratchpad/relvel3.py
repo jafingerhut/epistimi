@@ -151,7 +151,7 @@ def check_subtract_sort_of_commutative(test_case):
     vA = test_case['vA']
     vB = test_case['vB']
     diff1 = subtract(vA, vB)
-    diff2 = subtract(vB, vA)
+    diff2 = - subtract(vB, vA)
     err = abs_diff(diff1, diff2)
     results = ["vA ominus vB=%s" % (diff1/c),
                "vB ominus vA=%s" % (diff2/c)]
@@ -314,6 +314,32 @@ def check_u_oplus_v_equals_v_oplus_u(test_case):
     return ret
 
 
+def check_a_plus_minus_b_magnitude_equals_a_minus_b(test_case):
+    u = test_case['vA']
+    v = test_case['vB']
+
+    sum1_vec = add(u, -v)
+    sum1_mag = magnitude(sum1_vec)
+
+    sum2_vec = subtract(u, v)
+    sum2_mag = magnitude(sum2_vec)
+
+    err = abs_diff(sum1_mag, sum2_mag)
+    results = ["|u oplus v|=%.5f" % (sum1_mag),
+               "|v oplus u|=%.5f" % (sum2_mag)]
+    if err > 0.0001:
+        ret = {'pass': False,
+               'msg': ("u=%s v=%s |u oplus (-v)| != |u ominus v|, err=%s"
+                       "" % (u/c, v/c, err)),
+               'results': results}
+    else:
+        ret = {'pass': True,
+               'msg': ("u=%s v=%s |u oplus (-v)| == |u ominus v|, err=%s"
+                       "" % (u/c, v/c, err)),
+               'results': results}
+    return ret
+
+
 def run_test_cases(test_cases, desc_str, check_fn):
     print("")
     good = 0
@@ -353,6 +379,9 @@ def main():
         {'vA': np.array([0.9 * c, 0.1 * c, 0.1 * c]),
          'vB': np.array([-0.4 * c, 0.7 * c, 0.2 * c])
          },
+        {'vA': np.array([0.4 * c, 0.1 * c, 0.0]),
+         'vB': np.array([0.2 * c, 0.3 * c, 0.0])
+         },
     ]
     run_test_cases(test_cases, "a \\oplus b = b \\oplus a",
                    check_add_commutative)
@@ -370,6 +399,8 @@ def main():
                    check_u_ominus_v_equals_v_ominus_u)
     run_test_cases(test_cases, "|u oplus v| = |v oplus u|",
                    check_u_oplus_v_equals_v_oplus_u)
+    run_test_cases(test_cases, "|u oplus (-v)| = |u ominus v|",
+                   check_a_plus_minus_b_magnitude_equals_a_minus_b)
 
 
 if __name__ == "__main__":
